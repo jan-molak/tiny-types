@@ -6,4 +6,5 @@
 node_modules
 
 .nyc_output
+reports
 lib

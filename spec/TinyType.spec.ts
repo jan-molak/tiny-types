@@ -1,5 +1,5 @@
 import 'mocha';
-import { TinyType } from '../src/TinyType';
+import { TinyType } from '../src';
 import expect = require('./expect');
 import { given } from 'mocha-testdata';
 

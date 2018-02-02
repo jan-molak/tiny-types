@@ -1,3 +1,1 @@
-export function hi() {
-    return 2;
-}
+export * from './TinyType';

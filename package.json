@@ -58,32 +58,32 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "nyc": {
-      "include": [
-        "src/*.ts",
-        "src/**/*.ts"
-      ],
-      "exclude": [
-        "features",
-        "lib",
-        "node_modules",
-        "spec",
-        "staging"
-      ],
-      "extension": [
-        ".ts"
-      ],
-      "require": [
-        "ts-node/register"
-      ],
-      "reporter": [
-        "json",
-        "text-summary",
-        "html"
-      ],
-      "cache": true,
-      "all": true
     }
+  },
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "features",
+      "lib",
+      "node_modules",
+      "spec",
+      "staging"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "text-summary",
+      "html"
+    ],
+    "cache": true,
+    "all": true
   }
 }

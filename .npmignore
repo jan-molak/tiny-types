@@ -9,6 +9,7 @@ package-lock.json
 
 # Specs
 spec
+reports
 mocha.opts
 tsconfig*.json
 tslint.json

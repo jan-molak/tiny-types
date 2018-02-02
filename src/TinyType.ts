@@ -19,7 +19,7 @@ export abstract class TinyType {
 
     toString() {
         const fields = this.fields().reduce((acc: string[], field: string) => {
-            return acc.concat(`${field}=${this[field]}`)
+            return acc.concat(`${field}=${this[field]}`);
         }, []);
 
         return `${this.constructor.name}(${fields.join(', ')})`;
