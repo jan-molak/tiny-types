@@ -10,6 +10,7 @@ node_js:
   - '6'
 script: npm run verify
 after_success:
+  - npm run travis-deploy-once "npm run publish-reports"
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:

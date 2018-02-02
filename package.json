@@ -10,6 +10,7 @@
     "test": "nyc --report-dir ./reports/coverage mocha --opts ./mocha.opts 'spec/**/*.spec.*'",
     "package": "tsc --project tsconfig.json",
     "verify": "npm run clean && npm run lint && npm test && npm run package",
+    "publish-reports": "nyc report --reporter=text-lcov | coveralls",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
