@@ -1,0 +1,9 @@
+# IntelliJ
+.idea
+*.iml
+
+# Node
+node_modules
+
+.nyc_output
+lib

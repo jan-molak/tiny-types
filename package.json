@@ -1,0 +1,89 @@
+{
+  "name": "tiny-types",
+  "version": "0.0.0-development",
+  "description": "A tiny library that brings Tiny Types to JavaScript and TypeScript",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "clean": "rimraf lib reports",
+    "lint": "tslint --project tsconfig.json --config tslint.json --format stylish",
+    "test": "nyc --report-dir ./reports/coverage mocha --opts ./mocha.opts 'spec/**/*.spec.*'",
+    "package": "tsc --project tsconfig.json",
+    "verify": "npm run clean && npm run lint && npm test && npm run package",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jan-molak/tiny-types.git"
+  },
+  "keywords": [
+    "design",
+    "patterns",
+    "value",
+    "objects",
+    "tiny",
+    "types",
+    "ddd",
+    "domain-driven",
+    "design"
+  ],
+  "author": "Jan Molak <jan.molak@smartcodeltd.co.uk>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jan-molak/tiny-types/issues"
+  },
+  "homepage": "https://github.com/jan-molak/tiny-types#readme",
+  "devDependencies": {
+    "@types/chai": "4.1.2",
+    "@types/mocha": "2.2.48",
+    "@types/node": "9.4.0",
+    "chai": "4.1.2",
+    "commitizen": "2.9.6",
+    "coveralls": "3.0.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "mocha": "5.0.0",
+    "mocha-testdata": "1.2.0",
+    "nyc": "11.4.1",
+    "rimraf": "2.6.2",
+    "semantic-release": "^12.4.1",
+    "semantic-release-cli": "3.6.2",
+    "travis-deploy-once": "^4.3.3",
+    "ts-node": "4.1.0",
+    "tslint": "5.9.1",
+    "tslint-microsoft-contrib": "5.0.2",
+    "typescript": "2.7.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "nyc": {
+      "include": [
+        "src/*.ts",
+        "src/**/*.ts"
+      ],
+      "exclude": [
+        "features",
+        "lib",
+        "node_modules",
+        "spec",
+        "staging"
+      ],
+      "extension": [
+        ".ts"
+      ],
+      "require": [
+        "ts-node/register"
+      ],
+      "reporter": [
+        "json",
+        "text-summary",
+        "html"
+      ],
+      "cache": true,
+      "all": true
+    }
+  }
+}
