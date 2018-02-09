@@ -1,2 +1,3 @@
 import * as chai from 'chai';
-export = chai.expect;
+
+export const expect = chai.expect;

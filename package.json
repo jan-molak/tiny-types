@@ -67,11 +67,10 @@
       "src/**/*.ts"
     ],
     "exclude": [
-      "features",
       "lib",
       "node_modules",
       "spec",
-      "staging"
+      "src/types.ts"
     ],
     "extension": [
       ".ts"

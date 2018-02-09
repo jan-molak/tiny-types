@@ -1,7 +1,7 @@
 import 'mocha';
-import { TinyType } from '../src';
-import expect = require('./expect');
 import { given } from 'mocha-testdata';
+import { TinyType } from '../src/TinyType';
+import { expect } from './expect';
 
 describe('TinyTypes', () => {
 
@@ -26,7 +26,7 @@ describe('TinyTypes', () => {
 
             const n1 = new Name('Jan');
 
-            expect(n1.equals(n1)).to.be.true;
+            expect(n1.equals(n1)).to.be.true;                               // tslint:disable-line:no-unused-expression
         });
 
         it('is symmetric', () => {
@@ -35,7 +35,7 @@ describe('TinyTypes', () => {
                 n1 = new Name('Jan'),
                 n2 = new Name('Jan');
 
-            expect(n1.equals(n2)).to.be.true;
+            expect(n1.equals(n2)).to.be.true;                               // tslint:disable-line:no-unused-expression
             expect(n1.equals(n2)).to.equal(n2.equals(n1));
         });
 
@@ -46,9 +46,9 @@ describe('TinyTypes', () => {
                 n2 = new Name('Jan'),
                 n3 = new Name('Jan');
 
-            expect(n1.equals(n2)).to.be.true;
-            expect(n2.equals(n3)).to.be.true;
-            expect(n1.equals(n3)).to.be.true;
+            expect(n1.equals(n2)).to.be.true;                               // tslint:disable-line:no-unused-expression
+            expect(n2.equals(n3)).to.be.true;                               // tslint:disable-line:no-unused-expression
+            expect(n1.equals(n3)).to.be.true;                               // tslint:disable-line:no-unused-expression
         });
 
         it('is recursive', () => {
@@ -58,8 +58,8 @@ describe('TinyTypes', () => {
                 p2 = new Person(new Name('Jan'), new Role('dev')),
                 p3 = new Person(new Name('John'), new Role('dev'));
 
-            expect(p1.equals(p2)).to.be.true;
-            expect(p1.equals(p3)).to.be.false;
+            expect(p1.equals(p2)).to.be.true;                               // tslint:disable-line:no-unused-expression
+            expect(p1.equals(p3)).to.be.false;                              // tslint:disable-line:no-unused-expression
         });
 
         it('works for private fields', () => {
@@ -72,8 +72,8 @@ describe('TinyTypes', () => {
                 p2 = new PrivatePerson(new Name('Jan'), new Role('dev')),
                 p3 = new PrivatePerson(new Name('John'), new Role('dev'));
 
-            expect(p1.equals(p2)).to.be.true;
-            expect(p1.equals(p3)).to.be.false;
+            expect(p1.equals(p2)).to.be.true;                               // tslint:disable-line:no-unused-expression
+            expect(p1.equals(p3)).to.be.false;                              // tslint:disable-line:no-unused-expression
         });
 
 
@@ -84,12 +84,12 @@ describe('TinyTypes', () => {
             [],
             1,
             '',
-            false
+            false,
         ).it('is false for objects of a different type', (another: any) => {
             const n = new Name('Jan');
 
-            expect(n.equals(another)).to.be.false;
-        })
+            expect(n.equals(another)).to.be.false;                          // tslint:disable-line:no-unused-expression
+        });
     });
 
     describe('::toString', () => {
@@ -131,7 +131,7 @@ describe('TinyTypes', () => {
         it('mentions the class and its properties', () => {
             const area = new Area('GU');
 
-            expect(area.toString()).to.equal('Area(code=GU)')
+            expect(area.toString()).to.equal('Area(code=GU)');
         });
 
 
@@ -146,7 +146,7 @@ describe('TinyTypes', () => {
             const p = new Person('James');
 
             expect(p.toString())
-                .to.equal('Person(name=James)')
+                .to.equal('Person(name=James)');
         });
 
         it('only cares about the fields, not the methods', () => {
@@ -158,8 +158,7 @@ describe('TinyTypes', () => {
             );
 
             expect(postcode.toString())
-                .to.equal('Postcode(area=Area(code=GU), district=District(code=15), sector=Sector(code=9), unit=Unit(code=NZ))')
+                .to.equal('Postcode(area=Area(code=GU), district=District(code=15), sector=Sector(code=9), unit=Unit(code=NZ))');
         });
     });
 });
-

@@ -1,4 +1,5 @@
 export abstract class TinyType {
+
     equals(another: TinyType) {
         if (another === this) {
             return true;
@@ -9,6 +10,7 @@ export abstract class TinyType {
         }
 
         return this.fields().reduce((previousFieldsAreEqual: boolean, field: string) => {
+
             const currentFieldIsEqual = (this[field].equals
                 ? this[field].equals(another[field])
                 : this[field] === another[field]);
