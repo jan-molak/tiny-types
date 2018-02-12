@@ -1,3 +1,5 @@
+import { JSONValue } from './types';
+
 export function TinyTypeOf<T>(): { new(_: T): { value: T } & TinyType } {
     return class extends TinyType {
         constructor(public readonly value: T) {
@@ -33,6 +35,31 @@ export abstract class TinyType {
         }, []);
 
         return `${this.constructor.name}(${fields.join(', ')})`;
+    }
+
+    toJSON(): JSONValue {
+        const isPrimitive = (value: any) => Object(value) !== value;
+        function toJSON(value: any) {
+            switch (true) {
+                case value && !! value.toJSON:
+                    return value.toJSON();
+                case value && ! isPrimitive(value):
+                    return JSON.stringify(value);
+                default:
+                    return value;
+            }
+        }
+
+        const fields = this.fields();
+
+        if (fields.length === 1) {
+            return toJSON(this[fields[0]]);
+        }
+
+        return fields.reduce((acc, field) => {
+            acc[field] = toJSON(this[field]);
+            return acc;
+        }, {});
     }
 
     private fields() {

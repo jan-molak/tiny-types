@@ -200,4 +200,50 @@ describe('TinyType', () => {
                 .to.equal('Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))');
         });
     });
+
+    describe('serialisation', () => {
+
+        class FirstName extends TinyTypeOf<string>() {}
+        class LastName extends TinyTypeOf<string>() {}
+        class Age extends TinyTypeOf<number>() {}
+        class Person extends TinyType {
+            constructor(
+                public readonly firstName: FirstName,
+                public readonly lastName: LastName,
+                public readonly age: Age,
+            ) {
+                super();
+            }
+        }
+
+        describe('::toJSON', () => {
+
+            given<TinyType & { value: any }>(
+                new FirstName('Bruce'),
+                new Age(55),
+            ).
+            it('should serialise a single-value TinyType to just its value', input => {
+               expect(input.toJSON()).to.equal(input.value);
+            });
+
+            it('should serialise a complex TinyType recursively', () => {
+
+                const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));
+
+                expect(person.toJSON()).to.deep.equal({
+                    firstName: 'Bruce',
+                    lastName: 'Smith',
+                    age: 55,
+                });
+            });
+
+            it(`should JSON.stringify any object that can't be represented in a more sensible way`, () => {
+                class TT extends TinyTypeOf<object>() {}
+
+                const tt = new TT(new Object({ key: 'value' }));
+
+                expect(tt.toJSON()).to.equal('{"key":"value"}');
+            });
+        });
+    });
 });
