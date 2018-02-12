@@ -293,11 +293,7 @@ describe('TinyType', () => {
             }
 
             toJSON(): SerialisedPerson {
-                return {
-                    firstName: this.firstName.toJSON(),
-                    lastName: this.lastName.toJSON(),
-                    age: this.age.toJSON(),
-                };
+                return super.toJSON() as SerialisedPerson;
             }
         }
 

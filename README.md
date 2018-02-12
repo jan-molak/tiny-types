@@ -140,6 +140,115 @@ event1.equals(event2) === true;
 event1.toString() === 'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))'
 ``` 
 
+## Serialisation to JSON
+
+Every TinyType defines 
+a [`toJSON()` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON()_behavior), 
+which returns a JSON representation of the object. This means that you can use TinyTypes 
+as [Data Transfer Objects](https://en.wikipedia.org/wiki/Data_transfer_object).
+
+Single-value TinyTypes are serialised to the value itself:
+
+```typescript
+import { TinyTypeOf } from 'tiny-types';
+
+class FirstName extends TinyTypeOf<string>() {}
+
+const firstName = new FirstName('Jan');
+
+firstName.toJSON() === 'Jan'
+```
+
+Complex TinyTypes are serialised recursively:
+
+```typescript
+import { TinyType, TinyTypeOf } from 'tiny-types';
+
+class FirstName extends TinyTypeOf<string>() {}
+class LastName extends TinyTypeOf<string>() {}
+class Age extends TinyTypeOf<number>() {}
+class Person extends TinyType {
+    constructor(
+        public readonly firstName: FirstName,
+        public readonly lastName: LastName,
+        public readonly age: Age,
+    ) {
+        super();
+    }
+}
+
+const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));
+
+person.toJSON() === { firstName: 'Bruce', lastName: 'Smith', age: 55 }
+```
+
+## De-serialisation from JSON
+
+Although you could define standalone de-serialisers, I like to define them 
+as [static factory methods](https://en.wikipedia.org/wiki/Factory_method_pattern) on the TinyTypes themselves:
+
+```typescript
+import { TinyTypeOf } from 'tiny-types';
+
+class FirstName extends TinyTypeOf<string>() {
+    static fromJSON = (v: string) => new FirstName(v);
+}
+
+const firstName = new FirstName('Jan'),
+
+FirstName.fromJSON(firstName.toJSON()).equals(firstName) === true
+```
+
+Optionally, you could take this further and define the shape of serialised objects
+to ensure that `fromJSON` and `toJSON` are compatible:
+
+```typescript
+import { TinyTypeOf } from 'tiny-types';
+
+type SerialisedFirstName = string;
+class FirstName extends TinyTypeOf<string>() {
+    static fromJSON = (v: SerialisedFirstName) => new FirstName(v);
+    toJSON(): SerialisedFirstName {
+        return super.toJSON() as SerialisedFirstName;
+    }
+}
+
+const firstName = new FirstName('Jan'),
+
+FirstName.fromJSON(firstName.toJSON()).equals(firstName) === true
+```
+
+This way de-serialising a more complex TinyType becomes trivial:
+
+```typescript
+import { JSONObject, TinyType } from 'tiny-types';
+
+interface SerialisedPerson extends JSONObject {
+    firstName:  SerialisedFirstName;
+    lastName:   SerialisedLastName;
+    age:        SerialisedAge;
+}
+
+class Person extends TinyType {
+    static fromJSON = (v: SerialisedPerson) => new Person(
+        FirstName.fromJSON(v.firstName),
+        LastName.fromJSON(v.lastName),
+        Age.fromJSON(v.age),
+    )
+
+    constructor(public readonly firstName: FirstName,
+                public readonly lastName: LastName,
+                public readonly age: Age,
+    ) {
+        super();
+    }
+
+    toJSON(): SerialisedPerson {
+        return super.toJSON() as SerialisedPerson;
+    }
+}
+``` 
+
 ## Your feedback matters!
 
 Do you find TinyTypes useful? Give it a star! &#9733;
