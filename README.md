@@ -48,7 +48,9 @@ const firstName = new FirstName('Jan');
 firstName.value === 'Jan';
 ```
 
-It also has an `equals` method, which you can use to compare tiny types by value:
+#### Equals
+
+Each tiny type object has an `equals` method, which you can use to compare it by value:
 
 ```typescript
 const 
@@ -58,12 +60,28 @@ const
 name1.equals(name2) === true; 
 ```
 
-An additional feature of tiny types is a built-in `toString()` method (which you can override if you want to, of course):
+#### ToString
+
+An additional feature of tiny types is a built-in `toString()` method:
 
 ```typescript
 const name = new FirstName('Jan');
 
 name.toString() === 'FirstName(value=Jan)';
+```
+
+Which you can override if you want to:
+
+```typescript
+class Timestamp extends TinyTypeOf<Date>() {
+    toString() {
+        return `Timestamp(value=${this.value.toISOString()})`;
+    }
+}
+
+const timestamp = new Timestamp(new Date());
+
+timestampt.toString() === 'Timestamp(value=2018-03-12T00:30:00.000Z))'
 ```
 
 ### Multi-value and complex types
@@ -92,7 +110,11 @@ import { TinyType, TinyTypeOf } from 'tiny-types';
 
 class UserName extends TinyTypeOf<string>() {}
 
-class Timestamp extends TinyTypeOf<Date>() {}
+class Timestamp extends TinyTypeOf<Date>() {
+    toString() {
+        return `Timestamp(value=${this.value.toISOString()})`;
+    }
+}
 
 abstract class DomainEvent extends TinyTypeOf<Timestamp>() {}
 
@@ -115,7 +137,7 @@ const
     
 event1.equals(event2) === true;
 
-event1.toString() === 'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=Mon Mar 12 2018 00:30:00 GMT+0000 (GMT)))'
+event1.toString() === 'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))'
 ``` 
 
 ## Your feedback matters!

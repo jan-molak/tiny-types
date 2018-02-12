@@ -44,7 +44,6 @@ describe('TinyType', () => {
             const now = new Date(Date.UTC(2018, 2, 12, 0, 30, 0));
 
             class UserName extends TinyTypeOf<string>() {}
-
             class Timestamp extends TinyTypeOf<Date>() {
                 toString() {
                     return `Timestamp(value=${this.value.toISOString()})`;
