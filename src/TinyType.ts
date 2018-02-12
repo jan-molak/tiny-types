@@ -1,3 +1,11 @@
+export function TinyTypeOf<T>(): { new(_: T): { value: T } & TinyType } {
+    return class extends TinyType {
+        constructor(public readonly value: T) {
+            super();
+        }
+    };
+}
+
 export abstract class TinyType {
 
     equals(another: TinyType) {
@@ -29,6 +37,7 @@ export abstract class TinyType {
 
     private fields() {
         return Object.getOwnPropertyNames(this)
-            .filter(field => typeof this[field] !== 'function');
+            .filter(field => typeof this[field] !== 'function')
+            .sort();
     }
 }
