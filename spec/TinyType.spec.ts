@@ -41,10 +41,15 @@ describe('TinyType', () => {
         });
 
         it('can be mixed and matched', () => {
-            const now = new Date(2018, 2, 12, 0, 30);
+            const now = new Date(Date.UTC(2018, 2, 12, 0, 30, 0));
 
             class UserName extends TinyTypeOf<string>() {}
-            class Timestamp extends TinyTypeOf<Date>() {}
+
+            class Timestamp extends TinyTypeOf<Date>() {
+                toString() {
+                    return `Timestamp(value=${this.value.toISOString()})`;
+                }
+            }
 
             abstract class DomainEvent extends TinyTypeOf<Timestamp>() {}
 
@@ -57,17 +62,8 @@ describe('TinyType', () => {
             const e = new AccountCreated(new UserName('jan-molak'), new Timestamp(now));
 
             expect(e.toString()).to.equal(
-                'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=Mon Mar 12 2018 00:30:00 GMT+0000 (GMT)))',
+                'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))',
             );
-
-            const
-                n = new Date(2018, 2, 12, 0, 30),
-                event1 = new AccountCreated(new UserName('jan-molak'), new Timestamp(now)),
-                event2 = new AccountCreated(new UserName('jan-molak'), new Timestamp(now));
-
-            expect(event1.equals(event2)).to.be.true;
-
-            console.log(event1.toString());
         });
     });
 
