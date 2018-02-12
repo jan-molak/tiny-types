@@ -251,7 +251,7 @@ class Person extends TinyType {
 
 ## Your feedback matters!
 
-Do you find TinyTypes useful? Give it a star! &#9733;
+Do you find TinyTypes useful? [Give it a star!](https://github.com/jan-molak/tiny-types) &#9733;
 
 Found a bug? Need a feature? Raise [an issue](https://github.com/jan-molak/tiny-types/issues?state=open)
 or submit a pull request.
