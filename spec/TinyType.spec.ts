@@ -1,6 +1,6 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
-import { TinyType, TinyTypeOf } from '../src';
+import { JSONObject, JSONPrimitive, TinyType, TinyTypeOf } from '../src';
 import { expect } from './expect';
 
 describe('TinyType', () => {
@@ -244,6 +244,75 @@ describe('TinyType', () => {
 
                 expect(tt.toJSON()).to.equal('{"key":"value"}');
             });
+        });
+    });
+
+    describe('de-serialisation', () => {
+
+        type SerialisedFirstName = string & JSONPrimitive;
+        class FirstName extends TinyTypeOf<string>() {
+            static fromJSON = (v: SerialisedFirstName) => new FirstName(v);
+            toJSON(): SerialisedFirstName {
+                return super.toJSON() as SerialisedFirstName;
+            }
+        }
+
+        type SerialisedLastName = string & JSONPrimitive;
+        class LastName extends TinyTypeOf<string>() {
+            static fromJSON = (v: SerialisedLastName) => new LastName(v);
+            toJSON(): SerialisedLastName {
+                return super.toJSON() as SerialisedLastName;
+            }
+        }
+
+        type SerialisedAge = number & JSONPrimitive;
+        class Age extends TinyTypeOf<number>() {
+            static fromJSON = (v: SerialisedAge) => new Age(v);
+            toJSON(): SerialisedAge {
+                return super.toJSON() as SerialisedAge;
+            }
+        }
+
+        interface SerialisedPerson extends JSONObject {
+            firstName: SerialisedFirstName;
+            lastName: SerialisedLastName;
+            age: SerialisedAge;
+        }
+        class Person extends TinyType {
+            static fromJSON = (v: SerialisedPerson) => new Person(
+                FirstName.fromJSON(v.firstName),
+                LastName.fromJSON(v.lastName),
+                Age.fromJSON(v.age),
+            )
+
+            constructor(public readonly firstName: FirstName,
+                        public readonly lastName: LastName,
+                        public readonly age: Age,
+            ) {
+                super();
+            }
+
+            toJSON(): SerialisedPerson {
+                return {
+                    firstName: this.firstName.toJSON(),
+                    lastName: this.lastName.toJSON(),
+                    age: this.age.toJSON(),
+                };
+            }
+        }
+
+        it('custom fromJSON can de-serialise a serialised single-value TinyType', () => {
+            const firstName = new FirstName('Jan');
+
+            // tslint:disable-next-line:no-unused-expression
+            expect(FirstName.fromJSON(firstName.toJSON()).equals(firstName)).to.be.true;
+        });
+
+        it('custom fromJSON can recursively de-serialise a serialised complex TinyType', () => {
+            const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));
+
+            // tslint:disable-next-line:no-unused-expression
+            expect(Person.fromJSON(person.toJSON()).equals(person)).to.be.true;
         });
     });
 });
