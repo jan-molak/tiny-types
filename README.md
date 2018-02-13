@@ -9,7 +9,7 @@
 
 TinyTypes is an [npm module](https://www.npmjs.com/package/tiny-types) that makes it easy for TypeScript and JavaScript
 projects to give domain meaning to primitive types. It also helps to avoid all sorts of bugs 
-and makes your code easier to refactor.
+and makes your code easier to refactor. [Learn more.](https://janmolak.com/tiny-types-in-typescript-4680177f026e)
 
 ## Installation
 
