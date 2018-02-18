@@ -13,6 +13,7 @@
       }
     },
     {"name": "./esdoc-plugins/gtm/Plugin", "option": {"enable": true, "id": "GTM-KCJMHPK"}},
+    {"name": "./esdoc-plugins/google-search/Plugin", "option": {"enable": true, "id": "mpKDC5KqgH5qYaWKMHWJoZn7iFGd4EYF9CtYYRSexYA"}},
     {
       "name": "esdoc-standard-plugin",
       "option": {
