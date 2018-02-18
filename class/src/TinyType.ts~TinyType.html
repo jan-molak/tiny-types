@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
   <title data-ice="title">TinyType | tiny-types</title>
@@ -8,7 +6,11 @@
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<meta name="description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="tiny-types"><meta property="twitter:description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"></head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KCJMHPK');</script><meta name="description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="tiny-types"><meta property="twitter:description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -47,13 +49,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TinyType} from &apos;<span><a href="file/src/TinyType.ts.html#lineNumber11">tiny-types/lib/TinyType</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TinyType} from &apos;<span><a href="file/src/TinyType.ts.html#lineNumber52">tiny-types/lib/TinyType</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/TinyType.ts.html#lineNumber11">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/TinyType.ts.html#lineNumber52">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -73,14 +75,43 @@
 
   
   
-  
-  
-
-  
-
+  <div class="description" data-ice="description"><p>The <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span> abstract class should be used as a base class for your own Tiny Types.</p>
+<p>If you want the Tiny Type to wrap a single value use the <span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span> instead as it will save you some keystrokes.</p>
+</div>
   
 
   
+
+  <div data-ice="exampleDocs">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">class FirstName extends TinyTypeOf&lt;string&gt;() {}
+class LastName  extends TinyTypeOf&lt;string&gt;() {}
+class Age       extends TinyTypeOf&lt;number&gt;() {}
+
+class Person extends TinyType {
+  constructor(public readonly firstName: FirstName,
+              public readonly lastName:  LastName,
+              public readonly age:       Age,
+  ) {
+    super();
+  }
+}</code></pre>
+    </div>
+</div>
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber6">TinyType</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber355">TinyType de-serialisation</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber29">TinyType definition needs to extend the TinyType for types with more than one value</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber71">TinyType definition can be mixed and matched</a></span></li>
+</ul>
+  </div>
 
   
 </div>
@@ -107,41 +138,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html#instance-method-equals">equals</a></span></span><span class="code" data-ice="signature">(another: <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html#instance-method-equals">equals</a></span></span><span class="code" data-ice="signature">(another: <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html#instance-method-fields">fields</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
+        <div data-ice="description"><p>Compares two tiny types by value</p>
+</div>
       </div>
     </td>
     <td>
@@ -169,7 +173,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Serialises the object to a JSON representation.</p>
+</div>
       </div>
     </td>
     <td>
@@ -225,18 +230,19 @@
     
     
     
-    <span class="code" data-ice="name">equals</span><span class="code" data-ice="signature">(another: <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span>): <span>*</span></span>
+    <span class="code" data-ice="name">equals</span><span class="code" data-ice="signature">(another: <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber13">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber93">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Compares two tiny types by value</p>
+</div>
 
   
 
@@ -264,7 +270,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
           
         </tr>
       </tbody>
@@ -281,64 +287,46 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      <div class="example-caption" data-ice="exampleCaption">Comparing simple types</div>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">class Id extends TinyTypeOf&lt;string&gt;() {}
 
-  
+const id = new Id(`3cc0852d-fda7-4f61-874e-0cfadbd6182a`);
 
-  
-  
+id.equals(id) === true</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      <div class="example-caption" data-ice="exampleCaption">Comparing complex types recursively</div>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">class FirstName extends TinyTypeOf&lt;string&gt;() {}
+class LastName  extends TinyTypeOf&lt;string&gt;() {}
+class Age       extends TinyTypeOf&lt;number&gt;() {}
+
+class Person extends TinyType {
+  constructor(public readonly firstName: FirstName,
+              public readonly lastName:  LastName,
+              public readonly age:       Age,
+  ) {
+    super();
+  }
+}
+
+const p1 = new Person(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42)),
+      p2 = new Person(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42));
+
+p1.equals(p2) === true</code></pre>
+    </div>
 </div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-fields">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">fields</span><span class="code" data-ice="signature">(): <span>*</span></span>
-    <span class="right-info">
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
       
-      
-      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber65">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
+    <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber123">TinyType ::equals</a></span></li>
+</ul>
   </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
   
@@ -355,14 +343,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber40">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber158">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Serialises the object to a JSON representation.</p>
+</div>
 
   
 
@@ -391,9 +380,45 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">class FirstName extends TinyTypeOf&lt;string&gt;() {}
 
-  
+const name = new FirstName(&apos;Jan&apos;);
+
+name.toJSON() === &apos;Jan&apos;</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">class FirstName extends TinyTypeOf&lt;string&gt;() {}
+class LastName  extends TinyTypeOf&lt;string&gt;() {}
+class Age       extends TinyTypeOf&lt;number&gt;() {}
+
+class Person extends TinyType {
+  constructor(public readonly firstName: FirstName,
+              public readonly lastName:  LastName,
+              public readonly age:       Age,
+  ) {
+    super();
+  }
+}
+
+const person = new Person(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42)),
+
+person.toJSON() === { firstName: &apos;John&apos;, lastName: &apos;Smith&apos;, age: 42 }</code></pre>
+    </div>
+</div>
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber288">TinyType serialisation</a></span></li>
+</ul>
+  </div>
 
   
   
@@ -410,7 +435,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber95">source</a></span></span>
     </span>
   </h3>
 
@@ -448,7 +473,13 @@
 
   
 
-  
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber205">TinyType ::toString</a></span></li>
+</ul>
+  </div>
 
   
   
@@ -467,5 +498,6 @@
 <script src="script/test-summary.js"></script>
 <script src="script/inner-link.js"></script>
 <script src="script/patch-for-local.js"></script>
-</body>
-</html>
+
+
+</body></html>

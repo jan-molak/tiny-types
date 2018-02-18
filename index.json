@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/TinyType.ts",
-    "content": "import { JSONValue } from './types';\n\nexport function TinyTypeOf<T>(): { new(_: T): { value: T } & TinyType } {\n    return class extends TinyType {\n        constructor(public readonly value: T) {\n            super();\n        }\n    };\n}\n\nexport abstract class TinyType {\n\n    equals(another: TinyType) {\n        if (another === this) {\n            return true;\n        }\n\n        if (! (another instanceof this.constructor)) {\n            return false;\n        }\n\n        return this.fields().reduce((previousFieldsAreEqual: boolean, field: string) => {\n\n            const currentFieldIsEqual = (this[field].equals\n                ? this[field].equals(another[field])\n                : this[field] === another[field]);\n\n            return previousFieldsAreEqual && currentFieldIsEqual;\n        }, true);\n    }\n\n    toString() {\n        const fields = this.fields().reduce((acc: string[], field: string) => {\n            return acc.concat(`${field}=${this[field]}`);\n        }, []);\n\n        return `${this.constructor.name}(${fields.join(', ')})`;\n    }\n\n    toJSON(): JSONValue {\n        const isPrimitive = (value: any) => Object(value) !== value;\n        function toJSON(value: any) {\n            switch (true) {\n                case value && !! value.toJSON:\n                    return value.toJSON();\n                case value && ! isPrimitive(value):\n                    return JSON.stringify(value);\n                default:\n                    return value;\n            }\n        }\n\n        const fields = this.fields();\n\n        if (fields.length === 1) {\n            return toJSON(this[fields[0]]);\n        }\n\n        return fields.reduce((acc, field) => {\n            acc[field] = toJSON(this[field]);\n            return acc;\n        }, {});\n    }\n\n    private fields() {\n        return Object.getOwnPropertyNames(this)\n            .filter(field => typeof this[field] !== 'function')\n            .sort();\n    }\n}\n",
+    "content": "import { JSONValue } from './types';\n\n/**\n * @desc The {@link TinyTypeOf} can be used to define simple\n * single-value {@link TinyType}s on a single line.\n *\n * @example\n * class Username extends TinyTypeOf<string>() {}\n *\n * @example\n * class Age extends TinyTypeOf<number>() {}\n *\n * @returns a dynamically created base class your tiny type can extend from\n */\nexport function TinyTypeOf<T>(): { new(_: T): { value: T } & TinyType } {\n    return class extends TinyType {\n        constructor(public readonly value: T) {\n            super();\n        }\n    };\n}\n\n/**\n * @desc The {@link TinyType} abstract class should be used as a base class for your own Tiny Types.\n *\n * If you want the Tiny Type to wrap a single value use the {@link TinyTypeOf} instead as it will save you some keystrokes.\n *\n * @example\n * class FirstName extends TinyTypeOf<string>() {}\n * class LastName  extends TinyTypeOf<string>() {}\n * class Age       extends TinyTypeOf<number>() {}\n *\n * class Person extends TinyType {\n *   constructor(public readonly firstName: FirstName,\n *               public readonly lastName:  LastName,\n *               public readonly age:       Age,\n *   ) {\n *     super();\n *   }\n * }\n */\nexport abstract class TinyType {\n\n    /**\n     * @desc Compares two tiny types by value\n     *\n     * @example <caption>Comparing simple types</caption>\n     * class Id extends TinyTypeOf<string>() {}\n     *\n     * const id = new Id(`3cc0852d-fda7-4f61-874e-0cfadbd6182a`);\n     *\n     * id.equals(id) === true\n     *\n     * @example <caption>Comparing complex types recursively</caption>\n     * class FirstName extends TinyTypeOf<string>() {}\n     * class LastName  extends TinyTypeOf<string>() {}\n     * class Age       extends TinyTypeOf<number>() {}\n     *\n     * class Person extends TinyType {\n     *   constructor(public readonly firstName: FirstName,\n     *               public readonly lastName:  LastName,\n     *               public readonly age:       Age,\n     *   ) {\n     *     super();\n     *   }\n     * }\n     *\n     * const p1 = new Person(new FirstName('John'), new LastName('Smith'), new Age(42)),\n     *       p2 = new Person(new FirstName('John'), new LastName('Smith'), new Age(42));\n     *\n     * p1.equals(p2) === true\n     *\n     * @param {TinyType} another\n     * @returns {boolean}\n     */\n    equals(another: TinyType) {\n        if (another === this) {\n            return true;\n        }\n\n        if (! (another instanceof this.constructor)) {\n            return false;\n        }\n\n        return this.significantFields().reduce((previousFieldsAreEqual: boolean, field: string) => {\n\n            const currentFieldIsEqual = (this[field].equals\n                ? this[field].equals(another[field])\n                : this[field] === another[field]);\n\n            return previousFieldsAreEqual && currentFieldIsEqual;\n        }, true);\n    }\n\n    toString() {\n        const fields = this.significantFields().reduce((acc: string[], field: string) => {\n            return acc.concat(`${field}=${this[field]}`);\n        }, []);\n\n        return `${this.constructor.name}(${fields.join(', ')})`;\n    }\n\n    /**\n     * @desc Serialises the object to a JSON representation.\n     *\n     * @example\n     * class FirstName extends TinyTypeOf<string>() {}\n     *\n     * const name = new FirstName('Jan');\n     *\n     * name.toJSON() === 'Jan'\n     *\n     * @example\n     * class FirstName extends TinyTypeOf<string>() {}\n     * class LastName  extends TinyTypeOf<string>() {}\n     * class Age       extends TinyTypeOf<number>() {}\n     *\n     * class Person extends TinyType {\n     *   constructor(public readonly firstName: FirstName,\n     *               public readonly lastName:  LastName,\n     *               public readonly age:       Age,\n     *   ) {\n     *     super();\n     *   }\n     * }\n     *\n     * const person = new Person(new FirstName('John'), new LastName('Smith'), new Age(42)),\n     *\n     * person.toJSON() === { firstName: 'John', lastName: 'Smith', age: 42 }\n     *\n     * @returns {JSONValue}\n     */\n    // todo: serialise arrays\n    toJSON(): JSONValue {\n        const isPrimitive = (value: any) => Object(value) !== value;\n        function toJSON(value: any) {\n            switch (true) {\n                case value && !! value.toJSON:\n                    return value.toJSON();\n                case value && ! isPrimitive(value):\n                    return JSON.stringify(value);\n                default:\n                    return value;\n            }\n        }\n\n        const fields = this.significantFields();\n\n        if (fields.length === 1) {\n            return toJSON(this[fields[0]]);\n        }\n\n        return fields.reduce((acc, field) => {\n            acc[field] = toJSON(this[field]);\n            return acc;\n        }, {});\n    }\n\n    /**\n     * @access private\n     * @returns {string[]} names of significant fields that determine the identity of the object\n     */\n    private significantFields(): string[] {\n        return Object.getOwnPropertyNames(this)\n            .filter(field => typeof this[field] !== 'function')\n            .sort();\n    }\n}\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/src/TinyType.ts",
     "access": "public",
@@ -587,14 +587,27 @@
     "export": true,
     "importPath": "tiny-types/lib/TinyType",
     "importStyle": "{TinyTypeOf}",
-    "description": "",
-    "lineNumber": 3,
-    "params": [],
+    "description": "The {@link TinyTypeOf} can be used to define simple\nsingle-value {@link TinyType}s on a single line.",
+    "examples": [
+      "class Username extends TinyTypeOf<string>() {}",
+      "class Age extends TinyTypeOf<number>() {}"
+    ],
+    "lineNumber": 19,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "a dynamically created base class your tiny type can extend from"
+      }
+    ],
     "return": {
+      "nullable": null,
       "types": [
         "*"
-      ]
-    }
+      ],
+      "spread": false,
+      "description": "a dynamically created base class your tiny type can extend from"
+    },
+    "params": []
   },
   {
     "__docId__": 50,
@@ -607,8 +620,11 @@
     "export": true,
     "importPath": "tiny-types/lib/TinyType",
     "importStyle": "{TinyType}",
-    "description": "",
-    "lineNumber": 11,
+    "description": "The {@link TinyType} abstract class should be used as a base class for your own Tiny Types.\n\nIf you want the Tiny Type to wrap a single value use the {@link TinyTypeOf} instead as it will save you some keystrokes.",
+    "examples": [
+      "class FirstName extends TinyTypeOf<string>() {}\nclass LastName  extends TinyTypeOf<string>() {}\nclass Age       extends TinyTypeOf<number>() {}\n\nclass Person extends TinyType {\n  constructor(public readonly firstName: FirstName,\n              public readonly lastName:  LastName,\n              public readonly age:       Age,\n  ) {\n    super();\n  }\n}"
+    ],
+    "lineNumber": 52,
     "interface": false
   },
   {
@@ -621,8 +637,18 @@
     "static": false,
     "longname": "src/TinyType.ts~TinyType#equals",
     "access": "public",
-    "description": "",
-    "lineNumber": 13,
+    "description": "Compares two tiny types by value",
+    "examples": [
+      "<caption>Comparing simple types</caption>\nclass Id extends TinyTypeOf<string>() {}\n\nconst id = new Id(`3cc0852d-fda7-4f61-874e-0cfadbd6182a`);\n\nid.equals(id) === true",
+      "<caption>Comparing complex types recursively</caption>\nclass FirstName extends TinyTypeOf<string>() {}\nclass LastName  extends TinyTypeOf<string>() {}\nclass Age       extends TinyTypeOf<number>() {}\n\nclass Person extends TinyType {\n  constructor(public readonly firstName: FirstName,\n              public readonly lastName:  LastName,\n              public readonly age:       Age,\n  ) {\n    super();\n  }\n}\n\nconst p1 = new Person(new FirstName('John'), new LastName('Smith'), new Age(42)),\n      p2 = new Person(new FirstName('John'), new LastName('Smith'), new Age(42));\n\np1.equals(p2) === true"
+    ],
+    "lineNumber": 93,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
     "params": [
       {
         "nullable": null,
@@ -636,9 +662,12 @@
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
     }
   },
   {
@@ -652,7 +681,7 @@
     "longname": "src/TinyType.ts~TinyType#toString",
     "access": "public",
     "description": "",
-    "lineNumber": 32,
+    "lineNumber": 95,
     "params": [],
     "return": {
       "types": [
@@ -670,8 +699,18 @@
     "static": false,
     "longname": "src/TinyType.ts~TinyType#toJSON",
     "access": "public",
-    "description": "",
-    "lineNumber": 40,
+    "description": "Serialises the object to a JSON representation.",
+    "examples": [
+      "class FirstName extends TinyTypeOf<string>() {}\n\nconst name = new FirstName('Jan');\n\nname.toJSON() === 'Jan'",
+      "class FirstName extends TinyTypeOf<string>() {}\nclass LastName  extends TinyTypeOf<string>() {}\nclass Age       extends TinyTypeOf<number>() {}\n\nclass Person extends TinyType {\n  constructor(public readonly firstName: FirstName,\n              public readonly lastName:  LastName,\n              public readonly age:       Age,\n  ) {\n    super();\n  }\n}\n\nconst person = new Person(new FirstName('John'), new LastName('Smith'), new Age(42)),\n\nperson.toJSON() === { firstName: 'John', lastName: 'Smith', age: 42 }"
+    ],
+    "lineNumber": 158,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{JSONValue}"
+      }
+    ],
     "return": {
       "nullable": null,
       "types": [
@@ -685,21 +724,31 @@
   {
     "__docId__": 54,
     "kind": "method",
-    "name": "fields",
+    "name": "significantFields",
     "memberof": "src/TinyType.ts~TinyType",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "src/TinyType.ts~TinyType#fields",
-    "access": "public",
+    "longname": "src/TinyType.ts~TinyType#significantFields",
+    "access": "private",
     "description": "",
-    "lineNumber": 65,
-    "params": [],
+    "lineNumber": 197,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{string[]} names of significant fields that determine the identity of the object"
+      }
+    ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
-    }
+        "string[]"
+      ],
+      "spread": false,
+      "description": "names of significant fields that determine the identity of the object"
+    },
+    "ignore": true,
+    "params": []
   },
   {
     "__docId__": 55,
@@ -1703,7 +1752,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"tiny-types\",\n  \"version\": \"0.0.0-development\",\n  \"description\": \"A tiny library that brings Tiny Types to JavaScript and TypeScript\",\n  \"main\": \"lib/index.js\",\n  \"typings\": \"lib/index.d.ts\",\n  \"scripts\": {\n    \"clean\": \"rimraf docs lib reports\",\n    \"lint\": \"tslint --project tsconfig.json --config tslint.json --format stylish\",\n    \"test\": \"nyc --report-dir ./reports/coverage mocha --opts ./mocha.opts 'spec/**/*.spec.*'\",\n    \"package\": \"tsc --project tsconfig.json\",\n    \"verify\": \"npm run clean && npm run lint && npm test && npm run package\",\n    \"doc\": \"esdoc\",\n    \"publish:reports\": \"nyc report --reporter=text-lcov | coveralls\",\n    \"publish:site\": \"gh-pages --silent --repo https://$GH_TOKEN@github.com/jan-molak/tiny-types.git -d docs\",\n    \"commit\": \"git-cz\",\n    \"semantic-release\": \"semantic-release\",\n    \"travis-deploy-once\": \"travis-deploy-once\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/jan-molak/tiny-types.git\"\n  },\n  \"keywords\": [\n    \"design\",\n    \"patterns\",\n    \"value\",\n    \"objects\",\n    \"tiny\",\n    \"types\",\n    \"ddd\",\n    \"domain-driven\",\n    \"design\"\n  ],\n  \"author\": \"Jan Molak <jan.molak@smartcodeltd.co.uk>\",\n  \"license\": \"Apache-2.0\",\n  \"bugs\": {\n    \"url\": \"https://github.com/jan-molak/tiny-types/issues\"\n  },\n  \"homepage\": \"https://github.com/jan-molak/tiny-types#readme\",\n  \"devDependencies\": {\n    \"@types/chai\": \"4.1.2\",\n    \"@types/mocha\": \"2.2.48\",\n    \"@types/node\": \"9.4.0\",\n    \"chai\": \"4.1.2\",\n    \"commitizen\": \"2.9.6\",\n    \"coveralls\": \"3.0.0\",\n    \"cz-conventional-changelog\": \"^2.1.0\",\n    \"esdoc\": \"1.0.4\",\n    \"esdoc-importpath-plugin\": \"1.0.1\",\n    \"esdoc-standard-plugin\": \"1.0.0\",\n    \"esdoc-typescript-plugin\": \"1.0.0\",\n    \"gh-pages\": \"1.1.0\",\n    \"mocha\": \"5.0.0\",\n    \"mocha-testdata\": \"1.2.0\",\n    \"nyc\": \"11.4.1\",\n    \"rimraf\": \"2.6.2\",\n    \"semantic-release\": \"^12.4.1\",\n    \"semantic-release-cli\": \"3.6.2\",\n    \"travis-deploy-once\": \"^4.3.3\",\n    \"ts-node\": \"4.1.0\",\n    \"tslint\": \"5.9.1\",\n    \"tslint-microsoft-contrib\": \"5.0.2\",\n    \"typescript\": \"2.7.1\"\n  },\n  \"config\": {\n    \"commitizen\": {\n      \"path\": \"./node_modules/cz-conventional-changelog\"\n    }\n  },\n  \"nyc\": {\n    \"include\": [\n      \"src/*.ts\",\n      \"src/**/*.ts\"\n    ],\n    \"exclude\": [\n      \"lib\",\n      \"node_modules\",\n      \"spec\",\n      \"src/types.ts\"\n    ],\n    \"extension\": [\n      \".ts\"\n    ],\n    \"require\": [\n      \"ts-node/register\"\n    ],\n    \"reporter\": [\n      \"json\",\n      \"text-summary\",\n      \"html\"\n    ],\n    \"cache\": true,\n    \"all\": true\n  }\n}\n",
+    "content": "{\n  \"name\": \"tiny-types\",\n  \"version\": \"0.0.0-development\",\n  \"description\": \"A tiny library that brings Tiny Types to JavaScript and TypeScript\",\n  \"main\": \"lib/index.js\",\n  \"typings\": \"lib/index.d.ts\",\n  \"scripts\": {\n    \"clean\": \"rimraf docs lib reports\",\n    \"lint\": \"tslint --project tsconfig.json --config tslint.json --format stylish\",\n    \"test\": \"nyc --report-dir ./reports/coverage mocha --opts ./mocha.opts 'spec/**/*.spec.*'\",\n    \"package\": \"tsc --project tsconfig.json\",\n    \"verify\": \"npm run clean && npm run lint && npm test && npm run package\",\n    \"doc\": \"esdoc\",\n    \"publish:reports\": \"nyc report --reporter=text-lcov | coveralls\",\n    \"publish:site\": \"gh-pages --silent --repo https://$GH_TOKEN@github.com/jan-molak/tiny-types.git -d docs\",\n    \"commit\": \"git-cz\",\n    \"semantic-release\": \"semantic-release\",\n    \"travis-deploy-once\": \"travis-deploy-once\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/jan-molak/tiny-types.git\"\n  },\n  \"keywords\": [\n    \"design\",\n    \"patterns\",\n    \"value\",\n    \"objects\",\n    \"tiny\",\n    \"types\",\n    \"ddd\",\n    \"domain-driven\",\n    \"design\"\n  ],\n  \"author\": \"Jan Molak <jan.molak@smartcodeltd.co.uk>\",\n  \"license\": \"Apache-2.0\",\n  \"bugs\": {\n    \"url\": \"https://github.com/jan-molak/tiny-types/issues\"\n  },\n  \"homepage\": \"https://github.com/jan-molak/tiny-types#readme\",\n  \"devDependencies\": {\n    \"@types/chai\": \"4.1.2\",\n    \"@types/mocha\": \"2.2.48\",\n    \"@types/node\": \"9.4.0\",\n    \"chai\": \"4.1.2\",\n    \"cheerio\": \"1.0.0-rc.2\",\n    \"commitizen\": \"2.9.6\",\n    \"coveralls\": \"3.0.0\",\n    \"cz-conventional-changelog\": \"^2.1.0\",\n    \"esdoc\": \"1.0.4\",\n    \"esdoc-importpath-plugin\": \"1.0.1\",\n    \"esdoc-standard-plugin\": \"1.0.0\",\n    \"esdoc-typescript-plugin\": \"1.0.0\",\n    \"gh-pages\": \"1.1.0\",\n    \"mocha\": \"5.0.0\",\n    \"mocha-testdata\": \"1.2.0\",\n    \"nyc\": \"11.4.1\",\n    \"rimraf\": \"2.6.2\",\n    \"semantic-release\": \"^12.4.1\",\n    \"semantic-release-cli\": \"3.6.2\",\n    \"travis-deploy-once\": \"^4.3.3\",\n    \"ts-node\": \"4.1.0\",\n    \"tslint\": \"5.9.1\",\n    \"tslint-microsoft-contrib\": \"5.0.2\",\n    \"typescript\": \"2.7.1\"\n  },\n  \"config\": {\n    \"commitizen\": {\n      \"path\": \"./node_modules/cz-conventional-changelog\"\n    }\n  },\n  \"nyc\": {\n    \"include\": [\n      \"src/*.ts\",\n      \"src/**/*.ts\"\n    ],\n    \"exclude\": [\n      \"lib\",\n      \"node_modules\",\n      \"spec\",\n      \"src/types.ts\"\n    ],\n    \"extension\": [\n      \".ts\"\n    ],\n    \"require\": [\n      \"ts-node/register\"\n    ],\n    \"reporter\": [\n      \"json\",\n      \"text-summary\",\n      \"html\"\n    ],\n    \"cache\": true,\n    \"all\": true\n  }\n}\n",
     "longname": "/home/travis/build/jan-molak/tiny-types/package.json",
     "name": "package.json",
     "static": true,
@@ -1713,7 +1762,7 @@
     "__docId__": 106,
     "kind": "testFile",
     "name": "spec/TinyType.spec.ts",
-    "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\nimport { JSONObject, JSONPrimitive, TinyType, TinyTypeOf } from '../src';\nimport { expect } from './expect';\n\ndescribe('TinyType', () => {\n\n    describe('definition', () => {\n\n        it('can be a one-liner for TinyTypes representing a single value', () => {\n            class FirstName extends TinyTypeOf<string>() {}\n\n            const firstName = new FirstName('Jan');\n\n            expect(firstName.value).to.equal('Jan');\n            expect(firstName).to.be.instanceOf(FirstName);\n            expect(firstName).to.be.instanceOf(TinyType);\n            expect(firstName.constructor.name).to.equal('FirstName');\n            expect(firstName.toString()).to.equal('FirstName(value=Jan)');\n        });\n\n        it('needs to extend the TinyType for types with more than one value', () => {\n            class FirstName extends TinyTypeOf<string>() {}\n            class LastName extends TinyTypeOf<string>() {}\n\n            class FullName extends TinyType {\n                constructor(public readonly firstName: FirstName,\n                            public readonly lastName: LastName) {\n                    super();\n                }\n            }\n\n            const fullName = new FullName(new FirstName('Jan'), new LastName('Molak'));\n\n            expect(fullName.firstName.value).to.equal('Jan');\n            expect(fullName.lastName.value).to.equal('Molak');\n            expect(fullName).to.be.instanceOf(FullName);\n            expect(fullName).to.be.instanceOf(FullName);\n            expect(fullName.constructor.name).to.equal('FullName');\n            expect(fullName.toString()).to.equal('FullName(firstName=FirstName(value=Jan), lastName=LastName(value=Molak))');\n        });\n\n        it('can be mixed and matched', () => {\n            const now = new Date(Date.UTC(2018, 2, 12, 0, 30, 0));\n\n            class UserName extends TinyTypeOf<string>() {}\n            class Timestamp extends TinyTypeOf<Date>() {\n                toString() {\n                    return `Timestamp(value=${this.value.toISOString()})`;\n                }\n            }\n\n            abstract class DomainEvent extends TinyTypeOf<Timestamp>() {}\n\n            class AccountCreated extends DomainEvent {\n                constructor(public readonly username: UserName, timestamp: Timestamp) {\n                    super(timestamp);\n                }\n            }\n\n            const e = new AccountCreated(new UserName('jan-molak'), new Timestamp(now));\n\n            expect(e.toString()).to.equal(\n                'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))',\n            );\n        });\n    });\n\n    describe('::equals', () => {\n        class Name extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n            }\n        }\n\n        class Role extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n            }\n        }\n\n        class Person extends TinyType {\n            constructor(public readonly name: Name, public readonly role: Role) { super(); }\n        }\n\n        it('is reflexive', () => {\n\n            const n1 = new Name('Jan');\n\n            expect(n1.equals(n1)).to.be.true;                               // tslint:disable-line:no-unused-expression\n        });\n\n        it('is symmetric', () => {\n\n            const\n                n1 = new Name('Jan'),\n                n2 = new Name('Jan');\n\n            expect(n1.equals(n2)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(n1.equals(n2)).to.equal(n2.equals(n1));\n        });\n\n        it('is transitive', () => {\n\n            const\n                n1 = new Name('Jan'),\n                n2 = new Name('Jan'),\n                n3 = new Name('Jan');\n\n            expect(n1.equals(n2)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(n2.equals(n3)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(n1.equals(n3)).to.be.true;                               // tslint:disable-line:no-unused-expression\n        });\n\n        it('is recursive', () => {\n\n            const\n                p1 = new Person(new Name('Jan'), new Role('dev')),\n                p2 = new Person(new Name('Jan'), new Role('dev')),\n                p3 = new Person(new Name('John'), new Role('dev'));\n\n            expect(p1.equals(p2)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(p1.equals(p3)).to.be.false;                              // tslint:disable-line:no-unused-expression\n        });\n\n        it('works for private fields', () => {\n            class PrivatePerson extends TinyType {\n                constructor(private readonly name: Name, public readonly role: Role) { super(); }\n            }\n\n            const\n                p1 = new PrivatePerson(new Name('Jan'), new Role('dev')),\n                p2 = new PrivatePerson(new Name('Jan'), new Role('dev')),\n                p3 = new PrivatePerson(new Name('John'), new Role('dev'));\n\n            expect(p1.equals(p2)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(p1.equals(p3)).to.be.false;                              // tslint:disable-line:no-unused-expression\n        });\n\n        given(\n            undefined,\n            null,\n            {},\n            [],\n            1,\n            '',\n            false,\n        ).it('is false for objects of a different type', (another: any) => {\n            const n = new Name('Jan');\n\n            expect(n.equals(another)).to.be.false;                          // tslint:disable-line:no-unused-expression\n        });\n    });\n\n    describe('::toString', () => {\n        class Area      extends TinyTypeOf<string>() {}\n        class District  extends TinyTypeOf<number>() {}\n        class Sector    extends TinyTypeOf<number>() {}\n        class Unit      extends TinyTypeOf<string>() {}\n\n        class Postcode extends TinyType {\n            constructor(public readonly area: Area,\n                        public readonly district: District,\n                        public readonly sector: Sector,\n                        public readonly unit: Unit,\n            ) {\n                super();\n            }\n        }\n\n        it('mentions the class and its properties', () => {\n            const area = new Area('GU');\n\n            expect(area.toString()).to.equal('Area(value=GU)');\n        });\n\n        it('mentions the class and its fields, but not the methods', () => {\n            class Person extends TinyType {\n                constructor(public readonly name: string) {\n                    super();\n                }\n                rename = (newName: string) => new Person(newName);\n            }\n\n            const p = new Person('James');\n\n            expect(p.toString())\n                .to.equal('Person(name=James)');\n        });\n\n        it('only cares about the fields, not the methods', () => {\n            const postcode = new Postcode(\n                new Area('GU'),\n                new District(15),\n                new Sector(9),\n                new Unit('NZ'),\n            );\n\n            expect(postcode.toString())\n                .to.equal('Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))');\n        });\n    });\n\n    describe('serialisation', () => {\n\n        class FirstName extends TinyTypeOf<string>() {}\n        class LastName extends TinyTypeOf<string>() {}\n        class Age extends TinyTypeOf<number>() {}\n        class Person extends TinyType {\n            constructor(\n                public readonly firstName: FirstName,\n                public readonly lastName: LastName,\n                public readonly age: Age,\n            ) {\n                super();\n            }\n        }\n\n        describe('::toJSON', () => {\n\n            given<TinyType & { value: any }>(\n                new FirstName('Bruce'),\n                new Age(55),\n            ).\n            it('should serialise a single-value TinyType to just its value', input => {\n               expect(input.toJSON()).to.equal(input.value);\n            });\n\n            it('should serialise a complex TinyType recursively', () => {\n\n                const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));\n\n                expect(person.toJSON()).to.deep.equal({\n                    firstName: 'Bruce',\n                    lastName: 'Smith',\n                    age: 55,\n                });\n            });\n\n            it(`should JSON.stringify any object that can't be represented in a more sensible way`, () => {\n                class TT extends TinyTypeOf<object>() {}\n\n                const tt = new TT(new Object({ key: 'value' }));\n\n                expect(tt.toJSON()).to.equal('{\"key\":\"value\"}');\n            });\n        });\n    });\n\n    describe('de-serialisation', () => {\n\n        type SerialisedFirstName = string & JSONPrimitive;\n        class FirstName extends TinyTypeOf<string>() {\n            static fromJSON = (v: SerialisedFirstName) => new FirstName(v);\n            toJSON(): SerialisedFirstName {\n                return super.toJSON() as SerialisedFirstName;\n            }\n        }\n\n        type SerialisedLastName = string & JSONPrimitive;\n        class LastName extends TinyTypeOf<string>() {\n            static fromJSON = (v: SerialisedLastName) => new LastName(v);\n            toJSON(): SerialisedLastName {\n                return super.toJSON() as SerialisedLastName;\n            }\n        }\n\n        type SerialisedAge = number & JSONPrimitive;\n        class Age extends TinyTypeOf<number>() {\n            static fromJSON = (v: SerialisedAge) => new Age(v);\n            toJSON(): SerialisedAge {\n                return super.toJSON() as SerialisedAge;\n            }\n        }\n\n        interface SerialisedPerson extends JSONObject {\n            firstName: SerialisedFirstName;\n            lastName: SerialisedLastName;\n            age: SerialisedAge;\n        }\n        class Person extends TinyType {\n            static fromJSON = (v: SerialisedPerson) => new Person(\n                FirstName.fromJSON(v.firstName),\n                LastName.fromJSON(v.lastName),\n                Age.fromJSON(v.age),\n            )\n\n            constructor(public readonly firstName: FirstName,\n                        public readonly lastName: LastName,\n                        public readonly age: Age,\n            ) {\n                super();\n            }\n\n            toJSON(): SerialisedPerson {\n                return super.toJSON() as SerialisedPerson;\n            }\n        }\n\n        it('custom fromJSON can de-serialise a serialised single-value TinyType', () => {\n            const firstName = new FirstName('Jan');\n\n            // tslint:disable-next-line:no-unused-expression\n            expect(FirstName.fromJSON(firstName.toJSON()).equals(firstName)).to.be.true;\n        });\n\n        it('custom fromJSON can recursively de-serialise a serialised complex TinyType', () => {\n            const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));\n\n            // tslint:disable-next-line:no-unused-expression\n            expect(Person.fromJSON(person.toJSON()).equals(person)).to.be.true;\n        });\n    });\n});\n",
+    "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\nimport { JSONObject, JSONPrimitive, TinyType, TinyTypeOf } from '../src';\nimport { expect } from './expect';\n\n/** @test {TinyType} */\ndescribe('TinyType', () => {\n\n    describe('definition', () => {\n\n        /** @test {TinyTypeOf} */\n        it('can be a one-liner for TinyTypes representing a single value', () => {\n            class FirstName extends TinyTypeOf<string>() {}\n\n            const firstName = new FirstName('Jan');\n\n            expect(firstName.value).to.equal('Jan');\n            expect(firstName).to.be.instanceOf(FirstName);\n            expect(firstName).to.be.instanceOf(TinyType);\n            expect(firstName.constructor.name).to.equal('FirstName');\n            expect(firstName.toString()).to.equal('FirstName(value=Jan)');\n        });\n\n        /**\n         * @test {TinyType}\n         * @test {TinyTypeOf}\n         */\n        it('needs to extend the TinyType for types with more than one value', () => {\n            class FirstName extends TinyTypeOf<string>() {}\n            class LastName extends TinyTypeOf<string>() {}\n\n            class FullName extends TinyType {\n                constructor(public readonly firstName: FirstName,\n                            public readonly lastName: LastName) {\n                    super();\n                }\n            }\n\n            const fullName = new FullName(new FirstName('Jan'), new LastName('Molak'));\n\n            expect(fullName.firstName.value).to.equal('Jan');\n            expect(fullName.lastName.value).to.equal('Molak');\n            expect(fullName).to.be.instanceOf(FullName);\n            expect(fullName).to.be.instanceOf(FullName);\n            expect(fullName.constructor.name).to.equal('FullName');\n            expect(fullName.toString()).to.equal('FullName(firstName=FirstName(value=Jan), lastName=LastName(value=Molak))');\n        });\n\n        /**\n         * @test {TinyType}\n         * @test {TinyTypeOf}\n         */\n        it('can be mixed and matched', () => {\n            const now = new Date(Date.UTC(2018, 2, 12, 0, 30, 0));\n\n            class UserName extends TinyTypeOf<string>() {}\n            class Timestamp extends TinyTypeOf<Date>() {\n                toString() {\n                    return `Timestamp(value=${this.value.toISOString()})`;\n                }\n            }\n\n            abstract class DomainEvent extends TinyTypeOf<Timestamp>() {}\n\n            class AccountCreated extends DomainEvent {\n                constructor(public readonly username: UserName, timestamp: Timestamp) {\n                    super(timestamp);\n                }\n            }\n\n            const e = new AccountCreated(new UserName('jan-molak'), new Timestamp(now));\n\n            expect(e.toString()).to.equal(\n                'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))',\n            );\n        });\n    });\n\n    /** @test {TinyType#equals} */\n    describe('::equals', () => {\n        class Name extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n            }\n        }\n\n        class Role extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n            }\n        }\n\n        class Person extends TinyType {\n            constructor(public readonly name: Name, public readonly role: Role) { super(); }\n        }\n\n        it('is reflexive', () => {\n\n            const n1 = new Name('Jan');\n\n            expect(n1.equals(n1)).to.be.true;                               // tslint:disable-line:no-unused-expression\n        });\n\n        it('is symmetric', () => {\n\n            const\n                n1 = new Name('Jan'),\n                n2 = new Name('Jan');\n\n            expect(n1.equals(n2)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(n1.equals(n2)).to.equal(n2.equals(n1));\n        });\n\n        it('is transitive', () => {\n\n            const\n                n1 = new Name('Jan'),\n                n2 = new Name('Jan'),\n                n3 = new Name('Jan');\n\n            expect(n1.equals(n2)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(n2.equals(n3)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(n1.equals(n3)).to.be.true;                               // tslint:disable-line:no-unused-expression\n        });\n\n        it('is recursive', () => {\n\n            const\n                p1 = new Person(new Name('Jan'), new Role('dev')),\n                p2 = new Person(new Name('Jan'), new Role('dev')),\n                p3 = new Person(new Name('John'), new Role('dev'));\n\n            expect(p1.equals(p2)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(p1.equals(p3)).to.be.false;                              // tslint:disable-line:no-unused-expression\n        });\n\n        it('works for private fields', () => {\n            class PrivatePerson extends TinyType {\n                constructor(private readonly name: Name, public readonly role: Role) { super(); }\n            }\n\n            const\n                p1 = new PrivatePerson(new Name('Jan'), new Role('dev')),\n                p2 = new PrivatePerson(new Name('Jan'), new Role('dev')),\n                p3 = new PrivatePerson(new Name('John'), new Role('dev'));\n\n            expect(p1.equals(p2)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(p1.equals(p3)).to.be.false;                              // tslint:disable-line:no-unused-expression\n        });\n\n        given(\n            undefined,\n            null,\n            {},\n            [],\n            1,\n            '',\n            false,\n        ).it('is false for objects of a different type', (another: any) => {\n            const n = new Name('Jan');\n\n            expect(n.equals(another)).to.be.false;                          // tslint:disable-line:no-unused-expression\n        });\n    });\n\n    /** @test {TinyType#toString} */\n    describe('::toString', () => {\n        class Area      extends TinyTypeOf<string>() {}\n        class District  extends TinyTypeOf<number>() {}\n        class Sector    extends TinyTypeOf<number>() {}\n        class Unit      extends TinyTypeOf<string>() {}\n\n        class Postcode extends TinyType {\n            constructor(public readonly area: Area,\n                        public readonly district: District,\n                        public readonly sector: Sector,\n                        public readonly unit: Unit,\n            ) {\n                super();\n            }\n        }\n\n        it('mentions the class and its properties', () => {\n            const area = new Area('GU');\n\n            expect(area.toString()).to.equal('Area(value=GU)');\n        });\n\n        it('mentions the class and its fields, but not the methods', () => {\n            class Person extends TinyType {\n                constructor(public readonly name: string) {\n                    super();\n                }\n                rename = (newName: string) => new Person(newName);\n            }\n\n            const p = new Person('James');\n\n            expect(p.toString())\n                .to.equal('Person(name=James)');\n        });\n\n        it('only cares about the fields, not the methods', () => {\n            const postcode = new Postcode(\n                new Area('GU'),\n                new District(15),\n                new Sector(9),\n                new Unit('NZ'),\n            );\n\n            expect(postcode.toString())\n                .to.equal('Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))');\n        });\n    });\n\n    /** @test {TinyType#toJSON} */\n    describe('serialisation', () => {\n\n        class FirstName extends TinyTypeOf<string>() {}\n        class LastName extends TinyTypeOf<string>() {}\n        class Age extends TinyTypeOf<number>() {}\n        class Person extends TinyType {\n            constructor(\n                public readonly firstName: FirstName,\n                public readonly lastName: LastName,\n                public readonly age: Age,\n            ) {\n                super();\n            }\n        }\n\n        describe('::toJSON', () => {\n\n            given<TinyType & { value: any }>(\n                new FirstName('Bruce'),\n                new Age(55),\n            ).\n            it('should serialise a single-value TinyType to just its value', input => {\n               expect(input.toJSON()).to.equal(input.value);\n            });\n\n            it('should serialise a complex TinyType recursively', () => {\n\n                const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));\n\n                expect(person.toJSON()).to.deep.equal({\n                    firstName: 'Bruce',\n                    lastName: 'Smith',\n                    age: 55,\n                });\n            });\n\n            it(`should JSON.stringify any object that can't be represented in a more sensible way`, () => {\n                class TT extends TinyTypeOf<object>() {}\n\n                const tt = new TT(new Object({ key: 'value' }));\n\n                expect(tt.toJSON()).to.equal('{\"key\":\"value\"}');\n            });\n        });\n    });\n\n    /** @test {TinyType} */\n    describe('de-serialisation', () => {\n\n        type SerialisedFirstName = string & JSONPrimitive;\n        class FirstName extends TinyTypeOf<string>() {\n            static fromJSON = (v: SerialisedFirstName) => new FirstName(v);\n            toJSON(): SerialisedFirstName {\n                return super.toJSON() as SerialisedFirstName;\n            }\n        }\n\n        type SerialisedLastName = string & JSONPrimitive;\n        class LastName extends TinyTypeOf<string>() {\n            static fromJSON = (v: SerialisedLastName) => new LastName(v);\n            toJSON(): SerialisedLastName {\n                return super.toJSON() as SerialisedLastName;\n            }\n        }\n\n        type SerialisedAge = number & JSONPrimitive;\n        class Age extends TinyTypeOf<number>() {\n            static fromJSON = (v: SerialisedAge) => new Age(v);\n            toJSON(): SerialisedAge {\n                return super.toJSON() as SerialisedAge;\n            }\n        }\n\n        interface SerialisedPerson extends JSONObject {\n            firstName: SerialisedFirstName;\n            lastName: SerialisedLastName;\n            age: SerialisedAge;\n        }\n        class Person extends TinyType {\n            static fromJSON = (v: SerialisedPerson) => new Person(\n                FirstName.fromJSON(v.firstName),\n                LastName.fromJSON(v.lastName),\n                Age.fromJSON(v.age),\n            )\n\n            constructor(public readonly firstName: FirstName,\n                        public readonly lastName: LastName,\n                        public readonly age: Age,\n            ) {\n                super();\n            }\n\n            toJSON(): SerialisedPerson {\n                return super.toJSON() as SerialisedPerson;\n            }\n        }\n\n        it('custom fromJSON can de-serialise a serialised single-value TinyType', () => {\n            const firstName = new FirstName('Jan');\n\n            // tslint:disable-next-line:no-unused-expression\n            expect(FirstName.fromJSON(firstName.toJSON()).equals(firstName)).to.be.true;\n        });\n\n        it('custom fromJSON can recursively de-serialise a serialised complex TinyType', () => {\n            const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));\n\n            // tslint:disable-next-line:no-unused-expression\n            expect(Person.fromJSON(person.toJSON()).equals(person)).to.be.true;\n        });\n    });\n});\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/spec/TinyType.spec.ts",
     "access": null,
@@ -1731,7 +1780,10 @@
     "longname": "spec/TinyType.spec.ts~describe0",
     "access": null,
     "description": "TinyType",
-    "lineNumber": 5
+    "lineNumber": 6,
+    "testTargets": [
+      "TinyType"
+    ]
   },
   {
     "__docId__": 108,
@@ -1744,7 +1796,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe1",
     "access": null,
     "description": "definition",
-    "lineNumber": 6
+    "lineNumber": 7
   },
   {
     "__docId__": 109,
@@ -1757,7 +1809,10 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe1.it2",
     "access": null,
     "description": "can be a one-liner for TinyTypes representing a single value",
-    "lineNumber": 7
+    "lineNumber": 9,
+    "testTargets": [
+      "TinyTypeOf"
+    ]
   },
   {
     "__docId__": 110,
@@ -1770,7 +1825,11 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe1.it3",
     "access": null,
     "description": "needs to extend the TinyType for types with more than one value",
-    "lineNumber": 23
+    "lineNumber": 29,
+    "testTargets": [
+      "TinyType",
+      "TinyTypeOf"
+    ]
   },
   {
     "__docId__": 111,
@@ -1783,7 +1842,11 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe1.it4",
     "access": null,
     "description": "can be mixed and matched",
-    "lineNumber": 61
+    "lineNumber": 71,
+    "testTargets": [
+      "TinyType",
+      "TinyTypeOf"
+    ]
   },
   {
     "__docId__": 112,
@@ -1796,7 +1859,10 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe5",
     "access": null,
     "description": "::equals",
-    "lineNumber": 112
+    "lineNumber": 123,
+    "testTargets": [
+      "TinyType#equals"
+    ]
   },
   {
     "__docId__": 113,
@@ -1809,7 +1875,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe5.it6",
     "access": null,
     "description": "is reflexive",
-    "lineNumber": 150
+    "lineNumber": 161
   },
   {
     "__docId__": 114,
@@ -1822,7 +1888,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe5.it7",
     "access": null,
     "description": "is symmetric",
-    "lineNumber": 154
+    "lineNumber": 165
   },
   {
     "__docId__": 115,
@@ -1835,7 +1901,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe5.it8",
     "access": null,
     "description": "is transitive",
-    "lineNumber": 159
+    "lineNumber": 170
   },
   {
     "__docId__": 116,
@@ -1848,7 +1914,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe5.it9",
     "access": null,
     "description": "is recursive",
-    "lineNumber": 165
+    "lineNumber": 176
   },
   {
     "__docId__": 117,
@@ -1861,7 +1927,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe5.it10",
     "access": null,
     "description": "works for private fields",
-    "lineNumber": 170
+    "lineNumber": 181
   },
   {
     "__docId__": 118,
@@ -1874,7 +1940,10 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe11",
     "access": null,
     "description": "::toString",
-    "lineNumber": 193
+    "lineNumber": 205,
+    "testTargets": [
+      "TinyType#toString"
+    ]
   },
   {
     "__docId__": 119,
@@ -1887,7 +1956,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe11.it12",
     "access": null,
     "description": "mentions the class and its properties",
-    "lineNumber": 241
+    "lineNumber": 253
   },
   {
     "__docId__": 120,
@@ -1900,7 +1969,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe11.it13",
     "access": null,
     "description": "mentions the class and its fields, but not the methods",
-    "lineNumber": 245
+    "lineNumber": 257
   },
   {
     "__docId__": 121,
@@ -1913,7 +1982,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe11.it14",
     "access": null,
     "description": "only cares about the fields, not the methods",
-    "lineNumber": 269
+    "lineNumber": 281
   },
   {
     "__docId__": 122,
@@ -1926,7 +1995,10 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe15",
     "access": null,
     "description": "serialisation",
-    "lineNumber": 275
+    "lineNumber": 288,
+    "testTargets": [
+      "TinyType#toJSON"
+    ]
   },
   {
     "__docId__": 123,
@@ -1939,7 +2011,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe15.describe16",
     "access": null,
     "description": "::toJSON",
-    "lineNumber": 314
+    "lineNumber": 327
   },
   {
     "__docId__": 124,
@@ -1952,7 +2024,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe15.describe16.it17",
     "access": null,
     "description": "should serialise a complex TinyType recursively",
-    "lineNumber": 319
+    "lineNumber": 332
   },
   {
     "__docId__": 125,
@@ -1964,7 +2036,7 @@
     "static": true,
     "longname": "spec/TinyType.spec.ts~describe0.describe15.describe16.it18",
     "access": null,
-    "lineNumber": 327
+    "lineNumber": 340
   },
   {
     "__docId__": 126,
@@ -1977,7 +2049,10 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe19",
     "access": null,
     "description": "de-serialisation",
-    "lineNumber": 341
+    "lineNumber": 355,
+    "testTargets": [
+      "TinyType"
+    ]
   },
   {
     "__docId__": 127,
@@ -1990,7 +2065,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe19.it20",
     "access": null,
     "description": "custom fromJSON can de-serialise a serialised single-value TinyType",
-    "lineNumber": 452
+    "lineNumber": 466
   },
   {
     "__docId__": 128,
@@ -2003,7 +2078,7 @@
     "longname": "spec/TinyType.spec.ts~describe0.describe19.it21",
     "access": null,
     "description": "custom fromJSON can recursively de-serialise a serialised complex TinyType",
-    "lineNumber": 457
+    "lineNumber": 471
   },
   {
     "__docId__": 129,

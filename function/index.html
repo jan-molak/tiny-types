@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../">
   <title data-ice="title">Function | tiny-types</title>
@@ -8,7 +6,11 @@
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<meta name="description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="tiny-types"><meta property="twitter:description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"></head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KCJMHPK');</script><meta name="description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="tiny-types"><meta property="twitter:description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -71,7 +73,9 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The <span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span> can be used to define simple
+single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span>s on a single line.</p>
+</div>
       </div>
     </td>
     <td>
@@ -124,14 +128,16 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber3">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber19">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TinyTypeOf} from &apos;<span><a href="file/src/TinyType.ts.html#lineNumber3">tiny-types/lib/TinyType</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TinyTypeOf} from &apos;<span><a href="file/src/TinyType.ts.html#lineNumber19">tiny-types/lib/TinyType</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>The <span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span> can be used to define simple
+single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span>s on a single line.</p>
+</div>
 
   
 
@@ -144,7 +150,8 @@
       <tbody>
         <tr>
           <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          
+          <td class="return-desc" data-ice="returnDescription"><p>a dynamically created base class your tiny type can extend from</p>
+</td>
         </tr>
       </tbody>
     </table>
@@ -160,9 +167,28 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">class Username extends TinyTypeOf&lt;string&gt;() {}</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">class Age extends TinyTypeOf&lt;number&gt;() {}</code></pre>
+    </div>
+</div>
 
-  
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber9">TinyType definition can be a one-liner for TinyTypes representing a single value</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber29">TinyType definition needs to extend the TinyType for types with more than one value</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber71">TinyType definition can be mixed and matched</a></span></li>
+</ul>
+  </div>
 
   
   
@@ -252,5 +278,6 @@
 <script src="script/test-summary.js"></script>
 <script src="script/inner-link.js"></script>
 <script src="script/patch-for-local.js"></script>
-</body>
-</html>
+
+
+</body></html>

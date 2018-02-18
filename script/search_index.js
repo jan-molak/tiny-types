@@ -198,134 +198,134 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber5",
+    "tinytype src/tinytype.ts~tinytype,tinytype",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber6",
     "TinyType",
     "test"
   ],
   [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber112",
+    "tinytype#equals src/tinytype.ts~tinytype#equals,tinytype#equals",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber123",
     "TinyType ::equals",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber165",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber176",
     "TinyType ::equals is recursive",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber150",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber161",
     "TinyType ::equals is reflexive",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber154",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber165",
     "TinyType ::equals is symmetric",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber159",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber170",
     "TinyType ::equals is transitive",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber170",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber181",
     "TinyType ::equals works for private fields",
     "test"
   ],
   [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber193",
+    "tinytype#tostring src/tinytype.ts~tinytype#tostring,tinytype#tostring",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber205",
     "TinyType ::toString",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber245",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber257",
     "TinyType ::toString mentions the class and its fields, but not the methods",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber241",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber253",
     "TinyType ::toString mentions the class and its properties",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber269",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber281",
     "TinyType ::toString only cares about the fields, not the methods",
     "test"
   ],
   [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber341",
+    "tinytype src/tinytype.ts~tinytype,tinytype",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber355",
     "TinyType de-serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber452",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber466",
     "TinyType de-serialisation custom fromJSON can de-serialise a serialised single-value TinyType",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber457",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber471",
     "TinyType de-serialisation custom fromJSON can recursively de-serialise a serialised complex TinyType",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber6",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber7",
     "TinyType definition",
     "test"
   ],
   [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber7",
+    "tinytypeof src/tinytype.ts~tinytypeof,tinytypeof",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber9",
     "TinyType definition can be a one-liner for TinyTypes representing a single value",
     "test"
   ],
   [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber61",
+    "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber71",
     "TinyType definition can be mixed and matched",
     "test"
   ],
   [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber23",
+    "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber29",
     "TinyType definition needs to extend the TinyType for types with more than one value",
     "test"
   ],
   [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber275",
+    "tinytype#tojson src/tinytype.ts~tinytype#tojson,tinytype#tojson",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber288",
     "TinyType serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber314",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber327",
     "TinyType serialisation ::toJSON",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber327",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber340",
     "TinyType serialisation ::toJSON ",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber319",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber332",
     "TinyType serialisation ::toJSON should serialise a complex TinyType recursively",
     "test"
   ],
@@ -663,12 +663,6 @@ window.esdocSearchIndex = [
     "src/tinytype.ts~tinytype#equals",
     "class/src/TinyType.ts~TinyType.html#instance-method-equals",
     "src/TinyType.ts~TinyType#equals",
-    "method"
-  ],
-  [
-    "src/tinytype.ts~tinytype#fields",
-    "class/src/TinyType.ts~TinyType.html#instance-method-fields",
-    "src/TinyType.ts~TinyType#fields",
     "method"
   ],
   [
