@@ -8,6 +8,7 @@ package-lock.json
 .nyc_output
 
 # Specs
+docs
 spec
 reports
 mocha.opts

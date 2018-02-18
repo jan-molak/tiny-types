@@ -1,0 +1,29 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "plugins": [
+    {"name": "esdoc-typescript-plugin", "option": { "enable": true }},
+    {
+      "name": "esdoc-importpath-plugin",
+      "option": {
+        "replaces": [
+          {"from": "^src/", "to": "lib/"},
+          {"from": "\\.ts$", "to": ""}
+        ]
+      }
+    },
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "coverage": { "enable": true },
+        "accessor": { "access": ["public", "protected", "private"], "autoPrivate": true },
+        "undocumentIdentifier": {"enable": true},
+        "test": {
+          "source": "./spec/",
+          "interfaces": [ "describe", "it" ],
+          "includes": [ "spec\\.ts$"]
+        }
+      }
+    }
+  ]
+}

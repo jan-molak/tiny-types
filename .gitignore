@@ -6,6 +6,7 @@
 node_modules
 
 .nyc_output
+docs
 reports
 lib
 *.log
