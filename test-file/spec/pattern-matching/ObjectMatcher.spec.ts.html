@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">spec/pattern-matching/ObjectMatcher.spec.ts | tiny-types</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="tiny-types"><meta property="twitter:description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/jan-molak/tiny-types.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching">pattern-matching</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/IdentityMatcher.ts~IdentityMatcher.html">IdentityMatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/ObjectMatcher.ts~ObjectMatcher.html">ObjectMatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html">PatternMatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/StringMatcher.ts~StringMatcher.html">StringMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching-rules">pattern-matching/rules</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatcherRule.ts~MatcherRule.html">MatcherRule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything.html">MatchesAnything</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType.html">MatchesEqualTinyType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical.html">MatchesIdentical</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype.html">MatchesObjectsWithCommonPrototype</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp.html">MatchesRegExp</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/pattern-matching/ObjectMatcher.spec.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+import { given } from &apos;mocha-testdata&apos;;
+
+import { TinyType } from &apos;../../src&apos;;
+import { ObjectMatcher } from &apos;../../src/pattern-matching&apos;;
+import { expect } from &apos;../expect&apos;;
+
+describe(&apos;ObjectMatcher&apos;, () =&gt; {
+
+    describe(&apos;when working with Tiny Types&apos;, () =&gt; {
+
+        class Name extends TinyType {
+            constructor(public readonly value: string) {
+                super();
+            }
+        }
+        class EmailAddress extends TinyType {
+            constructor(public readonly value: string) {
+                super();
+            }
+        }
+
+        given(
+            [ new Name(&apos;Jan&apos;), `matched &quot;Jan&quot;` ],
+            [ new Name(&apos;John&apos;), `matched &quot;John&quot;` ],
+            [ new Name(&apos;Sara&apos;), `else, received &quot;Name(value=Sara)&quot;` ],
+        ).
+        it(&apos;matches equal objects&apos;, (input: Name, expectedMessage: string) =&gt; {
+            const result = new ObjectMatcher&lt;TinyType, string&gt;(input)
+                .when(new Name(&apos;Jan&apos;), _ =&gt; `matched &quot;Jan&quot;`)
+                .when(new Name(&apos;John&apos;), _ =&gt; `matched &quot;John&quot;`)
+                .else(_ =&gt; `else, received &quot;${_}&quot;`);
+
+            expect(result).to.equal(expectedMessage);
+        });
+
+        it(&apos;matches identical objects&apos;, () =&gt; {
+            const input = { field: &apos;value&apos; };
+
+            const result = new ObjectMatcher(input)
+                .when(input, _ =&gt; `matched by identity`)
+                .else(_ =&gt; `else, received &quot;${_}&quot;`);
+
+            expect(result).to.equal(`matched by identity`);
+        });
+
+        given(
+            [ new Name(&apos;Jan&apos;), `matched by equality` ],
+            [ new Name(&apos;John&apos;), `matched by type` ],
+            [ new EmailAddress(&apos;jan@example.com&apos;), `else, received &quot;EmailAddress(value=jan@example.com)&quot;` ],
+        ).
+        it(&apos;can be mixed&apos;, (input: Name, expectedMessage: string) =&gt; {
+            const result = new ObjectMatcher&lt;TinyType, string&gt;(input)
+                .when(new Name(&apos;Jan&apos;), _ =&gt; `matched by equality`)
+                .when(Name, _ =&gt; `matched by type`)
+                .else(_ =&gt; `else, received &quot;${_}&quot;`);
+
+            expect(result).to.equal(expectedMessage);
+        });
+    });
+
+    describe(&apos;when working with regular classes&apos;, () =&gt; {
+        abstract class DomainEvent {
+            constructor(public readonly timestamp: Date) {
+            }
+        }
+
+        class AccountCreated extends DomainEvent {
+            constructor(public readonly account_name: string, timestamp: Date) {
+                super(timestamp);
+            }
+        }
+
+        class AccountConfirmed extends DomainEvent {
+            constructor(public readonly account_name: string,
+                        public readonly email: string,
+                        timestamp: Date,
+            ) {
+                super(timestamp);
+            }
+        }
+
+        class UnclassifiedEvent extends DomainEvent {
+        }
+
+        given(
+            [
+                new AccountCreated(&apos;jan-molak&apos;, new Date()),
+                `AccountCreated`,
+            ],
+            [
+                new AccountConfirmed(&apos;jan-molak&apos;, &apos;jan.molak@serenity.io&apos;, new Date()),
+                `AccountConfirmed`,
+            ],
+            [
+                new UnclassifiedEvent(new Date()),
+                `UnclassifiedEvent`,
+            ],
+        ).
+        it(&apos;matches object by constructor function&apos;, (input: DomainEvent, expected_result: string) =&gt; {
+
+            const result = new ObjectMatcher&lt;DomainEvent, string&gt;(input)
+                .when(AccountCreated, _ =&gt; `AccountCreated`)
+                .when(AccountConfirmed, _ =&gt; `AccountConfirmed`)
+                .when(DomainEvent, _ =&gt; `UnclassifiedEvent`)
+                .else(_ =&gt; `else, received &quot;${_}&quot;`);
+
+            expect(result).to.equal(expected_result);
+        });
+
+        // todo: mixed constructor/tiny?
+
+        given(
+            [
+                new AccountCreated(&apos;jan-molak&apos;, new Date()),
+                `Account created for jan-molak`,
+            ],
+            [
+                new AccountConfirmed(&apos;jan-molak&apos;, &apos;jan.molak@serenity.io&apos;, new Date()),
+                `Account confirmed for jan-molak at jan.molak@serenity.io`,
+            ],
+            [
+                new UnclassifiedEvent(new Date()),
+                `Some DomainEvent received`,
+            ],
+        ).
+        it(&apos;matches object by constructor function&apos;, (input: DomainEvent, expected_result: string) =&gt; {
+
+            const result = new ObjectMatcher&lt;DomainEvent, string&gt;(input)
+                .when(AccountCreated, ({ account_name }) =&gt; `Account created for ${ account_name }`)
+                .when(AccountConfirmed, ({ account_name, email }) =&gt; `Account confirmed for ${ account_name } at ${ email }`)
+                .when(DomainEvent, ({ timestamp }) =&gt; `Some DomainEvent received`)
+                .else(_ =&gt; `else, received &quot;${_}&quot;`);
+
+            expect(result).to.equal(expected_result);
+        });
+    });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

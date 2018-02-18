@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | tiny-types</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="tiny-types"><meta property="twitter:description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/jan-molak/tiny-types.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching">pattern-matching</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/IdentityMatcher.ts~IdentityMatcher.html">IdentityMatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/ObjectMatcher.ts~ObjectMatcher.html">ObjectMatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html">PatternMatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/StringMatcher.ts~StringMatcher.html">StringMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching-rules">pattern-matching/rules</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatcherRule.ts~MatcherRule.html">MatcherRule</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything.html">MatchesAnything</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType.html">MatchesEqualTinyType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical.html">MatchesIdentical</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype.html">MatchesObjectsWithCommonPrototype</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp.html">MatchesRegExp</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="tiny-types">Tiny Types</h1><p><a href="https://badge.fury.io/js/tiny-types"><img src="https://badge.fury.io/js/tiny-types.svg" alt="npm version"></a>
+<a href="https://travis-ci.org/jan-molak/tiny-types"><img src="https://travis-ci.org/jan-molak/tiny-types.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/jan-molak/tiny-types?branch=master"><img src="https://coveralls.io/repos/github/jan-molak/tiny-types/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly"></a>
+<a href="https://npm-stat.com/charts.html?package=tiny-types"><img src="https://img.shields.io/npm/dm/tiny-types.svg" alt="npm"></a>
+<a href="https://snyk.io/test/github/jan-molak/tiny-types"><img src="https://snyk.io/test/github/jan-molak/tiny-types/badge.svg" alt="Known Vulnerabilities"></a></p>
+<p>TinyTypes is an <a href="https://www.npmjs.com/package/tiny-types">npm module</a> that makes it easy for TypeScript and JavaScript
+projects to give domain meaning to primitive types. It also helps to avoid all sorts of bugs 
+and makes your code easier to refactor. <a href="https://janmolak.com/tiny-types-in-typescript-4680177f026e">Learn more.</a></p>
+<h2 id="installation">Installation</h2><p>To install the module from npm:</p>
+<pre><code><code class="source-code prettyprint">npm install --save tiny-types</code>
+</code></pre><h2 id="defining-tiny-types">Defining Tiny Types</h2><blockquote>
+<p>An int on its own is just a scalar with no meaning. With an object, even a small one, you are giving both the compiler 
+and the programmer additional information  about what the value is and why it is being used.</p>
+<p>&#x2010; <a href="http://www.xpteam.com/jeff/writings/objectcalisthenics.rtf">Jeff Bay, Object Calisthenics</a></p>
+</blockquote>
+<h3 id="single-value-types">Single-value types</h3><p>To define a single-value <code>TinyType</code> - extend from <code>TinyTypeOf&lt;T&gt;()</code>:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyTypeOf } from &apos;tiny-types&apos;;
+
+class FirstName extends TinyTypeOf&lt;string&gt;() {}
+class LastName  extends TinyTypeOf&lt;string&gt;() {}
+class Age       extends TinyTypeOf&lt;number&gt;() {}</code>
+</code></pre>
+<p>Every tiny type defined this way has
+a <a href="https://www.typescriptlang.org/docs/handbook/classes.html#readonly-modifier">readonly property</a>
+<code>value</code> of type <code>T</code>, which you can use to access the wrapped primitive value. For example:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">const firstName = new FirstName(&apos;Jan&apos;);
+
+firstName.value === &apos;Jan&apos;;</code>
+</code></pre>
+<h4 id="equals">Equals</h4><p>Each tiny type object has an <code>equals</code> method, which you can use to compare it by value:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">const 
+    name1 = new FirstName(&apos;Jan&apos;),
+    name2 = new FirstName(&apos;Jan&apos;);
+
+name1.equals(name2) === true;</code>
+</code></pre>
+<h4 id="tostring">ToString</h4><p>An additional feature of tiny types is a built-in <code>toString()</code> method:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">const name = new FirstName(&apos;Jan&apos;);
+
+name.toString() === &apos;FirstName(value=Jan)&apos;;</code>
+</code></pre>
+<p>Which you can override if you want to:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">class Timestamp extends TinyTypeOf&lt;Date&gt;() {
+    toString() {
+        return `Timestamp(value=${this.value.toISOString()})`;
+    }
+}
+
+const timestamp = new Timestamp(new Date());
+
+timestampt.toString() === &apos;Timestamp(value=2018-03-12T00:30:00.000Z))&apos;</code>
+</code></pre>
+<h3 id="multi-value-and-complex-types">Multi-value and complex types</h3><p>If the tiny type you want to model has more than one value,
+or you want to perform additional operations in the constructor,
+extend from <code>TinyType</code> directly:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyType } from &apos;tiny-types&apos;;
+
+class Person extends TinyType {
+    constructor(public readonly firstName: FirstName,
+                public readonly lastName: LastName,
+    ) {
+        super();
+    }
+}</code>
+</code></pre>
+<p>You can also mix and match both of the above definition styles:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyType, TinyTypeOf } from &apos;tiny-types&apos;;
+
+class UserName extends TinyTypeOf&lt;string&gt;() {}
+
+class Timestamp extends TinyTypeOf&lt;Date&gt;() {
+    toString() {
+        return `Timestamp(value=${this.value.toISOString()})`;
+    }
+}
+
+abstract class DomainEvent extends TinyTypeOf&lt;Timestamp&gt;() {}
+
+class AccountCreated extends DomainEvent {
+    constructor(public readonly username: UserName, timestamp: Timestamp) {
+        super(timestamp);
+    }
+}
+
+const event = new AccountCreated(new UserName(&apos;jan-molak&apos;), new Timestamp(new Date()));</code>
+</code></pre>
+<p>Even such complex types still have both the <code>equals</code> and <code>toString</code> methods:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">const 
+    now = new Date(2018, 2, 12, 0, 30),
+    event1 = new AccountCreated(new UserName(&apos;jan-molak&apos;), new Timestamp(now)),
+    event2 = new AccountCreated(new UserName(&apos;jan-molak&apos;), new Timestamp(now));
+
+event1.equals(event2) === true;
+
+event1.toString() === &apos;AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))&apos;</code>
+</code></pre>
+<h2 id="serialisation-to-json">Serialisation to JSON</h2><p>Every TinyType defines 
+a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON("><code>toJSON()</code> method</a>_behavior), 
+which returns a JSON representation of the object. This means that you can use TinyTypes 
+as <a href="https://en.wikipedia.org/wiki/Data_transfer_object">Data Transfer Objects</a>.</p>
+<p>Single-value TinyTypes are serialised to the value itself:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyTypeOf } from &apos;tiny-types&apos;;
+
+class FirstName extends TinyTypeOf&lt;string&gt;() {}
+
+const firstName = new FirstName(&apos;Jan&apos;);
+
+firstName.toJSON() === &apos;Jan&apos;</code>
+</code></pre>
+<p>Complex TinyTypes are serialised recursively:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyType, TinyTypeOf } from &apos;tiny-types&apos;;
+
+class FirstName extends TinyTypeOf&lt;string&gt;() {}
+class LastName extends TinyTypeOf&lt;string&gt;() {}
+class Age extends TinyTypeOf&lt;number&gt;() {}
+class Person extends TinyType {
+    constructor(
+        public readonly firstName: FirstName,
+        public readonly lastName: LastName,
+        public readonly age: Age,
+    ) {
+        super();
+    }
+}
+
+const person = new Person(new FirstName(&apos;Bruce&apos;), new LastName(&apos;Smith&apos;), new Age(55));
+
+person.toJSON() === { firstName: &apos;Bruce&apos;, lastName: &apos;Smith&apos;, age: 55 }</code>
+</code></pre>
+<h2 id="de-serialisation-from-json">De-serialisation from JSON</h2><p>Although you could define standalone de-serialisers, I like to define them 
+as <a href="https://en.wikipedia.org/wiki/Factory_method_pattern">static factory methods</a> on the TinyTypes themselves:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyTypeOf } from &apos;tiny-types&apos;;
+
+class FirstName extends TinyTypeOf&lt;string&gt;() {
+    static fromJSON = (v: string) =&gt; new FirstName(v);
+}
+
+const firstName = new FirstName(&apos;Jan&apos;),
+
+FirstName.fromJSON(firstName.toJSON()).equals(firstName) === true</code>
+</code></pre>
+<p>Optionally, you could take this further and define the shape of serialised objects
+to ensure that <code>fromJSON</code> and <code>toJSON</code> are compatible:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyTypeOf } from &apos;tiny-types&apos;;
+
+type SerialisedFirstName = string;
+class FirstName extends TinyTypeOf&lt;string&gt;() {
+    static fromJSON = (v: SerialisedFirstName) =&gt; new FirstName(v);
+    toJSON(): SerialisedFirstName {
+        return super.toJSON() as SerialisedFirstName;
+    }
+}
+
+const firstName = new FirstName(&apos;Jan&apos;),
+
+FirstName.fromJSON(firstName.toJSON()).equals(firstName) === true</code>
+</code></pre>
+<p>This way de-serialising a more complex TinyType becomes trivial:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { JSONObject, TinyType } from &apos;tiny-types&apos;;
+
+interface SerialisedPerson extends JSONObject {
+    firstName:  SerialisedFirstName;
+    lastName:   SerialisedLastName;
+    age:        SerialisedAge;
+}
+
+class Person extends TinyType {
+    static fromJSON = (v: SerialisedPerson) =&gt; new Person(
+        FirstName.fromJSON(v.firstName),
+        LastName.fromJSON(v.lastName),
+        Age.fromJSON(v.age),
+    )
+
+    constructor(public readonly firstName: FirstName,
+                public readonly lastName: LastName,
+                public readonly age: Age,
+    ) {
+        super();
+    }
+
+    toJSON(): SerialisedPerson {
+        return super.toJSON() as SerialisedPerson;
+    }
+}</code>
+</code></pre>
+<h2 id="your-feedback-matters-">Your feedback matters!</h2><p>Do you find TinyTypes useful? <a href="https://github.com/jan-molak/tiny-types">Give it a star!</a> &#x2605;</p>
+<p>Found a bug? Need a feature? Raise <a href="https://github.com/jan-molak/tiny-types/issues?state=open">an issue</a>
+or submit a pull request.</p>
+<p>Have feedback? Let me know on twitter: <a href="https://twitter.com/JanMolak">@JanMolak</a></p>
+<h2 id="license">License</h2><p>TinyTypes library is licensed under the <a href="LICENSE.md">Apache-2.0</a> license.</p>
+<hr>
+<p><em>- Copyright &#xA9; 2018- <a href="https://janmolak.com">Jan Molak</a></em></p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

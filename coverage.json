@@ -1,0 +1,88 @@
+{
+  "coverage": "66.66%",
+  "expectCount": 42,
+  "actualCount": 28,
+  "files": {
+    "src/TinyType.ts": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
+    "src/match.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/pattern-matching/IdentityMatcher.ts": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/pattern-matching/ObjectMatcher.ts": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "src/pattern-matching/PatternMatcher.ts": {
+      "expectCount": 5,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        10,
+        11
+      ]
+    },
+    "src/pattern-matching/StringMatcher.ts": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/pattern-matching/rules/MatcherRule.ts": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        8,
+        9
+      ]
+    },
+    "src/pattern-matching/rules/MatchesAnything.ts": {
+      "expectCount": 3,
+      "actualCount": 2,
+      "undocumentLines": [
+        9
+      ]
+    },
+    "src/pattern-matching/rules/MatchesEqualTinyType.ts": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        11
+      ]
+    },
+    "src/pattern-matching/rules/MatchesIdentical.ts": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        11
+      ]
+    },
+    "src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        11
+      ]
+    },
+    "src/pattern-matching/rules/MatchesRegExp.ts": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        9,
+        11
+      ]
+    }
+  }
+}
