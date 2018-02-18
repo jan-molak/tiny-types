@@ -7,16 +7,17 @@
       "name": "esdoc-importpath-plugin",
       "option": {
         "replaces": [
-          {"from": "^src/", "to": "lib/"},
-          {"from": "\\.ts$", "to": ""}
+          { "from": "^src/", "to": "lib/" },
+          { "from": "\\.ts$", "to": "" }
         ]
       }
     },
+    {"name": "./esdoc-plugins/gtm/Plugin", "option": {"enable": true, "id": "GTM-KCJMHPK"}},
     {
       "name": "esdoc-standard-plugin",
       "option": {
         "coverage": { "enable": true },
-        "accessor": { "access": ["public", "protected", "private"], "autoPrivate": true },
+        "accessor": { "access": ["public", "protected"], "autoPrivate": true },
         "undocumentIdentifier": {"enable": true},
         "test": {
           "source": "./spec/",

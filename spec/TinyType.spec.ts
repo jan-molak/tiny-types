@@ -3,10 +3,12 @@ import { given } from 'mocha-testdata';
 import { JSONObject, JSONPrimitive, TinyType, TinyTypeOf } from '../src';
 import { expect } from './expect';
 
+/** @test {TinyType} */
 describe('TinyType', () => {
 
     describe('definition', () => {
 
+        /** @test {TinyTypeOf} */
         it('can be a one-liner for TinyTypes representing a single value', () => {
             class FirstName extends TinyTypeOf<string>() {}
 
@@ -19,6 +21,10 @@ describe('TinyType', () => {
             expect(firstName.toString()).to.equal('FirstName(value=Jan)');
         });
 
+        /**
+         * @test {TinyType}
+         * @test {TinyTypeOf}
+         */
         it('needs to extend the TinyType for types with more than one value', () => {
             class FirstName extends TinyTypeOf<string>() {}
             class LastName extends TinyTypeOf<string>() {}
@@ -40,6 +46,10 @@ describe('TinyType', () => {
             expect(fullName.toString()).to.equal('FullName(firstName=FirstName(value=Jan), lastName=LastName(value=Molak))');
         });
 
+        /**
+         * @test {TinyType}
+         * @test {TinyTypeOf}
+         */
         it('can be mixed and matched', () => {
             const now = new Date(Date.UTC(2018, 2, 12, 0, 30, 0));
 
@@ -66,6 +76,7 @@ describe('TinyType', () => {
         });
     });
 
+    /** @test {TinyType#equals} */
     describe('::equals', () => {
         class Name extends TinyType {
             constructor(public readonly value: string) {
@@ -152,6 +163,7 @@ describe('TinyType', () => {
         });
     });
 
+    /** @test {TinyType#toString} */
     describe('::toString', () => {
         class Area      extends TinyTypeOf<string>() {}
         class District  extends TinyTypeOf<number>() {}
@@ -201,6 +213,7 @@ describe('TinyType', () => {
         });
     });
 
+    /** @test {TinyType#toJSON} */
     describe('serialisation', () => {
 
         class FirstName extends TinyTypeOf<string>() {}
@@ -247,6 +260,7 @@ describe('TinyType', () => {
         });
     });
 
+    /** @test {TinyType} */
     describe('de-serialisation', () => {
 
         type SerialisedFirstName = string & JSONPrimitive;

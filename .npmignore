@@ -8,6 +8,7 @@ package-lock.json
 .nyc_output
 
 # Specs
+esdoc-plugins
 docs
 spec
 reports
