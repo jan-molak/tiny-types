@@ -1,0 +1,138 @@
+<!DOCTYPE html><html><head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">spec/predicates/hasLengthOf.spec.ts | tiny-types</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KCJMHPK');</script><meta name="google-site-verification" content="mpKDC5KqgH5qYaWKMHWJoZn7iFGd4EYF9CtYYRSexYA"><meta name="description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="tiny-types"><meta property="twitter:description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/jan-molak/tiny-types.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEqualTo">isEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThan">isGreaterThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThanOrEqualTo">isGreaterThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInRange">isInRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/hasLengthOf.spec.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+import { given } from &apos;mocha-testdata&apos;;
+
+import { check, hasLengthOf, TinyType } from &apos;../../src&apos;;
+import { expect } from &apos;../expect&apos;;
+
+describe(&apos;predicates&apos;, () =&gt; {
+
+    /** @test {hasLengthOf} */
+    describe(&apos;::hasLengthOf&apos;, () =&gt; {
+
+        /** @test {hasLengthOf} */
+        describe(&apos;when used with strings&apos;, () =&gt; {
+            class Password extends TinyType {
+                constructor(public readonly value: string) {
+                    super();
+
+                    check(&apos;Password&apos;, value, hasLengthOf(8));
+                }
+            }
+
+            it(&apos;ensures that the value has a correct length&apos;, () =&gt; {
+                expect(new Password(&apos;P@ssw0rd&apos;)).to.not.throw;                   // tslint:disable-line:no-unused-expression
+            });
+
+            given(
+                undefined,
+                null,
+            ).
+            it(&apos;complains when the value is undefined&apos;, (value: any) =&gt; {
+                expect(() =&gt; new Password(value)).to.throw(`Password should have a length of 8`);
+            });
+
+            given(
+                &apos;7_chars&apos;,
+                &apos;9___chars&apos;,
+            ).
+            it(&apos;complains if the value is of incorrect length&apos;, (value: string) =&gt; {
+                expect(() =&gt; new Password(value)).to.throw(`Password should have a length of 8`);
+            });
+        });
+
+        /** @test {hasLengthOf} */
+        describe(&apos;when used with arrays&apos;, () =&gt; {
+            class Collection extends TinyType {
+                constructor(public readonly values: string[]) {
+                    super();
+
+                    check(&apos;Collection&apos;, values, hasLengthOf(2));
+                }
+            }
+
+            it(&apos;ensures that the value has a correct length&apos;, () =&gt; {
+                expect(new Collection([&apos;a&apos;, &apos;b&apos;])).to.not.throw;             // tslint:disable-line:no-unused-expression
+            });
+
+            given(
+                [&apos;a&apos;],
+                [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;],
+            ).
+            it(&apos;complains if the value is of incorrect length&apos;, (values: string[]) =&gt; {
+                expect(() =&gt; new Collection(values)).to.throw(`Collection should have a length of 2`);
+            });
+        });
+    });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+
+
+</body></html>

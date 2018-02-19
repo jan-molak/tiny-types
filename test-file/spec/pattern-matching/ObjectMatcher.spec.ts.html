@@ -33,17 +33,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching">pattern-matching</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/IdentityMatcher.ts~IdentityMatcher.html">IdentityMatcher</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/ObjectMatcher.ts~ObjectMatcher.html">ObjectMatcher</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html">PatternMatcher</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/StringMatcher.ts~StringMatcher.html">StringMatcher</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching-rules">pattern-matching/rules</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatcherRule.ts~MatcherRule.html">MatcherRule</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything.html">MatchesAnything</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType.html">MatchesEqualTinyType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical.html">MatchesIdentical</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype.html">MatchesObjectsWithCommonPrototype</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp.html">MatchesRegExp</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEqualTo">isEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThan">isGreaterThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThanOrEqualTo">isGreaterThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInRange">isInRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -56,134 +59,132 @@ import { TinyType } from &apos;../../src&apos;;
 import { ObjectMatcher } from &apos;../../src/pattern-matching&apos;;
 import { expect } from &apos;../expect&apos;;
 
-describe(&apos;ObjectMatcher&apos;, () =&gt; {
+describe(&apos;pattern-matching&apos;, () =&gt; {
+    describe(&apos;ObjectMatcher&apos;, () =&gt; {
 
-    describe(&apos;when working with Tiny Types&apos;, () =&gt; {
+        describe(&apos;when working with Tiny Types&apos;, () =&gt; {
 
-        class Name extends TinyType {
-            constructor(public readonly value: string) {
-                super();
+            class Name extends TinyType {
+                constructor(public readonly value: string) {
+                    super();
+                }
             }
-        }
-        class EmailAddress extends TinyType {
-            constructor(public readonly value: string) {
-                super();
+
+            class EmailAddress extends TinyType {
+                constructor(public readonly value: string) {
+                    super();
+                }
             }
-        }
 
-        given(
-            [ new Name(&apos;Jan&apos;), `matched &quot;Jan&quot;` ],
-            [ new Name(&apos;John&apos;), `matched &quot;John&quot;` ],
-            [ new Name(&apos;Sara&apos;), `else, received &quot;Name(value=Sara)&quot;` ],
-        ).
-        it(&apos;matches equal objects&apos;, (input: Name, expectedMessage: string) =&gt; {
-            const result = new ObjectMatcher&lt;TinyType, string&gt;(input)
-                .when(new Name(&apos;Jan&apos;), _ =&gt; `matched &quot;Jan&quot;`)
-                .when(new Name(&apos;John&apos;), _ =&gt; `matched &quot;John&quot;`)
-                .else(_ =&gt; `else, received &quot;${_}&quot;`);
+            given(
+                [new Name(&apos;Jan&apos;), `matched &quot;Jan&quot;`],
+                [new Name(&apos;John&apos;), `matched &quot;John&quot;`],
+                [new Name(&apos;Sara&apos;), `else, received &quot;Name(value=Sara)&quot;`],
+            ).it(&apos;matches equal objects&apos;, (input: Name, expectedMessage: string) =&gt; {
+                const result = new ObjectMatcher&lt;TinyType, string&gt;(input)
+                    .when(new Name(&apos;Jan&apos;), _ =&gt; `matched &quot;Jan&quot;`)
+                    .when(new Name(&apos;John&apos;), _ =&gt; `matched &quot;John&quot;`)
+                    .else(_ =&gt; `else, received &quot;${_}&quot;`);
 
-            expect(result).to.equal(expectedMessage);
+                expect(result).to.equal(expectedMessage);
+            });
+
+            it(&apos;matches identical objects&apos;, () =&gt; {
+                const input = {field: &apos;value&apos;};
+
+                const result = new ObjectMatcher(input)
+                    .when(input, _ =&gt; `matched by identity`)
+                    .else(_ =&gt; `else, received &quot;${_}&quot;`);
+
+                expect(result).to.equal(`matched by identity`);
+            });
+
+            given(
+                [new Name(&apos;Jan&apos;), `matched by equality`],
+                [new Name(&apos;John&apos;), `matched by type`],
+                [new EmailAddress(&apos;jan@example.com&apos;), `else, received &quot;EmailAddress(value=jan@example.com)&quot;`],
+            ).it(&apos;can be mixed&apos;, (input: Name, expectedMessage: string) =&gt; {
+                const result = new ObjectMatcher&lt;TinyType, string&gt;(input)
+                    .when(new Name(&apos;Jan&apos;), _ =&gt; `matched by equality`)
+                    .when(Name, _ =&gt; `matched by type`)
+                    .else(_ =&gt; `else, received &quot;${_}&quot;`);
+
+                expect(result).to.equal(expectedMessage);
+            });
         });
 
-        it(&apos;matches identical objects&apos;, () =&gt; {
-            const input = { field: &apos;value&apos; };
-
-            const result = new ObjectMatcher(input)
-                .when(input, _ =&gt; `matched by identity`)
-                .else(_ =&gt; `else, received &quot;${_}&quot;`);
-
-            expect(result).to.equal(`matched by identity`);
-        });
-
-        given(
-            [ new Name(&apos;Jan&apos;), `matched by equality` ],
-            [ new Name(&apos;John&apos;), `matched by type` ],
-            [ new EmailAddress(&apos;jan@example.com&apos;), `else, received &quot;EmailAddress(value=jan@example.com)&quot;` ],
-        ).
-        it(&apos;can be mixed&apos;, (input: Name, expectedMessage: string) =&gt; {
-            const result = new ObjectMatcher&lt;TinyType, string&gt;(input)
-                .when(new Name(&apos;Jan&apos;), _ =&gt; `matched by equality`)
-                .when(Name, _ =&gt; `matched by type`)
-                .else(_ =&gt; `else, received &quot;${_}&quot;`);
-
-            expect(result).to.equal(expectedMessage);
-        });
-    });
-
-    describe(&apos;when working with regular classes&apos;, () =&gt; {
-        abstract class DomainEvent {
-            constructor(public readonly timestamp: Date) {
+        describe(&apos;when working with regular classes&apos;, () =&gt; {
+            abstract class DomainEvent {
+                constructor(public readonly timestamp: Date) {
+                }
             }
-        }
 
-        class AccountCreated extends DomainEvent {
-            constructor(public readonly account_name: string, timestamp: Date) {
-                super(timestamp);
+            class AccountCreated extends DomainEvent {
+                constructor(public readonly account_name: string, timestamp: Date) {
+                    super(timestamp);
+                }
             }
-        }
 
-        class AccountConfirmed extends DomainEvent {
-            constructor(public readonly account_name: string,
-                        public readonly email: string,
-                        timestamp: Date,
-            ) {
-                super(timestamp);
+            class AccountConfirmed extends DomainEvent {
+                constructor(public readonly account_name: string,
+                            public readonly email: string,
+                            timestamp: Date,) {
+                    super(timestamp);
+                }
             }
-        }
 
-        class UnclassifiedEvent extends DomainEvent {
-        }
+            class UnclassifiedEvent extends DomainEvent {
+            }
 
-        given(
-            [
-                new AccountCreated(&apos;jan-molak&apos;, new Date()),
-                `AccountCreated`,
-            ],
-            [
-                new AccountConfirmed(&apos;jan-molak&apos;, &apos;jan.molak@serenity.io&apos;, new Date()),
-                `AccountConfirmed`,
-            ],
-            [
-                new UnclassifiedEvent(new Date()),
-                `UnclassifiedEvent`,
-            ],
-        ).
-        it(&apos;matches object by constructor function&apos;, (input: DomainEvent, expected_result: string) =&gt; {
+            given(
+                [
+                    new AccountCreated(&apos;jan-molak&apos;, new Date()),
+                    `AccountCreated`,
+                ],
+                [
+                    new AccountConfirmed(&apos;jan-molak&apos;, &apos;jan.molak@serenity.io&apos;, new Date()),
+                    `AccountConfirmed`,
+                ],
+                [
+                    new UnclassifiedEvent(new Date()),
+                    `UnclassifiedEvent`,
+                ],
+            ).it(&apos;matches object by constructor function&apos;, (input: DomainEvent, expected_result: string) =&gt; {
 
-            const result = new ObjectMatcher&lt;DomainEvent, string&gt;(input)
-                .when(AccountCreated, _ =&gt; `AccountCreated`)
-                .when(AccountConfirmed, _ =&gt; `AccountConfirmed`)
-                .when(DomainEvent, _ =&gt; `UnclassifiedEvent`)
-                .else(_ =&gt; `else, received &quot;${_}&quot;`);
+                const result = new ObjectMatcher&lt;DomainEvent, string&gt;(input)
+                    .when(AccountCreated, _ =&gt; `AccountCreated`)
+                    .when(AccountConfirmed, _ =&gt; `AccountConfirmed`)
+                    .when(DomainEvent, _ =&gt; `UnclassifiedEvent`)
+                    .else(_ =&gt; `else, received &quot;${_}&quot;`);
 
-            expect(result).to.equal(expected_result);
-        });
+                expect(result).to.equal(expected_result);
+            });
 
-        // todo: mixed constructor/tiny?
+            // todo: mixed constructor/tiny?
 
-        given(
-            [
-                new AccountCreated(&apos;jan-molak&apos;, new Date()),
-                `Account created for jan-molak`,
-            ],
-            [
-                new AccountConfirmed(&apos;jan-molak&apos;, &apos;jan.molak@serenity.io&apos;, new Date()),
-                `Account confirmed for jan-molak at jan.molak@serenity.io`,
-            ],
-            [
-                new UnclassifiedEvent(new Date()),
-                `Some DomainEvent received`,
-            ],
-        ).
-        it(&apos;matches object by constructor function&apos;, (input: DomainEvent, expected_result: string) =&gt; {
+            given(
+                [
+                    new AccountCreated(&apos;jan-molak&apos;, new Date()),
+                    `Account created for jan-molak`,
+                ],
+                [
+                    new AccountConfirmed(&apos;jan-molak&apos;, &apos;jan.molak@serenity.io&apos;, new Date()),
+                    `Account confirmed for jan-molak at jan.molak@serenity.io`,
+                ],
+                [
+                    new UnclassifiedEvent(new Date()),
+                    `Some DomainEvent received`,
+                ],
+            ).it(&apos;matches object by constructor function&apos;, (input: DomainEvent, expected_result: string) =&gt; {
 
-            const result = new ObjectMatcher&lt;DomainEvent, string&gt;(input)
-                .when(AccountCreated, ({ account_name }) =&gt; `Account created for ${ account_name }`)
-                .when(AccountConfirmed, ({ account_name, email }) =&gt; `Account confirmed for ${ account_name } at ${ email }`)
-                .when(DomainEvent, ({ timestamp }) =&gt; `Some DomainEvent received`)
-                .else(_ =&gt; `else, received &quot;${_}&quot;`);
+                const result = new ObjectMatcher&lt;DomainEvent, string&gt;(input)
+                    .when(AccountCreated, ({account_name}) =&gt; `Account created for ${ account_name }`)
+                    .when(AccountConfirmed, ({account_name, email}) =&gt; `Account confirmed for ${ account_name } at ${ email }`)
+                    .when(DomainEvent, ({timestamp}) =&gt; `Some DomainEvent received`)
+                    .else(_ =&gt; `else, received &quot;${_}&quot;`);
 
-            expect(result).to.equal(expected_result);
+                expect(result).to.equal(expected_result);
+            });
         });
     });
 });

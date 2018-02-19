@@ -1,81 +1,33 @@
 window.esdocSearchIndex = [
   [
-    "",
-    "test-file/spec/match.spec.ts.html#lineNumber6",
+    "match src/match.ts~match,match",
+    "test-file/spec/match.spec.ts.html#lineNumber7",
     "",
     "test"
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber57",
+    "test-file/spec/match.spec.ts.html#lineNumber58",
     " ",
     "test"
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber50",
+    "test-file/spec/match.spec.ts.html#lineNumber51",
     " ",
     "test"
   ],
   [
-    "tiny-types/lib/pattern-matching/identitymatcher~identitymatcher",
-    "class/src/pattern-matching/IdentityMatcher.ts~IdentityMatcher.html",
-    "<span>IdentityMatcher</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/IdentityMatcher</span>",
-    "class"
+    "check src/check.ts~check,check",
+    "test-file/spec/chec.spec.ts.html#lineNumber5",
+    "::check",
+    "test"
   ],
   [
-    "tiny-types/lib/pattern-matching/rules/matcherrule~matcherrule",
-    "class/src/pattern-matching/rules/MatcherRule.ts~MatcherRule.html",
-    "<span>MatcherRule</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/rules/MatcherRule</span>",
-    "class"
-  ],
-  [
-    "tiny-types/lib/pattern-matching/rules/matchesanything~matchesanything",
-    "class/src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything.html",
-    "<span>MatchesAnything</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/rules/MatchesAnything</span>",
-    "class"
-  ],
-  [
-    "tiny-types/lib/pattern-matching/rules/matchesequaltinytype~matchesequaltinytype",
-    "class/src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType.html",
-    "<span>MatchesEqualTinyType</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/rules/MatchesEqualTinyType</span>",
-    "class"
-  ],
-  [
-    "tiny-types/lib/pattern-matching/rules/matchesidentical~matchesidentical",
-    "class/src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical.html",
-    "<span>MatchesIdentical</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/rules/MatchesIdentical</span>",
-    "class"
-  ],
-  [
-    "tiny-types/lib/pattern-matching/rules/matchesobjectswithcommonprototype~matchesobjectswithcommonprototype",
-    "class/src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype.html",
-    "<span>MatchesObjectsWithCommonPrototype</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/rules/MatchesObjectsWithCommonPrototype</span>",
-    "class"
-  ],
-  [
-    "tiny-types/lib/pattern-matching/rules/matchesregexp~matchesregexp",
-    "class/src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp.html",
-    "<span>MatchesRegExp</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/rules/MatchesRegExp</span>",
-    "class"
-  ],
-  [
-    "tiny-types/lib/pattern-matching/objectmatcher~objectmatcher",
-    "class/src/pattern-matching/ObjectMatcher.ts~ObjectMatcher.html",
-    "<span>ObjectMatcher</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/ObjectMatcher</span>",
-    "class"
-  ],
-  [
-    "tiny-types/lib/pattern-matching/patternmatcher~patternmatcher",
-    "class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html",
-    "<span>PatternMatcher</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/PatternMatcher</span>",
-    "class"
-  ],
-  [
-    "tiny-types/lib/pattern-matching/stringmatcher~stringmatcher",
-    "class/src/pattern-matching/StringMatcher.ts~StringMatcher.html",
-    "<span>StringMatcher</span> <span class=\"search-result-import-path\">tiny-types/lib/pattern-matching/StringMatcher</span>",
-    "class"
+    "",
+    "test-file/spec/chec.spec.ts.html#lineNumber6",
+    "::check ",
+    "test"
   ],
   [
     "tiny-types/lib/tinytype~tinytype",
@@ -90,22 +42,88 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/predicates/and~and",
+    "function/index.html#static-function-and",
+    "<span>and</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/and</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/check~check",
+    "function/index.html#static-function-check",
+    "<span>check</span> <span class=\"search-result-import-path\">tiny-types/lib/check</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/haslengthof~haslengthof",
+    "function/index.html#static-function-hasLengthOf",
+    "<span>hasLengthOf</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/hasLengthOf</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/isarray~isarray",
+    "function/index.html#static-function-isArray",
+    "<span>isArray</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isArray</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/isdefined~isdefined",
+    "function/index.html#static-function-isDefined",
+    "<span>isDefined</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isDefined</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/isequalto~isequalto",
+    "function/index.html#static-function-isEqualTo",
+    "<span>isEqualTo</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isEqualTo</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/isgreaterthan~isgreaterthan",
+    "function/index.html#static-function-isGreaterThan",
+    "<span>isGreaterThan</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isGreaterThan</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/isgreaterthanorequalto~isgreaterthanorequalto",
+    "function/index.html#static-function-isGreaterThanOrEqualTo",
+    "<span>isGreaterThanOrEqualTo</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isGreaterThanOrEqualTo</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/isinrange~isinrange",
+    "function/index.html#static-function-isInRange",
+    "<span>isInRange</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isInRange</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/isinteger~isinteger",
+    "function/index.html#static-function-isInteger",
+    "<span>isInteger</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isInteger</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/islessthan~islessthan",
+    "function/index.html#static-function-isLessThan",
+    "<span>isLessThan</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isLessThan</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/islessthanorequalto~islessthanorequalto",
+    "function/index.html#static-function-isLessThanOrEqualTo",
+    "<span>isLessThanOrEqualTo</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isLessThanOrEqualTo</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/match~match",
     "function/index.html#static-function-match",
     "<span>match</span> <span class=\"search-result-import-path\">tiny-types/lib/match</span>",
     "function"
   ],
   [
-    "",
-    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
-    "IdentityMatcher",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber22",
-    "IdentityMatcher matches a symbol",
-    "test"
+    "tiny-types/lib/predicates/or~or",
+    "function/index.html#static-function-or",
+    "<span>or</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/or</span>",
+    "function"
   ],
   [
     "",
@@ -114,87 +132,51 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "",
-    "test-file/spec/json.spec.ts.html#lineNumber4",
+    "jsonarray jsonarray,jsonarray",
+    "test-file/spec/json.spec.ts.html#lineNumber5",
     "JSON JSONArray",
     "test"
   ],
   [
     "",
-    "test-file/spec/json.spec.ts.html#lineNumber5",
+    "test-file/spec/json.spec.ts.html#lineNumber6",
     "JSON JSONArray ",
     "test"
   ],
   [
-    "",
-    "test-file/spec/json.spec.ts.html#lineNumber9",
+    "jsonobject jsonobject,jsonobject",
+    "test-file/spec/json.spec.ts.html#lineNumber11",
     "JSON JSONObject",
     "test"
   ],
   [
     "",
-    "test-file/spec/json.spec.ts.html#lineNumber10",
+    "test-file/spec/json.spec.ts.html#lineNumber12",
     "JSON JSONObject ",
     "test"
   ],
   [
-    "",
-    "test-file/spec/json.spec.ts.html#lineNumber20",
+    "jsonprimitive jsonprimitive,jsonprimitive",
+    "test-file/spec/json.spec.ts.html#lineNumber23",
     "JSON JSONPrimitive",
     "test"
   ],
   [
     "",
-    "test-file/spec/json.spec.ts.html#lineNumber21",
+    "test-file/spec/json.spec.ts.html#lineNumber24",
     "JSON JSONPrimitive ",
     "test"
   ],
   [
-    "",
-    "test-file/spec/json.spec.ts.html#lineNumber25",
+    "jsonvalue jsonvalue,jsonvalue",
+    "test-file/spec/json.spec.ts.html#lineNumber29",
     "JSON JSONValue",
     "test"
   ],
   [
     "",
-    "test-file/spec/json.spec.ts.html#lineNumber26",
+    "test-file/spec/json.spec.ts.html#lineNumber30",
     "JSON JSONValue describes any value that can be represented as JSON",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
-    "MatchesAnything",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber6",
-    "ObjectMatcher",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber7",
-    "ObjectMatcher when working with Tiny Types",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber40",
-    "ObjectMatcher when working with Tiny Types matches identical objects",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber56",
-    "ObjectMatcher when working with regular classes",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
-    "StringMatcher",
     "test"
   ],
   [
@@ -205,134 +187,500 @@ window.esdocSearchIndex = [
   ],
   [
     "tinytype#equals src/tinytype.ts~tinytype#equals,tinytype#equals",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber123",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber124",
     "TinyType ::equals",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber176",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber177",
     "TinyType ::equals is recursive",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber161",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber162",
     "TinyType ::equals is reflexive",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber165",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber166",
     "TinyType ::equals is symmetric",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber170",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber171",
     "TinyType ::equals is transitive",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber181",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber182",
     "TinyType ::equals works for private fields",
     "test"
   ],
   [
     "tinytype#tostring src/tinytype.ts~tinytype#tostring,tinytype#tostring",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber205",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber206",
     "TinyType ::toString",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber257",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber258",
     "TinyType ::toString mentions the class and its fields, but not the methods",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber253",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber254",
     "TinyType ::toString mentions the class and its properties",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber281",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber282",
     "TinyType ::toString only cares about the fields, not the methods",
     "test"
   ],
   [
     "tinytype src/tinytype.ts~tinytype,tinytype",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber355",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber356",
     "TinyType de-serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber466",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber467",
     "TinyType de-serialisation custom fromJSON can de-serialise a serialised single-value TinyType",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber471",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber472",
     "TinyType de-serialisation custom fromJSON can recursively de-serialise a serialised complex TinyType",
     "test"
   ],
   [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber7",
+    "tinytype src/tinytype.ts~tinytype,tinytype",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber8",
     "TinyType definition",
     "test"
   ],
   [
     "tinytypeof src/tinytype.ts~tinytypeof,tinytypeof",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber9",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber10",
     "TinyType definition can be a one-liner for TinyTypes representing a single value",
     "test"
   ],
   [
     "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber71",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber72",
     "TinyType definition can be mixed and matched",
     "test"
   ],
   [
     "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber29",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber30",
     "TinyType definition needs to extend the TinyType for types with more than one value",
     "test"
   ],
   [
     "tinytype#tojson src/tinytype.ts~tinytype#tojson,tinytype#tojson",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber288",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber289",
     "TinyType serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber327",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber328",
     "TinyType serialisation ::toJSON",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber340",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber341",
     "TinyType serialisation ::toJSON ",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber332",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber333",
     "TinyType serialisation ::toJSON should serialise a complex TinyType recursively",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
+    "pattern-matching",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
+    "pattern-matching",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber6",
+    "pattern-matching",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
+    "pattern-matching",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber6",
+    "pattern-matching IdentityMatcher",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber23",
+    "pattern-matching IdentityMatcher matches a symbol",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber7",
+    "pattern-matching ObjectMatcher",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber8",
+    "pattern-matching ObjectMatcher when working with Tiny Types",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber40",
+    "pattern-matching ObjectMatcher when working with Tiny Types matches identical objects",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber55",
+    "pattern-matching ObjectMatcher when working with regular classes",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber6",
+    "pattern-matching StringMatcher",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber6",
+    "pattern-matching rules",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber7",
+    "pattern-matching rules MatchesAnything",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber6",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "and src/predicates/and.ts~and,and",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber7",
+    "predicates ::and",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber29",
+    "predicates ::and complains if there are no predicates specified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber21",
+    "predicates ::and ensures that all the predicates are met",
+    "test"
+  ],
+  [
+    "haslengthof src/predicates/haslengthof.ts~haslengthof,haslengthof",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber7",
+    "predicates ::hasLengthOf",
+    "test"
+  ],
+  [
+    "haslengthof src/predicates/haslengthof.ts~haslengthof,haslengthof",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber36",
+    "predicates ::hasLengthOf when used with arrays",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber50",
+    "predicates ::hasLengthOf when used with arrays ensures that the value has a correct length",
+    "test"
+  ],
+  [
+    "haslengthof src/predicates/haslengthof.ts~haslengthof,haslengthof",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber9",
+    "predicates ::hasLengthOf when used with strings",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber23",
+    "predicates ::hasLengthOf when used with strings ensures that the value has a correct length",
+    "test"
+  ],
+  [
+    "isarray src/predicates/isarray.ts~isarray,isarray",
+    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber7",
+    "predicates ::isArray",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber21",
+    "predicates ::isArray ensures that the argument is an array",
+    "test"
+  ],
+  [
+    "isdefined src/predicates/isdefined.ts~isdefined,isdefined",
+    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber7",
+    "predicates ::isDefined",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber21",
+    "predicates ::isDefined ensures that the value is defined",
+    "test"
+  ],
+  [
+    "isequalto src/predicates/isequalto.ts~isequalto,isequalto",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber7",
+    "predicates ::isEqualTo",
+    "test"
+  ],
+  [
+    "isequalto src/predicates/isequalto.ts~isequalto,isequalto",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber9",
+    "predicates ::isEqualTo when working with Tiny Types",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber62",
+    "predicates ::isEqualTo when working with Tiny Types complains if the objects are not identical by value",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber56",
+    "predicates ::isEqualTo when working with Tiny Types ensures that objects are identical by value",
+    "test"
+  ],
+  [
+    "isequalto src/predicates/isequalto.ts~isequalto,isequalto",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber72",
+    "predicates ::isEqualTo when working with primitive types",
+    "test"
+  ],
+  [
+    "isgreaterthan src/predicates/isgreaterthan.ts~isgreaterthan,isgreaterthan",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber7",
+    "predicates ::isGreaterThan",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber24",
+    "predicates ::isGreaterThan complains if the argument is more than a specified number",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber21",
+    "predicates ::isGreaterThan ensures that the argument is greater than a specified number",
+    "test"
+  ],
+  [
+    "isgreaterthanorequalto src/predicates/isgreaterthanorequalto.ts~isgreaterthanorequalto,isgreaterthanorequalto",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber7",
+    "predicates ::isGreaterThanOrEqualTo",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber25",
+    "predicates ::isGreaterThanOrEqualTo complains if the argument is less than the lower bound",
+    "test"
+  ],
+  [
+    "isinrange src/predicates/isinrange.ts~isinrange,isinrange",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber8",
+    "predicates ::isInRange",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber30",
+    "predicates ::isInRange complains if the value is greater than the upper bound",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber26",
+    "predicates ::isInRange complains if the value is lower than the lower bound",
+    "test"
+  ],
+  [
+    "isinteger src/predicates/isinteger.ts~isinteger,isinteger",
+    "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber7",
+    "predicates ::isInteger",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber21",
+    "predicates ::isInteger ensures that the argument in an integer",
+    "test"
+  ],
+  [
+    "islessthan src/predicates/islessthan.ts~islessthan,islessthan",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber7",
+    "predicates ::isLessThan",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber24",
+    "predicates ::isLessThan complains if the argument is more than a specified number",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber21",
+    "predicates ::isLessThan ensures that the argument is less than a specified number",
+    "test"
+  ],
+  [
+    "islessthanorequalto src/predicates/islessthanorequalto.ts~islessthanorequalto,islessthanorequalto",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber7",
+    "predicates ::isLessThanOrEqualTo",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber25",
+    "predicates ::isLessThanOrEqualTo complains if the argument is greater than the upper bound",
+    "test"
+  ],
+  [
+    "or src/predicates/or.ts~or,or",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber7",
+    "predicates ::or",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber30",
+    "predicates ::or complains if there are no predicates specified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber33",
+    "predicates ::or concatenates the error messages in a human-friendly way",
     "test"
   ],
   [
     "spec/tinytype.spec.ts",
     "test-file/spec/TinyType.spec.ts.html",
     "spec/TinyType.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/chec.spec.ts",
+    "test-file/spec/chec.spec.ts.html",
+    "spec/chec.spec.ts",
     "testFile"
   ],
   [
@@ -369,6 +717,78 @@ window.esdocSearchIndex = [
     "spec/pattern-matching/rules/matchesanything.spec.ts",
     "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html",
     "spec/pattern-matching/rules/MatchesAnything.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/and.spec.ts",
+    "test-file/spec/predicates/and.spec.ts.html",
+    "spec/predicates/and.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/haslengthof.spec.ts",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html",
+    "spec/predicates/hasLengthOf.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isarray.spec.ts",
+    "test-file/spec/predicates/isArray.spec.ts.html",
+    "spec/predicates/isArray.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isdefined.spec.ts",
+    "test-file/spec/predicates/isDefined.spec.ts.html",
+    "spec/predicates/isDefined.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isequalto.spec.ts",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html",
+    "spec/predicates/isEqualTo.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isgreaterthan.spec.ts",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html",
+    "spec/predicates/isGreaterThan.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isgreaterthanorequalto.spec.ts",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html",
+    "spec/predicates/isGreaterThanOrEqualTo.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isinrange.spec.ts",
+    "test-file/spec/predicates/isInRange.spec.ts.html",
+    "spec/predicates/isInRange.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isinteger.spec.ts",
+    "test-file/spec/predicates/isInteger.spec.ts.html",
+    "spec/predicates/isInteger.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/islessthan.spec.ts",
+    "test-file/spec/predicates/isLessThan.spec.ts.html",
+    "spec/predicates/isLessThan.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/islessthanorequal.spec.ts",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html",
+    "spec/predicates/isLessThanOrEqual.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/or.spec.ts",
+    "test-file/spec/predicates/or.spec.ts.html",
+    "spec/predicates/or.spec.ts",
     "testFile"
   ],
   [
@@ -678,6 +1098,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/check.ts",
+    "file/src/check.ts.html",
+    "src/check.ts",
+    "file"
+  ],
+  [
     "src/index.ts",
     "file/src/index.ts.html",
     "src/index.ts",
@@ -696,28 +1122,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/pattern-matching/identitymatcher.ts~identitymatcher#when",
-    "class/src/pattern-matching/IdentityMatcher.ts~IdentityMatcher.html#instance-method-when",
-    "src/pattern-matching/IdentityMatcher.ts~IdentityMatcher#when",
-    "method"
-  ],
-  [
     "src/pattern-matching/objectmatcher.ts",
     "file/src/pattern-matching/ObjectMatcher.ts.html",
     "src/pattern-matching/ObjectMatcher.ts",
     "file"
-  ],
-  [
-    "src/pattern-matching/objectmatcher.ts~objectmatcher#rule",
-    "class/src/pattern-matching/ObjectMatcher.ts~ObjectMatcher.html#instance-method-rule",
-    "src/pattern-matching/ObjectMatcher.ts~ObjectMatcher#rule",
-    "method"
-  ],
-  [
-    "src/pattern-matching/objectmatcher.ts~objectmatcher#when",
-    "class/src/pattern-matching/ObjectMatcher.ts~ObjectMatcher.html#instance-method-when",
-    "src/pattern-matching/ObjectMatcher.ts~ObjectMatcher#when",
-    "method"
   ],
   [
     "src/pattern-matching/patternmatcher.ts",
@@ -726,40 +1134,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/pattern-matching/patternmatcher.ts~patternmatcher#constructor",
-    "class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html#instance-constructor-constructor",
-    "src/pattern-matching/PatternMatcher.ts~PatternMatcher#constructor",
-    "method"
-  ],
-  [
-    "src/pattern-matching/patternmatcher.ts~patternmatcher#else",
-    "class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html#instance-method-else",
-    "src/pattern-matching/PatternMatcher.ts~PatternMatcher#else",
-    "method"
-  ],
-  [
-    "src/pattern-matching/patternmatcher.ts~patternmatcher#rules",
-    "class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html#instance-member-rules",
-    "src/pattern-matching/PatternMatcher.ts~PatternMatcher#rules",
-    "member"
-  ],
-  [
-    "src/pattern-matching/patternmatcher.ts~patternmatcher#value",
-    "class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html#instance-member-value",
-    "src/pattern-matching/PatternMatcher.ts~PatternMatcher#value",
-    "member"
-  ],
-  [
     "src/pattern-matching/stringmatcher.ts",
     "file/src/pattern-matching/StringMatcher.ts.html",
     "src/pattern-matching/StringMatcher.ts",
     "file"
-  ],
-  [
-    "src/pattern-matching/stringmatcher.ts~stringmatcher#when",
-    "class/src/pattern-matching/StringMatcher.ts~StringMatcher.html#instance-method-when",
-    "src/pattern-matching/StringMatcher.ts~StringMatcher#when",
-    "method"
   ],
   [
     "src/pattern-matching/index.ts",
@@ -774,40 +1152,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/pattern-matching/rules/matcherrule.ts~matcherrule#constructor",
-    "class/src/pattern-matching/rules/MatcherRule.ts~MatcherRule.html#instance-constructor-constructor",
-    "src/pattern-matching/rules/MatcherRule.ts~MatcherRule#constructor",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matcherrule.ts~matcherrule#execute",
-    "class/src/pattern-matching/rules/MatcherRule.ts~MatcherRule.html#instance-method-execute",
-    "src/pattern-matching/rules/MatcherRule.ts~MatcherRule#execute",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matcherrule.ts~matcherrule#transformation",
-    "class/src/pattern-matching/rules/MatcherRule.ts~MatcherRule.html#instance-member-transformation",
-    "src/pattern-matching/rules/MatcherRule.ts~MatcherRule#transformation",
-    "member"
-  ],
-  [
     "src/pattern-matching/rules/matchesanything.ts",
     "file/src/pattern-matching/rules/MatchesAnything.ts.html",
     "src/pattern-matching/rules/MatchesAnything.ts",
     "file"
-  ],
-  [
-    "src/pattern-matching/rules/matchesanything.ts~matchesanything#constructor",
-    "class/src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything.html#instance-constructor-constructor",
-    "src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything#constructor",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matchesanything.ts~matchesanything#matches",
-    "class/src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything.html#instance-method-matches",
-    "src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything#matches",
-    "method"
   ],
   [
     "src/pattern-matching/rules/matchesequaltinytype.ts",
@@ -816,46 +1164,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/pattern-matching/rules/matchesequaltinytype.ts~matchesequaltinytype#constructor",
-    "class/src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType.html#instance-constructor-constructor",
-    "src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType#constructor",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matchesequaltinytype.ts~matchesequaltinytype#matches",
-    "class/src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType.html#instance-method-matches",
-    "src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType#matches",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matchesequaltinytype.ts~matchesequaltinytype#pattern",
-    "class/src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType.html#instance-member-pattern",
-    "src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType#pattern",
-    "member"
-  ],
-  [
     "src/pattern-matching/rules/matchesidentical.ts",
     "file/src/pattern-matching/rules/MatchesIdentical.ts.html",
     "src/pattern-matching/rules/MatchesIdentical.ts",
     "file"
-  ],
-  [
-    "src/pattern-matching/rules/matchesidentical.ts~matchesidentical#constructor",
-    "class/src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical.html#instance-constructor-constructor",
-    "src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical#constructor",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matchesidentical.ts~matchesidentical#matches",
-    "class/src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical.html#instance-method-matches",
-    "src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical#matches",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matchesidentical.ts~matchesidentical#pattern",
-    "class/src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical.html#instance-member-pattern",
-    "src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical#pattern",
-    "member"
   ],
   [
     "src/pattern-matching/rules/matchesobjectswithcommonprototype.ts",
@@ -864,51 +1176,99 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/pattern-matching/rules/matchesobjectswithcommonprototype.ts~matchesobjectswithcommonprototype#constructor",
-    "class/src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype.html#instance-constructor-constructor",
-    "src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype#constructor",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matchesobjectswithcommonprototype.ts~matchesobjectswithcommonprototype#matches",
-    "class/src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype.html#instance-method-matches",
-    "src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype#matches",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matchesobjectswithcommonprototype.ts~matchesobjectswithcommonprototype#pattern",
-    "class/src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype.html#instance-member-pattern",
-    "src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype#pattern",
-    "member"
-  ],
-  [
     "src/pattern-matching/rules/matchesregexp.ts",
     "file/src/pattern-matching/rules/MatchesRegExp.ts.html",
     "src/pattern-matching/rules/MatchesRegExp.ts",
     "file"
   ],
   [
-    "src/pattern-matching/rules/matchesregexp.ts~matchesregexp#constructor",
-    "class/src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp.html#instance-constructor-constructor",
-    "src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp#constructor",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matchesregexp.ts~matchesregexp#matches",
-    "class/src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp.html#instance-method-matches",
-    "src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp#matches",
-    "method"
-  ],
-  [
-    "src/pattern-matching/rules/matchesregexp.ts~matchesregexp#pattern",
-    "class/src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp.html#instance-member-pattern",
-    "src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp#pattern",
-    "member"
-  ],
-  [
     "src/pattern-matching/rules/index.ts",
     "file/src/pattern-matching/rules/index.ts.html",
     "src/pattern-matching/rules/index.ts",
+    "file"
+  ],
+  [
+    "src/predicates/predicate.ts",
+    "file/src/predicates/Predicate.ts.html",
+    "src/predicates/Predicate.ts",
+    "file"
+  ],
+  [
+    "src/predicates/and.ts",
+    "file/src/predicates/and.ts.html",
+    "src/predicates/and.ts",
+    "file"
+  ],
+  [
+    "src/predicates/haslengthof.ts",
+    "file/src/predicates/hasLengthOf.ts.html",
+    "src/predicates/hasLengthOf.ts",
+    "file"
+  ],
+  [
+    "src/predicates/index.ts",
+    "file/src/predicates/index.ts.html",
+    "src/predicates/index.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isarray.ts",
+    "file/src/predicates/isArray.ts.html",
+    "src/predicates/isArray.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isdefined.ts",
+    "file/src/predicates/isDefined.ts.html",
+    "src/predicates/isDefined.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isequalto.ts",
+    "file/src/predicates/isEqualTo.ts.html",
+    "src/predicates/isEqualTo.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isgreaterthan.ts",
+    "file/src/predicates/isGreaterThan.ts.html",
+    "src/predicates/isGreaterThan.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isgreaterthanorequalto.ts",
+    "file/src/predicates/isGreaterThanOrEqualTo.ts.html",
+    "src/predicates/isGreaterThanOrEqualTo.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isinrange.ts",
+    "file/src/predicates/isInRange.ts.html",
+    "src/predicates/isInRange.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isinteger.ts",
+    "file/src/predicates/isInteger.ts.html",
+    "src/predicates/isInteger.ts",
+    "file"
+  ],
+  [
+    "src/predicates/islessthan.ts",
+    "file/src/predicates/isLessThan.ts.html",
+    "src/predicates/isLessThan.ts",
+    "file"
+  ],
+  [
+    "src/predicates/islessthanorequalto.ts",
+    "file/src/predicates/isLessThanOrEqualTo.ts.html",
+    "src/predicates/isLessThanOrEqualTo.ts",
+    "file"
+  ],
+  [
+    "src/predicates/or.ts",
+    "file/src/predicates/or.ts.html",
+    "src/predicates/or.ts",
     "file"
   ],
   [

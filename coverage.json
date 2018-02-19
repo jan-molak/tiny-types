@@ -1,11 +1,16 @@
 {
-  "coverage": "66.66%",
-  "expectCount": 42,
-  "actualCount": 28,
+  "coverage": "67.1%",
+  "expectCount": 76,
+  "actualCount": 51,
   "files": {
     "src/TinyType.ts": {
       "expectCount": 6,
       "actualCount": 6,
+      "undocumentLines": []
+    },
+    "src/check.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
       "undocumentLines": []
     },
     "src/match.ts": {
@@ -27,9 +32,9 @@
       "expectCount": 5,
       "actualCount": 2,
       "undocumentLines": [
-        9,
-        10,
-        11
+        12,
+        13,
+        14
       ]
     },
     "src/pattern-matching/StringMatcher.ts": {
@@ -41,47 +46,126 @@
       "expectCount": 4,
       "actualCount": 2,
       "undocumentLines": [
-        8,
-        9
+        11,
+        12
       ]
     },
     "src/pattern-matching/rules/MatchesAnything.ts": {
       "expectCount": 3,
       "actualCount": 2,
       "undocumentLines": [
-        9
+        12
       ]
     },
     "src/pattern-matching/rules/MatchesEqualTinyType.ts": {
       "expectCount": 4,
       "actualCount": 2,
       "undocumentLines": [
-        9,
-        11
+        12,
+        14
       ]
     },
     "src/pattern-matching/rules/MatchesIdentical.ts": {
       "expectCount": 4,
       "actualCount": 2,
       "undocumentLines": [
-        9,
-        11
+        12,
+        14
       ]
     },
     "src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts": {
       "expectCount": 4,
       "actualCount": 2,
       "undocumentLines": [
-        9,
-        11
+        12,
+        14
       ]
     },
     "src/pattern-matching/rules/MatchesRegExp.ts": {
       "expectCount": 4,
       "actualCount": 2,
       "undocumentLines": [
-        9,
-        11
+        12,
+        14
+      ]
+    },
+    "src/predicates/Predicate.ts": {
+      "expectCount": 13,
+      "actualCount": 6,
+      "undocumentLines": [
+        11,
+        12,
+        36,
+        38,
+        51,
+        52,
+        53
+      ]
+    },
+    "src/predicates/and.ts": {
+      "expectCount": 5,
+      "actualCount": 3,
+      "undocumentLines": [
+        41,
+        42
+      ]
+    },
+    "src/predicates/hasLengthOf.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isArray.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isDefined.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isEqualTo.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isGreaterThan.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isGreaterThanOrEqualTo.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isInRange.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isInteger.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isLessThan.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isLessThanOrEqualTo.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/or.ts": {
+      "expectCount": 5,
+      "actualCount": 3,
+      "undocumentLines": [
+        41,
+        42
       ]
     }
   }

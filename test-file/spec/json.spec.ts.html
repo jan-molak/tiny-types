@@ -33,17 +33,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching">pattern-matching</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/IdentityMatcher.ts~IdentityMatcher.html">IdentityMatcher</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/ObjectMatcher.ts~ObjectMatcher.html">ObjectMatcher</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html">PatternMatcher</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/StringMatcher.ts~StringMatcher.html">StringMatcher</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching-rules">pattern-matching/rules</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatcherRule.ts~MatcherRule.html">MatcherRule</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything.html">MatchesAnything</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType.html">MatchesEqualTinyType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical.html">MatchesIdentical</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype.html">MatchesObjectsWithCommonPrototype</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp.html">MatchesRegExp</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEqualTo">isEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThan">isGreaterThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThanOrEqualTo">isGreaterThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInRange">isInRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -61,12 +64,14 @@ describe(&apos;JSON&apos;, () =&gt; {
         Some_Object = {k1: Some_String, k2: Some_Number},
         Some_Array = [Some_String, Some_Number, Some_Boolean, Some_Object];
 
+    /** @test {JSONArray} */
     describe(&apos;JSONArray&apos;, () =&gt; {
         it(`describes an array that&apos;s a valid JSON`, () =&gt; {
             const array: JSONArray = Some_Array;
         });
     });
 
+    /** @test {JSONObject} */
     describe(&apos;JSONObject&apos;, () =&gt; {
         it(`describes a JavaScript object serialised to JSON`, () =&gt; {
             const object: JSONObject = {
@@ -79,6 +84,7 @@ describe(&apos;JSON&apos;, () =&gt; {
         });
     });
 
+    /** @test {JSONPrimitive} */
     describe(&apos;JSONPrimitive&apos;, () =&gt; {
         it(`describes any primitive that can be part of JSON`, () =&gt; {
             const s: JSONPrimitive = &apos;string&apos;,
@@ -88,6 +94,7 @@ describe(&apos;JSON&apos;, () =&gt; {
         });
     });
 
+    /** @test {JSONValue} */
     describe(&apos;JSONValue&apos;, () =&gt; {
         it(&apos;describes any value that can be represented as JSON&apos;, () =&gt; {
             const

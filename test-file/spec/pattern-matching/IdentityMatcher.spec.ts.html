@@ -33,17 +33,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching">pattern-matching</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/IdentityMatcher.ts~IdentityMatcher.html">IdentityMatcher</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/ObjectMatcher.ts~ObjectMatcher.html">ObjectMatcher</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/PatternMatcher.ts~PatternMatcher.html">PatternMatcher</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/StringMatcher.ts~StringMatcher.html">StringMatcher</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pattern-matching-rules">pattern-matching/rules</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatcherRule.ts~MatcherRule.html">MatcherRule</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesAnything.ts~MatchesAnything.html">MatchesAnything</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesEqualTinyType.ts~MatchesEqualTinyType.html">MatchesEqualTinyType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesIdentical.ts~MatchesIdentical.html">MatchesIdentical</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesObjectsWithCommonPrototype.ts~MatchesObjectsWithCommonPrototype.html">MatchesObjectsWithCommonPrototype</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/pattern-matching/rules/MatchesRegExp.ts~MatchesRegExp.html">MatchesRegExp</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEqualTo">isEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThan">isGreaterThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThanOrEqualTo">isGreaterThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInRange">isInRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -54,44 +57,46 @@ import { given } from &apos;mocha-testdata&apos;;
 import { IdentityMatcher } from &apos;../../src/pattern-matching&apos;;
 import { expect } from &apos;../expect&apos;;
 
-describe(&apos;IdentityMatcher&apos;, () =&gt; {
-    given(
-        [true, &apos;received &quot;true&quot;&apos;],
-        [false, &apos;received &quot;false&quot;&apos;],
-    ).it(&apos;matches a boolean&apos;, (input: boolean, expected_result: string) =&gt; {
+describe(&apos;pattern-matching&apos;, () =&gt; {
+    describe(&apos;IdentityMatcher&apos;, () =&gt; {
+        given(
+            [true, &apos;received &quot;true&quot;&apos;],
+            [false, &apos;received &quot;false&quot;&apos;],
+        ).it(&apos;matches a boolean&apos;, (input: boolean, expected_result: string) =&gt; {
 
-        const result = new IdentityMatcher(input)
-            .when(true, _ =&gt; `received &quot;true&quot;`)
-            .else(_ =&gt; `received &quot;false&quot;`);
+            const result = new IdentityMatcher(input)
+                .when(true, _ =&gt; `received &quot;true&quot;`)
+                .else(_ =&gt; `received &quot;false&quot;`);
 
-        expect(result).to.equal(expected_result);
-    });
+            expect(result).to.equal(expected_result);
+        });
 
-    given(
-        [-1, &apos;received &quot;-1&quot;&apos;],
-        [0.1, &apos;received &quot;0.1&quot;&apos;],
-        [5, &apos;else, received &quot;5&quot;&apos;],
-        // [NaN, &apos;received &quot;NaN&quot;&apos;],
-        [Infinity, &apos;to infinity and beyond!&apos;],
-    ).it(&apos;matches a number&apos;, (input: number, expected_result: string) =&gt; {
+        given(
+            [-1, &apos;received &quot;-1&quot;&apos;],
+            [0.1, &apos;received &quot;0.1&quot;&apos;],
+            [5, &apos;else, received &quot;5&quot;&apos;],
+            // [NaN, &apos;received &quot;NaN&quot;&apos;],
+            [Infinity, &apos;to infinity and beyond!&apos;],
+        ).it(&apos;matches a number&apos;, (input: number, expected_result: string) =&gt; {
 
-        const result = new IdentityMatcher(input)
-            .when(-1, _ =&gt; `received &quot;-1&quot;`)
-            .when(0.1, _ =&gt; `received &quot;0.1&quot;`)
-            .when(Infinity, _ =&gt; `to infinity and beyond!`)
-            .else(_ =&gt; `else, received &quot;${_}&quot;`);
+            const result = new IdentityMatcher(input)
+                .when(-1, _ =&gt; `received &quot;-1&quot;`)
+                .when(0.1, _ =&gt; `received &quot;0.1&quot;`)
+                .when(Infinity, _ =&gt; `to infinity and beyond!`)
+                .else(_ =&gt; `else, received &quot;${_}&quot;`);
 
-        expect(result).to.equal(expected_result);
-    });
+            expect(result).to.equal(expected_result);
+        });
 
-    it(&apos;matches a symbol&apos;, () =&gt; {
-        const s = Symbol(&apos;some symbol&apos;);
+        it(&apos;matches a symbol&apos;, () =&gt; {
+            const s = Symbol(&apos;some symbol&apos;);
 
-        const result = new IdentityMatcher(s)
-            .when(s, _ =&gt; `received &quot;some symbol&quot;`)
-            .else(_ =&gt; `else, received &quot;${_}&quot;`);
+            const result = new IdentityMatcher(s)
+                .when(s, _ =&gt; `received &quot;some symbol&quot;`)
+                .else(_ =&gt; `else, received &quot;${_}&quot;`);
 
-        expect(result).to.equal(&apos;received &quot;some symbol&quot;&apos;);
+            expect(result).to.equal(&apos;received &quot;some symbol&quot;&apos;);
+        });
     });
 });
 </code></pre>
