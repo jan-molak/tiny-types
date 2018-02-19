@@ -4,7 +4,8 @@ import { match, TinyType } from '../src';
 import { IdentityMatcher, ObjectMatcher, StringMatcher } from '../src/pattern-matching';
 import { expect } from './expect';
 
-describe(`match`, () => {
+/** @test {match} */
+describe(`::match`, () => {
 
     abstract class DomainEvent {
         constructor(public readonly timestamp: Date = new Date()) {

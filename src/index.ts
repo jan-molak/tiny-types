@@ -1,3 +1,5 @@
+export * from './check';
+export * from './predicates';
 export * from './match';
 export * from './pattern-matching/PatternMatcher';
 export * from './TinyType';

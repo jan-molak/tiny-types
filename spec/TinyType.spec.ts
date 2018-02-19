@@ -6,6 +6,7 @@ import { expect } from './expect';
 /** @test {TinyType} */
 describe('TinyType', () => {
 
+    /** @test {TinyType} */
     describe('definition', () => {
 
         /** @test {TinyTypeOf} */

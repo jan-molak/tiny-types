@@ -10,12 +10,14 @@ describe('JSON', () => {
         Some_Object = {k1: Some_String, k2: Some_Number},
         Some_Array = [Some_String, Some_Number, Some_Boolean, Some_Object];
 
+    /** @test {JSONArray} */
     describe('JSONArray', () => {
         it(`describes an array that's a valid JSON`, () => {
             const array: JSONArray = Some_Array;
         });
     });
 
+    /** @test {JSONObject} */
     describe('JSONObject', () => {
         it(`describes a JavaScript object serialised to JSON`, () => {
             const object: JSONObject = {
@@ -28,6 +30,7 @@ describe('JSON', () => {
         });
     });
 
+    /** @test {JSONPrimitive} */
     describe('JSONPrimitive', () => {
         it(`describes any primitive that can be part of JSON`, () => {
             const s: JSONPrimitive = 'string',
@@ -37,6 +40,7 @@ describe('JSON', () => {
         });
     });
 
+    /** @test {JSONValue} */
     describe('JSONValue', () => {
         it('describes any value that can be represented as JSON', () => {
             const

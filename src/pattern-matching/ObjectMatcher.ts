@@ -3,6 +3,9 @@ import { ConstructorOrAbstract } from '../types';
 import { PatternMatcher } from './PatternMatcher';
 import { MatcherRule, MatchesEqualTinyType, MatchesIdentical, MatchesObjectsWithCommonPrototype } from './rules';
 
+/**
+ * @access private
+ */
 export class ObjectMatcher<Input_Type, Output_Type> extends PatternMatcher<Input_Type, TinyType | ConstructorOrAbstract<Input_Type>, TinyType | Input_Type, Output_Type> {
 
     when<MT extends Input_Type>(pattern: ConstructorOrAbstract<MT>, transformation: (v: MT) => Output_Type): ObjectMatcher<Input_Type, Output_Type>;

@@ -1,6 +1,9 @@
 import { List } from '../types';
 import { MatcherRule, MatchesAnything } from './rules';
 
+/**
+ * @access private
+ */
 export abstract class PatternMatcher<Input_Type, Pattern_Type, Matching_Type, Output_Type> {
     constructor(protected readonly value: Input_Type,
                 protected readonly rules: List<MatcherRule<Input_Type, Output_Type>> = []) {

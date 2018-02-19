@@ -4,6 +4,8 @@ import { JSONValue } from './types';
  * @desc The {@link TinyTypeOf} can be used to define simple
  * single-value {@link TinyType}s on a single line.
  *
+ * @experimental
+ *
  * @example
  * class Username extends TinyTypeOf<string>() {}
  *

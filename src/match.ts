@@ -54,6 +54,12 @@ export function match<Input_Type, Output_Type>(_: Input_Type): {
     ) => PatternMatcher<Input_Type, TinyType | ConstructorOrAbstract<Input_Type>, TinyType | Input_Type, Output_Type>,
 };
 
+/**
+ * @experimental
+ *
+ * @param value
+ * @returns {PatternMatcher<any, any, any, any>}
+ */
 export function match(value: any): PatternMatcher<any, any, any, any> {
     switch (true) {
         case typeof value === 'string':

@@ -1,3 +1,6 @@
+/**
+ * @access private
+ */
 export abstract class MatcherRule<Input_Type, Output_Type>{
     constructor(
         private readonly transformation: (v: Input_Type) => Output_Type,
