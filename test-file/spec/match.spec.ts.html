@@ -58,56 +58,107 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="content" data-ice="content"><h1 data-ice="title">spec/match.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
 import { given } from &apos;mocha-testdata&apos;;
-import { match, TinyType } from &apos;../src&apos;;
+import { match, TinyType, TinyTypeOf } from &apos;../src&apos;;
 import { IdentityMatcher, ObjectMatcher, StringMatcher } from &apos;../src/pattern-matching&apos;;
 import { expect } from &apos;./expect&apos;;
 
 /** @test {match} */
 describe(`::match`, () =&gt; {
 
-    abstract class DomainEvent {
-        constructor(public readonly timestamp: Date = new Date()) {
-        }
-    }
+    /** @test {match} */
+    describe(&apos;default rules&apos;, () =&gt; {
+        it(`uses the default rule if a more specific one has not been defined`, () =&gt; {
+            const result = match(&apos;four&apos;)
+                .when(&apos;five&apos;, _ =&gt; `high five`)
+                .when(&apos;six&apos;, _ =&gt; `got your six`)
+                .else(n =&gt; `got ${n}`);
 
-    class ConcreteEvent extends DomainEvent {
-    }
+            expect(result).to.equal(&apos;got four&apos;);
+        });
 
-    class EmaiAddress extends TinyType {
-        constructor(public readonly value: string) {
-            super();
-        }
-    }
+        it(`uses the default rule if a more specific one has not been defined`, () =&gt; {
+            const result = match(4)
+                .when(5, _ =&gt; `high five`)
+                .when(6, _ =&gt; `got your six`)
+                .else(n =&gt; `got ${n}`);
 
-    given([
-        { input: 5,                                     pattern: 1,                                     expected_matcher: IdentityMatcher },
-        { input: Symbol(&apos;some&apos;),                        pattern: Symbol(&apos;other&apos;),                       expected_matcher: IdentityMatcher },
-        { input: &apos;hello&apos;,                               pattern: &apos;hello&apos;,                               expected_matcher: StringMatcher },
-        { input: &apos;hello&apos;,                               pattern: /^[Hh]ello/,                           expected_matcher: StringMatcher },
-        { input: new EmaiAddress(&apos;user@domain.org&apos;),    pattern: new EmaiAddress(&apos;user@domain.org&apos;),    expected_matcher: ObjectMatcher },
-        { input: new ConcreteEvent(),                   pattern: ConcreteEvent,                         expected_matcher: ObjectMatcher },
-        { input: new ConcreteEvent(),                   pattern: DomainEvent,                           expected_matcher: ObjectMatcher },
-    ]).
-    it(`uses a matcher appropriate to the input`, ({input, pattern, expected_matcher}) =&gt; {
-        expect(match(input).when(pattern, _ =&gt; _)).to.be.instanceOf(expected_matcher);
+            expect(result).to.equal(&apos;got 4&apos;);
+        });
     });
 
-    it(`uses the default rule if a more specific one has not been defined`, () =&gt; {
-        const result = match(&apos;four&apos;)
-            .when(&apos;five&apos;, _ =&gt; `high five`)
-            .when(&apos;six&apos;, _ =&gt; `got your six`)
-            .else(n =&gt; `got ${n}`);
+    describe(&apos;when selecting a matcher&apos;, () =&gt; {
+        abstract class DomainEvent {
+            constructor(public readonly timestamp: Date = new Date()) {
+            }
+        }
 
-        expect(result).to.equal(&apos;got four&apos;);
+        class ConcreteEvent extends DomainEvent {
+        }
+
+        class EmaiAddress extends TinyType {
+            constructor(public readonly value: string) {
+                super();
+            }
+        }
+
+        given([
+            { input: 5,                                     pattern: 1,                                     expected_matcher: IdentityMatcher },
+            { input: Symbol(&apos;some&apos;),                        pattern: Symbol(&apos;other&apos;),                       expected_matcher: IdentityMatcher },
+            { input: &apos;hello&apos;,                               pattern: &apos;hello&apos;,                               expected_matcher: StringMatcher },
+            { input: &apos;hello&apos;,                               pattern: /^[Hh]ello/,                           expected_matcher: StringMatcher },
+            { input: new EmaiAddress(&apos;user@domain.org&apos;),    pattern: new EmaiAddress(&apos;user@domain.org&apos;),    expected_matcher: ObjectMatcher },
+            { input: new ConcreteEvent(),                   pattern: ConcreteEvent,                         expected_matcher: ObjectMatcher },
+            { input: new ConcreteEvent(),                   pattern: DomainEvent,                           expected_matcher: ObjectMatcher },
+        ]).
+        it(`uses a matcher appropriate to the input`, ({input, pattern, expected_matcher}) =&gt; {
+            expect(match(input).when(pattern, _ =&gt; _)).to.be.instanceOf(expected_matcher);
+        });
     });
 
-    it(`uses the default rule if a more specific one has not been defined`, () =&gt; {
-        const result = match(4)
-            .when(5, _ =&gt; `high five`)
-            .when(6, _ =&gt; `got your six`)
-            .else(n =&gt; `got ${n}`);
+    /**
+     * @test {match}
+     * @test {TinyType}
+     * @test {TinyTypeOf}
+     */
+    describe(&apos;when working with TinyTypes&apos;, () =&gt; {
 
-        expect(result).to.equal(&apos;got 4&apos;);
+        class AccountId extends TinyTypeOf&lt;number&gt;() {}
+        abstract class Command extends TinyTypeOf&lt;AccountId&gt;() {}
+        class OpenAccount extends Command {}
+        class CloseAccount extends Command {}
+        class SuspendAccount extends Command {}
+
+        given([
+            { command: new OpenAccount(new AccountId(42)),      expected: &apos;Open AccountId(value=42)&apos;                            },
+            { command: new CloseAccount(new AccountId(42)),     expected: &apos;Close AccountId(value=42)&apos;                           },
+            { command: new SuspendAccount(new AccountId(42)),   expected: &apos;Command: SuspendAccount(value=AccountId(value=42))&apos;  },
+            { command: null,                                    expected: &apos;Unrecognised input: null&apos;                            },
+        ]).
+        it(&apos;matches a TinyType by type&apos;, ({ command, expected }) =&gt; {
+            const result = match(command)
+                .when(OpenAccount,  ({ value }) =&gt; `Open ${ value }`)
+                .when(CloseAccount, ({ value }) =&gt; `Close ${ value }`)
+                .when(Command,      _ =&gt; `Command: ${ _ }`)
+                .else(_ =&gt; `Unrecognised input: ${_}`);
+
+            expect(result).to.equal(expected);
+        });
+
+        given([
+            { command: new OpenAccount(new AccountId(42)),      expected: &apos;Open AccountId(value=42)&apos;                            },
+            { command: new CloseAccount(new AccountId(42)),     expected: &apos;Close AccountId(value=42)&apos;                           },
+            { command: new SuspendAccount(new AccountId(42)),   expected: &apos;Command: SuspendAccount(value=AccountId(value=42))&apos;  },
+            { command: null,                                    expected: &apos;Unrecognised input: null&apos;                            },
+        ]).
+        it(&apos;matches a TinyType by value&apos;, ({ command, expected }) =&gt; {
+            const result = match(command)
+                .when(new OpenAccount(new AccountId(42)),   ({ value }) =&gt; `Open ${ value }`)
+                .when(new CloseAccount(new AccountId(42)),  ({ value }) =&gt; `Close ${ value }`)
+                .when(new SuspendAccount(new AccountId(42)), _ =&gt; `Command: ${ _ }`)
+                .else(_ =&gt; `Unrecognised input: ${_}`);
+
+            expect(result).to.equal(expected);
+        });
     });
 });
 </code></pre>

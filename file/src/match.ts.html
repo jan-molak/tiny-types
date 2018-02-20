@@ -57,8 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/match.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { IdentityMatcher, ObjectMatcher, PatternMatcher, StringMatcher } from &apos;./pattern-matching&apos;;
-import { TinyType } from &apos;./TinyType&apos;;
-import { ConstructorOrAbstract } from &apos;./types&apos;;
+import { ConstructorAbstractOrInstance } from &apos;./types&apos;;
 
 // boolean equality matcher
 export function match&lt;Output_Type&gt;(_: boolean): {
@@ -95,21 +94,13 @@ export function match&lt;Output_Type&gt;(_: string): {
     ) =&gt; PatternMatcher&lt;string, string | RegExp, string, Output_Type&gt;,
 };
 
-// Tiny Type equality matcher
-export function match&lt;Input_Type&gt;(_: Input_Type): {
-    when: &lt;Output_Type&gt;(
-        pattern: TinyType,
-        transformation: (v: TinyType) =&gt; Output_Type,
-    ) =&gt; PatternMatcher&lt;Input_Type, TinyType | ConstructorOrAbstract&lt;Input_Type&gt;, TinyType | Input_Type, Output_Type&gt;,
-};
-
 // type matcher
 export function match&lt;Input_Type, Output_Type&gt;(_: Input_Type): {
 
     when: &lt;MT extends Input_Type&gt;(
-        pattern: ConstructorOrAbstract&lt;MT&gt;,
+        pattern: ConstructorAbstractOrInstance&lt;MT&gt;,
         transformation: (v: MT) =&gt; Output_Type,
-    ) =&gt; PatternMatcher&lt;Input_Type, TinyType | ConstructorOrAbstract&lt;Input_Type&gt;, TinyType | Input_Type, Output_Type&gt;,
+    ) =&gt; PatternMatcher&lt;Input_Type, ConstructorAbstractOrInstance&lt;Input_Type&gt;, Input_Type, Output_Type&gt;,
 };
 
 /**

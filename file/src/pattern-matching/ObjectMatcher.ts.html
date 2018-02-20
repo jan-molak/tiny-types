@@ -57,16 +57,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/pattern-matching/ObjectMatcher.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { TinyType } from &apos;../TinyType&apos;;
-import { ConstructorOrAbstract } from &apos;../types&apos;;
+import { ConstructorAbstractOrInstance } from &apos;../types&apos;;
 import { PatternMatcher } from &apos;./PatternMatcher&apos;;
 import { MatcherRule, MatchesEqualTinyType, MatchesIdentical, MatchesObjectsWithCommonPrototype } from &apos;./rules&apos;;
 
 /**
  * @access private
  */
-export class ObjectMatcher&lt;Input_Type, Output_Type&gt; extends PatternMatcher&lt;Input_Type, TinyType | ConstructorOrAbstract&lt;Input_Type&gt;, TinyType | Input_Type, Output_Type&gt; {
+export class ObjectMatcher&lt;Input_Type, Output_Type&gt; extends PatternMatcher&lt;Input_Type, TinyType | ConstructorAbstractOrInstance&lt;Input_Type&gt;, TinyType | Input_Type, Output_Type&gt; {
 
-    when&lt;MT extends Input_Type&gt;(pattern: ConstructorOrAbstract&lt;MT&gt;, transformation: (v: MT) =&gt; Output_Type): ObjectMatcher&lt;Input_Type, Output_Type&gt;;
+    when&lt;MT extends Input_Type&gt;(pattern: ConstructorAbstractOrInstance&lt;MT&gt;, transformation: (v: MT) =&gt; Output_Type): ObjectMatcher&lt;Input_Type, Output_Type&gt;;
     when(pattern: TinyType, transformation: (v: TinyType) =&gt; Output_Type): ObjectMatcher&lt;Input_Type, Output_Type&gt;;
     when(pattern: Input_Type, transformation: (v: Input_Type) =&gt; Output_Type): ObjectMatcher&lt;Input_Type, Output_Type&gt;;
     when(pattern: any, transformation: (v: any) =&gt; Output_Type) {

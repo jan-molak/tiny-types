@@ -63,7 +63,9 @@ import { MatcherRule } from &apos;./MatcherRule&apos;;
  * @access private
  */
 export class MatchesObjectsWithCommonPrototype&lt;Input_Type, Output_Type&gt; extends MatcherRule&lt;Input_Type, Output_Type&gt; {
-    constructor(private readonly pattern: ConstructorOrAbstract&lt;Input_Type&gt;, transformation: (v: Input_Type) =&gt; Output_Type) {
+    constructor(private readonly pattern: ConstructorOrAbstract&lt;Input_Type&gt;,
+                transformation: (v: Input_Type) =&gt; Output_Type,
+    ) {
         super(transformation);
     }
 

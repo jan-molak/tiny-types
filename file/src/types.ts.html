@@ -57,7 +57,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/types.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export type List&lt;T&gt; = T[];
-export type ConstructorOrAbstract&lt;T = {}&gt; = Function &amp; { prototype: T };  // tslint:disable-line:ban-types
+export type ConstructorOrAbstract&lt;T = {}&gt; = Function &amp; { prototype: T };                  // tslint:disable-line:ban-types
+export type ConstructorAbstractOrInstance&lt;T = {}&gt; = T | ConstructorOrAbstract;            // tslint:disable-line:ban-types
 
 export type JSONPrimitive = string | number | boolean | null;
 export interface JSONObject {

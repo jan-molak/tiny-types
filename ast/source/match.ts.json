@@ -214,7 +214,7 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 63\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
+            "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 54\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
             "start": 84,
             "end": 196,
             "loc": {
@@ -766,7 +766,7 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 63\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
+              "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 54\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
               "start": 84,
               "end": 196,
               "loc": {
@@ -802,7 +802,7 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 63\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
+            "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 54\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
             "start": 84,
             "end": 196,
             "loc": {
@@ -840,7 +840,7 @@
   "comments": [
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 63\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
+      "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 54\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
       "start": 84,
       "end": 196,
       "loc": {
@@ -1161,7 +1161,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 63\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
+      "value": "*\n * @desc\n * undefined\n * @lineNumber\n * 54\n * @param\n * {undefined} value\n * @return\n * {PatternMatcher}\n ",
       "start": 84,
       "end": 196,
       "loc": {
