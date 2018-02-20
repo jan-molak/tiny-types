@@ -19,7 +19,7 @@ export function match<Output_Type>(_: number): {
     ) => PatternMatcher<number, number, number, Output_Type>,
 };
 
-// number equality matcher
+// symbol equality matcher
 export function match<Output_Type>(_: symbol): {
 
     when: (
