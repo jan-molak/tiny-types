@@ -1,14 +1,14 @@
 import { TinyType } from '../TinyType';
-import { ConstructorOrAbstract } from '../types';
+import { ConstructorAbstractOrInstance } from '../types';
 import { PatternMatcher } from './PatternMatcher';
 import { MatcherRule, MatchesEqualTinyType, MatchesIdentical, MatchesObjectsWithCommonPrototype } from './rules';
 
 /**
  * @access private
  */
-export class ObjectMatcher<Input_Type, Output_Type> extends PatternMatcher<Input_Type, TinyType | ConstructorOrAbstract<Input_Type>, TinyType | Input_Type, Output_Type> {
+export class ObjectMatcher<Input_Type, Output_Type> extends PatternMatcher<Input_Type, TinyType | ConstructorAbstractOrInstance<Input_Type>, TinyType | Input_Type, Output_Type> {
 
-    when<MT extends Input_Type>(pattern: ConstructorOrAbstract<MT>, transformation: (v: MT) => Output_Type): ObjectMatcher<Input_Type, Output_Type>;
+    when<MT extends Input_Type>(pattern: ConstructorAbstractOrInstance<MT>, transformation: (v: MT) => Output_Type): ObjectMatcher<Input_Type, Output_Type>;
     when(pattern: TinyType, transformation: (v: TinyType) => Output_Type): ObjectMatcher<Input_Type, Output_Type>;
     when(pattern: Input_Type, transformation: (v: Input_Type) => Output_Type): ObjectMatcher<Input_Type, Output_Type>;
     when(pattern: any, transformation: (v: any) => Output_Type) {

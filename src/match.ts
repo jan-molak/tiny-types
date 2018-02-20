@@ -1,6 +1,5 @@
 import { IdentityMatcher, ObjectMatcher, PatternMatcher, StringMatcher } from './pattern-matching';
-import { TinyType } from './TinyType';
-import { ConstructorOrAbstract } from './types';
+import { ConstructorAbstractOrInstance } from './types';
 
 // boolean equality matcher
 export function match<Output_Type>(_: boolean): {
@@ -37,21 +36,13 @@ export function match<Output_Type>(_: string): {
     ) => PatternMatcher<string, string | RegExp, string, Output_Type>,
 };
 
-// Tiny Type equality matcher
-export function match<Input_Type>(_: Input_Type): {
-    when: <Output_Type>(
-        pattern: TinyType,
-        transformation: (v: TinyType) => Output_Type,
-    ) => PatternMatcher<Input_Type, TinyType | ConstructorOrAbstract<Input_Type>, TinyType | Input_Type, Output_Type>,
-};
-
 // type matcher
 export function match<Input_Type, Output_Type>(_: Input_Type): {
 
     when: <MT extends Input_Type>(
-        pattern: ConstructorOrAbstract<MT>,
+        pattern: ConstructorAbstractOrInstance<MT>,
         transformation: (v: MT) => Output_Type,
-    ) => PatternMatcher<Input_Type, TinyType | ConstructorOrAbstract<Input_Type>, TinyType | Input_Type, Output_Type>,
+    ) => PatternMatcher<Input_Type, ConstructorAbstractOrInstance<Input_Type>, Input_Type, Output_Type>,
 };
 
 /**
