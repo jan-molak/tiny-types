@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, isEqualTo, TinyType, TinyTypeOf } from '../../src';
+import { check, isEqualTo, TinyTypeOf } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {

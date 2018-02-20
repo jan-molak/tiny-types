@@ -1,9 +1,8 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, TinyType } from '../../src';
+import { check, isInRange, TinyType } from '../../src';
 import { expect } from '../expect';
-import { isInRange } from '../../src/predicates/isInRange';
 
 describe('predicates', () => {
 
