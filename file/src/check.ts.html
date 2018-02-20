@@ -35,7 +35,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Success.html">Success</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span></li>
@@ -52,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/check.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Failure, isArray, isDefined, isGreaterThan, Predicate } from &apos;./predicates&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { and, Failure, isArray, isDefined, isGreaterThan, Predicate } from &apos;./predicates&apos;;
 
 /**
  * @desc The `check` function verifies if the value meets the specified {Predicate}s.
@@ -79,24 +83,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @returns {T} - if the original value passes all the predicates, it&apos;s returned from the function
  */
 export function check&lt;T&gt;(name: string, value: T, ...predicates: Array&lt;Predicate&lt;T&gt;&gt;): T {
-    if ([
-            _ =&gt; isDefined().check(_),
-            _ =&gt; isArray().check(_),
-            _ =&gt; isGreaterThan(0).check(_.length),
-        ].some(c =&gt; c(predicates) instanceof Failure)
-    ) {
-        throw new Error(`Looks like you haven&apos;t specified any predicates to check the value of ${name} against?`);
+    const result = and(...predicates).check(value);
+
+    if (result instanceof Failure) {
+        throw new Error(`${ name } should ${ result.description }`);
     }
 
-    const firstUnmet = predicates
-        .map(predicate =&gt; predicate.check(value))
-        .find(result =&gt; result instanceof Failure) as Failure&lt;T&gt;;
-
-    if (!! firstUnmet) {
-        throw new Error(`${ name } should ${ firstUnmet.description }`);
-    }
-
-    return value;
+    return result.value;
 }
 </code></pre>
 

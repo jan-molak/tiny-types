@@ -7,13 +7,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber58",
+    "test-file/spec/match.spec.ts.html#lineNumber51",
     " ",
     "test"
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber51",
+    "test-file/spec/match.spec.ts.html#lineNumber58",
     " ",
     "test"
   ],
@@ -28,6 +28,30 @@ window.esdocSearchIndex = [
     "test-file/spec/chec.spec.ts.html#lineNumber6",
     "::check ",
     "test"
+  ],
+  [
+    "tiny-types/lib/predicates/predicate~failure",
+    "class/src/predicates/Predicate.ts~Failure.html",
+    "<span>Failure</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/Predicate</span>",
+    "class"
+  ],
+  [
+    "tiny-types/lib/predicates/predicate~predicate",
+    "class/src/predicates/Predicate.ts~Predicate.html",
+    "<span>Predicate</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/Predicate</span>",
+    "class"
+  ],
+  [
+    "tiny-types/lib/predicates/predicate~result",
+    "class/src/predicates/Predicate.ts~Result.html",
+    "<span>Result</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/Predicate</span>",
+    "class"
+  ],
+  [
+    "tiny-types/lib/predicates/predicate~success",
+    "class/src/predicates/Predicate.ts~Success.html",
+    "<span>Success</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/Predicate</span>",
+    "class"
   ],
   [
     "tiny-types/lib/tinytype~tinytype",
@@ -313,13 +337,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
   [
     "",
-    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -331,7 +355,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -391,7 +415,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -403,13 +427,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
     "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber6",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -427,7 +463,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -439,25 +475,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
     "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -1192,6 +1216,36 @@ window.esdocSearchIndex = [
     "file/src/predicates/Predicate.ts.html",
     "src/predicates/Predicate.ts",
     "file"
+  ],
+  [
+    "src/predicates/predicate.ts~failure#constructor",
+    "class/src/predicates/Predicate.ts~Failure.html#instance-constructor-constructor",
+    "src/predicates/Predicate.ts~Failure#constructor",
+    "method"
+  ],
+  [
+    "src/predicates/predicate.ts~failure#description",
+    "class/src/predicates/Predicate.ts~Failure.html#instance-member-description",
+    "src/predicates/Predicate.ts~Failure#description",
+    "member"
+  ],
+  [
+    "src/predicates/predicate.ts~predicate.to",
+    "class/src/predicates/Predicate.ts~Predicate.html#static-method-to",
+    "src/predicates/Predicate.ts~Predicate.to",
+    "method"
+  ],
+  [
+    "src/predicates/predicate.ts~result#constructor",
+    "class/src/predicates/Predicate.ts~Result.html#instance-constructor-constructor",
+    "src/predicates/Predicate.ts~Result#constructor",
+    "method"
+  ],
+  [
+    "src/predicates/predicate.ts~result#value",
+    "class/src/predicates/Predicate.ts~Result.html#instance-member-value",
+    "src/predicates/Predicate.ts~Result#value",
+    "member"
   ],
   [
     "src/predicates/and.ts",

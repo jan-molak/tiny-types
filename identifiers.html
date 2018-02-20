@@ -35,7 +35,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Success.html">Success</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span></li>
@@ -135,7 +139,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span>Predicate</span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
         </p>
       </div>
       <div>
@@ -199,16 +203,129 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
     <td>
       <div>
         <p>
-          <span data-ice="kind-icon" class="kind-function">F</span>
+          <span data-ice="kind-icon" class="kind-class">C</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span><span class="code" data-ice="signature">(predicates: <span>...Array</span>&lt;<span>Predicate</span>&lt;<span>T</span>&gt;&gt;): <span>Predicate</span>&lt;<span>T</span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> meets all the provided <span>Predicate</span>s.</p>
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-class">C</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Describes a <span>Condition</span> that the <code>value</code> should meet.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-class">C</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-class">C</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Success.html">Success</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-function">F</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span><span class="code" data-ice="signature">(predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Checks if the <code>value</code> meets all the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
       </div>
     </td>
@@ -231,7 +348,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span><span class="code" data-ice="signature">(expectedLength: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span><span class="code" data-ice="signature">(expectedLength: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span>
         </p>
       </div>
       <div>
@@ -260,7 +377,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span><span class="code" data-ice="signature">(): <span>Predicate</span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -289,7 +406,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span><span class="code" data-ice="signature">(): <span>Predicate</span>&lt;<span>T</span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -318,7 +435,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isEqualTo">isEqualTo</a></span></span><span class="code" data-ice="signature">(expectedValue: <span>string </span> | <span> number </span> | <span> symbol </span> | <span> TinyType </span> | <span> object</span>): <span>Predicate</span>&lt;<span>any</span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isEqualTo">isEqualTo</a></span></span><span class="code" data-ice="signature">(expectedValue: <span>string </span> | <span> number </span> | <span> symbol </span> | <span> TinyType </span> | <span> object</span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>any</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -347,7 +464,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isGreaterThan">isGreaterThan</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isGreaterThan">isGreaterThan</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -376,7 +493,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isGreaterThanOrEqualTo">isGreaterThanOrEqualTo</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isGreaterThanOrEqualTo">isGreaterThanOrEqualTo</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -405,7 +522,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isInRange">isInRange</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isInRange">isInRange</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -434,7 +551,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span><span class="code" data-ice="signature">(): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -463,7 +580,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -492,7 +609,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -521,13 +638,13 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span><span class="code" data-ice="signature">(predicates: <span>Predicate</span>&lt;<span>T</span>&gt;): <span>Predicate</span>&lt;<span>T</span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span><span class="code" data-ice="signature">(predicates: <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> meets at least one of the provided <span>Predicate</span>s.</p>
+        <div data-ice="description"><p>Checks if the <code>value</code> meets at least one of the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
       </div>
     </td>

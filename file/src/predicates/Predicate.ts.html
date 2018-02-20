@@ -35,7 +35,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Success.html">Success</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span></li>
@@ -53,19 +57,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/predicates/Predicate.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * @access private
+ * @access public
  */
 export abstract class Result&lt;T&gt; {
     constructor(public readonly value: T) {}
 }
 
 /**
- * @access private
+ * @access public
  */
 export class Success&lt;T&gt; extends Result&lt;T&gt; {}
 
 /**
- * @access private
+ * @access public
  */
 export class Failure&lt;T&gt; extends Result&lt;T&gt; {
     constructor(value: T, public readonly description: string) {
@@ -74,29 +78,89 @@ export class Failure&lt;T&gt; extends Result&lt;T&gt; {
 }
 
 /**
- * @access private
+ * @access public
  */
-export class SingleConditionPredicate&lt;T&gt; implements Predicate&lt;T&gt; {
-    static to&lt;V&gt;(description: string, condition: (value: V) =&gt; boolean) {
-        return new SingleConditionPredicate(description, condition);
+export type Condition&lt;T&gt; = (value: T) =&gt; boolean;
+
+/**
+ * @desc Describes a {@link Condition} that the `value` should meet.
+ *
+ * To define a custom predicate to be used with the {@link check} function
+ * you can either extend the {@link Predicate}, or use the {@link Predicate.to} factory method.
+ *
+ * @example &lt;caption&gt;Assuming we&apos;d like to create an isDefined() predicate:&lt;/caption&gt;
+ * check(`some value`, value, isDefined());
+ *
+ * @example &lt;caption&gt;We can either use the Predicate.to factory method:&lt;/caption&gt;
+ *
+ * import { Predicate } from &apos;tiny-types&apos;;
+ *
+ * function isDefined&lt;T&gt;(): Predicate&lt;T&gt; {
+ *     return Predicate.to(`be defined`, (value: T) =&gt;
+ *         ! (value === null || value === undefined),
+ *     );
+ * }
+ *
+ * @example &lt;caption&gt;or extend the Predicate itself&lt;/caption&gt;
+ *
+ * import { Predicate, Result, Success, Failure } from &apos;tiny-types&apos;;
+ *
+ * function isDefined&lt;T&gt;() {
+ *   return new IsDefined&lt;T&gt;();
+ * }
+ *
+ * class IsDefined&lt;T&gt; extends Predicate&lt;T&gt; {
+ *     check(value: T): Result&lt;T&gt; {
+ *       return ! (value === null || value === undefined)
+ *         ? new Success(value)
+ *         : new Failure(value, `be defined`);
+ *     }
+ * }
+ *
+ * @access public
+ */
+export abstract class Predicate&lt;T&gt; {
+
+    /**
+     * @desc A factory method instantiating a single-condition predicate.
+     * You can use it instead of extending the {Predicate} to save some keystrokes.
+     *
+     * @example
+     * Predicate.to(`be defined`, (value: T) =&gt; ! (value === null || value === undefined));
+     *
+     * @param {string} description     - The description of the condition is used by {@link check} to generate the error
+     *                                   message. The description should be similar to`be defined`,
+     *                                   `be less than some value` for the error message to make sense.
+     * @param {Condition&lt;V&gt;} condition - a function that takes a value of type `V` and returns a boolean
+     *                                   indicating whether or not the condition is met. For example:
+     *                                   `(value: V) =&gt; !! value`
+     * @returns {Predicate&lt;V&gt;}
+     *
+     * @static
+     */
+    static to&lt;V&gt;(description: string, condition: Condition&lt;V&gt;): Predicate&lt;V&gt; {
+        return new SingleConditionPredicate&lt;V&gt;(description, condition);
     }
 
-    constructor(private readonly description: string,
-                private readonly isMetBy: (value: T) =&gt; boolean,
-    ) {}
+    abstract check(value: T): Result&lt;T&gt;;
+}
 
+/**
+ * @access private
+ */
+class SingleConditionPredicate&lt;T&gt; extends Predicate&lt;T&gt; {
+    constructor(private readonly description: string,
+                private readonly isMetBy: Condition&lt;T&gt;,
+    ) {
+        super();
+    }
+
+    /** @override */
     check(value: T): Result&lt;T&gt; {
         return this.isMetBy(value)
             ? new Success(value)
             : new Failure(value, this.description);
     }
-}
-
-/**
- * @access public
- */
-export interface Predicate&lt;T&gt; {
-    check(value: T): Result&lt;T&gt;;
 }
 </code></pre>
 

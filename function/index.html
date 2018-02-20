@@ -35,7 +35,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Success.html">Success</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span></li>
@@ -100,13 +104,13 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span><span class="code" data-ice="signature">(predicates: <span>...Array</span>&lt;<span>Predicate</span>&lt;<span>T</span>&gt;&gt;): <span>Predicate</span>&lt;<span>T</span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span><span class="code" data-ice="signature">(predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> meets all the provided <span>Predicate</span>s.</p>
+        <div data-ice="description"><p>Checks if the <code>value</code> meets all the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
       </div>
     </td>
@@ -129,7 +133,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span>Predicate</span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
         </p>
       </div>
       <div>
@@ -158,7 +162,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span><span class="code" data-ice="signature">(expectedLength: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span><span class="code" data-ice="signature">(expectedLength: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span>
         </p>
       </div>
       <div>
@@ -187,7 +191,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span><span class="code" data-ice="signature">(): <span>Predicate</span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -216,7 +220,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span><span class="code" data-ice="signature">(): <span>Predicate</span>&lt;<span>T</span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -245,7 +249,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isEqualTo">isEqualTo</a></span></span><span class="code" data-ice="signature">(expectedValue: <span>string </span> | <span> number </span> | <span> symbol </span> | <span> TinyType </span> | <span> object</span>): <span>Predicate</span>&lt;<span>any</span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isEqualTo">isEqualTo</a></span></span><span class="code" data-ice="signature">(expectedValue: <span>string </span> | <span> number </span> | <span> symbol </span> | <span> TinyType </span> | <span> object</span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>any</span>&gt;</span>
         </p>
       </div>
       <div>
@@ -274,7 +278,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isGreaterThan">isGreaterThan</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isGreaterThan">isGreaterThan</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -303,7 +307,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isGreaterThanOrEqualTo">isGreaterThanOrEqualTo</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isGreaterThanOrEqualTo">isGreaterThanOrEqualTo</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -332,7 +336,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isInRange">isInRange</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isInRange">isInRange</a></span></span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -361,7 +365,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span><span class="code" data-ice="signature">(): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -390,7 +394,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -419,7 +423,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
         </p>
       </div>
       <div>
@@ -476,13 +480,13 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span><span class="code" data-ice="signature">(predicates: <span>Predicate</span>&lt;<span>T</span>&gt;): <span>Predicate</span>&lt;<span>T</span>&gt;</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span><span class="code" data-ice="signature">(predicates: <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> meets at least one of the provided <span>Predicate</span>s.</p>
+        <div data-ice="description"><p>Checks if the <code>value</code> meets at least one of the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
       </div>
     </td>
@@ -581,7 +585,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
     
     
     
-    <span class="code" data-ice="name">and</span><span class="code" data-ice="signature">(predicates: <span>...Array</span>&lt;<span>Predicate</span>&lt;<span>T</span>&gt;&gt;): <span>Predicate</span>&lt;<span>T</span>&gt;</span>
+    <span class="code" data-ice="name">and</span><span class="code" data-ice="signature">(predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
     <span class="right-info">
       
       
@@ -592,7 +596,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {and} from &apos;<span><a href="file/src/predicates/and.ts.html#lineNumber30">tiny-types/lib/predicates/and</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> meets all the provided <span>Predicate</span>s.</p>
+  <div data-ice="description"><p>Checks if the <code>value</code> meets all the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
 
   
@@ -607,7 +611,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">predicates</td>
-      <td data-ice="type" class="code"><span>...Array</span>&lt;<span>Predicate</span>&lt;<span>T</span>&gt;&gt;</td>
+      <td data-ice="type" class="code"><span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;</td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -621,7 +625,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span>T</span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</td>
           
         </tr>
       </tbody>
@@ -672,7 +676,7 @@ class AgeInYears extends TinyType {
     
     
     
-    <span class="code" data-ice="name">check</span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span>Predicate</span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
+    <span class="code" data-ice="name">check</span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
     <span class="right-info">
       
       
@@ -713,7 +717,7 @@ class AgeInYears extends TinyType {
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">predicates</td>
-      <td data-ice="type" class="code"><span>...Array</span>&lt;<span>Predicate</span>&lt;<span>T</span>&gt;&gt;</td>
+      <td data-ice="type" class="code"><span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;</td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>a list of predicates to check the value against</p>
 </td>
@@ -787,7 +791,7 @@ class Age extends TinyType {
     
     
     
-    <span class="code" data-ice="name">hasLengthOf</span><span class="code" data-ice="signature">(expectedLength: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span></span>
+    <span class="code" data-ice="name">hasLengthOf</span><span class="code" data-ice="signature">(expectedLength: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span>
     <span class="right-info">
       
       
@@ -828,7 +832,7 @@ Applies to <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScrip
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span></td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></td>
           
         </tr>
       </tbody>
@@ -893,7 +897,7 @@ class Username extends TinyType {
     
     
     
-    <span class="code" data-ice="name">isArray</span><span class="code" data-ice="signature">(): <span>Predicate</span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
+    <span class="code" data-ice="name">isArray</span><span class="code" data-ice="signature">(): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><span>T</span><span>[]</span></span>&gt;</span>
     <span class="right-info">
       
       
@@ -917,7 +921,7 @@ class Username extends TinyType {
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span><span>T</span><span>[]</span></span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><span>T</span><span>[]</span></span>&gt;</td>
           
         </tr>
       </tbody>
@@ -971,7 +975,7 @@ class Names extends TinyType {
     
     
     
-    <span class="code" data-ice="name">isDefined</span><span class="code" data-ice="signature">(): <span>Predicate</span>&lt;<span>T</span>&gt;</span>
+    <span class="code" data-ice="name">isDefined</span><span class="code" data-ice="signature">(): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
     <span class="right-info">
       
       
@@ -995,7 +999,7 @@ class Names extends TinyType {
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span>T</span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</td>
           
         </tr>
       </tbody>
@@ -1046,7 +1050,7 @@ class Name extends TinyType {
     
     
     
-    <span class="code" data-ice="name">isEqualTo</span><span class="code" data-ice="signature">(expectedValue: <span>string </span> | <span> number </span> | <span> symbol </span> | <span> TinyType </span> | <span> object</span>): <span>Predicate</span>&lt;<span>any</span>&gt;</span>
+    <span class="code" data-ice="name">isEqualTo</span><span class="code" data-ice="signature">(expectedValue: <span>string </span> | <span> number </span> | <span> symbol </span> | <span> TinyType </span> | <span> object</span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>any</span>&gt;</span>
     <span class="right-info">
       
       
@@ -1058,7 +1062,7 @@ class Name extends TinyType {
   
   
   <div data-ice="description"><p>Checks if the <code>value</code> is equal to <code>expectedValue</code>.
-This <span>Predicate</span> is typically used in combination with other <span>Predicate</span>s.</p>
+This <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span> is typically used in combination with other <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
 
   
@@ -1087,7 +1091,7 @@ This <span>Predicate</span> is typically used in combination with other <span>Pr
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span>any</span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>any</span>&gt;</td>
           
         </tr>
       </tbody>
@@ -1155,7 +1159,7 @@ class Admin extends TinyType {
     
     
     
-    <span class="code" data-ice="name">isGreaterThan</span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+    <span class="code" data-ice="name">isGreaterThan</span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
     <span class="right-info">
       
       
@@ -1195,7 +1199,7 @@ class Admin extends TinyType {
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
           
         </tr>
       </tbody>
@@ -1246,7 +1250,7 @@ class AgeInYears extends TinyType {
     
     
     
-    <span class="code" data-ice="name">isGreaterThanOrEqualTo</span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+    <span class="code" data-ice="name">isGreaterThanOrEqualTo</span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
     <span class="right-info">
       
       
@@ -1286,7 +1290,7 @@ class AgeInYears extends TinyType {
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
           
         </tr>
       </tbody>
@@ -1337,7 +1341,7 @@ class AgeInYears extends TinyType {
     
     
     
-    <span class="code" data-ice="name">isInRange</span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+    <span class="code" data-ice="name">isInRange</span><span class="code" data-ice="signature">(lowerBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
     <span class="right-info">
       
       
@@ -1383,7 +1387,7 @@ class AgeInYears extends TinyType {
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
           
         </tr>
       </tbody>
@@ -1435,7 +1439,7 @@ class InvestmentLengthInYears extends TinyType {
     
     
     
-    <span class="code" data-ice="name">isInteger</span><span class="code" data-ice="signature">(): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+    <span class="code" data-ice="name">isInteger</span><span class="code" data-ice="signature">(): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
     <span class="right-info">
       
       
@@ -1459,7 +1463,7 @@ class InvestmentLengthInYears extends TinyType {
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
           
         </tr>
       </tbody>
@@ -1510,7 +1514,7 @@ class AgeInYears extends TinyType {
     
     
     
-    <span class="code" data-ice="name">isLessThan</span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+    <span class="code" data-ice="name">isLessThan</span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
     <span class="right-info">
       
       
@@ -1550,7 +1554,7 @@ class AgeInYears extends TinyType {
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
           
         </tr>
       </tbody>
@@ -1601,7 +1605,7 @@ class InvestmentPeriodInYears extends TinyType {
     
     
     
-    <span class="code" data-ice="name">isLessThanOrEqualTo</span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
+    <span class="code" data-ice="name">isLessThanOrEqualTo</span><span class="code" data-ice="signature">(upperBound: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</span>
     <span class="right-info">
       
       
@@ -1641,7 +1645,7 @@ class InvestmentPeriodInYears extends TinyType {
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
           
         </tr>
       </tbody>
@@ -1769,7 +1773,7 @@ class InvestmentPeriod extends TinyType {
     
     
     
-    <span class="code" data-ice="name">or</span><span class="code" data-ice="signature">(predicates: <span>Predicate</span>&lt;<span>T</span>&gt;): <span>Predicate</span>&lt;<span>T</span>&gt;</span>
+    <span class="code" data-ice="name">or</span><span class="code" data-ice="signature">(predicates: <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
     <span class="right-info">
       
       
@@ -1780,7 +1784,7 @@ class InvestmentPeriod extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {or} from &apos;<span><a href="file/src/predicates/or.ts.html#lineNumber30">tiny-types/lib/predicates/or</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> meets at least one of the provided <span>Predicate</span>s.</p>
+  <div data-ice="description"><p>Checks if the <code>value</code> meets at least one of the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
 
   
@@ -1795,7 +1799,7 @@ class InvestmentPeriod extends TinyType {
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">predicates</td>
-      <td data-ice="type" class="code"><span>Predicate</span>&lt;<span>T</span>&gt;</td>
+      <td data-ice="type" class="code"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1809,7 +1813,7 @@ class InvestmentPeriod extends TinyType {
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Predicate</span>&lt;<span>T</span>&gt;</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</td>
           
         </tr>
       </tbody>
