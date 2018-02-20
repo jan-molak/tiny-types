@@ -260,7 +260,7 @@ Have feedback? Let me know on twitter: [@JanMolak](https://twitter.com/JanMolak)
 
 ## License
 
-TinyTypes library is licensed under the [Apache-2.0](LICENSE.md) license.
+TinyTypes library is licensed under the [Apache-2.0](https://github.com/jan-molak/tiny-types/blob/master/LICENSE.md) license.
 
 ----
 
