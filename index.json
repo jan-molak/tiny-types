@@ -2310,7 +2310,7 @@
     "__docId__": 130,
     "kind": "file",
     "name": "src/predicates/index.ts",
-    "content": "export * from './and';\nexport * from './hasLengthOf';\nexport * from './isArray';\nexport * from './isDefined';\nexport * from './isEqualTo';\nexport * from './isGreaterThan';\nexport * from './isGreaterThanOrEqualTo';\nexport * from './isInteger';\nexport * from './isLessThan';\nexport * from './isLessThanOrEqualTo';\nexport * from './or';\nexport * from './Predicate';\n",
+    "content": "export * from './and';\nexport * from './hasLengthOf';\nexport * from './isArray';\nexport * from './isDefined';\nexport * from './isEqualTo';\nexport * from './isGreaterThan';\nexport * from './isGreaterThanOrEqualTo';\nexport * from './isInRange';\nexport * from './isInteger';\nexport * from './isLessThan';\nexport * from './isLessThanOrEqualTo';\nexport * from './or';\nexport * from './Predicate';\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/src/predicates/index.ts",
     "access": "public",
@@ -4048,7 +4048,7 @@
     "__docId__": 236,
     "kind": "testFile",
     "name": "spec/predicates/isEqualTo.spec.ts",
-    "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { check, isEqualTo, TinyType, TinyTypeOf } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isEqualTo} */\n    describe('::isEqualTo', () => {\n\n        /** @test {isEqualTo} */\n        describe('when working with Tiny Types', () => {\n\n            class AccountId         extends TinyTypeOf<number>() {}\n            class Command           extends TinyTypeOf<AccountId>() {}\n            class UpgradeAccount    extends Command {}\n\n            class AccountsService {\n                constructor(public readonly loggedInUser: AccountId) {}\n                handle(command: Command) {\n                    check('AccountId', command.value, isEqualTo(this.loggedInUser));\n                }\n            }\n\n            it('ensures that objects are identical by value', () => {\n                const loggedInUser      = new AccountId(42);\n                const accounts          = new AccountsService(loggedInUser);\n\n                const upgradeOwnAccount = new UpgradeAccount(loggedInUser);\n\n                expect(accounts.handle(upgradeOwnAccount)).to.not.throw;     // tslint:disable-line:no-unused-expression\n            });\n\n            it('complains if the objects are not identical by value', () => {\n                const hacker            = new AccountId(666);\n                const anotherUser       = new AccountId(42);\n                const accounts          = new AccountsService(hacker);\n\n                const upgradeAnotherAccount = new UpgradeAccount(anotherUser);\n\n                expect(() => accounts.handle(upgradeAnotherAccount))\n                    .to.throw('AccountId should be equal to AccountId(value=666)');\n            });\n        });\n\n        /** @test {isEqualTo} */\n        describe('when working with primitive types', () => {\n\n            given(\n                null,\n                undefined,\n                Infinity,\n                1,\n                false,\n                'string',\n                {},\n                [],\n            ).\n            it('ensures they are equal', (value: any) => {\n                expect(check('Val', value, isEqualTo(value))).to.not.throw;  // tslint:disable-line:no-unused-expression\n            });\n\n            given(\n                1,\n                false,\n                'string',\n                {},\n                [],\n            ).\n            it('complains if they are not equal', (value: any) => {\n                expect(() => check('Value', value, isEqualTo('expected value')))\n                    .to.throw('Value should be equal to expected value');\n            });\n        });\n    });\n});\n",
+    "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { check, isEqualTo, TinyTypeOf } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isEqualTo} */\n    describe('::isEqualTo', () => {\n\n        /** @test {isEqualTo} */\n        describe('when working with Tiny Types', () => {\n\n            class AccountId         extends TinyTypeOf<number>() {}\n            class Command           extends TinyTypeOf<AccountId>() {}\n            class UpgradeAccount    extends Command {}\n\n            class AccountsService {\n                constructor(public readonly loggedInUser: AccountId) {}\n                handle(command: Command) {\n                    check('AccountId', command.value, isEqualTo(this.loggedInUser));\n                }\n            }\n\n            it('ensures that objects are identical by value', () => {\n                const loggedInUser      = new AccountId(42);\n                const accounts          = new AccountsService(loggedInUser);\n\n                const upgradeOwnAccount = new UpgradeAccount(loggedInUser);\n\n                expect(accounts.handle(upgradeOwnAccount)).to.not.throw;     // tslint:disable-line:no-unused-expression\n            });\n\n            it('complains if the objects are not identical by value', () => {\n                const hacker            = new AccountId(666);\n                const anotherUser       = new AccountId(42);\n                const accounts          = new AccountsService(hacker);\n\n                const upgradeAnotherAccount = new UpgradeAccount(anotherUser);\n\n                expect(() => accounts.handle(upgradeAnotherAccount))\n                    .to.throw('AccountId should be equal to AccountId(value=666)');\n            });\n        });\n\n        /** @test {isEqualTo} */\n        describe('when working with primitive types', () => {\n\n            given(\n                null,\n                undefined,\n                Infinity,\n                1,\n                false,\n                'string',\n                {},\n                [],\n            ).\n            it('ensures they are equal', (value: any) => {\n                expect(check('Val', value, isEqualTo(value))).to.not.throw;  // tslint:disable-line:no-unused-expression\n            });\n\n            given(\n                1,\n                false,\n                'string',\n                {},\n                [],\n            ).\n            it('complains if they are not equal', (value: any) => {\n                expect(() => check('Value', value, isEqualTo('expected value')))\n                    .to.throw('Value should be equal to expected value');\n            });\n        });\n    });\n});\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/spec/predicates/isEqualTo.spec.ts",
     "access": null,
@@ -4265,7 +4265,7 @@
     "__docId__": 252,
     "kind": "testFile",
     "name": "spec/predicates/isInRange.spec.ts",
-    "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { check, TinyType } from '../../src';\nimport { expect } from '../expect';\nimport { isInRange } from '../../src/predicates/isInRange';\n\ndescribe('predicates', () => {\n\n    /** @test {isInRange} */\n    describe('::isInRange', () => {\n\n        class InvestmentLength extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n\n                check('InvestmentLength', value, isInRange(1, 5));\n            }\n        }\n\n        given(1, 2, 3, 4, 5).\n        it('ensures that the value is within the range specified', (value: number) => {\n            expect(new InvestmentLength(value)).to.not.throw;                // tslint:disable-line:no-unused-expression\n        });\n\n        it('complains if the value is lower than the lower bound', () => {\n            expect(() => new InvestmentLength(0))\n                .to.throw(`InvestmentLength should either be equal to 1 or be greater than 1`);\n        });\n\n        it('complains if the value is greater than the upper bound', () => {\n            expect(() => new InvestmentLength(6))\n                .to.throw(`InvestmentLength should either be less than 5 or be equal to 5`);\n        });\n\n        given(\n            undefined,\n            null,\n            {},\n            false,\n        ).\n        it('complains if the value is of a wrong type', (value: any) => {\n            expect(() => new InvestmentLength(value))\n                .to.throw(`InvestmentLength should either be equal to 1 or be greater than 1`);\n        });\n    });\n});\n",
+    "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { check, isInRange, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isInRange} */\n    describe('::isInRange', () => {\n\n        class InvestmentLength extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n\n                check('InvestmentLength', value, isInRange(1, 5));\n            }\n        }\n\n        given(1, 2, 3, 4, 5).\n        it('ensures that the value is within the range specified', (value: number) => {\n            expect(new InvestmentLength(value)).to.not.throw;                // tslint:disable-line:no-unused-expression\n        });\n\n        it('complains if the value is lower than the lower bound', () => {\n            expect(() => new InvestmentLength(0))\n                .to.throw(`InvestmentLength should either be equal to 1 or be greater than 1`);\n        });\n\n        it('complains if the value is greater than the upper bound', () => {\n            expect(() => new InvestmentLength(6))\n                .to.throw(`InvestmentLength should either be less than 5 or be equal to 5`);\n        });\n\n        given(\n            undefined,\n            null,\n            {},\n            false,\n        ).\n        it('complains if the value is of a wrong type', (value: any) => {\n            expect(() => new InvestmentLength(value))\n                .to.throw(`InvestmentLength should either be equal to 1 or be greater than 1`);\n        });\n    });\n});\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/spec/predicates/isInRange.spec.ts",
     "access": null,
@@ -4283,7 +4283,7 @@
     "longname": "spec/predicates/isInRange.spec.ts~describe81",
     "access": null,
     "description": "predicates",
-    "lineNumber": 6
+    "lineNumber": 5
   },
   {
     "__docId__": 254,
@@ -4296,7 +4296,7 @@
     "longname": "spec/predicates/isInRange.spec.ts~describe81.describe82",
     "access": null,
     "description": "::isInRange",
-    "lineNumber": 8,
+    "lineNumber": 7,
     "testTargets": [
       "isInRange"
     ]
@@ -4312,7 +4312,7 @@
     "longname": "spec/predicates/isInRange.spec.ts~describe81.describe82.it83",
     "access": null,
     "description": "complains if the value is lower than the lower bound",
-    "lineNumber": 26
+    "lineNumber": 25
   },
   {
     "__docId__": 256,
@@ -4325,7 +4325,7 @@
     "longname": "spec/predicates/isInRange.spec.ts~describe81.describe82.it84",
     "access": null,
     "description": "complains if the value is greater than the upper bound",
-    "lineNumber": 30
+    "lineNumber": 29
   },
   {
     "__docId__": 257,

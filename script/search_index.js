@@ -445,7 +445,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber6",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -637,19 +637,19 @@ window.esdocSearchIndex = [
   ],
   [
     "isinrange src/predicates/isinrange.ts~isinrange,isinrange",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber8",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber7",
     "predicates ::isInRange",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber30",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber29",
     "predicates ::isInRange complains if the value is greater than the upper bound",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber26",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber25",
     "predicates ::isInRange complains if the value is lower than the lower bound",
     "test"
   ],
