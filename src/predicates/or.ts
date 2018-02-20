@@ -23,9 +23,11 @@ export function or<T>(...predicates: Array<Predicate<T>>): Predicate<T> {
 }
 
 /** @access private */
-class Or<T> implements Predicate<T> {
+class Or<T> extends Predicate<T> {
 
     constructor(private readonly predicates: Array<Predicate<T>>) {
+        super();
+
         if ([
                 _ => isDefined().check(_),
                 _ => isArray().check(_),
@@ -36,6 +38,7 @@ class Or<T> implements Predicate<T> {
         }
     }
 
+    /** @override */
     check(value: T): Result<T> {
         const results    = this.predicates.map(predicate => predicate.check(value));
         const anySuccess = results.some(result => result instanceof Success);

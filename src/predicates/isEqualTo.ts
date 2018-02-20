@@ -1,5 +1,5 @@
 import { TinyType } from '../TinyType';
-import { Predicate, SingleConditionPredicate } from './Predicate';
+import { Predicate } from './Predicate';
 
 export function isEqualTo(expectedValue: TinyType): Predicate<TinyType>;
 export function isEqualTo<T>(expectedValue: T): Predicate<T>;
@@ -35,7 +35,7 @@ export function isEqualTo<T>(expectedValue: T): Predicate<T>;
  * @returns {Predicate<any>}
  */
 export function isEqualTo(expectedValue: any): Predicate<any> {
-    return SingleConditionPredicate.to(`be equal to ${ expectedValue }`, (value: any) =>
+    return Predicate.to(`be equal to ${ expectedValue }`, (value: any) =>
         (!! value && value.equals && expectedValue && expectedValue.equals)
             ? value.equals(expectedValue)
             : value === expectedValue,

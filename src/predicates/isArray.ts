@@ -1,4 +1,4 @@
-import { Predicate, SingleConditionPredicate } from './Predicate';
+import { Predicate } from './Predicate';
 
 /**
  * @desc Checks if the `value` is an {@link Array}.
@@ -18,5 +18,5 @@ import { Predicate, SingleConditionPredicate } from './Predicate';
  * @returns {Predicate<T[]>}
  */
 export function isArray<T>(): Predicate<T[]> {
-    return SingleConditionPredicate.to(`be an array`, (value: T[]) => Array.isArray(value));
+    return Predicate.to(`be an array`, (value: T[]) => Array.isArray(value));
 }

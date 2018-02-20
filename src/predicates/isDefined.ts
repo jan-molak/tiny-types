@@ -1,4 +1,4 @@
-import { Predicate, SingleConditionPredicate } from './Predicate';
+import { Predicate } from './Predicate';
 
 /**
  * @desc Checks if the `value` is defined as anything other than {@link null} or {@link undefined}.
@@ -15,7 +15,7 @@ import { Predicate, SingleConditionPredicate } from './Predicate';
  * @returns {Predicate<T>}
  */
 export function isDefined<T>(): Predicate<T> {
-    return SingleConditionPredicate.to(`be defined`, (value: T) =>
+    return Predicate.to(`be defined`, (value: T) =>
         ! (value === null || value === undefined),
     );
 }

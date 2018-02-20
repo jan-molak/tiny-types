@@ -1,4 +1,4 @@
-import { Predicate, SingleConditionPredicate } from './Predicate';
+import { Predicate } from './Predicate';
 
 export interface HasLength { length: number; }
 
@@ -32,7 +32,7 @@ export interface HasLength { length: number; }
 export function hasLengthOf(expectedLength: number): Predicate<HasLength> {
     const actualLengthOf = (value: HasLength) => (!! value && value.length);
 
-    return SingleConditionPredicate.to(`have a length of ${ expectedLength }`, (value: HasLength) =>
+    return Predicate.to(`have a length of ${ expectedLength }`, (value: HasLength) =>
         actualLengthOf(value) === expectedLength,
     );
 }

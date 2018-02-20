@@ -23,9 +23,11 @@ export function and<T>(...predicates: Array<Predicate<T>>): Predicate<T> {
 }
 
 /** @access private */
-class And<T> implements Predicate<T> {
+class And<T> extends Predicate<T> {
 
     constructor(private readonly predicates: Array<Predicate<T>>) {
+        super();
+
         if ([
                 _ => isDefined().check(_),
                 _ => isArray().check(_),
@@ -36,6 +38,7 @@ class And<T> implements Predicate<T> {
         }
     }
 
+    /** @override */
     check(value: T): Result<T> {
         const firstUnmet = this.predicates
             .map(predicate => predicate.check(value))

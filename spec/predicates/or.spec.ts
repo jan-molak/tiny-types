@@ -3,7 +3,6 @@ import { given } from 'mocha-testdata';
 
 import { check, isDefined, isEqualTo, isGreaterThan, isInteger, isLessThan, or, TinyType } from '../../src';
 import { expect } from '../expect';
-import { Failure } from '../../src/predicates';
 
 describe('predicates', () => {
 

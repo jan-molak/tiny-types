@@ -1,4 +1,4 @@
-import { Predicate, SingleConditionPredicate } from './Predicate';
+import { Predicate } from './Predicate';
 
 /**
  * @desc Checks if the `value` is less than the `upperBound`.
@@ -16,7 +16,7 @@ import { Predicate, SingleConditionPredicate } from './Predicate';
  * @returns {Predicate<number>}
  */
 export function isLessThan(upperBound: number): Predicate<number> {
-    return SingleConditionPredicate.to(`be less than ${ upperBound }`, (value: number) =>
+    return Predicate.to(`be less than ${ upperBound }`, (value: number) =>
         typeof value === 'number' &&
         isFinite(value) &&
         value < upperBound,
