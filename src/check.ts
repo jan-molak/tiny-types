@@ -1,4 +1,4 @@
-import { Failure, isArray, isDefined, isGreaterThan, Predicate } from './predicates';
+import { and, Failure, isArray, isDefined, isGreaterThan, Predicate } from './predicates';
 
 /**
  * @desc The `check` function verifies if the value meets the specified {Predicate}s.
@@ -25,22 +25,11 @@ import { Failure, isArray, isDefined, isGreaterThan, Predicate } from './predica
  * @returns {T} - if the original value passes all the predicates, it's returned from the function
  */
 export function check<T>(name: string, value: T, ...predicates: Array<Predicate<T>>): T {
-    if ([
-            _ => isDefined().check(_),
-            _ => isArray().check(_),
-            _ => isGreaterThan(0).check(_.length),
-        ].some(c => c(predicates) instanceof Failure)
-    ) {
-        throw new Error(`Looks like you haven't specified any predicates to check the value of ${name} against?`);
+    const result = and(...predicates).check(value);
+
+    if (result instanceof Failure) {
+        throw new Error(`${ name } should ${ result.description }`);
     }
 
-    const firstUnmet = predicates
-        .map(predicate => predicate.check(value))
-        .find(result => result instanceof Failure) as Failure<T>;
-
-    if (!! firstUnmet) {
-        throw new Error(`${ name } should ${ firstUnmet.description }`);
-    }
-
-    return value;
+    return result.value;
 }
