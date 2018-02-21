@@ -78,7 +78,7 @@
       "lib",
       "node_modules",
       "spec",
-      "src/types.ts"
+      "src/types"
     ],
     "extension": [
       ".ts"

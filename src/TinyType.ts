@@ -1,4 +1,4 @@
-import { JSONValue } from './types';
+import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
 
 /**
  * @desc The {@link TinyTypeOf} can be used to define simple
@@ -41,7 +41,7 @@ export function TinyTypeOf<T>(): { new(_: T): { value: T } & TinyType } {
  *   }
  * }
  */
-export abstract class TinyType {
+export abstract class TinyType implements Serialisable {
 
     /**
      * @desc Compares two tiny types by value
@@ -131,18 +131,19 @@ export abstract class TinyType {
      * person.toJSON() === { firstName: 'John', lastName: 'Smith', age: 42 }
      *
      * @returns {JSONValue}
+     *
+     * @todo should also serialise arrays
      */
-    // todo: serialise arrays
-    toJSON(): JSONValue {
+    toJSON(): JSONObject | NonNullJSONPrimitive {
         const isPrimitive = (value: any) => Object(value) !== value;
-        function toJSON(value: any) {
+        function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
             switch (true) {
                 case value && !! value.toJSON:
                     return value.toJSON();
                 case value && ! isPrimitive(value):
                     return JSON.stringify(value);
                 default:
-                    return value;
+                    return value;       // todo: could this ever be a null?
             }
         }
 
@@ -155,7 +156,7 @@ export abstract class TinyType {
         return fields.reduce((acc, field) => {
             acc[field] = toJSON(this[field]);
             return acc;
-        }, {});
+        }, {}) as Serialised<this>;
     }
 
     /**
