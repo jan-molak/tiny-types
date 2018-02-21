@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/TinyType.ts | tiny-types</title>
+  <title data-ice="title">spec/serialisation.spec.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -55,178 +55,121 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/TinyType.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from &apos;./types&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">spec/serialisation.spec.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+import { TinyType, TinyTypeOf } from &apos;../src&apos;;
+import { JSONObject, Serialised } from &apos;../src/types&apos;;
+import { expect } from &apos;./expect&apos;;
 
-/**
- * @desc The {@link TinyTypeOf} can be used to define simple
- * single-value {@link TinyType}s on a single line.
- *
- * @experimental
- *
- * @example
- * class Username extends TinyTypeOf&lt;string&gt;() {}
- *
- * @example
- * class Age extends TinyTypeOf&lt;number&gt;() {}
- *
- * @returns a dynamically created base class your tiny type can extend from
- */
-export function TinyTypeOf&lt;T&gt;(): { new(_: T): { value: T } &amp; TinyType } {
-    return class extends TinyType {
-        constructor(public readonly value: T) {
-            super();
-        }
-    };
-}
+describe(&apos;Serialisation&apos;, () =&gt; {
 
-/**
- * @desc The {@link TinyType} abstract class should be used as a base class for your own Tiny Types.
- *
- * If you want the Tiny Type to wrap a single value use the {@link TinyTypeOf} instead as it will save you some keystrokes.
- *
- * @example
- * class FirstName extends TinyTypeOf&lt;string&gt;() {}
- * class LastName  extends TinyTypeOf&lt;string&gt;() {}
- * class Age       extends TinyTypeOf&lt;number&gt;() {}
- *
- * class Person extends TinyType {
- *   constructor(public readonly firstName: FirstName,
- *               public readonly lastName:  LastName,
- *               public readonly age:       Age,
- *   ) {
- *     super();
- *   }
- * }
- */
-export abstract class TinyType implements Serialisable {
+    describe(&apos;of TinyTypes wrapping several primitive values&apos;, () =&gt; {
 
-    /**
-     * @desc Compares two tiny types by value
-     *
-     * @example &lt;caption&gt;Comparing simple types&lt;/caption&gt;
-     * class Id extends TinyTypeOf&lt;string&gt;() {}
-     *
-     * const id = new Id(`3cc0852d-fda7-4f61-874e-0cfadbd6182a`);
-     *
-     * id.equals(id) === true
-     *
-     * @example &lt;caption&gt;Comparing complex types recursively&lt;/caption&gt;
-     * class FirstName extends TinyTypeOf&lt;string&gt;() {}
-     * class LastName  extends TinyTypeOf&lt;string&gt;() {}
-     * class Age       extends TinyTypeOf&lt;number&gt;() {}
-     *
-     * class Person extends TinyType {
-     *   constructor(public readonly firstName: FirstName,
-     *               public readonly lastName:  LastName,
-     *               public readonly age:       Age,
-     *   ) {
-     *     super();
-     *   }
-     * }
-     *
-     * const p1 = new Person(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42)),
-     *       p2 = new Person(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42));
-     *
-     * p1.equals(p2) === true
-     *
-     * @param {TinyType} another
-     * @returns {boolean}
-     */
-    equals(another: TinyType) {
-        if (another === this) {
-            return true;
-        }
+        class Person extends TinyType {
+            public role: string = &apos;dev&apos;;
 
-        if (! (another instanceof this.constructor)) {
-            return false;
-        }
+            static fromJSON(o: Serialised&lt;Person&gt;): Person {
+                return new Person(o.firstName as string, o.lastName as string, o.age as number);
+            }
 
-        return this.significantFields().reduce((previousFieldsAreEqual: boolean, field: string) =&gt; {
+            constructor(public readonly firstName: string, public readonly lastName: string, public readonly age: number) {
+                super();
+            }
 
-            const currentFieldIsEqual = (this[field].equals
-                ? this[field].equals(another[field])
-                : this[field] === another[field]);
-
-            return previousFieldsAreEqual &amp;&amp; currentFieldIsEqual;
-        }, true);
-    }
-
-    toString() {
-        const fields = this.significantFields().reduce((acc: string[], field: string) =&gt; {
-            return acc.concat(`${field}=${this[field]}`);
-        }, []);
-
-        return `${this.constructor.name}(${fields.join(&apos;, &apos;)})`;
-    }
-
-    /**
-     * @desc Serialises the object to a JSON representation.
-     *
-     * @example
-     * class FirstName extends TinyTypeOf&lt;string&gt;() {}
-     *
-     * const name = new FirstName(&apos;Jan&apos;);
-     *
-     * name.toJSON() === &apos;Jan&apos;
-     *
-     * @example
-     * class FirstName extends TinyTypeOf&lt;string&gt;() {}
-     * class LastName  extends TinyTypeOf&lt;string&gt;() {}
-     * class Age       extends TinyTypeOf&lt;number&gt;() {}
-     *
-     * class Person extends TinyType {
-     *   constructor(public readonly firstName: FirstName,
-     *               public readonly lastName:  LastName,
-     *               public readonly age:       Age,
-     *   ) {
-     *     super();
-     *   }
-     * }
-     *
-     * const person = new Person(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42)),
-     *
-     * person.toJSON() === { firstName: &apos;John&apos;, lastName: &apos;Smith&apos;, age: 42 }
-     *
-     * @returns {JSONValue}
-     *
-     * @todo should also serialise arrays
-     */
-    toJSON(): JSONObject | NonNullJSONPrimitive {
-        const isPrimitive = (value: any) =&gt; Object(value) !== value;
-        function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
-            switch (true) {
-                case value &amp;&amp; !! value.toJSON:
-                    return value.toJSON();
-                case value &amp;&amp; ! isPrimitive(value):
-                    return JSON.stringify(value);
-                default:
-                    return value;       // todo: could this ever be a null?
+            speak() {
+                return `Hi, I&apos;m ${this.firstName} ${this.lastName}`;
             }
         }
 
-        const fields = this.significantFields();
+        it(&apos;uses only the significant fields and retains their type&apos;, () =&gt; {
+            const p = new Person(&apos;John&apos;, &apos;Smith&apos;, 42);
+            const serialised = p.toJSON() as Serialised&lt;Person&gt;;
 
-        if (fields.length === 1) {
-            return toJSON(this[fields[0]]);
+            expect(Object.keys(serialised)).to.include.ordered.members([&apos;age&apos;, &apos;firstName&apos;, &apos;lastName&apos;, &apos;role&apos;]);
+            expect(Object.keys(serialised)).to.not.include.members([&apos;speak&apos;, &apos;toJSON&apos;, &apos;toString&apos;]);
+
+            expect(serialised.age).to.be.a(&apos;number&apos;);
+            expect(serialised.firstName).to.be.a(&apos;string&apos;);
+            expect(serialised.lastName).to.be.a(&apos;string&apos;);
+            expect(serialised.role).to.be.a(&apos;string&apos;);
+        });
+    });
+
+    describe(&apos;of nested Tiny Types&apos;, () =&gt; {
+        class FirstName extends TinyTypeOf&lt;string&gt;() {
+            static fromJSON = (v: string) =&gt; new FirstName(v);
+        }
+        class LastName  extends TinyTypeOf&lt;string&gt;() {
+            static fromJSON = (v: string) =&gt; new LastName(v);
+        }
+        class Age extends TinyTypeOf&lt;number&gt;() {
+            static fromJSON = (v: number) =&gt; new Age(v);
         }
 
-        return fields.reduce((acc, field) =&gt; {
-            acc[field] = toJSON(this[field]);
-            return acc;
-        }, {}) as Serialised&lt;this&gt;;
-    }
+        class AnotherPerson extends TinyType {
+            public role: string = &apos;dev&apos;;
 
-    /**
-     * @access private
-     * @returns {string[]} names of significant fields that determine the identity of the object
-     */
-    private significantFields(): string[] {
-        return Object.getOwnPropertyNames(this)
-            .filter(field =&gt; typeof this[field] !== &apos;function&apos;)
-            .sort();
-    }
-}
+            static fromJSON(o: Serialised&lt;AnotherPerson&gt;): AnotherPerson {
+                return new AnotherPerson(
+                    FirstName.fromJSON(o.firstName as string),
+                    LastName.fromJSON(o.lastName as string),
+                    Age.fromJSON(o.age as number),
+                );
+            }
+
+            constructor(public readonly firstName: FirstName,
+                        public readonly lastName: LastName,
+                        public readonly age: Age,
+            ) {
+                super();
+            }
+
+            speak() {
+                return `Hi, I&apos;m ${this.firstName} ${this.lastName}`;
+            }
+        }
+
+        it(&apos;uses only the significant fields and retains the type of their respective values&apos;, () =&gt; {
+            const p = new AnotherPerson(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42));
+            const serialised = p.toJSON() as Serialised&lt;AnotherPerson&gt;;
+
+            expect(Object.keys(serialised)).to.include.ordered.members([&apos;age&apos;, &apos;firstName&apos;, &apos;lastName&apos;, &apos;role&apos;]);
+            expect(Object.keys(serialised)).to.not.include.members([&apos;speak&apos;, &apos;toJSON&apos;, &apos;toString&apos;]);
+
+            expect(serialised.age).to.be.a(&apos;number&apos;);
+            expect(serialised.firstName).to.be.a(&apos;string&apos;);
+            expect(serialised.lastName).to.be.a(&apos;string&apos;);
+            expect(serialised.role).to.be.a(&apos;string&apos;);
+        });
+    });
+
+    it(&apos;works both ways&apos;, () =&gt; {
+        class EmployeeId extends TinyTypeOf&lt;number&gt;() {
+            static fromJSON = (id: number) =&gt; new EmployeeId(id);
+        }
+
+        class DepartmentId extends TinyTypeOf&lt;string&gt;() {
+            static fromJSON = (id: string) =&gt; new DepartmentId(id);
+        }
+
+        class Allocation extends TinyType {
+            static fromJSON = (o: Serialised&lt;Allocation&gt;) =&gt; new Allocation(
+                EmployeeId.fromJSON(o.employeeId as number),
+                DepartmentId.fromJSON(o.departmentId as string),
+            )
+
+            constructor(public readonly employeeId: EmployeeId, public readonly departmentId: DepartmentId) {
+                super();
+            }
+        }
+
+        const allocation = new Allocation(new EmployeeId(1), new DepartmentId(&apos;engineering&apos;));
+
+        const deserialised = Allocation.fromJSON({ departmentId: &apos;engineering&apos;, employeeId: 1 });
+
+        expect(deserialised.equals(allocation)).to.be.true;                 // tslint:disable-line:no-unused-expression
+    });
+});
 </code></pre>
 
 </div>

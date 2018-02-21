@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/types.ts | tiny-types</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/types/json.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -55,12 +55,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/types.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export type List&lt;T&gt; = T[];
-export type ConstructorOrAbstract&lt;T = {}&gt; = Function &amp; { prototype: T };                  // tslint:disable-line:ban-types
-export type ConstructorAbstractOrInstance&lt;T = {}&gt; = T | ConstructorOrAbstract;            // tslint:disable-line:ban-types
-
-export type JSONPrimitive = string | number | boolean | null;
+<div class="content" data-ice="content"><h1 data-ice="title">src/types/json.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export type Null = null;
+export type NonNullJSONPrimitive = string | number | boolean;
+export type JSONPrimitive = NonNullJSONPrimitive | Null;
 export interface JSONObject {
     [_: string]: JSONPrimitive | JSONObject | JSONArray;
 }

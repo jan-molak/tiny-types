@@ -197,50 +197,38 @@ const firstName = new FirstName(&apos;Jan&apos;),
 
 FirstName.fromJSON(firstName.toJSON()).equals(firstName) === true</code>
 </code></pre>
-<p>Optionally, you could take this further and define the shape of serialised objects
-to ensure that <code>fromJSON</code> and <code>toJSON</code> are compatible:</p>
-<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyTypeOf } from &apos;tiny-types&apos;;
+<p>When working with complex TinyTypes, you can use the (experimental) <code>Serialised</code> interface
+to reduce the likelihood of your custom <code>fromJSON</code> method being incompatible with <code>toJSON</code>:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyTypeOf, TinyType, Serialised } from &apos;tiny-types&apos;;
 
-type SerialisedFirstName = string;
-class FirstName extends TinyTypeOf&lt;string&gt;() {
-    static fromJSON = (v: SerialisedFirstName) =&gt; new FirstName(v);
-    toJSON(): SerialisedFirstName {
-        return super.toJSON() as SerialisedFirstName;
-    }
+class EmployeeId extends TinyTypeOf&lt;number&gt;() {
+    static fromJSON = (id: number) =&gt; new EmployeeId(id);
 }
 
-const firstName = new FirstName(&apos;Jan&apos;),
-
-FirstName.fromJSON(firstName.toJSON()).equals(firstName) === true</code>
-</code></pre>
-<p>This way de-serialising a more complex TinyType becomes trivial:</p>
-<pre><code class="lang-typescript"><code class="source-code prettyprint">import { JSONObject, TinyType } from &apos;tiny-types&apos;;
-
-interface SerialisedPerson extends JSONObject {
-    firstName:  SerialisedFirstName;
-    lastName:   SerialisedLastName;
-    age:        SerialisedAge;
+class DepartmentId extends TinyTypeOf&lt;string&gt;() {
+    static fromJSON = (id: string) =&gt; new DepartmentId(id);
 }
 
-class Person extends TinyType {
-    static fromJSON = (v: SerialisedPerson) =&gt; new Person(
-        FirstName.fromJSON(v.firstName),
-        LastName.fromJSON(v.lastName),
-        Age.fromJSON(v.age),
+class Allocation extends TinyType {
+    static fromJSON = (o: Serialised&lt;Allocation&gt;) =&gt; new Allocation(
+        EmployeeId.fromJSON(o.employeeId as number),
+        DepartmentId.fromJSON(o.departmentId as string),
     )
 
-    constructor(public readonly firstName: FirstName,
-                public readonly lastName: LastName,
-                public readonly age: Age,
-    ) {
+    constructor(public readonly employeeId: EmployeeId, public readonly departmentId: DepartmentId) {
         super();
-    }
-
-    toJSON(): SerialisedPerson {
-        return super.toJSON() as SerialisedPerson;
     }
 }</code>
 </code></pre>
+<p>This way de-serialising a complex type becomes trivial:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">const allocation = new Allocation(new EmployeeId(1), new DepartmentId(&apos;engineering&apos;));
+
+const deserialised = Allocation.fromJSON({ departmentId: &apos;engineering&apos;, employeeId: 1 });
+
+allocation.equals(deserialised) === true</code>
+</code></pre>
+<p>Although <code>Serialised</code> is by no means 100% foolproof as it&apos;s only limited to checking whether your input JSON has the same fields
+as the object you&apos;re trying to de-serialise, it can at least help you to avoid errors caused by typos.</p>
 <h2 id="your-feedback-matters-">Your feedback matters!</h2><p>Do you find TinyTypes useful? <a href="https://github.com/jan-molak/tiny-types">Give it a star!</a> &#x2605;</p>
 <p>Found a bug? Need a feature? Raise <a href="https://github.com/jan-molak/tiny-types/issues?state=open">an issue</a>
 or submit a pull request.</p>

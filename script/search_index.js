@@ -222,6 +222,42 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber4",
+    "Serialisation",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber5",
+    "Serialisation of TinyTypes wrapping several primitive values",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber51",
+    "Serialisation of TinyTypes wrapping several primitive values uses only the significant fields and retains their type",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber62",
+    "Serialisation of nested Tiny Types",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber153",
+    "Serialisation of nested Tiny Types uses only the significant fields and retains the type of their respective values",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber164",
+    "Serialisation works both ways",
+    "test"
+  ],
+  [
     "tinytype src/tinytype.ts~tinytype,tinytype",
     "test-file/spec/TinyType.spec.ts.html#lineNumber6",
     "TinyType",
@@ -355,25 +391,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber6",
-    "pattern-matching",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
   [
     "",
-    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber6",
     "pattern-matching",
     "test"
   ],
   [
     "",
     "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
+    "pattern-matching",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -433,37 +469,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -475,7 +481,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -487,7 +493,31 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -499,7 +529,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -831,6 +867,12 @@ window.esdocSearchIndex = [
     "spec/predicates/or.spec.ts",
     "test-file/spec/predicates/or.spec.ts.html",
     "spec/predicates/or.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/serialisation.spec.ts",
+    "test-file/spec/serialisation.spec.ts.html",
+    "spec/serialisation.spec.ts",
     "testFile"
   ],
   [
@@ -1344,9 +1386,39 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/types.ts",
-    "file/src/types.ts.html",
-    "src/types.ts",
+    "src/types/constructors.ts",
+    "file/src/types/constructors.ts.html",
+    "src/types/constructors.ts",
+    "file"
+  ],
+  [
+    "src/types/index.ts",
+    "file/src/types/index.ts.html",
+    "src/types/index.ts",
+    "file"
+  ],
+  [
+    "src/types/json.ts",
+    "file/src/types/json.ts.html",
+    "src/types/json.ts",
+    "file"
+  ],
+  [
+    "src/types/list.ts",
+    "file/src/types/list.ts.html",
+    "src/types/list.ts",
+    "file"
+  ],
+  [
+    "src/types/lookup.ts",
+    "file/src/types/lookup.ts.html",
+    "src/types/lookup.ts",
+    "file"
+  ],
+  [
+    "src/types/serialisation.ts",
+    "file/src/types/serialisation.ts.html",
+    "src/types/serialisation.ts",
     "file"
   ]
 ]
