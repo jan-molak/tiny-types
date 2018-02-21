@@ -1,6 +1,6 @@
-import { JSONObject, JSONPrimitive, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
 import { check } from './check';
 import { isDefined } from './predicates';
+import { JSONObject, JSONPrimitive, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
 
 /**
  * @desc The {@link TinyTypeOf} can be used to define simple
