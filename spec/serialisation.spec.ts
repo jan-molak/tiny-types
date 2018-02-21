@@ -1,6 +1,5 @@
 import 'mocha';
-import { TinyType, TinyTypeOf } from '../src';
-import { JSONObject, Serialised } from '../src/types';
+import { Serialised, TinyType, TinyTypeOf } from '../src';
 import { expect } from './expect';
 
 describe('Serialisation', () => {
