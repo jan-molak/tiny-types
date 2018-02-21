@@ -9,5 +9,6 @@ export * from './isInRange';
 export * from './isInteger';
 export * from './isLessThan';
 export * from './isLessThanOrEqualTo';
+export * from './isOneOf';
 export * from './or';
 export * from './Predicate';
