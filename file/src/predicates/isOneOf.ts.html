@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">spec/predicates/isLessThan.spec.ts | tiny-types</title>
+  <title data-ice="title">src/predicates/isOneOf.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -56,43 +56,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/isLessThan.spec.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
-import { given } from &apos;mocha-testdata&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/predicates/isOneOf.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isEqualTo } from &apos;./isEqualTo&apos;;
+import { or } from &apos;./or&apos;;
+import { Predicate } from &apos;./Predicate&apos;;
 
-import { check, isLessThan, TinyType } from &apos;../../src&apos;;
-import { expect } from &apos;../expect&apos;;
-
-describe(&apos;predicates&apos;, () =&gt; {
-
-    /** @test {isLessThan} */
-    describe(&apos;::isLessThan&apos;, () =&gt; {
-        class InvestmentLength extends TinyType {
-            constructor(public readonly value: number) {
-                super();
-
-                check(&apos;InvestmentLength&apos;, value, isLessThan(50));
-            }
-        }
-
-        it(&apos;ensures that the argument is less than a specified number&apos;, () =&gt; {
-            expect(new InvestmentLength(5)).to.not.throw;                    // tslint:disable-line:no-unused-expression
-        });
-
-        it(&apos;complains if the argument is more than a specified number&apos;, () =&gt; {
-            expect(() =&gt; new InvestmentLength(55)).to.throw(`InvestmentLength should be less than 50`);
-        });
-
-        given(
-            undefined,
-            null,
-            {},
-            &apos;string&apos;,
-        ).it(&apos;complains if the value is not an integer&apos;, (value: any) =&gt; {
-            expect(() =&gt; new InvestmentLength(value)).to.throw(`InvestmentLength should be less than 50`);
-        });
-    });
-});
+/**
+ * @desc Checks if the `value` is equal to one of the `allowedValues`
+ *
+ * @example
+ * import { check, isOneOf, TinyType } from &apos;tiny-types&apos;;
+ *
+ * class StreetLight extends TinyType {
+ *     constructor(public readonly value: string) {
+ *         super();
+ *
+ *         check(&apos;StreetLight&apos;, value, isOneOf(&apos;red&apos;, &apos;yellow&apos;, &apos;green&apos;));
+ *     }
+ * }
+ *
+ * @param {...T[]} allowedValues
+ * @returns {Predicate&lt;T&gt;}
+ */
+export function isOneOf&lt;T&gt;(...allowedValues: T[]): Predicate&lt;T&gt; {
+    return or(...allowedValues.map(allowed =&gt; isEqualTo(allowed)));
+}
 </code></pre>
 
 </div>

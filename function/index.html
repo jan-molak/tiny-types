@@ -50,6 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isOneOf">isOneOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
 </ul>
 </div>
@@ -430,6 +431,35 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
         
         
         <div data-ice="description"><p>Checks if the <code>value</code> is less than or equal to the <code>upperBound</code>.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isOneOf">isOneOf</a></span></span><span class="code" data-ice="signature">(allowedValues: <span><span>...T</span><span>[]</span></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Checks if the <code>value</code> is equal to one of the <code>allowedValues</code></p>
 </div>
       </div>
     </td>
@@ -1685,6 +1715,99 @@ class InvestmentPeriod extends TinyType {
     <ul>
       
     <li data-ice="test"><span><a href="test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber7">predicates ::isLessThanOrEqualTo</a></span></li>
+</ul>
+  </div>
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-isOneOf">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">isOneOf</span><span class="code" data-ice="signature">(allowedValues: <span><span>...T</span><span>[]</span></span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/predicates/isOneOf.ts.html#lineNumber30">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isOneOf} from &apos;<span><a href="file/src/predicates/isOneOf.ts.html#lineNumber30">tiny-types/lib/predicates/isOneOf</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Checks if the <code>value</code> is equal to one of the <code>allowedValues</code></p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">allowedValues</td>
+      <td data-ice="type" class="code"><span><span>...T</span><span>[]</span></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isOneOf, TinyType } from &apos;tiny-types&apos;;
+
+class StreetLight extends TinyType {
+    constructor(public readonly value: string) {
+        super();
+
+        check(&apos;StreetLight&apos;, value, isOneOf(&apos;red&apos;, &apos;yellow&apos;, &apos;green&apos;));
+    }
+}</code></pre>
+    </div>
+</div>
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber7">predicates ::isOneOf</a></span></li>
 </ul>
   </div>
 

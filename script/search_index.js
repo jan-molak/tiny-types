@@ -156,6 +156,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/predicates/isoneof~isoneof",
+    "function/index.html#static-function-isOneOf",
+    "<span>isOneOf</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isOneOf</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/match~match",
     "function/index.html#static-function-match",
     "<span>match</span> <span class=\"search-result-import-path\">tiny-types/lib/match</span>",
@@ -397,13 +403,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
   [
     "",
-    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -415,7 +421,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -475,7 +481,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -499,7 +505,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -517,25 +529,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
     "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -738,6 +750,18 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "isoneof src/predicates/isoneof.ts~isoneof,isoneof",
+    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber7",
+    "predicates ::isOneOf",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber25",
+    "predicates ::isOneOf complains if the value not one the allowed ones",
+    "test"
+  ],
+  [
     "or src/predicates/or.ts~or,or",
     "test-file/spec/predicates/or.spec.ts.html#lineNumber7",
     "predicates ::or",
@@ -867,6 +891,12 @@ window.esdocSearchIndex = [
     "spec/predicates/islessthanorequal.spec.ts",
     "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html",
     "spec/predicates/isLessThanOrEqual.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isoneof.spec.ts",
+    "test-file/spec/predicates/isOneOf.spec.ts.html",
+    "spec/predicates/isOneOf.spec.ts",
     "testFile"
   ],
   [
@@ -1383,6 +1413,12 @@ window.esdocSearchIndex = [
     "src/predicates/islessthanorequalto.ts",
     "file/src/predicates/isLessThanOrEqualTo.ts.html",
     "src/predicates/isLessThanOrEqualTo.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isoneof.ts",
+    "file/src/predicates/isOneOf.ts.html",
+    "src/predicates/isOneOf.ts",
     "file"
   ],
   [
