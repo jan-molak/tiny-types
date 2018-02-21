@@ -10,11 +10,11 @@ import { and, Failure, isArray, isDefined, isGreaterThan, Predicate } from './pr
  * check('Username', username, isDefined());
  *
  * @example <caption>Ensuring validity of a domain object upon creation</caption>
- * import { TinyType, check, isDefined, isInt, isInRange } from 'tiny-types'
+ * import { TinyType, check, isDefined, isInteger, isInRange } from 'tiny-types'
  *
  * class Age extends TinyType {
  *   constructor(public readonly value: number) {
- *     check('Age', value, isDefined(), isInt(), isInRange(0, 125));
+ *     check('Age', value, isDefined(), isInteger(), isInRange(0, 125));
  *   }
  * }
  *
