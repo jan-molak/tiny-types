@@ -1,6 +1,7 @@
 import { check } from './check';
+import { equal, significantFieldsOf } from './objects';
 import { isDefined } from './predicates';
-import { JSONObject, JSONPrimitive, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
+import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
 
 /**
  * @desc The {@link TinyTypeOf} can be used to define simple
@@ -48,6 +49,8 @@ export function TinyTypeOf<T>(): { new(_: T): { value: T } & TinyType } {
  */
 export abstract class TinyType implements Serialisable {
 
+    // todo: can I make all fields `readonly` without making it a dictionary?
+
     /**
      * @desc Compares two tiny types by value
      *
@@ -81,26 +84,11 @@ export abstract class TinyType implements Serialisable {
      * @returns {boolean}
      */
     equals(another: TinyType) {
-        if (another === this) {
-            return true;
-        }
-
-        if (! (another instanceof this.constructor)) {
-            return false;
-        }
-
-        return this.significantFields().reduce((previousFieldsAreEqual: boolean, field: string) => {
-
-            const currentFieldIsEqual = (this[field].equals
-                ? this[field].equals(another[field])
-                : this[field] === another[field]);
-
-            return previousFieldsAreEqual && currentFieldIsEqual;
-        }, true);
+        return equal(this, another);
     }
 
     toString() {
-        const fields = this.significantFields().reduce((acc: string[], field: string) => {
+        const fields = significantFieldsOf(this).reduce((acc: string[], field: string) => {
             return acc.concat(`${field}=${this[field]}`);
         }, []);
 
@@ -136,8 +124,6 @@ export abstract class TinyType implements Serialisable {
      * person.toJSON() === { firstName: 'John', lastName: 'Smith', age: 42 }
      *
      * @returns {JSONValue}
-     *
-     * @todo should also serialise arrays
      */
     toJSON(): JSONObject | NonNullJSONPrimitive {
         const isPrimitive = (value: any) => Object(value) !== value;
@@ -145,6 +131,8 @@ export abstract class TinyType implements Serialisable {
             switch (true) {
                 case value && !! value.toJSON:
                     return value.toJSON();
+                case value && Array.isArray(value):
+                    return value.map(v => toJSON(v));
                 case value && ! isPrimitive(value):
                     return JSON.stringify(value);
                 default:
@@ -152,7 +140,7 @@ export abstract class TinyType implements Serialisable {
             }
         }
 
-        const fields = this.significantFields();
+        const fields = significantFieldsOf(this);
 
         if (fields.length === 1) {
             return toJSON(this[fields[0]]);
@@ -162,15 +150,5 @@ export abstract class TinyType implements Serialisable {
             acc[field] = toJSON(this[field]);
             return acc;
         }, {}) as Serialised<this>;
-    }
-
-    /**
-     * @access private
-     * @returns {string[]} names of significant fields that determine the identity of the object
-     */
-    private significantFields(): string[] {
-        return Object.getOwnPropertyNames(this)
-            .filter(field => typeof this[field] !== 'function')
-            .sort();
     }
 }
