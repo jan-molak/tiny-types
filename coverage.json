@@ -1,11 +1,11 @@
 {
-  "coverage": "67.94%",
-  "expectCount": 78,
-  "actualCount": 53,
+  "coverage": "65.51%",
+  "expectCount": 87,
+  "actualCount": 57,
   "files": {
     "src/TinyType.ts": {
-      "expectCount": 6,
-      "actualCount": 6,
+      "expectCount": 5,
+      "actualCount": 5,
       "undocumentLines": []
     },
     "src/check.ts": {
@@ -14,6 +14,22 @@
       "undocumentLines": []
     },
     "src/match.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/objects/equal.ts": {
+      "expectCount": 9,
+      "actualCount": 4,
+      "undocumentLines": [
+        28,
+        29,
+        48,
+        49,
+        50
+      ]
+    },
+    "src/objects/significantFields.ts": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/TinyType.ts | tiny-types</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/objects/equal.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -56,160 +56,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/TinyType.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { check } from &apos;./check&apos;;
-import { equal, significantFieldsOf } from &apos;./objects&apos;;
-import { isDefined } from &apos;./predicates&apos;;
-import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from &apos;./types&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/objects/equal.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { significantFieldsOf } from &apos;./significantFields&apos;;
 
 /**
- * @desc The {@link TinyTypeOf} can be used to define simple
- * single-value {@link TinyType}s on a single line.
- *
- * It contains a check preventing the constructor argument from being undefined (see {@link isDefined});
- *
- * @experimental
- *
- * @example
- * class Username extends TinyTypeOf&lt;string&gt;() {}
- *
- * @example
- * class Age extends TinyTypeOf&lt;number&gt;() {}
- *
- * @returns a dynamically created base class your tiny type can extend from
+ * @access private
  */
-export function TinyTypeOf&lt;T&gt;(): { new(_: T): { value: T } &amp; TinyType } {
-    return class extends TinyType {
-        constructor(public readonly value: T) {
-            super();
-            check(this.constructor.name, value, isDefined());
-        }
-    };
+export function equal(v1: any, v2: any): boolean {
+    switch (true) {
+        case ! sameType(v1, v2):
+            return false;
+        case both(arePrimitives, v1, v2):
+            return checkIdentityOf(v1, v2);
+        case both(areObjects, v1, v2) &amp;&amp; sameClass(v1, v2):
+            return checkSignificantFieldsOf(v1, v2);
+    }
+
+    return false;
 }
 
-/**
- * @desc The {@link TinyType} abstract class should be used as a base class for your own Tiny Types.
- *
- * If you want the Tiny Type to wrap a single value use the {@link TinyTypeOf} instead as it will save you some keystrokes.
- *
- * @example
- * class FirstName extends TinyTypeOf&lt;string&gt;() {}
- * class LastName  extends TinyTypeOf&lt;string&gt;() {}
- * class Age       extends TinyTypeOf&lt;number&gt;() {}
- *
- * class Person extends TinyType {
- *   constructor(public readonly firstName: FirstName,
- *               public readonly lastName:  LastName,
- *               public readonly age:       Age,
- *   ) {
- *     super();
- *   }
- * }
- */
-export abstract class TinyType implements Serialisable {
+const areObjects     = (_: any) =&gt; new Object(_) === _;
+const arePrimitives  = (_: any) =&gt; ! areObjects(_); // arrays are objects
 
-    // todo: can I make all fields `readonly` without making it a dictionary?
+function both(condition: (_: any) =&gt; boolean, v1: any, v2: any): boolean {
+    return condition(v1) &amp;&amp; condition(v2);
+}
 
-    /**
-     * @desc Compares two tiny types by value
-     *
-     * @example &lt;caption&gt;Comparing simple types&lt;/caption&gt;
-     * class Id extends TinyTypeOf&lt;string&gt;() {}
-     *
-     * const id = new Id(`3cc0852d-fda7-4f61-874e-0cfadbd6182a`);
-     *
-     * id.equals(id) === true
-     *
-     * @example &lt;caption&gt;Comparing complex types recursively&lt;/caption&gt;
-     * class FirstName extends TinyTypeOf&lt;string&gt;() {}
-     * class LastName  extends TinyTypeOf&lt;string&gt;() {}
-     * class Age       extends TinyTypeOf&lt;number&gt;() {}
-     *
-     * class Person extends TinyType {
-     *   constructor(public readonly firstName: FirstName,
-     *               public readonly lastName:  LastName,
-     *               public readonly age:       Age,
-     *   ) {
-     *     super();
-     *   }
-     * }
-     *
-     * const p1 = new Person(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42)),
-     *       p2 = new Person(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42));
-     *
-     * p1.equals(p2) === true
-     *
-     * @param {TinyType} another
-     * @returns {boolean}
-     */
-    equals(another: TinyType) {
-        return equal(this, another);
+const sameType  = (v1: any, v2: any) =&gt; typeof v1 === typeof v2;
+const sameClass = (v1: any, v2: any) =&gt; (v1.constructor &amp;&amp; v2 instanceof v1.constructor) || (v2.constructor &amp;&amp; v1 instanceof  v2.constructor);
+const sameLength = (v1: { length: number }, v2: { length: number }) =&gt; v1.length === v2.length;
+
+function checkIdentityOf(v1: any, v2: any) {
+    return v1 === v2;
+}
+
+function checkSignificantFieldsOf(o1: object, o2: object) {
+    const
+        fieldsOfObject1 = significantFieldsOf(o1),
+        fieldsOfObject2 = significantFieldsOf(o2);
+
+    if (! sameLength(fieldsOfObject1, fieldsOfObject2)) {
+        return false;
     }
 
-    toString() {
-        const fields = significantFieldsOf(this).reduce((acc: string[], field: string) =&gt; {
-            return acc.concat(`${field}=${this[field]}`);
-        }, []);
-
-        return `${this.constructor.name}(${fields.join(&apos;, &apos;)})`;
-    }
-
-    /**
-     * @desc Serialises the object to a JSON representation.
-     *
-     * @example
-     * class FirstName extends TinyTypeOf&lt;string&gt;() {}
-     *
-     * const name = new FirstName(&apos;Jan&apos;);
-     *
-     * name.toJSON() === &apos;Jan&apos;
-     *
-     * @example
-     * class FirstName extends TinyTypeOf&lt;string&gt;() {}
-     * class LastName  extends TinyTypeOf&lt;string&gt;() {}
-     * class Age       extends TinyTypeOf&lt;number&gt;() {}
-     *
-     * class Person extends TinyType {
-     *   constructor(public readonly firstName: FirstName,
-     *               public readonly lastName:  LastName,
-     *               public readonly age:       Age,
-     *   ) {
-     *     super();
-     *   }
-     * }
-     *
-     * const person = new Person(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42)),
-     *
-     * person.toJSON() === { firstName: &apos;John&apos;, lastName: &apos;Smith&apos;, age: 42 }
-     *
-     * @returns {JSONValue}
-     */
-    toJSON(): JSONObject | NonNullJSONPrimitive {
-        const isPrimitive = (value: any) =&gt; Object(value) !== value;
-        function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
-            switch (true) {
-                case value &amp;&amp; !! value.toJSON:
-                    return value.toJSON();
-                case value &amp;&amp; Array.isArray(value):
-                    return value.map(v =&gt; toJSON(v));
-                case value &amp;&amp; ! isPrimitive(value):
-                    return JSON.stringify(value);
-                default:
-                    return value;       // todo: could this ever be a null?
-            }
-        }
-
-        const fields = significantFieldsOf(this);
-
-        if (fields.length === 1) {
-            return toJSON(this[fields[0]]);
-        }
-
-        return fields.reduce((acc, field) =&gt; {
-            acc[field] = toJSON(this[field]);
-            return acc;
-        }, {}) as Serialised&lt;this&gt;;
-    }
+    return fieldsOfObject1.reduce((previousFieldsAreEqual: boolean, field: string) =&gt; {
+        const currentFieldIsEqual = !! o1[field] &amp;&amp; !! o2[field] &amp;&amp; equal(o1[field], o2[field]);
+        return previousFieldsAreEqual &amp;&amp; currentFieldIsEqual;
+    }, true);
 }
 </code></pre>
 

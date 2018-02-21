@@ -270,146 +270,146 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "tinytype#equals src/tinytype.ts~tinytype#equals,tinytype#equals",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber137",
-    "TinyType ::equals",
+    "",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber7",
+    "TinyType wrapping a single value",
+    "test"
+  ],
+  [
+    "tinytype#tostring src/tinytype.ts~tinytype#tostring,tinytype#tostring",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber138",
+    "TinyType wrapping a single value ::toString",
     "test"
   ],
   [
     "",
     "test-file/spec/TinyType.spec.ts.html#lineNumber190",
-    "TinyType ::equals is recursive",
+    "TinyType wrapping a single value ::toString mentions the class and its fields, but not the methods",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber175",
-    "TinyType ::equals is reflexive",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber186",
+    "TinyType wrapping a single value ::toString mentions the class and its properties",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber179",
-    "TinyType ::equals is symmetric",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber214",
+    "TinyType wrapping a single value ::toString only cares about the fields, not the methods",
+    "test"
+  ],
+  [
+    "tinytype src/tinytype.ts~tinytype,tinytype",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber310",
+    "TinyType wrapping a single value de-serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber184",
-    "TinyType ::equals is transitive",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber421",
+    "TinyType wrapping a single value de-serialisation custom fromJSON can de-serialise a serialised single-value TinyType",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber195",
-    "TinyType ::equals works for private fields",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber426",
+    "TinyType wrapping a single value de-serialisation custom fromJSON can recursively de-serialise a serialised complex TinyType",
     "test"
   ],
   [
-    "tinytype#tostring src/tinytype.ts~tinytype#tostring,tinytype#tostring",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber219",
-    "TinyType ::toString",
+    "tinytype src/tinytype.ts~tinytype,tinytype",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber9",
+    "TinyType wrapping a single value definition",
+    "test"
+  ],
+  [
+    "tinytypeof src/tinytype.ts~tinytypeof,tinytypeof",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber11",
+    "TinyType wrapping a single value definition can be a one-liner for TinyTypes representing a single value",
+    "test"
+  ],
+  [
+    "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber86",
+    "TinyType wrapping a single value definition can be mixed and matched",
+    "test"
+  ],
+  [
+    "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber44",
+    "TinyType wrapping a single value definition needs to extend the TinyType for types with more than one value",
+    "test"
+  ],
+  [
+    "tinytypeof src/tinytype.ts~tinytypeof,tinytypeof",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber28",
+    "TinyType wrapping a single value definition prevents null and undefined when the single-line definition style is used",
+    "test"
+  ],
+  [
+    "tinytype#tojson src/tinytype.ts~tinytype#tojson,tinytype#tojson",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber221",
+    "TinyType wrapping a single value serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber271",
-    "TinyType ::toString mentions the class and its fields, but not the methods",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber267",
-    "TinyType ::toString mentions the class and its properties",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber268",
+    "TinyType wrapping a single value serialisation ::toJSON",
     "test"
   ],
   [
     "",
     "test-file/spec/TinyType.spec.ts.html#lineNumber295",
-    "TinyType ::toString only cares about the fields, not the methods",
-    "test"
-  ],
-  [
-    "tinytype src/tinytype.ts~tinytype,tinytype",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber369",
-    "TinyType de-serialisation",
+    "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber480",
-    "TinyType de-serialisation custom fromJSON can de-serialise a serialised single-value TinyType",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber280",
+    "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber485",
-    "TinyType de-serialisation custom fromJSON can recursively de-serialise a serialised complex TinyType",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber272",
+    "TinyType wrapping a single value serialisation ::toJSON should serialise a complex TinyType recursively",
     "test"
   ],
   [
-    "tinytype src/tinytype.ts~tinytype,tinytype",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber8",
-    "TinyType definition",
+    "equal equal,equal",
+    "test-file/spec/objects/equal.spec.ts.html#lineNumber7",
+    "equal",
     "test"
   ],
   [
-    "tinytypeof src/tinytype.ts~tinytypeof,tinytypeof",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber10",
-    "TinyType definition can be a one-liner for TinyTypes representing a single value",
-    "test"
-  ],
-  [
-    "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber85",
-    "TinyType definition can be mixed and matched",
-    "test"
-  ],
-  [
-    "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber43",
-    "TinyType definition needs to extend the TinyType for types with more than one value",
-    "test"
-  ],
-  [
-    "tinytypeof src/tinytype.ts~tinytypeof,tinytypeof",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber27",
-    "TinyType definition prevents null and undefined when the single-line definition style is used",
-    "test"
-  ],
-  [
-    "tinytype#tojson src/tinytype.ts~tinytype#tojson,tinytype#tojson",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber302",
-    "TinyType serialisation",
+    "tinytype#equals src/tinytype.ts~tinytype#equals,tinytype#equals",
+    "test-file/spec/objects/equal.spec.ts.html#lineNumber30",
+    "equal when used with TinyTypes",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber341",
-    "TinyType serialisation ::toJSON",
+    "test-file/spec/objects/equal.spec.ts.html#lineNumber92",
+    "equal when used with TinyTypes compares public and private member fields",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber354",
-    "TinyType serialisation ::toJSON ",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber346",
-    "TinyType serialisation ::toJSON should serialise a complex TinyType recursively",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
-    "pattern-matching",
+    "test-file/spec/objects/equal.spec.ts.html#lineNumber8",
+    "equal when used with primitives",
     "test"
   ],
   [
     "",
     "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
+    "pattern-matching",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -421,7 +421,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -481,43 +481,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -529,7 +493,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -541,19 +505,55 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
     "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -780,6 +780,30 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "significantfields significantfields,significantfields",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber5",
+    "significantFields",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber40",
+    "significantFields ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber49",
+    "significantFields ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber6",
+    "significantFields returns the names of private and public member fields of an instantiated object",
+    "test"
+  ],
+  [
     "spec/tinytype.spec.ts",
     "test-file/spec/TinyType.spec.ts.html",
     "spec/TinyType.spec.ts",
@@ -801,6 +825,18 @@ window.esdocSearchIndex = [
     "spec/match.spec.ts",
     "test-file/spec/match.spec.ts.html",
     "spec/match.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/objects/equal.spec.ts",
+    "test-file/spec/objects/equal.spec.ts.html",
+    "spec/objects/equal.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/objects/significantfields.spec.ts",
+    "test-file/spec/objects/significantFields.spec.ts.html",
+    "spec/objects/significantFields.spec.ts",
     "testFile"
   ],
   [
@@ -1233,6 +1269,24 @@ window.esdocSearchIndex = [
     "src/match.ts",
     "file/src/match.ts.html",
     "src/match.ts",
+    "file"
+  ],
+  [
+    "src/objects/equal.ts",
+    "file/src/objects/equal.ts.html",
+    "src/objects/equal.ts",
+    "file"
+  ],
+  [
+    "src/objects/index.ts",
+    "file/src/objects/index.ts.html",
+    "src/objects/index.ts",
+    "file"
+  ],
+  [
+    "src/objects/significantfields.ts",
+    "file/src/objects/significantFields.ts.html",
+    "src/objects/significantFields.ts",
     "file"
   ],
   [

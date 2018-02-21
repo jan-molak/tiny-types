@@ -1,0 +1,213 @@
+<!DOCTYPE html><html><head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">spec/objects/equal.spec.ts | tiny-types</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KCJMHPK');</script><meta name="google-site-verification" content="mpKDC5KqgH5qYaWKMHWJoZn7iFGd4EYF9CtYYRSexYA"><meta name="description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="tiny-types"><meta property="twitter:description" content="A tiny library that brings Tiny Types to JavaScript and TypeScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/jan-molak/tiny-types.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Success.html">Success</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-and">and</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasLengthOf">hasLengthOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDefined">isDefined</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEqualTo">isEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThan">isGreaterThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isGreaterThanOrEqualTo">isGreaterThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInRange">isInRange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThan">isLessThan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isLessThanOrEqualTo">isLessThanOrEqualTo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isOneOf">isOneOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">spec/objects/equal.spec.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+import { given } from &apos;mocha-testdata&apos;;
+
+import { TinyType, TinyTypeOf } from &apos;../../src&apos;;
+import { equal } from &apos;../../src/objects&apos;;
+import { expect } from &apos;../expect&apos;;
+
+/** @test {equal} */
+describe(&apos;equal&apos;, () =&gt; {
+    describe(&apos;when used with primitives&apos;, () =&gt; {
+
+        given&lt;any&gt;(undefined, null, false, &apos;string&apos;, 42).
+        it(&apos;is reflexive&apos;, (primitive: any) =&gt; {
+            expect(equal(primitive, primitive)).to.be.true;                  // tslint:disable-line:no-unused-expression
+        });
+
+        given&lt;{ v1: any, v2: any }&gt;(
+            { v1: false,    v2: false             },
+            { v1: false,    v2: Boolean(false)    },
+            { v1: &apos;string&apos;, v2: &apos;string&apos;          },
+            { v1: &apos;string&apos;, v2: String(&apos;string&apos;)  },
+            { v1: 42,       v2: 42                },
+            { v1: 42,       v2: Number(42)        },
+            { v1: 42,       v2: 42.0              },
+            { v1: 42,       v2: Number(42.0)      },
+        ).
+        it(&apos;is symmetric&apos;, ({ v1, v2 }) =&gt; {
+            expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression
+            expect(equal(v1, v2)).to.equal(equal(v2, v1));
+        });
+
+        given&lt;{ v1: any, v2: any, v3: any }&gt;(
+            { v1: false,    v2: false,    v3: false     },
+            { v1: &apos;string&apos;, v2: &apos;string&apos;, v3: &apos;string&apos;  },
+            { v1: 42,       v2: 42,       v3: 42        },
+        ).
+        it(&apos;is transitive&apos;, ({ v1, v2, v3 }) =&gt; {
+            expect(equal(v1, v2)).to.be.true;                               // tslint:disable-line:no-unused-expression
+            expect(equal(v2, v3)).to.be.true;                               // tslint:disable-line:no-unused-expression
+            expect(equal(v3, v1)).to.be.true;                               // tslint:disable-line:no-unused-expression
+        });
+
+        given&lt;{ v1: any, v2: any }&gt;(
+            { v1: false,    v2: true       },
+            { v1: &apos;apple&apos;,  v2: &apos;orange&apos;   },
+            { v1: 42,       v2: 24         },
+            { v1: false,    v2: &apos;elephant&apos; },
+            { v1: null,     v2: undefined  },
+        ).
+        it(&apos;returns false when subjects are not equal&apos;, ({ v1, v2 }) =&gt; {
+            expect(equal(v1, v2)).to.be.false;                               // tslint:disable-line:no-unused-expression
+        });
+    });
+
+    /** @test {TinyType#equals} */
+    describe(&apos;when used with TinyTypes&apos;, () =&gt; {
+
+        class Name extends TinyTypeOf&lt;string&gt;() {}
+        class Age  extends TinyTypeOf&lt;number&gt;() {}
+
+        class Person extends TinyType {
+            constructor(public readonly name: Name, public readonly role: Age) {
+                super();
+            }
+        }
+
+        // Please note that there&apos;s not much point in wrapping an array into a tiny type, as it doesn&apos;t provide
+        // methods you&apos;d expect from a list, such as map, reduce, forEach, etc.
+        // What People is here to demonstrate is that `equals` works equally well (pun intended)
+        // with tiny types with a member field of type Array.
+        class People extends TinyTypeOf&lt;Person[]&gt;() {}
+
+        const
+            Alice   = new Name(&apos;Alice&apos;),
+            Bob     = new Name(&apos;Bob&apos;),
+            MsAlice = new Person(Alice, new Age(28)),
+            MrBob   = new Person(Alice, new Age(38)),
+            Team    = new People([MsAlice, MrBob]),
+            Team2   = new People([MsAlice]);
+
+        given&lt;TinyType&gt;(Alice, MsAlice, Team).
+        it(&apos;is reflexive&apos;, (value: TinyType) =&gt; {
+            expect(equal(value, value)).to.be.true;                          // tslint:disable-line:no-unused-expression
+        });
+
+        given&lt;{ v1: TinyType, v2: TinyType }&gt;(
+            { v1: new Name(&apos;Alice&apos;),    v2: new Name(&apos;Alice&apos;)   },
+            { v1: new Age(28),          v2: new Age(28)         },
+            { v1: Team,                 v2: Team                },
+            { v1: new Person(Alice, new Age(28)), v2: new Person(Alice, new Age(28))  },
+        ).
+        it(&apos;is symmetric&apos;, ({ v1, v2 }) =&gt; {
+            expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression
+            expect(equal(v1, v2)).to.equal(equal(v2, v1));
+        });
+
+        given&lt;{ v1: TinyType, v2: TinyType, v3: TinyType }&gt;(
+            { v1: new Name(&apos;Alice&apos;),    v2: new Name(&apos;Alice&apos;),  v3: new Name(&apos;Alice&apos;) },
+            { v1: new Age(28),          v2: new Age(28),        v3: new Age(28)       },
+            { v1: new Person(Alice, new Age(28)), v2: new Person(Alice, new Age(28)), v3: new Person(Alice, new Age(28)) },
+        ).
+        it(&apos;is transitive&apos;, ({ v1, v2, v3 }) =&gt; {
+            expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression
+            expect(equal(v2, v3)).to.be.true;                                // tslint:disable-line:no-unused-expression
+            expect(equal(v3, v1)).to.be.true;                                // tslint:disable-line:no-unused-expression
+        });
+
+        given&lt;{ v1: any, v2: any }&gt;(
+            { v1: Alice,    v2: null    },
+            { v1: Alice,    v2: Bob     },
+            { v1: Bob,      v2: &apos;cat&apos;   },
+            { v1: Alice,    v2: MsAlice },
+            { v1: MsAlice,  v2: MrBob   },
+            { v1: MrBob,    v2: Team    },
+            { v1: Team,     v2: Team2   },
+        ).
+        it(&apos;returns false when subjects are not equal&apos;, ({ v1, v2 }) =&gt; {
+            expect(equal(v1, v2)).to.be.false;                               // tslint:disable-line:no-unused-expression
+        });
+
+        it(&apos;compares public and private member fields&apos;, () =&gt; {
+            class PrivatePerson extends TinyType {
+                constructor(private readonly name: Name, private readonly age: Age) {
+                    super();
+                }
+            }
+
+            const
+                PrivateAlice = new PrivatePerson(new Name(&apos;Alice&apos;), new Age(28)),
+                PrivateRyan  = new PrivatePerson(new Name(&apos;Ryan&apos;), new Age(28));
+
+            expect(PrivateAlice.equals(PrivateAlice)).to.be.true;            // tslint:disable-line:no-unused-expression
+            expect(PrivateAlice.equals(PrivateRyan)).to.be.false;            // tslint:disable-line:no-unused-expression
+        });
+    });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+
+
+</body></html>

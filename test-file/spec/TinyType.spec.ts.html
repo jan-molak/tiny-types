@@ -65,332 +65,287 @@ import { expect } from &apos;./expect&apos;;
 /** @test {TinyType} */
 describe(&apos;TinyType&apos;, () =&gt; {
 
-    /** @test {TinyType} */
-    describe(&apos;definition&apos;, () =&gt; {
+    describe(&apos;wrapping a single value&apos;, () =&gt; {
 
-        /** @test {TinyTypeOf} */
-        it(&apos;can be a one-liner for TinyTypes representing a single value&apos;, () =&gt; {
-            class FirstName extends TinyTypeOf&lt;string&gt;() {}
+        /** @test {TinyType} */
+        describe(&apos;definition&apos;, () =&gt; {
 
-            const firstName = new FirstName(&apos;Jan&apos;);
+            /** @test {TinyTypeOf} */
+            it(&apos;can be a one-liner for TinyTypes representing a single value&apos;, () =&gt; {
+                class FirstName extends TinyTypeOf&lt;string&gt;() {
+                }
 
-            expect(firstName.value).to.equal(&apos;Jan&apos;);
-            expect(firstName).to.be.instanceOf(FirstName);
-            expect(firstName).to.be.instanceOf(TinyType);
-            expect(firstName.constructor.name).to.equal(&apos;FirstName&apos;);
-            expect(firstName.toString()).to.equal(&apos;FirstName(value=Jan)&apos;);
+                const firstName = new FirstName(&apos;Jan&apos;);
+
+                expect(firstName.value).to.equal(&apos;Jan&apos;);
+                expect(firstName).to.be.instanceOf(FirstName);
+                expect(firstName).to.be.instanceOf(TinyType);
+                expect(firstName.constructor.name).to.equal(&apos;FirstName&apos;);
+                expect(firstName.toString()).to.equal(&apos;FirstName(value=Jan)&apos;);
+            });
+
+            /** @test {TinyTypeOf} */
+            it(&apos;prevents null and undefined when the single-line definition style is used&apos;, () =&gt; {
+                class FirstName extends TinyTypeOf&lt;string&gt;() {
+                }
+
+                expect(() =&gt; new FirstName(null as any)).to.throw(&apos;FirstName should be defined&apos;);
+                expect(() =&gt; new FirstName(undefined as any)).to.throw(&apos;FirstName should be defined&apos;);
+            });
+
+            /**
+             * @test {TinyType}
+             * @test {TinyTypeOf}
+             */
+            it(&apos;needs to extend the TinyType for types with more than one value&apos;, () =&gt; {
+                class FirstName extends TinyTypeOf&lt;string&gt;() {
+                }
+
+                class LastName extends TinyTypeOf&lt;string&gt;() {
+                }
+
+                class FullName extends TinyType {
+                    constructor(public readonly firstName: FirstName,
+                                public readonly lastName: LastName) {
+                        super();
+                    }
+                }
+
+                const fullName = new FullName(new FirstName(&apos;Jan&apos;), new LastName(&apos;Molak&apos;));
+
+                expect(fullName.firstName.value).to.equal(&apos;Jan&apos;);
+                expect(fullName.lastName.value).to.equal(&apos;Molak&apos;);
+                expect(fullName).to.be.instanceOf(FullName);
+                expect(fullName).to.be.instanceOf(FullName);
+                expect(fullName.constructor.name).to.equal(&apos;FullName&apos;);
+                expect(fullName.toString()).to.equal(&apos;FullName(firstName=FirstName(value=Jan), lastName=LastName(value=Molak))&apos;);
+            });
+
+            /**
+             * @test {TinyType}
+             * @test {TinyTypeOf}
+             */
+            it(&apos;can be mixed and matched&apos;, () =&gt; {
+                const now = new Date(Date.UTC(2018, 2, 12, 0, 30, 0));
+
+                class UserName extends TinyTypeOf&lt;string&gt;() {
+                }
+
+                class Timestamp extends TinyTypeOf&lt;Date&gt;() {
+                    toString() {
+                        return `Timestamp(value=${this.value.toISOString()})`;
+                    }
+                }
+
+                abstract class DomainEvent extends TinyTypeOf&lt;Timestamp&gt;() {
+                }
+
+                class AccountCreated extends DomainEvent {
+                    constructor(public readonly username: UserName, timestamp: Timestamp) {
+                        super(timestamp);
+                    }
+                }
+
+                const e = new AccountCreated(new UserName(&apos;jan-molak&apos;), new Timestamp(now));
+
+                expect(e.toString()).to.equal(
+                    &apos;AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))&apos;,
+                );
+            });
         });
 
-        /** @test {TinyTypeOf} */
-        it(&apos;prevents null and undefined when the single-line definition style is used&apos;, () =&gt; {
-            class FirstName extends TinyTypeOf&lt;string&gt;() {}
+        /** @test {TinyType#toString} */
+        describe(&apos;::toString&apos;, () =&gt; {
+            class Area extends TinyTypeOf&lt;string&gt;() {}
 
-            expect(() =&gt; new FirstName(null as any)).to.throw(&apos;FirstName should be defined&apos;);
-            expect(() =&gt; new FirstName(undefined as any)).to.throw(&apos;FirstName should be defined&apos;);
+            class District extends TinyTypeOf&lt;number&gt;() {}
+
+            class Sector extends TinyTypeOf&lt;number&gt;() {}
+
+            class Unit extends TinyTypeOf&lt;string&gt;() {}
+
+            class Postcode extends TinyType {
+                constructor(public readonly area: Area,
+                            public readonly district: District,
+                            public readonly sector: Sector,
+                            public readonly unit: Unit,) {
+                    super();
+                }
+            }
+
+            it(&apos;mentions the class and its properties&apos;, () =&gt; {
+                const area = new Area(&apos;GU&apos;);
+
+                expect(area.toString()).to.equal(&apos;Area(value=GU)&apos;);
+            });
+
+            it(&apos;mentions the class and its fields, but not the methods&apos;, () =&gt; {
+                class Person extends TinyType {
+                    constructor(public readonly name: string) {
+                        super();
+                    }
+
+                    rename = (newName: string) =&gt; new Person(newName);
+                }
+
+                const p = new Person(&apos;James&apos;);
+
+                expect(p.toString())
+                    .to.equal(&apos;Person(name=James)&apos;);
+            });
+
+            it(&apos;only cares about the fields, not the methods&apos;, () =&gt; {
+                const postcode = new Postcode(
+                    new Area(&apos;GU&apos;),
+                    new District(15),
+                    new Sector(9),
+                    new Unit(&apos;NZ&apos;),
+                );
+
+                expect(postcode.toString())
+                    .to.equal(&apos;Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))&apos;);
+            });
         });
 
-        /**
-         * @test {TinyType}
-         * @test {TinyTypeOf}
-         */
-        it(&apos;needs to extend the TinyType for types with more than one value&apos;, () =&gt; {
+        /** @test {TinyType#toJSON} */
+        describe(&apos;serialisation&apos;, () =&gt; {
+
             class FirstName extends TinyTypeOf&lt;string&gt;() {}
+
             class LastName extends TinyTypeOf&lt;string&gt;() {}
 
-            class FullName extends TinyType {
-                constructor(public readonly firstName: FirstName,
-                            public readonly lastName: LastName) {
-                    super();
-                }
-            }
+            class Age extends TinyTypeOf&lt;number&gt;() {}
 
-            const fullName = new FullName(new FirstName(&apos;Jan&apos;), new LastName(&apos;Molak&apos;));
-
-            expect(fullName.firstName.value).to.equal(&apos;Jan&apos;);
-            expect(fullName.lastName.value).to.equal(&apos;Molak&apos;);
-            expect(fullName).to.be.instanceOf(FullName);
-            expect(fullName).to.be.instanceOf(FullName);
-            expect(fullName.constructor.name).to.equal(&apos;FullName&apos;);
-            expect(fullName.toString()).to.equal(&apos;FullName(firstName=FirstName(value=Jan), lastName=LastName(value=Molak))&apos;);
-        });
-
-        /**
-         * @test {TinyType}
-         * @test {TinyTypeOf}
-         */
-        it(&apos;can be mixed and matched&apos;, () =&gt; {
-            const now = new Date(Date.UTC(2018, 2, 12, 0, 30, 0));
-
-            class UserName extends TinyTypeOf&lt;string&gt;() {}
-            class Timestamp extends TinyTypeOf&lt;Date&gt;() {
-                toString() {
-                    return `Timestamp(value=${this.value.toISOString()})`;
-                }
-            }
-
-            abstract class DomainEvent extends TinyTypeOf&lt;Timestamp&gt;() {}
-
-            class AccountCreated extends DomainEvent {
-                constructor(public readonly username: UserName, timestamp: Timestamp) {
-                    super(timestamp);
-                }
-            }
-
-            const e = new AccountCreated(new UserName(&apos;jan-molak&apos;), new Timestamp(now));
-
-            expect(e.toString()).to.equal(
-                &apos;AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))&apos;,
-            );
-        });
-    });
-
-    /** @test {TinyType#equals} */
-    describe(&apos;::equals&apos;, () =&gt; {
-        class Name extends TinyType {
-            constructor(public readonly value: string) {
-                super();
-            }
-        }
-
-        class Role extends TinyType {
-            constructor(public readonly value: string) {
-                super();
-            }
-        }
-
-        class Person extends TinyType {
-            constructor(public readonly name: Name, public readonly role: Role) { super(); }
-        }
-
-        it(&apos;is reflexive&apos;, () =&gt; {
-
-            const n1 = new Name(&apos;Jan&apos;);
-
-            expect(n1.equals(n1)).to.be.true;                               // tslint:disable-line:no-unused-expression
-        });
-
-        it(&apos;is symmetric&apos;, () =&gt; {
-
-            const
-                n1 = new Name(&apos;Jan&apos;),
-                n2 = new Name(&apos;Jan&apos;);
-
-            expect(n1.equals(n2)).to.be.true;                               // tslint:disable-line:no-unused-expression
-            expect(n1.equals(n2)).to.equal(n2.equals(n1));
-        });
-
-        it(&apos;is transitive&apos;, () =&gt; {
-
-            const
-                n1 = new Name(&apos;Jan&apos;),
-                n2 = new Name(&apos;Jan&apos;),
-                n3 = new Name(&apos;Jan&apos;);
-
-            expect(n1.equals(n2)).to.be.true;                               // tslint:disable-line:no-unused-expression
-            expect(n2.equals(n3)).to.be.true;                               // tslint:disable-line:no-unused-expression
-            expect(n1.equals(n3)).to.be.true;                               // tslint:disable-line:no-unused-expression
-        });
-
-        it(&apos;is recursive&apos;, () =&gt; {
-
-            const
-                p1 = new Person(new Name(&apos;Jan&apos;), new Role(&apos;dev&apos;)),
-                p2 = new Person(new Name(&apos;Jan&apos;), new Role(&apos;dev&apos;)),
-                p3 = new Person(new Name(&apos;John&apos;), new Role(&apos;dev&apos;));
-
-            expect(p1.equals(p2)).to.be.true;                               // tslint:disable-line:no-unused-expression
-            expect(p1.equals(p3)).to.be.false;                              // tslint:disable-line:no-unused-expression
-        });
-
-        it(&apos;works for private fields&apos;, () =&gt; {
-            class PrivatePerson extends TinyType {
-                constructor(private readonly name: Name, public readonly role: Role) { super(); }
-            }
-
-            const
-                p1 = new PrivatePerson(new Name(&apos;Jan&apos;), new Role(&apos;dev&apos;)),
-                p2 = new PrivatePerson(new Name(&apos;Jan&apos;), new Role(&apos;dev&apos;)),
-                p3 = new PrivatePerson(new Name(&apos;John&apos;), new Role(&apos;dev&apos;));
-
-            expect(p1.equals(p2)).to.be.true;                               // tslint:disable-line:no-unused-expression
-            expect(p1.equals(p3)).to.be.false;                              // tslint:disable-line:no-unused-expression
-        });
-
-        given(
-            undefined,
-            null,
-            {},
-            [],
-            1,
-            &apos;&apos;,
-            false,
-        ).it(&apos;is false for objects of a different type&apos;, (another: any) =&gt; {
-            const n = new Name(&apos;Jan&apos;);
-
-            expect(n.equals(another)).to.be.false;                          // tslint:disable-line:no-unused-expression
-        });
-    });
-
-    /** @test {TinyType#toString} */
-    describe(&apos;::toString&apos;, () =&gt; {
-        class Area      extends TinyTypeOf&lt;string&gt;() {}
-        class District  extends TinyTypeOf&lt;number&gt;() {}
-        class Sector    extends TinyTypeOf&lt;number&gt;() {}
-        class Unit      extends TinyTypeOf&lt;string&gt;() {}
-
-        class Postcode extends TinyType {
-            constructor(public readonly area: Area,
-                        public readonly district: District,
-                        public readonly sector: Sector,
-                        public readonly unit: Unit,
-            ) {
-                super();
-            }
-        }
-
-        it(&apos;mentions the class and its properties&apos;, () =&gt; {
-            const area = new Area(&apos;GU&apos;);
-
-            expect(area.toString()).to.equal(&apos;Area(value=GU)&apos;);
-        });
-
-        it(&apos;mentions the class and its fields, but not the methods&apos;, () =&gt; {
             class Person extends TinyType {
-                constructor(public readonly name: string) {
+                constructor(public readonly firstName: FirstName,
+                            public readonly lastName: LastName,
+                            public readonly age: Age,
+                ) {
                     super();
                 }
-                rename = (newName: string) =&gt; new Person(newName);
             }
 
-            const p = new Person(&apos;James&apos;);
-
-            expect(p.toString())
-                .to.equal(&apos;Person(name=James)&apos;);
-        });
-
-        it(&apos;only cares about the fields, not the methods&apos;, () =&gt; {
-            const postcode = new Postcode(
-                new Area(&apos;GU&apos;),
-                new District(15),
-                new Sector(9),
-                new Unit(&apos;NZ&apos;),
-            );
-
-            expect(postcode.toString())
-                .to.equal(&apos;Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))&apos;);
-        });
-    });
-
-    /** @test {TinyType#toJSON} */
-    describe(&apos;serialisation&apos;, () =&gt; {
-
-        class FirstName extends TinyTypeOf&lt;string&gt;() {}
-        class LastName extends TinyTypeOf&lt;string&gt;() {}
-        class Age extends TinyTypeOf&lt;number&gt;() {}
-        class Person extends TinyType {
-            constructor(
-                public readonly firstName: FirstName,
-                public readonly lastName: LastName,
-                public readonly age: Age,
-            ) {
-                super();
+            class People extends TinyTypeOf&lt;Person[]&gt;() {
             }
-        }
 
-        describe(&apos;::toJSON&apos;, () =&gt; {
+            describe(&apos;::toJSON&apos;, () =&gt; {
 
-            given&lt;TinyType &amp; { value: any }&gt;(
-                new FirstName(&apos;Bruce&apos;),
-                new Age(55),
-            ).
-            it(&apos;should serialise a single-value TinyType to just its value&apos;, input =&gt; {
-               expect(input.toJSON()).to.equal(input.value);
-            });
+                given&lt;TinyType &amp; { value: any }&gt;(
+                    new FirstName(&apos;Bruce&apos;),
+                    new Age(55),
+                ).it(&apos;should serialise a single-value TinyType to just its value&apos;, input =&gt; {
+                    expect(input.toJSON()).to.equal(input.value);
+                });
 
-            it(&apos;should serialise a complex TinyType recursively&apos;, () =&gt; {
+                it(&apos;should serialise a complex TinyType recursively&apos;, () =&gt; {
 
-                const person = new Person(new FirstName(&apos;Bruce&apos;), new LastName(&apos;Smith&apos;), new Age(55));
+                    const person = new Person(new FirstName(&apos;Bruce&apos;), new LastName(&apos;Smith&apos;), new Age(55));
 
-                expect(person.toJSON()).to.deep.equal({
-                    firstName: &apos;Bruce&apos;,
-                    lastName: &apos;Smith&apos;,
-                    age: 55,
+                    expect(person.toJSON()).to.deep.equal({
+                        firstName: &apos;Bruce&apos;,
+                        lastName: &apos;Smith&apos;,
+                        age: 55,
+                    });
+                });
+
+                it(`should serialise an array recursively`, () =&gt; {
+                    const people = new People([
+                        new Person(new FirstName(&apos;Alice&apos;), new LastName(&apos;Jones&apos;), new Age(62)),
+                        new Person(new FirstName(&apos;Bruce&apos;), new LastName(&apos;Smith&apos;), new Age(55)),
+                    ]);
+
+                    expect(people.toJSON()).to.deep.equal([{
+                        firstName: &apos;Alice&apos;,
+                        lastName: &apos;Jones&apos;,
+                        age: 62,
+                    }, {
+                        firstName: &apos;Bruce&apos;,
+                        lastName: &apos;Smith&apos;,
+                        age: 55,
+                    }]);
+                });
+
+                it(`should JSON.stringify any object that can&apos;t be represented in a more sensible way`, () =&gt; {
+                    class TT extends TinyTypeOf&lt;object&gt;() {
+                    }
+
+                    const tt = new TT(new Object({key: &apos;value&apos;}));
+
+                    expect(tt.toJSON()).to.equal(&apos;{&quot;key&quot;:&quot;value&quot;}&apos;);
                 });
             });
+        });
 
-            it(`should JSON.stringify any object that can&apos;t be represented in a more sensible way`, () =&gt; {
-                class TT extends TinyTypeOf&lt;object&gt;() {}
+        /** @test {TinyType} */
+        describe(&apos;de-serialisation&apos;, () =&gt; {
 
-                const tt = new TT(new Object({ key: &apos;value&apos; }));
+            type SerialisedFirstName = string &amp; JSONPrimitive;
 
-                expect(tt.toJSON()).to.equal(&apos;{&quot;key&quot;:&quot;value&quot;}&apos;);
+            class FirstName extends TinyTypeOf&lt;string&gt;() {
+                static fromJSON = (v: SerialisedFirstName) =&gt; new FirstName(v);
+
+                toJSON(): SerialisedFirstName {
+                    return super.toJSON() as SerialisedFirstName;
+                }
+            }
+
+            type SerialisedLastName = string &amp; JSONPrimitive;
+
+            class LastName extends TinyTypeOf&lt;string&gt;() {
+                static fromJSON = (v: SerialisedLastName) =&gt; new LastName(v);
+
+                toJSON(): SerialisedLastName {
+                    return super.toJSON() as SerialisedLastName;
+                }
+            }
+
+            type SerialisedAge = number &amp; JSONPrimitive;
+
+            class Age extends TinyTypeOf&lt;number&gt;() {
+                static fromJSON = (v: SerialisedAge) =&gt; new Age(v);
+
+                toJSON(): SerialisedAge {
+                    return super.toJSON() as SerialisedAge;
+                }
+            }
+
+            interface SerialisedPerson extends JSONObject {
+                firstName: SerialisedFirstName;
+                lastName: SerialisedLastName;
+                age: SerialisedAge;
+            }
+
+            class Person extends TinyType {
+                static fromJSON = (v: SerialisedPerson) =&gt; new Person(
+                    FirstName.fromJSON(v.firstName),
+                    LastName.fromJSON(v.lastName),
+                    Age.fromJSON(v.age),
+                )
+
+                constructor(public readonly firstName: FirstName,
+                            public readonly lastName: LastName,
+                            public readonly age: Age,) {
+                    super();
+                }
+
+                toJSON(): SerialisedPerson {
+                    return super.toJSON() as SerialisedPerson;
+                }
+            }
+
+            it(&apos;custom fromJSON can de-serialise a serialised single-value TinyType&apos;, () =&gt; {
+                const firstName = new FirstName(&apos;Jan&apos;);
+
+                // tslint:disable-next-line:no-unused-expression
+                expect(FirstName.fromJSON(firstName.toJSON()).equals(firstName)).to.be.true;
             });
-        });
-    });
 
-    /** @test {TinyType} */
-    describe(&apos;de-serialisation&apos;, () =&gt; {
+            it(&apos;custom fromJSON can recursively de-serialise a serialised complex TinyType&apos;, () =&gt; {
+                const person = new Person(new FirstName(&apos;Bruce&apos;), new LastName(&apos;Smith&apos;), new Age(55));
 
-        type SerialisedFirstName = string &amp; JSONPrimitive;
-        class FirstName extends TinyTypeOf&lt;string&gt;() {
-            static fromJSON = (v: SerialisedFirstName) =&gt; new FirstName(v);
-            toJSON(): SerialisedFirstName {
-                return super.toJSON() as SerialisedFirstName;
-            }
-        }
-
-        type SerialisedLastName = string &amp; JSONPrimitive;
-        class LastName extends TinyTypeOf&lt;string&gt;() {
-            static fromJSON = (v: SerialisedLastName) =&gt; new LastName(v);
-            toJSON(): SerialisedLastName {
-                return super.toJSON() as SerialisedLastName;
-            }
-        }
-
-        type SerialisedAge = number &amp; JSONPrimitive;
-        class Age extends TinyTypeOf&lt;number&gt;() {
-            static fromJSON = (v: SerialisedAge) =&gt; new Age(v);
-            toJSON(): SerialisedAge {
-                return super.toJSON() as SerialisedAge;
-            }
-        }
-
-        interface SerialisedPerson extends JSONObject {
-            firstName: SerialisedFirstName;
-            lastName: SerialisedLastName;
-            age: SerialisedAge;
-        }
-        class Person extends TinyType {
-            static fromJSON = (v: SerialisedPerson) =&gt; new Person(
-                FirstName.fromJSON(v.firstName),
-                LastName.fromJSON(v.lastName),
-                Age.fromJSON(v.age),
-            )
-
-            constructor(public readonly firstName: FirstName,
-                        public readonly lastName: LastName,
-                        public readonly age: Age,
-            ) {
-                super();
-            }
-
-            toJSON(): SerialisedPerson {
-                return super.toJSON() as SerialisedPerson;
-            }
-        }
-
-        it(&apos;custom fromJSON can de-serialise a serialised single-value TinyType&apos;, () =&gt; {
-            const firstName = new FirstName(&apos;Jan&apos;);
-
-            // tslint:disable-next-line:no-unused-expression
-            expect(FirstName.fromJSON(firstName.toJSON()).equals(firstName)).to.be.true;
-        });
-
-        it(&apos;custom fromJSON can recursively de-serialise a serialised complex TinyType&apos;, () =&gt; {
-            const person = new Person(new FirstName(&apos;Bruce&apos;), new LastName(&apos;Smith&apos;), new Age(55));
-
-            // tslint:disable-next-line:no-unused-expression
-            expect(Person.fromJSON(person.toJSON()).equals(person)).to.be.true;
+                // tslint:disable-next-line:no-unused-expression
+                expect(Person.fromJSON(person.toJSON()).equals(person)).to.be.true;
+            });
         });
     });
 });
