@@ -1,8 +1,12 @@
-import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
+import { JSONObject, JSONPrimitive, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
+import { check } from './check';
+import { isDefined } from './predicates';
 
 /**
  * @desc The {@link TinyTypeOf} can be used to define simple
  * single-value {@link TinyType}s on a single line.
+ *
+ * It contains a check preventing the constructor argument from being undefined (see {@link isDefined});
  *
  * @experimental
  *
@@ -18,6 +22,7 @@ export function TinyTypeOf<T>(): { new(_: T): { value: T } & TinyType } {
     return class extends TinyType {
         constructor(public readonly value: T) {
             super();
+            check(this.constructor.name, value, isDefined());
         }
     };
 }
