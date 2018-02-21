@@ -512,15 +512,16 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber25">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TinyTypeOf} from &apos;<span><a href="file/src/TinyType.ts.html#lineNumber21">tiny-types/lib/TinyType</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TinyTypeOf} from &apos;<span><a href="file/src/TinyType.ts.html#lineNumber25">tiny-types/lib/TinyType</a></span>&apos;</code></pre></div>
   
   <div class="experimental" data-ice="experimental">this function is experimental.</div>
   <div data-ice="description"><p>The <span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span> can be used to define simple
 single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span>s on a single line.</p>
+<p>It contains a check preventing the constructor argument from being undefined (see <span><a href="function/index.html#static-function-isDefined">isDefined</a></span>);</p>
 </div>
 
   
@@ -570,8 +571,9 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       
     <li data-ice="test"><span><a href="test-file/spec/match.spec.ts.html#lineNumber75"> when working with TinyTypes</a></span></li>
 <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber10">TinyType definition can be a one-liner for TinyTypes representing a single value</a></span></li>
-<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber30">TinyType definition needs to extend the TinyType for types with more than one value</a></span></li>
-<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber72">TinyType definition can be mixed and matched</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber27">TinyType definition prevents null and undefined when the single-line definition style is used</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber43">TinyType definition needs to extend the TinyType for types with more than one value</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber85">TinyType definition can be mixed and matched</a></span></li>
 </ul>
   </div>
 
@@ -763,11 +765,11 @@ check(&apos;Username&apos;, username, isDefined());</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Ensuring validity of a domain object upon creation</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { TinyType, check, isDefined, isInt, isInRange } from &apos;tiny-types&apos;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { TinyType, check, isDefined, isInteger, isInRange } from &apos;tiny-types&apos;
 
 class Age extends TinyType {
   constructor(public readonly value: number) {
-    check(&apos;Age&apos;, value, isDefined(), isInt(), isInRange(0, 125));
+    check(&apos;Age&apos;, value, isDefined(), isInteger(), isInRange(0, 125));
   }
 }</code></pre>
     </div>

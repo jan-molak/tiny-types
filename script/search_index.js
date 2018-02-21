@@ -265,79 +265,79 @@ window.esdocSearchIndex = [
   ],
   [
     "tinytype#equals src/tinytype.ts~tinytype#equals,tinytype#equals",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber124",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber137",
     "TinyType ::equals",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber177",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber190",
     "TinyType ::equals is recursive",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber162",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber175",
     "TinyType ::equals is reflexive",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber166",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber179",
     "TinyType ::equals is symmetric",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber171",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber184",
     "TinyType ::equals is transitive",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber182",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber195",
     "TinyType ::equals works for private fields",
     "test"
   ],
   [
     "tinytype#tostring src/tinytype.ts~tinytype#tostring,tinytype#tostring",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber206",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber219",
     "TinyType ::toString",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber258",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber271",
     "TinyType ::toString mentions the class and its fields, but not the methods",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber254",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber267",
     "TinyType ::toString mentions the class and its properties",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber282",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber295",
     "TinyType ::toString only cares about the fields, not the methods",
     "test"
   ],
   [
     "tinytype src/tinytype.ts~tinytype,tinytype",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber356",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber369",
     "TinyType de-serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber467",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber480",
     "TinyType de-serialisation custom fromJSON can de-serialise a serialised single-value TinyType",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber472",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber485",
     "TinyType de-serialisation custom fromJSON can recursively de-serialise a serialised complex TinyType",
     "test"
   ],
@@ -355,38 +355,50 @@ window.esdocSearchIndex = [
   ],
   [
     "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber72",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber85",
     "TinyType definition can be mixed and matched",
     "test"
   ],
   [
     "tinytype tinytypeof src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber30",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber43",
     "TinyType definition needs to extend the TinyType for types with more than one value",
     "test"
   ],
   [
+    "tinytypeof src/tinytype.ts~tinytypeof,tinytypeof",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber27",
+    "TinyType definition prevents null and undefined when the single-line definition style is used",
+    "test"
+  ],
+  [
     "tinytype#tojson src/tinytype.ts~tinytype#tojson,tinytype#tojson",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber289",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber302",
     "TinyType serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber328",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber341",
     "TinyType serialisation ::toJSON",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber341",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber354",
     "TinyType serialisation ::toJSON ",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber333",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber346",
     "TinyType serialisation ::toJSON should serialise a complex TinyType recursively",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
+    "pattern-matching",
     "test"
   ],
   [
@@ -398,12 +410,6 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber6",
-    "pattern-matching",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -469,7 +475,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -481,7 +487,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -493,25 +499,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -523,19 +511,37 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],

@@ -80,6 +80,14 @@ describe(&apos;TinyType&apos;, () =&gt; {
             expect(firstName.toString()).to.equal(&apos;FirstName(value=Jan)&apos;);
         });
 
+        /** @test {TinyTypeOf} */
+        it(&apos;prevents null and undefined when the single-line definition style is used&apos;, () =&gt; {
+            class FirstName extends TinyTypeOf&lt;string&gt;() {}
+
+            expect(() =&gt; new FirstName(null as any)).to.throw(&apos;FirstName should be defined&apos;);
+            expect(() =&gt; new FirstName(undefined as any)).to.throw(&apos;FirstName should be defined&apos;);
+        });
+
         /**
          * @test {TinyType}
          * @test {TinyTypeOf}

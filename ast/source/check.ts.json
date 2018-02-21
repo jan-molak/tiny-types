@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 1410,
+  "end": 1418,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 1410,
+    "end": 1418,
     "loc": {
       "start": {
         "line": 1,
@@ -181,9 +181,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInt, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInt(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
+            "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInteger, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInteger(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
             "start": 196,
-            "end": 1170,
+            "end": 1178,
             "loc": {
               "start": {
                 "line": 16,
@@ -199,8 +199,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 1171,
-        "end": 1409,
+        "start": 1179,
+        "end": 1417,
         "loc": {
           "start": {
             "line": 40,
@@ -215,8 +215,8 @@
         "source": null,
         "declaration": {
           "type": "FunctionDeclaration",
-          "start": 1178,
-          "end": 1409,
+          "start": 1186,
+          "end": 1417,
           "loc": {
             "start": {
               "line": 40,
@@ -229,8 +229,8 @@
           },
           "id": {
             "type": "Identifier",
-            "start": 1187,
-            "end": 1192,
+            "start": 1195,
+            "end": 1200,
             "loc": {
               "start": {
                 "line": 40,
@@ -251,8 +251,8 @@
           "params": [
             {
               "type": "Identifier",
-              "start": 1193,
-              "end": 1197,
+              "start": 1201,
+              "end": 1205,
               "loc": {
                 "start": {
                   "line": 40,
@@ -268,8 +268,8 @@
             },
             {
               "type": "Identifier",
-              "start": 1199,
-              "end": 1204,
+              "start": 1207,
+              "end": 1212,
               "loc": {
                 "start": {
                   "line": 40,
@@ -285,8 +285,8 @@
             },
             {
               "type": "RestElement",
-              "start": 1206,
-              "end": 1219,
+              "start": 1214,
+              "end": 1227,
               "loc": {
                 "start": {
                   "line": 40,
@@ -299,8 +299,8 @@
               },
               "argument": {
                 "type": "Identifier",
-                "start": 1209,
-                "end": 1219,
+                "start": 1217,
+                "end": 1227,
                 "loc": {
                   "start": {
                     "line": 40,
@@ -318,8 +318,8 @@
           ],
           "body": {
             "type": "BlockStatement",
-            "start": 1221,
-            "end": 1409,
+            "start": 1229,
+            "end": 1417,
             "loc": {
               "start": {
                 "line": 40,
@@ -333,8 +333,8 @@
             "body": [
               {
                 "type": "VariableDeclaration",
-                "start": 1227,
-                "end": 1274,
+                "start": 1235,
+                "end": 1282,
                 "loc": {
                   "start": {
                     "line": 41,
@@ -348,8 +348,8 @@
                 "declarations": [
                   {
                     "type": "VariableDeclarator",
-                    "start": 1233,
-                    "end": 1273,
+                    "start": 1241,
+                    "end": 1281,
                     "loc": {
                       "start": {
                         "line": 41,
@@ -362,8 +362,8 @@
                     },
                     "id": {
                       "type": "Identifier",
-                      "start": 1233,
-                      "end": 1239,
+                      "start": 1241,
+                      "end": 1247,
                       "loc": {
                         "start": {
                           "line": 41,
@@ -379,8 +379,8 @@
                     },
                     "init": {
                       "type": "CallExpression",
-                      "start": 1242,
-                      "end": 1273,
+                      "start": 1250,
+                      "end": 1281,
                       "loc": {
                         "start": {
                           "line": 41,
@@ -393,8 +393,8 @@
                       },
                       "callee": {
                         "type": "MemberExpression",
-                        "start": 1242,
-                        "end": 1266,
+                        "start": 1250,
+                        "end": 1274,
                         "loc": {
                           "start": {
                             "line": 41,
@@ -407,8 +407,8 @@
                         },
                         "object": {
                           "type": "CallExpression",
-                          "start": 1242,
-                          "end": 1260,
+                          "start": 1250,
+                          "end": 1268,
                           "loc": {
                             "start": {
                               "line": 41,
@@ -421,8 +421,8 @@
                           },
                           "callee": {
                             "type": "Identifier",
-                            "start": 1242,
-                            "end": 1245,
+                            "start": 1250,
+                            "end": 1253,
                             "loc": {
                               "start": {
                                 "line": 41,
@@ -439,8 +439,8 @@
                           "arguments": [
                             {
                               "type": "SpreadElement",
-                              "start": 1246,
-                              "end": 1259,
+                              "start": 1254,
+                              "end": 1267,
                               "loc": {
                                 "start": {
                                   "line": 41,
@@ -453,8 +453,8 @@
                               },
                               "argument": {
                                 "type": "Identifier",
-                                "start": 1249,
-                                "end": 1259,
+                                "start": 1257,
+                                "end": 1267,
                                 "loc": {
                                   "start": {
                                     "line": 41,
@@ -473,8 +473,8 @@
                         },
                         "property": {
                           "type": "Identifier",
-                          "start": 1261,
-                          "end": 1266,
+                          "start": 1269,
+                          "end": 1274,
                           "loc": {
                             "start": {
                               "line": 41,
@@ -493,8 +493,8 @@
                       "arguments": [
                         {
                           "type": "Identifier",
-                          "start": 1267,
-                          "end": 1272,
+                          "start": 1275,
+                          "end": 1280,
                           "loc": {
                             "start": {
                               "line": 41,
@@ -516,8 +516,8 @@
               },
               {
                 "type": "IfStatement",
-                "start": 1279,
-                "end": 1382,
+                "start": 1287,
+                "end": 1390,
                 "loc": {
                   "start": {
                     "line": 42,
@@ -530,8 +530,8 @@
                 },
                 "test": {
                   "type": "BinaryExpression",
-                  "start": 1283,
-                  "end": 1308,
+                  "start": 1291,
+                  "end": 1316,
                   "loc": {
                     "start": {
                       "line": 42,
@@ -544,8 +544,8 @@
                   },
                   "left": {
                     "type": "Identifier",
-                    "start": 1283,
-                    "end": 1289,
+                    "start": 1291,
+                    "end": 1297,
                     "loc": {
                       "start": {
                         "line": 42,
@@ -562,8 +562,8 @@
                   "operator": "instanceof",
                   "right": {
                     "type": "Identifier",
-                    "start": 1301,
-                    "end": 1308,
+                    "start": 1309,
+                    "end": 1316,
                     "loc": {
                       "start": {
                         "line": 42,
@@ -580,8 +580,8 @@
                 },
                 "consequent": {
                   "type": "BlockStatement",
-                  "start": 1310,
-                  "end": 1382,
+                  "start": 1318,
+                  "end": 1390,
                   "loc": {
                     "start": {
                       "line": 42,
@@ -595,8 +595,8 @@
                   "body": [
                     {
                       "type": "ThrowStatement",
-                      "start": 1320,
-                      "end": 1376,
+                      "start": 1328,
+                      "end": 1384,
                       "loc": {
                         "start": {
                           "line": 43,
@@ -609,8 +609,8 @@
                       },
                       "argument": {
                         "type": "NewExpression",
-                        "start": 1326,
-                        "end": 1375,
+                        "start": 1334,
+                        "end": 1383,
                         "loc": {
                           "start": {
                             "line": 43,
@@ -623,8 +623,8 @@
                         },
                         "callee": {
                           "type": "Identifier",
-                          "start": 1330,
-                          "end": 1335,
+                          "start": 1338,
+                          "end": 1343,
                           "loc": {
                             "start": {
                               "line": 43,
@@ -641,8 +641,8 @@
                         "arguments": [
                           {
                             "type": "TemplateLiteral",
-                            "start": 1336,
-                            "end": 1374,
+                            "start": 1344,
+                            "end": 1382,
                             "loc": {
                               "start": {
                                 "line": 43,
@@ -656,8 +656,8 @@
                             "expressions": [
                               {
                                 "type": "Identifier",
-                                "start": 1339,
-                                "end": 1343,
+                                "start": 1347,
+                                "end": 1351,
                                 "loc": {
                                   "start": {
                                     "line": 43,
@@ -673,8 +673,8 @@
                               },
                               {
                                 "type": "MemberExpression",
-                                "start": 1354,
-                                "end": 1372,
+                                "start": 1362,
+                                "end": 1380,
                                 "loc": {
                                   "start": {
                                     "line": 43,
@@ -687,8 +687,8 @@
                                 },
                                 "object": {
                                   "type": "Identifier",
-                                  "start": 1354,
-                                  "end": 1360,
+                                  "start": 1362,
+                                  "end": 1368,
                                   "loc": {
                                     "start": {
                                       "line": 43,
@@ -704,8 +704,8 @@
                                 },
                                 "property": {
                                   "type": "Identifier",
-                                  "start": 1361,
-                                  "end": 1372,
+                                  "start": 1369,
+                                  "end": 1380,
                                   "loc": {
                                     "start": {
                                       "line": 43,
@@ -725,8 +725,8 @@
                             "quasis": [
                               {
                                 "type": "TemplateElement",
-                                "start": 1337,
-                                "end": 1337,
+                                "start": 1345,
+                                "end": 1345,
                                 "loc": {
                                   "start": {
                                     "line": 43,
@@ -745,8 +745,8 @@
                               },
                               {
                                 "type": "TemplateElement",
-                                "start": 1344,
-                                "end": 1352,
+                                "start": 1352,
+                                "end": 1360,
                                 "loc": {
                                   "start": {
                                     "line": 43,
@@ -765,8 +765,8 @@
                               },
                               {
                                 "type": "TemplateElement",
-                                "start": 1373,
-                                "end": 1373,
+                                "start": 1381,
+                                "end": 1381,
                                 "loc": {
                                   "start": {
                                     "line": 43,
@@ -795,8 +795,8 @@
               },
               {
                 "type": "ReturnStatement",
-                "start": 1387,
-                "end": 1407,
+                "start": 1395,
+                "end": 1415,
                 "loc": {
                   "start": {
                     "line": 45,
@@ -809,8 +809,8 @@
                 },
                 "argument": {
                   "type": "MemberExpression",
-                  "start": 1394,
-                  "end": 1406,
+                  "start": 1402,
+                  "end": 1414,
                   "loc": {
                     "start": {
                       "line": 45,
@@ -823,8 +823,8 @@
                   },
                   "object": {
                     "type": "Identifier",
-                    "start": 1394,
-                    "end": 1400,
+                    "start": 1402,
+                    "end": 1408,
                     "loc": {
                       "start": {
                         "line": 45,
@@ -840,8 +840,8 @@
                   },
                   "property": {
                     "type": "Identifier",
-                    "start": 1401,
-                    "end": 1406,
+                    "start": 1409,
+                    "end": 1414,
                     "loc": {
                       "start": {
                         "line": 45,
@@ -880,9 +880,9 @@
             },
             {
               "type": "CommentBlock",
-              "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInt, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInt(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
+              "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInteger, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInteger(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
               "start": 196,
-              "end": 1170,
+              "end": 1178,
               "loc": {
                 "start": {
                   "line": 16,
@@ -916,9 +916,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInt, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInt(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
+            "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInteger, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInteger(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
             "start": 196,
-            "end": 1170,
+            "end": 1178,
             "loc": {
               "start": {
                 "line": 16,
@@ -954,9 +954,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInt, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInt(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
+      "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInteger, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInteger(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
       "start": 196,
-      "end": 1170,
+      "end": 1178,
       "loc": {
         "start": {
           "line": 16,
@@ -1223,9 +1223,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInt, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInt(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
+      "value": "*\n * @desc The `check` function verifies if the value meets the specified {Predicate}s.\n *\n * @example <caption>Basic usage</caption>\n * import { check, isDefined } from 'tiny-types'\n *\n * const username = 'jan-molak'\n * check('Username', username, isDefined());\n *\n * @example <caption>Ensuring validity of a domain object upon creation</caption>\n * import { TinyType, check, isDefined, isInteger, isInRange } from 'tiny-types'\n *\n * class Age extends TinyType {\n *   constructor(public readonly value: number) {\n *     check('Age', value, isDefined(), isInteger(), isInRange(0, 125));\n *   }\n * }\n *\n * @param {string} name - the name of the value to check.\n *      This name will be included in the error message should the check fail\n * @param {T} value - the argument to check\n * @param {...Array<Predicate<T>>} predicates - a list of predicates to check the value against\n * @returns {T} - if the original value passes all the predicates, it's returned from the function\n ",
       "start": 196,
-      "end": 1170,
+      "end": 1178,
       "loc": {
         "start": {
           "line": 16,
@@ -1252,8 +1252,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 1171,
-      "end": 1177,
+      "start": 1179,
+      "end": 1185,
       "loc": {
         "start": {
           "line": 40,
@@ -1279,8 +1279,8 @@
         "binop": null
       },
       "value": "function",
-      "start": 1178,
-      "end": 1186,
+      "start": 1186,
+      "end": 1194,
       "loc": {
         "start": {
           "line": 40,
@@ -1305,8 +1305,8 @@
         "binop": null
       },
       "value": "check",
-      "start": 1187,
-      "end": 1192,
+      "start": 1195,
+      "end": 1200,
       "loc": {
         "start": {
           "line": 40,
@@ -1330,8 +1330,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1192,
-      "end": 1193,
+      "start": 1200,
+      "end": 1201,
       "loc": {
         "start": {
           "line": 40,
@@ -1356,8 +1356,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 1193,
-      "end": 1197,
+      "start": 1201,
+      "end": 1205,
       "loc": {
         "start": {
           "line": 40,
@@ -1382,8 +1382,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1197,
-      "end": 1198,
+      "start": 1205,
+      "end": 1206,
       "loc": {
         "start": {
           "line": 40,
@@ -1408,8 +1408,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 1199,
-      "end": 1204,
+      "start": 1207,
+      "end": 1212,
       "loc": {
         "start": {
           "line": 40,
@@ -1434,8 +1434,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1204,
-      "end": 1205,
+      "start": 1212,
+      "end": 1213,
       "loc": {
         "start": {
           "line": 40,
@@ -1460,8 +1460,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1206,
-      "end": 1209,
+      "start": 1214,
+      "end": 1217,
       "loc": {
         "start": {
           "line": 40,
@@ -1486,8 +1486,8 @@
         "binop": null
       },
       "value": "predicates",
-      "start": 1209,
-      "end": 1219,
+      "start": 1217,
+      "end": 1227,
       "loc": {
         "start": {
           "line": 40,
@@ -1511,8 +1511,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1219,
-      "end": 1220,
+      "start": 1227,
+      "end": 1228,
       "loc": {
         "start": {
           "line": 40,
@@ -1536,8 +1536,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1221,
-      "end": 1222,
+      "start": 1229,
+      "end": 1230,
       "loc": {
         "start": {
           "line": 40,
@@ -1564,8 +1564,8 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 1227,
-      "end": 1232,
+      "start": 1235,
+      "end": 1240,
       "loc": {
         "start": {
           "line": 41,
@@ -1590,8 +1590,8 @@
         "binop": null
       },
       "value": "result",
-      "start": 1233,
-      "end": 1239,
+      "start": 1241,
+      "end": 1247,
       "loc": {
         "start": {
           "line": 41,
@@ -1617,8 +1617,8 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 1240,
-      "end": 1241,
+      "start": 1248,
+      "end": 1249,
       "loc": {
         "start": {
           "line": 41,
@@ -1643,8 +1643,8 @@
         "binop": null
       },
       "value": "and",
-      "start": 1242,
-      "end": 1245,
+      "start": 1250,
+      "end": 1253,
       "loc": {
         "start": {
           "line": 41,
@@ -1668,8 +1668,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1245,
-      "end": 1246,
+      "start": 1253,
+      "end": 1254,
       "loc": {
         "start": {
           "line": 41,
@@ -1694,8 +1694,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1246,
-      "end": 1249,
+      "start": 1254,
+      "end": 1257,
       "loc": {
         "start": {
           "line": 41,
@@ -1720,8 +1720,8 @@
         "binop": null
       },
       "value": "predicates",
-      "start": 1249,
-      "end": 1259,
+      "start": 1257,
+      "end": 1267,
       "loc": {
         "start": {
           "line": 41,
@@ -1745,8 +1745,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1259,
-      "end": 1260,
+      "start": 1267,
+      "end": 1268,
       "loc": {
         "start": {
           "line": 41,
@@ -1771,8 +1771,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1260,
-      "end": 1261,
+      "start": 1268,
+      "end": 1269,
       "loc": {
         "start": {
           "line": 41,
@@ -1797,8 +1797,8 @@
         "binop": null
       },
       "value": "check",
-      "start": 1261,
-      "end": 1266,
+      "start": 1269,
+      "end": 1274,
       "loc": {
         "start": {
           "line": 41,
@@ -1822,8 +1822,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1266,
-      "end": 1267,
+      "start": 1274,
+      "end": 1275,
       "loc": {
         "start": {
           "line": 41,
@@ -1848,8 +1848,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 1267,
-      "end": 1272,
+      "start": 1275,
+      "end": 1280,
       "loc": {
         "start": {
           "line": 41,
@@ -1873,8 +1873,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1272,
-      "end": 1273,
+      "start": 1280,
+      "end": 1281,
       "loc": {
         "start": {
           "line": 41,
@@ -1899,8 +1899,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1273,
-      "end": 1274,
+      "start": 1281,
+      "end": 1282,
       "loc": {
         "start": {
           "line": 41,
@@ -1927,8 +1927,8 @@
         "updateContext": null
       },
       "value": "if",
-      "start": 1279,
-      "end": 1281,
+      "start": 1287,
+      "end": 1289,
       "loc": {
         "start": {
           "line": 42,
@@ -1952,8 +1952,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1282,
-      "end": 1283,
+      "start": 1290,
+      "end": 1291,
       "loc": {
         "start": {
           "line": 42,
@@ -1978,8 +1978,8 @@
         "binop": null
       },
       "value": "result",
-      "start": 1283,
-      "end": 1289,
+      "start": 1291,
+      "end": 1297,
       "loc": {
         "start": {
           "line": 42,
@@ -2006,8 +2006,8 @@
         "updateContext": null
       },
       "value": "instanceof",
-      "start": 1290,
-      "end": 1300,
+      "start": 1298,
+      "end": 1308,
       "loc": {
         "start": {
           "line": 42,
@@ -2032,8 +2032,8 @@
         "binop": null
       },
       "value": "Failure",
-      "start": 1301,
-      "end": 1308,
+      "start": 1309,
+      "end": 1316,
       "loc": {
         "start": {
           "line": 42,
@@ -2057,8 +2057,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1308,
-      "end": 1309,
+      "start": 1316,
+      "end": 1317,
       "loc": {
         "start": {
           "line": 42,
@@ -2082,8 +2082,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1310,
-      "end": 1311,
+      "start": 1318,
+      "end": 1319,
       "loc": {
         "start": {
           "line": 42,
@@ -2110,8 +2110,8 @@
         "updateContext": null
       },
       "value": "throw",
-      "start": 1320,
-      "end": 1325,
+      "start": 1328,
+      "end": 1333,
       "loc": {
         "start": {
           "line": 43,
@@ -2138,8 +2138,8 @@
         "updateContext": null
       },
       "value": "new",
-      "start": 1326,
-      "end": 1329,
+      "start": 1334,
+      "end": 1337,
       "loc": {
         "start": {
           "line": 43,
@@ -2164,8 +2164,8 @@
         "binop": null
       },
       "value": "Error",
-      "start": 1330,
-      "end": 1335,
+      "start": 1338,
+      "end": 1343,
       "loc": {
         "start": {
           "line": 43,
@@ -2189,8 +2189,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1335,
-      "end": 1336,
+      "start": 1343,
+      "end": 1344,
       "loc": {
         "start": {
           "line": 43,
@@ -2214,8 +2214,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1336,
-      "end": 1337,
+      "start": 1344,
+      "end": 1345,
       "loc": {
         "start": {
           "line": 43,
@@ -2241,8 +2241,8 @@
         "updateContext": null
       },
       "value": "",
-      "start": 1337,
-      "end": 1337,
+      "start": 1345,
+      "end": 1345,
       "loc": {
         "start": {
           "line": 43,
@@ -2266,8 +2266,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1337,
-      "end": 1339,
+      "start": 1345,
+      "end": 1347,
       "loc": {
         "start": {
           "line": 43,
@@ -2292,8 +2292,8 @@
         "binop": null
       },
       "value": "name",
-      "start": 1339,
-      "end": 1343,
+      "start": 1347,
+      "end": 1351,
       "loc": {
         "start": {
           "line": 43,
@@ -2317,8 +2317,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1343,
-      "end": 1344,
+      "start": 1351,
+      "end": 1352,
       "loc": {
         "start": {
           "line": 43,
@@ -2344,8 +2344,8 @@
         "updateContext": null
       },
       "value": " should ",
-      "start": 1344,
-      "end": 1352,
+      "start": 1352,
+      "end": 1360,
       "loc": {
         "start": {
           "line": 43,
@@ -2369,8 +2369,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1352,
-      "end": 1354,
+      "start": 1360,
+      "end": 1362,
       "loc": {
         "start": {
           "line": 43,
@@ -2395,8 +2395,8 @@
         "binop": null
       },
       "value": "result",
-      "start": 1354,
-      "end": 1360,
+      "start": 1362,
+      "end": 1368,
       "loc": {
         "start": {
           "line": 43,
@@ -2421,8 +2421,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1360,
-      "end": 1361,
+      "start": 1368,
+      "end": 1369,
       "loc": {
         "start": {
           "line": 43,
@@ -2447,8 +2447,8 @@
         "binop": null
       },
       "value": "description",
-      "start": 1361,
-      "end": 1372,
+      "start": 1369,
+      "end": 1380,
       "loc": {
         "start": {
           "line": 43,
@@ -2472,8 +2472,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1372,
-      "end": 1373,
+      "start": 1380,
+      "end": 1381,
       "loc": {
         "start": {
           "line": 43,
@@ -2499,8 +2499,8 @@
         "updateContext": null
       },
       "value": "",
-      "start": 1373,
-      "end": 1373,
+      "start": 1381,
+      "end": 1381,
       "loc": {
         "start": {
           "line": 43,
@@ -2524,8 +2524,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1373,
-      "end": 1374,
+      "start": 1381,
+      "end": 1382,
       "loc": {
         "start": {
           "line": 43,
@@ -2549,8 +2549,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1374,
-      "end": 1375,
+      "start": 1382,
+      "end": 1383,
       "loc": {
         "start": {
           "line": 43,
@@ -2575,8 +2575,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1375,
-      "end": 1376,
+      "start": 1383,
+      "end": 1384,
       "loc": {
         "start": {
           "line": 43,
@@ -2600,8 +2600,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1381,
-      "end": 1382,
+      "start": 1389,
+      "end": 1390,
       "loc": {
         "start": {
           "line": 44,
@@ -2628,8 +2628,8 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 1387,
-      "end": 1393,
+      "start": 1395,
+      "end": 1401,
       "loc": {
         "start": {
           "line": 45,
@@ -2654,8 +2654,8 @@
         "binop": null
       },
       "value": "result",
-      "start": 1394,
-      "end": 1400,
+      "start": 1402,
+      "end": 1408,
       "loc": {
         "start": {
           "line": 45,
@@ -2680,8 +2680,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1400,
-      "end": 1401,
+      "start": 1408,
+      "end": 1409,
       "loc": {
         "start": {
           "line": 45,
@@ -2706,8 +2706,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 1401,
-      "end": 1406,
+      "start": 1409,
+      "end": 1414,
       "loc": {
         "start": {
           "line": 45,
@@ -2732,8 +2732,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1406,
-      "end": 1407,
+      "start": 1414,
+      "end": 1415,
       "loc": {
         "start": {
           "line": 45,
@@ -2757,8 +2757,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1408,
-      "end": 1409,
+      "start": 1416,
+      "end": 1417,
       "loc": {
         "start": {
           "line": 46,
@@ -2783,8 +2783,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1410,
-      "end": 1410,
+      "start": 1418,
+      "end": 1418,
       "loc": {
         "start": {
           "line": 47,

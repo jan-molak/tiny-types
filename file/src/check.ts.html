@@ -68,11 +68,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * check(&apos;Username&apos;, username, isDefined());
  *
  * @example &lt;caption&gt;Ensuring validity of a domain object upon creation&lt;/caption&gt;
- * import { TinyType, check, isDefined, isInt, isInRange } from &apos;tiny-types&apos;
+ * import { TinyType, check, isDefined, isInteger, isInRange } from &apos;tiny-types&apos;
  *
  * class Age extends TinyType {
  *   constructor(public readonly value: number) {
- *     check(&apos;Age&apos;, value, isDefined(), isInt(), isInRange(0, 125));
+ *     check(&apos;Age&apos;, value, isDefined(), isInteger(), isInRange(0, 125));
  *   }
  * }
  *
