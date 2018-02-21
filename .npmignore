@@ -4,14 +4,16 @@ node_modules
 .npmignore
 package-lock.json
 
-# Build artifacts
+# Supporting files
 .nyc_output
-
-# Specs
 esdoc-plugins
 docs
 spec
 reports
+
+# Config
+.esdoc.json
+.travis.yml
 mocha.opts
 tsconfig*.json
 tslint.json
