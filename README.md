@@ -143,7 +143,7 @@ event1.toString() === 'AccountCreated(username=UserName(value=jan-molak), value=
 ## Serialisation to JSON
 
 Every TinyType defines 
-a [`toJSON()` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON()_behavior), 
+a [`toJSON()` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON%28%29_behavior), 
 which returns a JSON representation of the object. This means that you can use TinyTypes 
 as [Data Transfer Objects](https://en.wikipedia.org/wiki/Data_transfer_object).
 
