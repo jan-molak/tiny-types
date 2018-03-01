@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">spec/chec.spec.ts | tiny-types</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">spec/objects/deprecated.spec.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -33,8 +33,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ensure">ensure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-check">check</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#objects">objects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deprecated">deprecated</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
@@ -56,21 +58,157 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">spec/chec.spec.ts</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">spec/objects/deprecated.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
-import { given } from &apos;mocha-testdata&apos;;
+import * as sinon from &apos;sinon&apos;;
+import { deprecated } from &apos;../../src/objects&apos;;
+import { expect } from &apos;../expect&apos;;
 
-import { check, hasLengthOf, isArray, isDefined, isGreaterThan, isInteger, TinyType } from &apos;../src&apos;;
-import { expect } from &apos;./expect&apos;;
+/** @test {deprecated} */
+describe(&apos;deprecated&apos;, () =&gt; {
 
-/** @test {check} */
-describe(&apos;::check&apos;, () =&gt; {
+    describe(&apos;when used to annotate a class&apos;, () =&gt; {
+        it(&apos;logs a warning when the class is constructed&apos;, () =&gt; {
+            const consoleWarn = sinon.spy();
 
-    it(`advises the developer if they&apos;ve forgotten to specify the checks`, () =&gt; {
-        const value = 2;
-        expect(() =&gt; check(&apos;SomeProperty&apos;, value))
-            .to.throw(`Looks like you haven&apos;t specified any predicates to check the value against?`);
+            @deprecated(undefined, consoleWarn)
+            class Foo {
+            }
+
+            const foo = new Foo();
+
+            expect(consoleWarn)
+                .to.have.been.calledWith(&apos;Foo has been deprecated.&apos;);
+        });
+
+        it(&apos;can provide additional suggestion on what other class should be used instead&apos;, () =&gt; {
+            const consoleWarn = sinon.spy();
+
+            @deprecated(&apos;Please use Bar instead.&apos;, consoleWarn)
+            class Foo {
+            }
+
+            const foo = new Foo();
+
+            expect(consoleWarn)
+                .to.have.been.calledWith(&apos;Foo has been deprecated. Please use Bar instead.&apos;);
+        });
+
+        it(&apos;maintains the type and behaviour of the annotated class&apos;, () =&gt; {
+            const consoleWarn = sinon.spy();
+
+            @deprecated(&apos;Please use Client instead.&apos;, consoleWarn)
+            class Person {
+                constructor(public readonly name: string) {
+                }
+            }
+
+            const p = new Person(&apos;Alice&apos;);
+
+            expect(consoleWarn)
+                .to.have.been.calledWith(&apos;Person has been deprecated. Please use Client instead.&apos;);
+
+            expect(p).to.be.instanceOf(Person);
+        });
     });
+
+    describe(&apos;when used to annotate a method&apos;, () =&gt; {
+
+        it(&apos;logs a warning when the method is used&apos;, () =&gt; {
+            const consoleWarn = sinon.spy();
+
+            class Person {
+                @deprecated(&apos;&apos;, consoleWarn)
+                greet()   { return null; }
+                welcome() { return null; }
+            }
+
+            const p = new Person();
+            p.greet();
+
+            expect(consoleWarn)
+                .to.have.been.calledWith(&apos;Person#greet has been deprecated.&apos;);
+        });
+
+        it(&apos;can provide additional suggestion on what other method should be used instead&apos;, () =&gt; {
+            const consoleWarn = sinon.spy();
+
+            class Person {
+
+                @deprecated(&apos;Please use Person#welcome instead.&apos;, consoleWarn)
+                greet()   { return null; }
+                welcome() { return null; }
+            }
+
+            const p = new Person();
+            p.greet();
+
+            expect(consoleWarn)
+                .to.have.been.calledWith(&apos;Person#greet has been deprecated. Please use Person#welcome instead.&apos;);
+        });
+
+        it(&apos;maintains the behaviour of the annotated method&apos;, () =&gt; {
+            const consoleWarn = sinon.spy();
+
+            class Person {
+                constructor(public readonly name: string) {
+                }
+
+                @deprecated(&apos;Please use Person#welcome instead.&apos;, consoleWarn)
+                greet(greeting: string) {
+                    return `${ greeting }, my name is ${this.name}`;
+                }
+            }
+
+            const p = new Person(&apos;Alice&apos;);
+
+            expect(p.greet(&apos;Hi&apos;)).to.equal(&apos;Hi, my name is Alice&apos;);
+
+            expect(consoleWarn)
+                .to.have.been.calledWith(&apos;Person#greet has been deprecated. Please use Person#welcome instead.&apos;);
+        });
+    });
+
+    describe(&apos;when used to deprecate a function&apos;, () =&gt; {
+        it(&apos;logs a warning when the function is used&apos;, () =&gt; {
+            const consoleWarn = sinon.spy();
+
+            function foo() {
+                return null;
+            }
+
+            const deprecatedFoo = deprecated(&apos;Please use bar instead.&apos;, consoleWarn)(foo);
+
+            deprecatedFoo();
+
+            expect(consoleWarn)
+                .to.have.been.calledWith(&apos;foo has been deprecated. Please use bar instead.&apos;);
+
+        });
+
+        it(&apos;logs a warning when an arrow function is used&apos;, () =&gt; {
+            const consoleWarn = sinon.spy();
+
+            const foo = () =&gt; null;
+
+            const deprecatedFoo = deprecated(&apos;Please use bar instead.&apos;, consoleWarn)(foo);
+
+            deprecatedFoo();
+
+            expect(consoleWarn)
+                .to.have.been.calledWith(&apos;foo has been deprecated. Please use bar instead.&apos;);
+        });
+    });
+
+    describe(&apos;when used incorrectly&apos;, () =&gt; {
+
+        it(&apos;complains&apos;, () =&gt; {
+            const consoleWarn = sinon.spy();
+
+            expect(() =&gt; deprecated(&apos;something that does not make sense&apos;)(42))
+                .to.throw(`Only a class, method or function can be marked as deprecated. number given.`);
+        });
+    })
 });
 </code></pre>
 

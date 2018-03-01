@@ -33,8 +33,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ensure">ensure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-check">check</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#objects">objects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deprecated">deprecated</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
@@ -111,7 +113,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> meets all the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> meets all the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
       </div>
     </td>
@@ -134,13 +136,42 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-deprecated">deprecated</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, log: <span>Logger</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The <code>check</code> function verifies if the value meets the specified {Predicate}s.</p>
+        <div data-ice="description"><p>A decorator to mark a class, method or function as deprecated and make it log a warning whenever it is used.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-ensure">ensure</a></span></span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The <code>ensure</code> function verifies if the value meets the specified {Predicate}s.</p>
 </div>
       </div>
     </td>
@@ -169,7 +200,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is of <code>expectedLength</code>.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is of <code>expectedLength</code>.</p>
 </div>
       </div>
     </td>
@@ -198,7 +229,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is an <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is an <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>.</p>
 </div>
       </div>
     </td>
@@ -227,7 +258,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is defined as anything other than <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span> or <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is defined as anything other than <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span> or <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>.</p>
 </div>
       </div>
     </td>
@@ -256,7 +287,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is equal to <code>expectedValue</code>.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is equal to <code>expectedValue</code>.</p>
 </div>
       </div>
     </td>
@@ -285,7 +316,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is greater than the <code>lowerBound</code>.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is greater than the <code>lowerBound</code>.</p>
 </div>
       </div>
     </td>
@@ -314,7 +345,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is greater than or equal to the <code>lowerBound</code>.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is greater than or equal to the <code>lowerBound</code>.</p>
 </div>
       </div>
     </td>
@@ -343,7 +374,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is greater than or equal to the <code>lowerBound</code> and less than or equal to the <code>upperBound</code></p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is greater than or equal to the <code>lowerBound</code> and less than or equal to the <code>upperBound</code></p>
 </div>
       </div>
     </td>
@@ -372,7 +403,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is an integer <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is an integer <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>.</p>
 </div>
       </div>
     </td>
@@ -401,7 +432,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is less than the <code>upperBound</code>.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is less than the <code>upperBound</code>.</p>
 </div>
       </div>
     </td>
@@ -430,7 +461,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is less than or equal to the <code>upperBound</code>.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is less than or equal to the <code>upperBound</code>.</p>
 </div>
       </div>
     </td>
@@ -459,7 +490,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> is equal to one of the <code>allowedValues</code></p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> is equal to one of the <code>allowedValues</code></p>
 </div>
       </div>
     </td>
@@ -516,7 +547,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       <div>
         
         
-        <div data-ice="description"><p>Checks if the <code>value</code> meets at least one of the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
+        <div data-ice="description"><p>Ensures that the <code>value</code> meets at least one of the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
       </div>
     </td>
@@ -629,7 +660,7 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {and} from &apos;<span><a href="file/src/predicates/and.ts.html#lineNumber30">tiny-types/lib/predicates/and</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> meets all the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> meets all the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
 
   
@@ -702,25 +733,114 @@ class AgeInYears extends TinyType {
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-check">
+  <h3 data-ice="anchor" id="static-function-deprecated">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">check</span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
+    <span class="code" data-ice="name">deprecated</span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, log: <span>Logger</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/check.ts.html#lineNumber40">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/objects/deprecated.ts.html#lineNumber20">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {check} from &apos;<span><a href="file/src/check.ts.html#lineNumber40">tiny-types/lib/check</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {deprecated} from &apos;<span><a href="file/src/objects/deprecated.ts.html#lineNumber20">tiny-types/lib/objects/deprecated</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>The <code>check</code> function verifies if the value meets the specified {Predicate}s.</p>
+  <div data-ice="description"><p>A decorator to mark a class, method or function as deprecated and make it log a warning whenever it is used.
+Please see the tests for examples of usage.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">message</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>describes the alternative implementation that should be used instead
+                 of the deprecated method/function/class</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">log</td>
+      <td data-ice="type" class="code"><span>Logger</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>a function that handles the printing of the message,
+                 such as <span>console.warn</span></p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec/objects/deprecated.spec.ts.html#lineNumber12">deprecated</a></span></li>
+</ul>
+  </div>
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-ensure">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ensure</span><span class="code" data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, value: <span>T</span>, predicates: <span>...Array</span>&lt;<span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;&gt;): <span>T</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/ensure.ts.html#lineNumber40">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ensure} from &apos;<span><a href="file/src/ensure.ts.html#lineNumber40">tiny-types/lib/ensure</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>The <code>ensure</code> function verifies if the value meets the specified {Predicate}s.</p>
 </div>
 
   
@@ -805,13 +925,7 @@ class Age extends TinyType {
     </div>
 </div>
 
-  <div data-ice="tests">
-    <h4>Test:</h4>
-    <ul>
-      
-    <li data-ice="test"><span><a href="test-file/spec/chec.spec.ts.html#lineNumber5">::check</a></span></li>
-</ul>
-  </div>
+  
 
   
   
@@ -835,7 +949,7 @@ class Age extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {hasLengthOf} from &apos;<span><a href="file/src/predicates/hasLengthOf.ts.html#lineNumber39">tiny-types/lib/predicates/hasLengthOf</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is of <code>expectedLength</code>.
+  <div data-ice="description"><p>Ensures that the <code>value</code> is of <code>expectedLength</code>.
 Applies to <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>s, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>s and anything that has a <code>.length</code> property.</p>
 </div>
 
@@ -941,7 +1055,7 @@ class Username extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isArray} from &apos;<span><a href="file/src/predicates/isArray.ts.html#lineNumber27">tiny-types/lib/predicates/isArray</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is an <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>.</p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> is an <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>.</p>
 </div>
 
   
@@ -1019,7 +1133,7 @@ class Names extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isDefined} from &apos;<span><a href="file/src/predicates/isDefined.ts.html#lineNumber24">tiny-types/lib/predicates/isDefined</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is defined as anything other than <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span> or <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>.</p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> is defined as anything other than <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span> or <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>.</p>
 </div>
 
   
@@ -1094,7 +1208,7 @@ class Name extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isEqualTo} from &apos;<span><a href="file/src/predicates/isEqualTo.ts.html#lineNumber42">tiny-types/lib/predicates/isEqualTo</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is equal to <code>expectedValue</code>.
+  <div data-ice="description"><p>Ensures that the <code>value</code> is equal to <code>expectedValue</code>.
 This <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span> is typically used in combination with other <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
 
@@ -1203,7 +1317,7 @@ class Admin extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isGreaterThan} from &apos;<span><a href="file/src/predicates/isGreaterThan.ts.html#lineNumber27">tiny-types/lib/predicates/isGreaterThan</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is greater than the <code>lowerBound</code>.</p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> is greater than the <code>lowerBound</code>.</p>
 </div>
 
   
@@ -1294,7 +1408,7 @@ class AgeInYears extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isGreaterThanOrEqualTo} from &apos;<span><a href="file/src/predicates/isGreaterThanOrEqualTo.ts.html#lineNumber29">tiny-types/lib/predicates/isGreaterThanOrEqualTo</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is greater than or equal to the <code>lowerBound</code>.</p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> is greater than or equal to the <code>lowerBound</code>.</p>
 </div>
 
   
@@ -1385,7 +1499,7 @@ class AgeInYears extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isInRange} from &apos;<span><a href="file/src/predicates/isInRange.ts.html#lineNumber33">tiny-types/lib/predicates/isInRange</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is greater than or equal to the <code>lowerBound</code> and less than or equal to the <code>upperBound</code></p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> is greater than or equal to the <code>lowerBound</code> and less than or equal to the <code>upperBound</code></p>
 </div>
 
   
@@ -1483,7 +1597,7 @@ class InvestmentLengthInYears extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isInteger} from &apos;<span><a href="file/src/predicates/isInteger.ts.html#lineNumber24">tiny-types/lib/predicates/isInteger</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is an integer <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>.</p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> is an integer <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>.</p>
 </div>
 
   
@@ -1558,7 +1672,7 @@ class AgeInYears extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isLessThan} from &apos;<span><a href="file/src/predicates/isLessThan.ts.html#lineNumber27">tiny-types/lib/predicates/isLessThan</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is less than the <code>upperBound</code>.</p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> is less than the <code>upperBound</code>.</p>
 </div>
 
   
@@ -1649,7 +1763,7 @@ class InvestmentPeriodInYears extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isLessThanOrEqualTo} from &apos;<span><a href="file/src/predicates/isLessThanOrEqualTo.ts.html#lineNumber29">tiny-types/lib/predicates/isLessThanOrEqualTo</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is less than or equal to the <code>upperBound</code>.</p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> is less than or equal to the <code>upperBound</code>.</p>
 </div>
 
   
@@ -1740,7 +1854,7 @@ class InvestmentPeriod extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isOneOf} from &apos;<span><a href="file/src/predicates/isOneOf.ts.html#lineNumber30">tiny-types/lib/predicates/isOneOf</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> is equal to one of the <code>allowedValues</code></p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> is equal to one of the <code>allowedValues</code></p>
 </div>
 
   
@@ -1912,7 +2026,7 @@ class StreetLight extends TinyType {
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {or} from &apos;<span><a href="file/src/predicates/or.ts.html#lineNumber30">tiny-types/lib/predicates/or</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Checks if the <code>value</code> meets at least one of the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
+  <div data-ice="description"><p>Ensures that the <code>value</code> meets at least one of the provided <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>s.</p>
 </div>
 
   

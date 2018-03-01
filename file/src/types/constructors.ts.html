@@ -33,8 +33,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TinyTypeOf">TinyTypeOf</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-check">check</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ensure">ensure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-check">check</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#objects">objects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deprecated">deprecated</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
@@ -57,7 +59,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/types/constructors.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export type ConstructorOrAbstract&lt;T = {}&gt; = Function &amp; { prototype: T };                  // tslint:disable-line:ban-types
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export interface Constructor&lt;T&gt; {
+    new (...args: any[]): T;
+}
+export type ConstructorOrAbstract&lt;T = {}&gt; = Function &amp; { prototype: T };                  // tslint:disable-line:ban-types
 export type ConstructorAbstractOrInstance&lt;T = {}&gt; = T | ConstructorOrAbstract;            // tslint:disable-line:ban-types
 </code></pre>
 

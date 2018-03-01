@@ -13,13 +13,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber17",
+    "test-file/spec/match.spec.ts.html#lineNumber10",
     " default rules ",
     "test"
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber10",
+    "test-file/spec/match.spec.ts.html#lineNumber17",
     " default rules ",
     "test"
   ],
@@ -33,18 +33,6 @@ window.esdocSearchIndex = [
     "match tinytype tinytypeof src/match.ts~match,match src/tinytype.ts~tinytype,tinytype src/tinytype.ts~tinytypeof,tinytypeof",
     "test-file/spec/match.spec.ts.html#lineNumber75",
     " when working with TinyTypes",
-    "test"
-  ],
-  [
-    "check src/check.ts~check,check",
-    "test-file/spec/chec.spec.ts.html#lineNumber5",
-    "::check",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/chec.spec.ts.html#lineNumber6",
-    "::check ",
     "test"
   ],
   [
@@ -91,8 +79,20 @@ window.esdocSearchIndex = [
   ],
   [
     "tiny-types/lib/check~check",
-    "function/index.html#static-function-check",
+    "variable/index.html#static-variable-check",
     "<span>check</span> <span class=\"search-result-import-path\">tiny-types/lib/check</span>",
+    "variable"
+  ],
+  [
+    "tiny-types/lib/objects/deprecated~deprecated",
+    "function/index.html#static-function-deprecated",
+    "<span>deprecated</span> <span class=\"search-result-import-path\">tiny-types/lib/objects/deprecated</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/ensure~ensure",
+    "function/index.html#static-function-ensure",
+    "<span>ensure</span> <span class=\"search-result-import-path\">tiny-types/lib/ensure</span>",
     "function"
   ],
   [
@@ -378,6 +378,90 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "deprecated src/objects/deprecated.ts~deprecated,deprecated",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber12",
+    "deprecated",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber194",
+    "deprecated when used incorrectly",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber195",
+    "deprecated when used incorrectly complains",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber13",
+    "deprecated when used to annotate a class",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber31",
+    "deprecated when used to annotate a class can provide additional suggestion on what other class should be used instead",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber14",
+    "deprecated when used to annotate a class logs a warning when the class is constructed",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber48",
+    "deprecated when used to annotate a class maintains the type and behaviour of the annotated class",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber70",
+    "deprecated when used to annotate a method",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber103",
+    "deprecated when used to annotate a method can provide additional suggestion on what other method should be used instead",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber71",
+    "deprecated when used to annotate a method logs a warning when the method is used",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber135",
+    "deprecated when used to annotate a method maintains the behaviour of the annotated method",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber168",
+    "deprecated when used to deprecate a function",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber185",
+    "deprecated when used to deprecate a function logs a warning when an arrow function is used",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber169",
+    "deprecated when used to deprecate a function logs a warning when the function is used",
+    "test"
+  ],
+  [
     "equal equal,equal",
     "test-file/spec/objects/equal.spec.ts.html#lineNumber7",
     "equal",
@@ -403,12 +487,6 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
-    "pattern-matching",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
@@ -416,6 +494,12 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber6",
+    "pattern-matching",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -481,25 +565,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -511,7 +577,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -523,19 +589,43 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -548,12 +638,6 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -810,12 +894,6 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
-    "spec/chec.spec.ts",
-    "test-file/spec/chec.spec.ts.html",
-    "spec/chec.spec.ts",
-    "testFile"
-  ],
-  [
     "spec/json.spec.ts",
     "test-file/spec/json.spec.ts.html",
     "spec/json.spec.ts",
@@ -825,6 +903,12 @@ window.esdocSearchIndex = [
     "spec/match.spec.ts",
     "test-file/spec/match.spec.ts.html",
     "spec/match.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/objects/deprecated.spec.ts",
+    "test-file/spec/objects/deprecated.spec.ts.html",
+    "spec/objects/deprecated.spec.ts",
     "testFile"
   ],
   [
@@ -1260,6 +1344,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/ensure.ts",
+    "file/src/ensure.ts.html",
+    "src/ensure.ts",
+    "file"
+  ],
+  [
     "src/index.ts",
     "file/src/index.ts.html",
     "src/index.ts",
@@ -1269,6 +1359,12 @@ window.esdocSearchIndex = [
     "src/match.ts",
     "file/src/match.ts.html",
     "src/match.ts",
+    "file"
+  ],
+  [
+    "src/objects/deprecated.ts",
+    "file/src/objects/deprecated.ts.html",
+    "src/objects/deprecated.ts",
     "file"
   ],
   [

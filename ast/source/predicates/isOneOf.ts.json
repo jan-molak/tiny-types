@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 719,
+  "end": 722,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 719,
+    "end": 722,
     "loc": {
       "start": {
         "line": 1,
@@ -218,9 +218,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc Checks if the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
+            "value": "*\n * @desc Ensures that the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
             "start": 184,
-            "end": 604,
+            "end": 607,
             "loc": {
               "start": {
                 "line": 13,
@@ -236,8 +236,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 605,
-        "end": 718,
+        "start": 608,
+        "end": 721,
         "loc": {
           "start": {
             "line": 30,
@@ -252,8 +252,8 @@
         "source": null,
         "declaration": {
           "type": "FunctionDeclaration",
-          "start": 612,
-          "end": 718,
+          "start": 615,
+          "end": 721,
           "loc": {
             "start": {
               "line": 30,
@@ -266,8 +266,8 @@
           },
           "id": {
             "type": "Identifier",
-            "start": 621,
-            "end": 628,
+            "start": 624,
+            "end": 631,
             "loc": {
               "start": {
                 "line": 30,
@@ -288,8 +288,8 @@
           "params": [
             {
               "type": "RestElement",
-              "start": 629,
-              "end": 645,
+              "start": 632,
+              "end": 648,
               "loc": {
                 "start": {
                   "line": 30,
@@ -302,8 +302,8 @@
               },
               "argument": {
                 "type": "Identifier",
-                "start": 632,
-                "end": 645,
+                "start": 635,
+                "end": 648,
                 "loc": {
                   "start": {
                     "line": 30,
@@ -321,8 +321,8 @@
           ],
           "body": {
             "type": "BlockStatement",
-            "start": 647,
-            "end": 718,
+            "start": 650,
+            "end": 721,
             "loc": {
               "start": {
                 "line": 30,
@@ -336,8 +336,8 @@
             "body": [
               {
                 "type": "ReturnStatement",
-                "start": 653,
-                "end": 716,
+                "start": 656,
+                "end": 719,
                 "loc": {
                   "start": {
                     "line": 31,
@@ -350,8 +350,8 @@
                 },
                 "argument": {
                   "type": "CallExpression",
-                  "start": 660,
-                  "end": 715,
+                  "start": 663,
+                  "end": 718,
                   "loc": {
                     "start": {
                       "line": 31,
@@ -364,8 +364,8 @@
                   },
                   "callee": {
                     "type": "Identifier",
-                    "start": 660,
-                    "end": 662,
+                    "start": 663,
+                    "end": 665,
                     "loc": {
                       "start": {
                         "line": 31,
@@ -382,8 +382,8 @@
                   "arguments": [
                     {
                       "type": "SpreadElement",
-                      "start": 663,
-                      "end": 714,
+                      "start": 666,
+                      "end": 717,
                       "loc": {
                         "start": {
                           "line": 31,
@@ -396,8 +396,8 @@
                       },
                       "argument": {
                         "type": "CallExpression",
-                        "start": 666,
-                        "end": 714,
+                        "start": 669,
+                        "end": 717,
                         "loc": {
                           "start": {
                             "line": 31,
@@ -410,8 +410,8 @@
                         },
                         "callee": {
                           "type": "MemberExpression",
-                          "start": 666,
-                          "end": 683,
+                          "start": 669,
+                          "end": 686,
                           "loc": {
                             "start": {
                               "line": 31,
@@ -424,8 +424,8 @@
                           },
                           "object": {
                             "type": "Identifier",
-                            "start": 666,
-                            "end": 679,
+                            "start": 669,
+                            "end": 682,
                             "loc": {
                               "start": {
                                 "line": 31,
@@ -441,8 +441,8 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 680,
-                            "end": 683,
+                            "start": 683,
+                            "end": 686,
                             "loc": {
                               "start": {
                                 "line": 31,
@@ -461,8 +461,8 @@
                         "arguments": [
                           {
                             "type": "ArrowFunctionExpression",
-                            "start": 684,
-                            "end": 713,
+                            "start": 687,
+                            "end": 716,
                             "loc": {
                               "start": {
                                 "line": 31,
@@ -480,8 +480,8 @@
                             "params": [
                               {
                                 "type": "Identifier",
-                                "start": 684,
-                                "end": 691,
+                                "start": 687,
+                                "end": 694,
                                 "loc": {
                                   "start": {
                                     "line": 31,
@@ -498,8 +498,8 @@
                             ],
                             "body": {
                               "type": "CallExpression",
-                              "start": 695,
-                              "end": 713,
+                              "start": 698,
+                              "end": 716,
                               "loc": {
                                 "start": {
                                   "line": 31,
@@ -512,8 +512,8 @@
                               },
                               "callee": {
                                 "type": "Identifier",
-                                "start": 695,
-                                "end": 704,
+                                "start": 698,
+                                "end": 707,
                                 "loc": {
                                   "start": {
                                     "line": 31,
@@ -530,8 +530,8 @@
                               "arguments": [
                                 {
                                   "type": "Identifier",
-                                  "start": 705,
-                                  "end": 712,
+                                  "start": 708,
+                                  "end": 715,
                                   "loc": {
                                     "start": {
                                       "line": 31,
@@ -576,9 +576,9 @@
             },
             {
               "type": "CommentBlock",
-              "value": "*\n * @desc Checks if the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
+              "value": "*\n * @desc Ensures that the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
               "start": 184,
-              "end": 604,
+              "end": 607,
               "loc": {
                 "start": {
                   "line": 13,
@@ -612,9 +612,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc Checks if the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
+            "value": "*\n * @desc Ensures that the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
             "start": 184,
-            "end": 604,
+            "end": 607,
             "loc": {
               "start": {
                 "line": 13,
@@ -650,9 +650,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc Checks if the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
+      "value": "*\n * @desc Ensures that the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
       "start": 184,
-      "end": 604,
+      "end": 607,
       "loc": {
         "start": {
           "line": 13,
@@ -1050,9 +1050,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc Checks if the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
+      "value": "*\n * @desc Ensures that the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { check, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n ",
       "start": 184,
-      "end": 604,
+      "end": 607,
       "loc": {
         "start": {
           "line": 13,
@@ -1079,8 +1079,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 605,
-      "end": 611,
+      "start": 608,
+      "end": 614,
       "loc": {
         "start": {
           "line": 30,
@@ -1106,8 +1106,8 @@
         "binop": null
       },
       "value": "function",
-      "start": 612,
-      "end": 620,
+      "start": 615,
+      "end": 623,
       "loc": {
         "start": {
           "line": 30,
@@ -1132,8 +1132,8 @@
         "binop": null
       },
       "value": "isOneOf",
-      "start": 621,
-      "end": 628,
+      "start": 624,
+      "end": 631,
       "loc": {
         "start": {
           "line": 30,
@@ -1157,8 +1157,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 628,
-      "end": 629,
+      "start": 631,
+      "end": 632,
       "loc": {
         "start": {
           "line": 30,
@@ -1183,8 +1183,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 629,
-      "end": 632,
+      "start": 632,
+      "end": 635,
       "loc": {
         "start": {
           "line": 30,
@@ -1209,8 +1209,8 @@
         "binop": null
       },
       "value": "allowedValues",
-      "start": 632,
-      "end": 645,
+      "start": 635,
+      "end": 648,
       "loc": {
         "start": {
           "line": 30,
@@ -1234,8 +1234,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 645,
-      "end": 646,
+      "start": 648,
+      "end": 649,
       "loc": {
         "start": {
           "line": 30,
@@ -1259,8 +1259,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 647,
-      "end": 648,
+      "start": 650,
+      "end": 651,
       "loc": {
         "start": {
           "line": 30,
@@ -1287,8 +1287,8 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 653,
-      "end": 659,
+      "start": 656,
+      "end": 662,
       "loc": {
         "start": {
           "line": 31,
@@ -1313,8 +1313,8 @@
         "binop": null
       },
       "value": "or",
-      "start": 660,
-      "end": 662,
+      "start": 663,
+      "end": 665,
       "loc": {
         "start": {
           "line": 31,
@@ -1338,8 +1338,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 662,
-      "end": 663,
+      "start": 665,
+      "end": 666,
       "loc": {
         "start": {
           "line": 31,
@@ -1364,8 +1364,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 663,
-      "end": 666,
+      "start": 666,
+      "end": 669,
       "loc": {
         "start": {
           "line": 31,
@@ -1390,8 +1390,8 @@
         "binop": null
       },
       "value": "allowedValues",
-      "start": 666,
-      "end": 679,
+      "start": 669,
+      "end": 682,
       "loc": {
         "start": {
           "line": 31,
@@ -1416,8 +1416,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 679,
-      "end": 680,
+      "start": 682,
+      "end": 683,
       "loc": {
         "start": {
           "line": 31,
@@ -1442,8 +1442,8 @@
         "binop": null
       },
       "value": "map",
-      "start": 680,
-      "end": 683,
+      "start": 683,
+      "end": 686,
       "loc": {
         "start": {
           "line": 31,
@@ -1467,8 +1467,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 683,
-      "end": 684,
+      "start": 686,
+      "end": 687,
       "loc": {
         "start": {
           "line": 31,
@@ -1493,8 +1493,8 @@
         "binop": null
       },
       "value": "allowed",
-      "start": 684,
-      "end": 691,
+      "start": 687,
+      "end": 694,
       "loc": {
         "start": {
           "line": 31,
@@ -1519,8 +1519,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 692,
-      "end": 694,
+      "start": 695,
+      "end": 697,
       "loc": {
         "start": {
           "line": 31,
@@ -1545,8 +1545,8 @@
         "binop": null
       },
       "value": "isEqualTo",
-      "start": 695,
-      "end": 704,
+      "start": 698,
+      "end": 707,
       "loc": {
         "start": {
           "line": 31,
@@ -1570,8 +1570,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 704,
-      "end": 705,
+      "start": 707,
+      "end": 708,
       "loc": {
         "start": {
           "line": 31,
@@ -1596,8 +1596,8 @@
         "binop": null
       },
       "value": "allowed",
-      "start": 705,
-      "end": 712,
+      "start": 708,
+      "end": 715,
       "loc": {
         "start": {
           "line": 31,
@@ -1621,8 +1621,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 712,
-      "end": 713,
+      "start": 715,
+      "end": 716,
       "loc": {
         "start": {
           "line": 31,
@@ -1646,8 +1646,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 713,
-      "end": 714,
+      "start": 716,
+      "end": 717,
       "loc": {
         "start": {
           "line": 31,
@@ -1671,8 +1671,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 714,
-      "end": 715,
+      "start": 717,
+      "end": 718,
       "loc": {
         "start": {
           "line": 31,
@@ -1697,8 +1697,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 715,
-      "end": 716,
+      "start": 718,
+      "end": 719,
       "loc": {
         "start": {
           "line": 31,
@@ -1722,8 +1722,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 717,
-      "end": 718,
+      "start": 720,
+      "end": 721,
       "loc": {
         "start": {
           "line": 32,
@@ -1748,8 +1748,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 719,
-      "end": 719,
+      "start": 722,
+      "end": 722,
       "loc": {
         "start": {
           "line": 33,

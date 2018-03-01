@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 1450,
+  "end": 1453,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 1450,
+    "end": 1453,
     "loc": {
       "start": {
         "line": 1,
@@ -132,9 +132,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc Checks if the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
+            "value": "*\n * @desc Ensures that the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
             "start": 157,
-            "end": 1196,
+            "end": 1199,
             "loc": {
               "start": {
                 "line": 12,
@@ -150,8 +150,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 1197,
-        "end": 1449,
+        "start": 1200,
+        "end": 1452,
         "loc": {
           "start": {
             "line": 42,
@@ -166,8 +166,8 @@
         "source": null,
         "declaration": {
           "type": "FunctionDeclaration",
-          "start": 1204,
-          "end": 1449,
+          "start": 1207,
+          "end": 1452,
           "loc": {
             "start": {
               "line": 42,
@@ -180,8 +180,8 @@
           },
           "id": {
             "type": "Identifier",
-            "start": 1213,
-            "end": 1222,
+            "start": 1216,
+            "end": 1225,
             "loc": {
               "start": {
                 "line": 42,
@@ -202,8 +202,8 @@
           "params": [
             {
               "type": "Identifier",
-              "start": 1223,
-              "end": 1236,
+              "start": 1226,
+              "end": 1239,
               "loc": {
                 "start": {
                   "line": 42,
@@ -220,8 +220,8 @@
           ],
           "body": {
             "type": "BlockStatement",
-            "start": 1238,
-            "end": 1449,
+            "start": 1241,
+            "end": 1452,
             "loc": {
               "start": {
                 "line": 42,
@@ -235,8 +235,8 @@
             "body": [
               {
                 "type": "ReturnStatement",
-                "start": 1244,
-                "end": 1447,
+                "start": 1247,
+                "end": 1450,
                 "loc": {
                   "start": {
                     "line": 43,
@@ -249,8 +249,8 @@
                 },
                 "argument": {
                   "type": "CallExpression",
-                  "start": 1251,
-                  "end": 1446,
+                  "start": 1254,
+                  "end": 1449,
                   "loc": {
                     "start": {
                       "line": 43,
@@ -263,8 +263,8 @@
                   },
                   "callee": {
                     "type": "MemberExpression",
-                    "start": 1251,
-                    "end": 1263,
+                    "start": 1254,
+                    "end": 1266,
                     "loc": {
                       "start": {
                         "line": 43,
@@ -277,8 +277,8 @@
                     },
                     "object": {
                       "type": "Identifier",
-                      "start": 1251,
-                      "end": 1260,
+                      "start": 1254,
+                      "end": 1263,
                       "loc": {
                         "start": {
                           "line": 43,
@@ -294,8 +294,8 @@
                     },
                     "property": {
                       "type": "Identifier",
-                      "start": 1261,
-                      "end": 1263,
+                      "start": 1264,
+                      "end": 1266,
                       "loc": {
                         "start": {
                           "line": 43,
@@ -314,8 +314,8 @@
                   "arguments": [
                     {
                       "type": "TemplateLiteral",
-                      "start": 1264,
-                      "end": 1294,
+                      "start": 1267,
+                      "end": 1297,
                       "loc": {
                         "start": {
                           "line": 43,
@@ -329,8 +329,8 @@
                       "expressions": [
                         {
                           "type": "Identifier",
-                          "start": 1279,
-                          "end": 1292,
+                          "start": 1282,
+                          "end": 1295,
                           "loc": {
                             "start": {
                               "line": 43,
@@ -348,8 +348,8 @@
                       "quasis": [
                         {
                           "type": "TemplateElement",
-                          "start": 1265,
-                          "end": 1277,
+                          "start": 1268,
+                          "end": 1280,
                           "loc": {
                             "start": {
                               "line": 43,
@@ -368,8 +368,8 @@
                         },
                         {
                           "type": "TemplateElement",
-                          "start": 1293,
-                          "end": 1293,
+                          "start": 1296,
+                          "end": 1296,
                           "loc": {
                             "start": {
                               "line": 43,
@@ -390,8 +390,8 @@
                     },
                     {
                       "type": "ArrowFunctionExpression",
-                      "start": 1296,
-                      "end": 1445,
+                      "start": 1299,
+                      "end": 1448,
                       "loc": {
                         "start": {
                           "line": 43,
@@ -409,8 +409,8 @@
                       "params": [
                         {
                           "type": "Identifier",
-                          "start": 1297,
-                          "end": 1302,
+                          "start": 1300,
+                          "end": 1305,
                           "loc": {
                             "start": {
                               "line": 43,
@@ -427,8 +427,8 @@
                       ],
                       "body": {
                         "type": "ConditionalExpression",
-                        "start": 1307,
-                        "end": 1445,
+                        "start": 1310,
+                        "end": 1448,
                         "loc": {
                           "start": {
                             "line": 43,
@@ -441,8 +441,8 @@
                         },
                         "test": {
                           "type": "LogicalExpression",
-                          "start": 1308,
-                          "end": 1372,
+                          "start": 1311,
+                          "end": 1375,
                           "loc": {
                             "start": {
                               "line": 43,
@@ -455,8 +455,8 @@
                           },
                           "left": {
                             "type": "LogicalExpression",
-                            "start": 1308,
-                            "end": 1348,
+                            "start": 1311,
+                            "end": 1351,
                             "loc": {
                               "start": {
                                 "line": 43,
@@ -469,8 +469,8 @@
                             },
                             "left": {
                               "type": "LogicalExpression",
-                              "start": 1308,
-                              "end": 1331,
+                              "start": 1311,
+                              "end": 1334,
                               "loc": {
                                 "start": {
                                   "line": 43,
@@ -483,8 +483,8 @@
                               },
                               "left": {
                                 "type": "UnaryExpression",
-                                "start": 1308,
-                                "end": 1315,
+                                "start": 1311,
+                                "end": 1318,
                                 "loc": {
                                   "start": {
                                     "line": 43,
@@ -499,8 +499,8 @@
                                 "prefix": true,
                                 "argument": {
                                   "type": "UnaryExpression",
-                                  "start": 1309,
-                                  "end": 1315,
+                                  "start": 1312,
+                                  "end": 1318,
                                   "loc": {
                                     "start": {
                                       "line": 43,
@@ -515,8 +515,8 @@
                                   "prefix": true,
                                   "argument": {
                                     "type": "Identifier",
-                                    "start": 1310,
-                                    "end": 1315,
+                                    "start": 1313,
+                                    "end": 1318,
                                     "loc": {
                                       "start": {
                                         "line": 43,
@@ -541,8 +541,8 @@
                               "operator": "&&",
                               "right": {
                                 "type": "MemberExpression",
-                                "start": 1319,
-                                "end": 1331,
+                                "start": 1322,
+                                "end": 1334,
                                 "loc": {
                                   "start": {
                                     "line": 43,
@@ -555,8 +555,8 @@
                                 },
                                 "object": {
                                   "type": "Identifier",
-                                  "start": 1319,
-                                  "end": 1324,
+                                  "start": 1322,
+                                  "end": 1327,
                                   "loc": {
                                     "start": {
                                       "line": 43,
@@ -572,8 +572,8 @@
                                 },
                                 "property": {
                                   "type": "Identifier",
-                                  "start": 1325,
-                                  "end": 1331,
+                                  "start": 1328,
+                                  "end": 1334,
                                   "loc": {
                                     "start": {
                                       "line": 43,
@@ -593,8 +593,8 @@
                             "operator": "&&",
                             "right": {
                               "type": "Identifier",
-                              "start": 1335,
-                              "end": 1348,
+                              "start": 1338,
+                              "end": 1351,
                               "loc": {
                                 "start": {
                                   "line": 43,
@@ -612,8 +612,8 @@
                           "operator": "&&",
                           "right": {
                             "type": "MemberExpression",
-                            "start": 1352,
-                            "end": 1372,
+                            "start": 1355,
+                            "end": 1375,
                             "loc": {
                               "start": {
                                 "line": 43,
@@ -626,8 +626,8 @@
                             },
                             "object": {
                               "type": "Identifier",
-                              "start": 1352,
-                              "end": 1365,
+                              "start": 1355,
+                              "end": 1368,
                               "loc": {
                                 "start": {
                                   "line": 43,
@@ -643,8 +643,8 @@
                             },
                             "property": {
                               "type": "Identifier",
-                              "start": 1366,
-                              "end": 1372,
+                              "start": 1369,
+                              "end": 1375,
                               "loc": {
                                 "start": {
                                   "line": 43,
@@ -662,13 +662,13 @@
                           },
                           "extra": {
                             "parenthesized": true,
-                            "parenStart": 1307
+                            "parenStart": 1310
                           }
                         },
                         "consequent": {
                           "type": "CallExpression",
-                          "start": 1384,
-                          "end": 1411,
+                          "start": 1387,
+                          "end": 1414,
                           "loc": {
                             "start": {
                               "line": 44,
@@ -681,8 +681,8 @@
                           },
                           "callee": {
                             "type": "MemberExpression",
-                            "start": 1384,
-                            "end": 1396,
+                            "start": 1387,
+                            "end": 1399,
                             "loc": {
                               "start": {
                                 "line": 44,
@@ -695,8 +695,8 @@
                             },
                             "object": {
                               "type": "Identifier",
-                              "start": 1384,
-                              "end": 1389,
+                              "start": 1387,
+                              "end": 1392,
                               "loc": {
                                 "start": {
                                   "line": 44,
@@ -712,8 +712,8 @@
                             },
                             "property": {
                               "type": "Identifier",
-                              "start": 1390,
-                              "end": 1396,
+                              "start": 1393,
+                              "end": 1399,
                               "loc": {
                                 "start": {
                                   "line": 44,
@@ -732,8 +732,8 @@
                           "arguments": [
                             {
                               "type": "Identifier",
-                              "start": 1397,
-                              "end": 1410,
+                              "start": 1400,
+                              "end": 1413,
                               "loc": {
                                 "start": {
                                   "line": 44,
@@ -751,8 +751,8 @@
                         },
                         "alternate": {
                           "type": "BinaryExpression",
-                          "start": 1422,
-                          "end": 1445,
+                          "start": 1425,
+                          "end": 1448,
                           "loc": {
                             "start": {
                               "line": 45,
@@ -765,8 +765,8 @@
                           },
                           "left": {
                             "type": "Identifier",
-                            "start": 1422,
-                            "end": 1427,
+                            "start": 1425,
+                            "end": 1430,
                             "loc": {
                               "start": {
                                 "line": 45,
@@ -783,8 +783,8 @@
                           "operator": "===",
                           "right": {
                             "type": "Identifier",
-                            "start": 1432,
-                            "end": 1445,
+                            "start": 1435,
+                            "end": 1448,
                             "loc": {
                               "start": {
                                 "line": 45,
@@ -826,9 +826,9 @@
             },
             {
               "type": "CommentBlock",
-              "value": "*\n * @desc Checks if the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
+              "value": "*\n * @desc Ensures that the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
               "start": 157,
-              "end": 1196,
+              "end": 1199,
               "loc": {
                 "start": {
                   "line": 12,
@@ -862,9 +862,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc Checks if the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
+            "value": "*\n * @desc Ensures that the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
             "start": 157,
-            "end": 1196,
+            "end": 1199,
             "loc": {
               "start": {
                 "line": 12,
@@ -900,9 +900,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc Checks if the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
+      "value": "*\n * @desc Ensures that the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
       "start": 157,
-      "end": 1196,
+      "end": 1199,
       "loc": {
         "start": {
           "line": 12,
@@ -1117,9 +1117,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc Checks if the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
+      "value": "*\n * @desc Ensures that the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         check('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { check, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         check('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n ",
       "start": 157,
-      "end": 1196,
+      "end": 1199,
       "loc": {
         "start": {
           "line": 12,
@@ -1146,8 +1146,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 1197,
-      "end": 1203,
+      "start": 1200,
+      "end": 1206,
       "loc": {
         "start": {
           "line": 42,
@@ -1173,8 +1173,8 @@
         "binop": null
       },
       "value": "function",
-      "start": 1204,
-      "end": 1212,
+      "start": 1207,
+      "end": 1215,
       "loc": {
         "start": {
           "line": 42,
@@ -1199,8 +1199,8 @@
         "binop": null
       },
       "value": "isEqualTo",
-      "start": 1213,
-      "end": 1222,
+      "start": 1216,
+      "end": 1225,
       "loc": {
         "start": {
           "line": 42,
@@ -1224,8 +1224,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1222,
-      "end": 1223,
+      "start": 1225,
+      "end": 1226,
       "loc": {
         "start": {
           "line": 42,
@@ -1250,8 +1250,8 @@
         "binop": null
       },
       "value": "expectedValue",
-      "start": 1223,
-      "end": 1236,
+      "start": 1226,
+      "end": 1239,
       "loc": {
         "start": {
           "line": 42,
@@ -1275,8 +1275,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1236,
-      "end": 1237,
+      "start": 1239,
+      "end": 1240,
       "loc": {
         "start": {
           "line": 42,
@@ -1300,8 +1300,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1238,
-      "end": 1239,
+      "start": 1241,
+      "end": 1242,
       "loc": {
         "start": {
           "line": 42,
@@ -1328,8 +1328,8 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 1244,
-      "end": 1250,
+      "start": 1247,
+      "end": 1253,
       "loc": {
         "start": {
           "line": 43,
@@ -1354,8 +1354,8 @@
         "binop": null
       },
       "value": "Predicate",
-      "start": 1251,
-      "end": 1260,
+      "start": 1254,
+      "end": 1263,
       "loc": {
         "start": {
           "line": 43,
@@ -1380,8 +1380,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1260,
-      "end": 1261,
+      "start": 1263,
+      "end": 1264,
       "loc": {
         "start": {
           "line": 43,
@@ -1406,8 +1406,8 @@
         "binop": null
       },
       "value": "to",
-      "start": 1261,
-      "end": 1263,
+      "start": 1264,
+      "end": 1266,
       "loc": {
         "start": {
           "line": 43,
@@ -1431,8 +1431,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1263,
-      "end": 1264,
+      "start": 1266,
+      "end": 1267,
       "loc": {
         "start": {
           "line": 43,
@@ -1456,8 +1456,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1264,
-      "end": 1265,
+      "start": 1267,
+      "end": 1268,
       "loc": {
         "start": {
           "line": 43,
@@ -1483,8 +1483,8 @@
         "updateContext": null
       },
       "value": "be equal to ",
-      "start": 1265,
-      "end": 1277,
+      "start": 1268,
+      "end": 1280,
       "loc": {
         "start": {
           "line": 43,
@@ -1508,8 +1508,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1277,
-      "end": 1279,
+      "start": 1280,
+      "end": 1282,
       "loc": {
         "start": {
           "line": 43,
@@ -1534,8 +1534,8 @@
         "binop": null
       },
       "value": "expectedValue",
-      "start": 1279,
-      "end": 1292,
+      "start": 1282,
+      "end": 1295,
       "loc": {
         "start": {
           "line": 43,
@@ -1559,8 +1559,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1292,
-      "end": 1293,
+      "start": 1295,
+      "end": 1296,
       "loc": {
         "start": {
           "line": 43,
@@ -1586,8 +1586,8 @@
         "updateContext": null
       },
       "value": "",
-      "start": 1293,
-      "end": 1293,
+      "start": 1296,
+      "end": 1296,
       "loc": {
         "start": {
           "line": 43,
@@ -1611,8 +1611,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1293,
-      "end": 1294,
+      "start": 1296,
+      "end": 1297,
       "loc": {
         "start": {
           "line": 43,
@@ -1637,8 +1637,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1294,
-      "end": 1295,
+      "start": 1297,
+      "end": 1298,
       "loc": {
         "start": {
           "line": 43,
@@ -1662,8 +1662,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1296,
-      "end": 1297,
+      "start": 1299,
+      "end": 1300,
       "loc": {
         "start": {
           "line": 43,
@@ -1688,8 +1688,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 1297,
-      "end": 1302,
+      "start": 1300,
+      "end": 1305,
       "loc": {
         "start": {
           "line": 43,
@@ -1713,8 +1713,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1302,
-      "end": 1303,
+      "start": 1305,
+      "end": 1306,
       "loc": {
         "start": {
           "line": 43,
@@ -1739,8 +1739,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1304,
-      "end": 1306,
+      "start": 1307,
+      "end": 1309,
       "loc": {
         "start": {
           "line": 43,
@@ -1764,8 +1764,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1307,
-      "end": 1308,
+      "start": 1310,
+      "end": 1311,
       "loc": {
         "start": {
           "line": 43,
@@ -1791,8 +1791,8 @@
         "updateContext": null
       },
       "value": "!",
-      "start": 1308,
-      "end": 1309,
+      "start": 1311,
+      "end": 1312,
       "loc": {
         "start": {
           "line": 43,
@@ -1818,8 +1818,8 @@
         "updateContext": null
       },
       "value": "!",
-      "start": 1309,
-      "end": 1310,
+      "start": 1312,
+      "end": 1313,
       "loc": {
         "start": {
           "line": 43,
@@ -1844,8 +1844,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 1310,
-      "end": 1315,
+      "start": 1313,
+      "end": 1318,
       "loc": {
         "start": {
           "line": 43,
@@ -1871,8 +1871,8 @@
         "updateContext": null
       },
       "value": "&&",
-      "start": 1316,
-      "end": 1318,
+      "start": 1319,
+      "end": 1321,
       "loc": {
         "start": {
           "line": 43,
@@ -1897,8 +1897,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 1319,
-      "end": 1324,
+      "start": 1322,
+      "end": 1327,
       "loc": {
         "start": {
           "line": 43,
@@ -1923,8 +1923,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1324,
-      "end": 1325,
+      "start": 1327,
+      "end": 1328,
       "loc": {
         "start": {
           "line": 43,
@@ -1949,8 +1949,8 @@
         "binop": null
       },
       "value": "equals",
-      "start": 1325,
-      "end": 1331,
+      "start": 1328,
+      "end": 1334,
       "loc": {
         "start": {
           "line": 43,
@@ -1976,8 +1976,8 @@
         "updateContext": null
       },
       "value": "&&",
-      "start": 1332,
-      "end": 1334,
+      "start": 1335,
+      "end": 1337,
       "loc": {
         "start": {
           "line": 43,
@@ -2002,8 +2002,8 @@
         "binop": null
       },
       "value": "expectedValue",
-      "start": 1335,
-      "end": 1348,
+      "start": 1338,
+      "end": 1351,
       "loc": {
         "start": {
           "line": 43,
@@ -2029,8 +2029,8 @@
         "updateContext": null
       },
       "value": "&&",
-      "start": 1349,
-      "end": 1351,
+      "start": 1352,
+      "end": 1354,
       "loc": {
         "start": {
           "line": 43,
@@ -2055,8 +2055,8 @@
         "binop": null
       },
       "value": "expectedValue",
-      "start": 1352,
-      "end": 1365,
+      "start": 1355,
+      "end": 1368,
       "loc": {
         "start": {
           "line": 43,
@@ -2081,8 +2081,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1365,
-      "end": 1366,
+      "start": 1368,
+      "end": 1369,
       "loc": {
         "start": {
           "line": 43,
@@ -2107,8 +2107,8 @@
         "binop": null
       },
       "value": "equals",
-      "start": 1366,
-      "end": 1372,
+      "start": 1369,
+      "end": 1375,
       "loc": {
         "start": {
           "line": 43,
@@ -2132,8 +2132,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1372,
-      "end": 1373,
+      "start": 1375,
+      "end": 1376,
       "loc": {
         "start": {
           "line": 43,
@@ -2158,8 +2158,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1382,
-      "end": 1383,
+      "start": 1385,
+      "end": 1386,
       "loc": {
         "start": {
           "line": 44,
@@ -2184,8 +2184,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 1384,
-      "end": 1389,
+      "start": 1387,
+      "end": 1392,
       "loc": {
         "start": {
           "line": 44,
@@ -2210,8 +2210,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1389,
-      "end": 1390,
+      "start": 1392,
+      "end": 1393,
       "loc": {
         "start": {
           "line": 44,
@@ -2236,8 +2236,8 @@
         "binop": null
       },
       "value": "equals",
-      "start": 1390,
-      "end": 1396,
+      "start": 1393,
+      "end": 1399,
       "loc": {
         "start": {
           "line": 44,
@@ -2261,8 +2261,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1396,
-      "end": 1397,
+      "start": 1399,
+      "end": 1400,
       "loc": {
         "start": {
           "line": 44,
@@ -2287,8 +2287,8 @@
         "binop": null
       },
       "value": "expectedValue",
-      "start": 1397,
-      "end": 1410,
+      "start": 1400,
+      "end": 1413,
       "loc": {
         "start": {
           "line": 44,
@@ -2312,8 +2312,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1410,
-      "end": 1411,
+      "start": 1413,
+      "end": 1414,
       "loc": {
         "start": {
           "line": 44,
@@ -2338,8 +2338,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1420,
-      "end": 1421,
+      "start": 1423,
+      "end": 1424,
       "loc": {
         "start": {
           "line": 45,
@@ -2364,8 +2364,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 1422,
-      "end": 1427,
+      "start": 1425,
+      "end": 1430,
       "loc": {
         "start": {
           "line": 45,
@@ -2391,8 +2391,8 @@
         "updateContext": null
       },
       "value": "===",
-      "start": 1428,
-      "end": 1431,
+      "start": 1431,
+      "end": 1434,
       "loc": {
         "start": {
           "line": 45,
@@ -2417,8 +2417,8 @@
         "binop": null
       },
       "value": "expectedValue",
-      "start": 1432,
-      "end": 1445,
+      "start": 1435,
+      "end": 1448,
       "loc": {
         "start": {
           "line": 45,
@@ -2442,8 +2442,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1445,
-      "end": 1446,
+      "start": 1448,
+      "end": 1449,
       "loc": {
         "start": {
           "line": 45,
@@ -2468,8 +2468,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1446,
-      "end": 1447,
+      "start": 1449,
+      "end": 1450,
       "loc": {
         "start": {
           "line": 45,
@@ -2493,8 +2493,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1448,
-      "end": 1449,
+      "start": 1451,
+      "end": 1452,
       "loc": {
         "start": {
           "line": 46,
@@ -2519,8 +2519,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1450,
-      "end": 1450,
+      "start": 1453,
+      "end": 1453,
       "loc": {
         "start": {
           "line": 47,

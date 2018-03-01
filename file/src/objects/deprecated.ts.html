@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">spec/pattern-matching/rules/MatchesAnything.spec.ts | tiny-types</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/objects/deprecated.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -58,28 +58,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">spec/pattern-matching/rules/MatchesAnything.spec.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
-import { given } from &apos;mocha-testdata&apos;;
-import { MatchesAnything } from &apos;../../../src/pattern-matching/rules&apos;;
-import { expect } from &apos;../../expect&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/objects/deprecated.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Constructor } from &apos;../types&apos;;
 
-describe(&apos;pattern-matching&apos;, () =&gt; {
+export type Logger = (_: string) =&gt; void;
 
-    describe(&apos;rules&apos;, () =&gt; {
+/**
+ * @desc A decorator to mark a class, method or function as deprecated and make it log a warning whenever it is used.
+ * Please see the tests for examples of usage.
+ *
+ * @param {string} message - describes the alternative implementation that should be used instead
+ *                  of the deprecated method/function/class
+ * @param {Logger} log - a function that handles the printing of the message,
+ *                  such as {@link console.warn}
+ */
+export function deprecated(message: string = &apos;&apos;, log: Logger = console.warn): (target: any, propertyKey?: string, descriptor?: any) =&gt; any {
+    const hasPrototype = (target: { hasOwnProperty(_: string): boolean }): boolean =&gt; target.hasOwnProperty(&apos;prototype&apos;);
 
-        describe(&apos;MatchesAnything&apos;, () =&gt; {
+    return (target: any, propertyKey?: string, descriptor?: any): any =&gt; {         // tslint:disable-line:ban-types
+        if (target &amp;&amp; propertyKey &amp;&amp; descriptor) {
+            return deprecateMethod(message, target, propertyKey, descriptor, log);
+        }
+        else if (hasPrototype(target)) {
+            return deprecateClass(message, target, log);
+        }
+        else {
+            throw new Error(`Only a class, method or function can be marked as deprecated. ${typeof target} given.`);
+        }
+    };
+}
 
-            given(
-                1, false, {},
-            ).it(&apos;is always executed&apos;, (input: any) =&gt; {
-                const rule = new MatchesAnything(_ =&gt; _);
+function deprecateClass(message: string, target: Constructor&lt;any&gt;, log: (...args: any[]) =&gt; void): Constructor&lt;any&gt; {
+    return class extends target {
+        constructor(...args: any[]) {
+            log(`${target.name} has been deprecated. ${ message }`.trim());
 
-                expect(rule.matches(input)).to.be.true;                              // tslint:disable-line:no-unused-expression
-            });
-        });
-    });
-});
+            super(...args);
+        }
+    };
+}
+
+function deprecateMethod&lt;T&gt;(message: string, target: T, propertyKey: string, descriptor: any, log: (...args: any[]) =&gt; void) {
+    const originalMethod = descriptor.value;
+
+    descriptor.value = function(...args: any[]) {
+        log(`${target.constructor.name}#${propertyKey} has been deprecated. ${ message }`.trim());
+
+        return originalMethod.apply(this, args);
+    };
+
+    return descriptor;
+}
 </code></pre>
 
 </div>
