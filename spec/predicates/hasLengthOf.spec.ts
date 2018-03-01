@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, hasLengthOf, TinyType } from '../../src';
+import { ensure, hasLengthOf, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -15,7 +15,7 @@ describe('predicates', () => {
                 constructor(public readonly value: string) {
                     super();
 
-                    check('Password', value, hasLengthOf(8));
+                    ensure('Password', value, hasLengthOf(8));
                 }
             }
 
@@ -46,7 +46,7 @@ describe('predicates', () => {
                 constructor(public readonly values: string[]) {
                     super();
 
-                    check('Collection', values, hasLengthOf(2));
+                    ensure('Collection', values, hasLengthOf(2));
                 }
             }
 

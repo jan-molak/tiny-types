@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, isArray, TinyType } from '../../src';
+import { ensure, isArray, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -13,7 +13,7 @@ describe('predicates', () => {
             constructor(public readonly values: string[]) {
                 super();
 
-                check('Collection', values, isArray());
+                ensure('Collection', values, isArray());
             }
         }
 

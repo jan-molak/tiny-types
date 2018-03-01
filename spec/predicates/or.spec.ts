@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, isDefined, isEqualTo, isGreaterThan, isInteger, isLessThan, or, TinyType } from '../../src';
+import { ensure, isDefined, isEqualTo, isGreaterThan, isInteger, isLessThan, or, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -12,7 +12,7 @@ describe('predicates', () => {
         class Percentage extends TinyType {
             constructor(public readonly value: number) {
                 super();
-                check('Percentage', value,
+                ensure('Percentage', value,
                     isDefined(),
                     isInteger(),
                     or(isEqualTo(0), isGreaterThan(0)),
@@ -40,7 +40,7 @@ describe('predicates', () => {
         });
 
         it('concatenates the error messages in a human-friendly way', () => {
-           expect(() => check('Project name', 'node.js',
+           expect(() => ensure('Project name', 'node.js',
                or(isEqualTo('Serenity/JS'), isEqualTo('TinyTypes'), isEqualTo('Build Monitor')),
            )).to.throw(
                'Project name should either be equal to Serenity/JS, be equal to TinyTypes or be equal to Build Monitor',

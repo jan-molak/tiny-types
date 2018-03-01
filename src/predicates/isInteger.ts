@@ -1,7 +1,7 @@
 import { Predicate } from './Predicate';
 
 /**
- * @desc Checks if the `value` is an integer {@link Number}.
+ * @desc Ensures that the `value` is an integer {@link Number}.
  *
  * @example
  * import { and, isInteger, TinyType } from 'tiny-types';

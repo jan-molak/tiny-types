@@ -7,6 +7,8 @@
     "declaration": true,
     "strict": true,
     "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "outDir": "./lib"
   },
 

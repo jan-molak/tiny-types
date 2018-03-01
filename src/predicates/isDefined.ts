@@ -1,7 +1,7 @@
 import { Predicate } from './Predicate';
 
 /**
- * @desc Checks if the `value` is defined as anything other than {@link null} or {@link undefined}.
+ * @desc Ensures that the `value` is defined as anything other than {@link null} or {@link undefined}.
  *
  * @example
  * import { check, isDefined, TinyType } from 'tiny-types';

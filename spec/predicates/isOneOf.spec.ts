@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, isOneOf, TinyType } from '../../src';
+import { ensure, isOneOf, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -13,7 +13,7 @@ describe('predicates', () => {
             constructor(public readonly value: string) {
                 super();
 
-                check('StreetLight', value, isOneOf('red', 'yellow', 'green'));
+                ensure('StreetLight', value, isOneOf('red', 'yellow', 'green'));
             }
         }
 

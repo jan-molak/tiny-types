@@ -4,7 +4,7 @@ import { isLessThanOrEqualTo } from './isLessThanOrEqualTo';
 import { Predicate } from './Predicate';
 
 /**
- * @desc Checks if the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`
+ * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`
  *
  * @example
  * import { check, isInRange, TinyType } from 'tiny-types';

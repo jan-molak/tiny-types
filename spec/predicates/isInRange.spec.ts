@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, isInRange, TinyType } from '../../src';
+import { ensure, isInRange, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -13,7 +13,7 @@ describe('predicates', () => {
             constructor(public readonly value: number) {
                 super();
 
-                check('InvestmentLength', value, isInRange(1, 5));
+                ensure('InvestmentLength', value, isInRange(1, 5));
             }
         }
 

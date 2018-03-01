@@ -5,7 +5,7 @@ export function isEqualTo(expectedValue: TinyType): Predicate<TinyType>;
 export function isEqualTo<T>(expectedValue: T): Predicate<T>;
 
 /**
- * @desc Checks if the `value` is equal to `expectedValue`.
+ * @desc Ensures that the `value` is equal to `expectedValue`.
  * This {@link Predicate} is typically used in combination with other {@link Predicate}s.
  *
  * @example <caption>Comparing Tiny Types</caption>

@@ -1,7 +1,7 @@
 import { Predicate } from './Predicate';
 
 /**
- * @desc Checks if the `value` is less than the `upperBound`.
+ * @desc Ensures that the `value` is less than the `upperBound`.
  *
  * @example
  * import { check, isLessThan, TinyType } from 'tiny-types';

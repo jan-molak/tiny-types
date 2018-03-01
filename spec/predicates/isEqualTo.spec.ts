@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, isEqualTo, TinyTypeOf } from '../../src';
+import { ensure, isEqualTo, TinyTypeOf } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -19,7 +19,7 @@ describe('predicates', () => {
             class AccountsService {
                 constructor(public readonly loggedInUser: AccountId) {}
                 handle(command: Command) {
-                    check('AccountId', command.value, isEqualTo(this.loggedInUser));
+                    ensure('AccountId', command.value, isEqualTo(this.loggedInUser));
                 }
             }
 
@@ -58,7 +58,7 @@ describe('predicates', () => {
                 [],
             ).
             it('ensures they are equal', (value: any) => {
-                expect(check('Val', value, isEqualTo(value))).to.not.throw;  // tslint:disable-line:no-unused-expression
+                expect(ensure('Val', value, isEqualTo(value))).to.not.throw;  // tslint:disable-line:no-unused-expression
             });
 
             given(
@@ -69,7 +69,7 @@ describe('predicates', () => {
                 [],
             ).
             it('complains if they are not equal', (value: any) => {
-                expect(() => check('Value', value, isEqualTo('expected value')))
+                expect(() => ensure('Value', value, isEqualTo('expected value')))
                     .to.throw('Value should be equal to expected value');
             });
         });

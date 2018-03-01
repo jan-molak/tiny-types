@@ -3,7 +3,7 @@ import { Predicate } from './Predicate';
 export interface HasLength { length: number; }
 
 /**
- * @desc Checks if the `value` is of `expectedLength`.
+ * @desc Ensures that the `value` is of `expectedLength`.
  * Applies to {@link String}s, {@link Array}s and anything that has a `.length` property.
  *
  * @example <caption>Array</caption>

@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, isDefined, TinyType } from '../../src';
+import { ensure, isDefined, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -12,7 +12,7 @@ describe('predicates', () => {
             constructor(public readonly value: string) {
                 super();
 
-                check('UserName', value, isDefined());
+                ensure('UserName', value, isDefined());
             }
         }
 

@@ -1,4 +1,4 @@
-import { check } from './check';
+import { ensure } from './ensure';
 import { equal, significantFieldsOf } from './objects';
 import { isDefined } from './predicates';
 import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
@@ -23,7 +23,7 @@ export function TinyTypeOf<T>(): { new(_: T): { value: T } & TinyType } {
     return class extends TinyType {
         constructor(public readonly value: T) {
             super();
-            check(this.constructor.name, value, isDefined());
+            ensure(this.constructor.name, value, isDefined());
         }
     };
 }

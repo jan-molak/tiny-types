@@ -1,7 +1,7 @@
 import { Predicate } from './Predicate';
 
 /**
- * @desc Checks if the `value` is an {@link Array}.
+ * @desc Ensures that the `value` is an {@link Array}.
  *
  * @example
  * import { check, isArray, TinyType, TinyTypeOf } from 'tiny-types';

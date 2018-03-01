@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { and, check, isDefined, isGreaterThan, isInteger, isLessThan, or, TinyType } from '../../src';
+import { and, ensure, isDefined, isGreaterThan, isInteger, isLessThan, or, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -12,7 +12,7 @@ describe('predicates', () => {
         class InvestmentLengthInYears extends TinyType {
             constructor(public readonly value: number) {
                 super();
-                check('InvestmentLengthInYears', value, and(
+                ensure('InvestmentLengthInYears', value, and(
                     isDefined(),
                     isInteger(),
                     isGreaterThan(0),

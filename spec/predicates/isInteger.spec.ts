@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, isInteger, TinyType } from '../../src';
+import { ensure, isInteger, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -12,7 +12,7 @@ describe('predicates', () => {
             constructor(public readonly value: number) {
                 super();
 
-                check('AgeInYears', value, isInteger());
+                ensure('AgeInYears', value, isInteger());
             }
         }
 

@@ -4,7 +4,7 @@ import { or } from './or';
 import { Predicate } from './Predicate';
 
 /**
- * @desc Checks if the `value` is greater than or equal to the `lowerBound`.
+ * @desc Ensures that the `value` is greater than or equal to the `lowerBound`.
  *
  * @example
  * import { check, isGreaterThanOrEqualTo, TinyType } from 'tiny-types';

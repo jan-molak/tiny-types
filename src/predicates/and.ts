@@ -4,7 +4,7 @@ import { isGreaterThan } from './isGreaterThan';
 import { Failure, Predicate, Result, Success } from './Predicate';
 
 /**
- * @desc Checks if the `value` meets all the provided {@link Predicate}s.
+ * @desc Ensures that the `value` meets all the provided {@link Predicate}s.
  *
  * @example
  * import { and, check, isDefined, isGreaterThan, isInteger, TinyType } from 'tiny-types';

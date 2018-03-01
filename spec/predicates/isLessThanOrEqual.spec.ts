@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { check, isLessThanOrEqualTo, TinyType } from '../../src';
+import { ensure, isLessThanOrEqualTo, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -12,7 +12,7 @@ describe('predicates', () => {
             constructor(public readonly value: number) {
                 super();
 
-                check('InvestmentLength', value, isLessThanOrEqualTo(50));
+                ensure('InvestmentLength', value, isLessThanOrEqualTo(50));
             }
         }
 

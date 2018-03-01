@@ -3,7 +3,7 @@ import { or } from './or';
 import { Predicate } from './Predicate';
 
 /**
- * @desc Checks if the `value` is equal to one of the `allowedValues`
+ * @desc Ensures that the `value` is equal to one of the `allowedValues`
  *
  * @example
  * import { check, isOneOf, TinyType } from 'tiny-types';
