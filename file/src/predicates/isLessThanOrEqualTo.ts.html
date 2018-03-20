@@ -68,11 +68,11 @@ import { Predicate } from &apos;./Predicate&apos;;
  * @desc Ensures that the `value` is less than or equal to the `upperBound`.
  *
  * @example
- * import { check, isLessThanOrEqualTo, TinyType } from &apos;tiny-types&apos;;
+ * import { ensure, isLessThanOrEqualTo, TinyType } from &apos;tiny-types&apos;;
  *
  * class InvestmentPeriod extends TinyType {
  *     constructor(public readonly value: number) {
- *         check(&apos;InvestmentPeriod&apos;, value, isLessThanOrEqualTo(50));
+ *         ensure(&apos;InvestmentPeriod&apos;, value, isLessThanOrEqualTo(50));
  *     }
  * }
  *

@@ -65,17 +65,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @desc The `ensure` function verifies if the value meets the specified {Predicate}s.
  *
  * @example &lt;caption&gt;Basic usage&lt;/caption&gt;
- * import { check, isDefined } from &apos;tiny-types&apos;
+ * import { ensure, isDefined } from &apos;tiny-types&apos;
  *
  * const username = &apos;jan-molak&apos;
- * check(&apos;Username&apos;, username, isDefined());
+ * ensure(&apos;Username&apos;, username, isDefined());
  *
  * @example &lt;caption&gt;Ensuring validity of a domain object upon creation&lt;/caption&gt;
- * import { TinyType, check, isDefined, isInteger, isInRange } from &apos;tiny-types&apos;
+ * import { TinyType, ensure, isDefined, isInteger, isInRange } from &apos;tiny-types&apos;
  *
  * class Age extends TinyType {
  *   constructor(public readonly value: number) {
- *     check(&apos;Age&apos;, value, isDefined(), isInteger(), isInRange(0, 125));
+ *     ensure(&apos;Age&apos;, value, isDefined(), isInteger(), isInRange(0, 125));
  *   }
  * }
  *

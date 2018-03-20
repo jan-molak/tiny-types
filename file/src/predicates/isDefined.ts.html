@@ -65,11 +65,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @desc Ensures that the `value` is defined as anything other than {@link null} or {@link undefined}.
  *
  * @example
- * import { check, isDefined, TinyType } from &apos;tiny-types&apos;;
+ * import { ensure, isDefined, TinyType } from &apos;tiny-types&apos;;
  *
  * class Name extends TinyType {
  *     constructor(public readonly value: string) {
- *       check(&apos;Name&apos;, value, isDefined());
+ *       ensure(&apos;Name&apos;, value, isDefined());
  *     }
  * }
  *

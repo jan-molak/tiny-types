@@ -65,11 +65,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @desc Ensures that the `value` is greater than the `lowerBound`.
  *
  * @example
- * import { check, isGreaterThan, TinyType } from &apos;tiny-types&apos;;
+ * import { ensure, isGreaterThan, TinyType } from &apos;tiny-types&apos;;
  *
  * class AgeInYears extends TinyType {
  *     constructor(public readonly value: number) {
- *         check(&apos;Age in years&apos;, value, isGreaterThan(0));
+ *         ensure(&apos;Age in years&apos;, value, isGreaterThan(0));
  *     }
  * }
  *

@@ -65,11 +65,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @desc Ensures that the `value` is an integer {@link Number}.
  *
  * @example
- * import { and, isInteger, TinyType } from &apos;tiny-types&apos;;
+ * import { ensure, isInteger, TinyType } from &apos;tiny-types&apos;;
  *
  * class AgeInYears extends TinyType {
  *     constructor(public readonly value: number) {
- *         check(&apos;Age in years&apos;, value, isInteger());
+ *         ensure(&apos;Age in years&apos;, value, isInteger());
  *     }
  * }
  *

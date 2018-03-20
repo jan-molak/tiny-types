@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 610,
+  "end": 612,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 610,
+    "end": 612,
     "loc": {
       "start": {
         "line": 1,
@@ -132,9 +132,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { check, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      check('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
+            "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { ensure, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      ensure('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
             "start": 118,
-            "end": 506,
+            "end": 508,
             "loc": {
               "start": {
                 "line": 10,
@@ -150,8 +150,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 507,
-        "end": 609,
+        "start": 509,
+        "end": 611,
         "loc": {
           "start": {
             "line": 27,
@@ -166,8 +166,8 @@
         "source": null,
         "declaration": {
           "type": "FunctionDeclaration",
-          "start": 514,
-          "end": 609,
+          "start": 516,
+          "end": 611,
           "loc": {
             "start": {
               "line": 27,
@@ -180,8 +180,8 @@
           },
           "id": {
             "type": "Identifier",
-            "start": 523,
-            "end": 530,
+            "start": 525,
+            "end": 532,
             "loc": {
               "start": {
                 "line": 27,
@@ -202,8 +202,8 @@
           "params": [],
           "body": {
             "type": "BlockStatement",
-            "start": 533,
-            "end": 609,
+            "start": 535,
+            "end": 611,
             "loc": {
               "start": {
                 "line": 27,
@@ -217,8 +217,8 @@
             "body": [
               {
                 "type": "ReturnStatement",
-                "start": 539,
-                "end": 607,
+                "start": 541,
+                "end": 609,
                 "loc": {
                   "start": {
                     "line": 28,
@@ -231,8 +231,8 @@
                 },
                 "argument": {
                   "type": "CallExpression",
-                  "start": 546,
-                  "end": 606,
+                  "start": 548,
+                  "end": 608,
                   "loc": {
                     "start": {
                       "line": 28,
@@ -245,8 +245,8 @@
                   },
                   "callee": {
                     "type": "MemberExpression",
-                    "start": 546,
-                    "end": 558,
+                    "start": 548,
+                    "end": 560,
                     "loc": {
                       "start": {
                         "line": 28,
@@ -259,8 +259,8 @@
                     },
                     "object": {
                       "type": "Identifier",
-                      "start": 546,
-                      "end": 555,
+                      "start": 548,
+                      "end": 557,
                       "loc": {
                         "start": {
                           "line": 28,
@@ -276,8 +276,8 @@
                     },
                     "property": {
                       "type": "Identifier",
-                      "start": 556,
-                      "end": 558,
+                      "start": 558,
+                      "end": 560,
                       "loc": {
                         "start": {
                           "line": 28,
@@ -296,8 +296,8 @@
                   "arguments": [
                     {
                       "type": "TemplateLiteral",
-                      "start": 559,
-                      "end": 572,
+                      "start": 561,
+                      "end": 574,
                       "loc": {
                         "start": {
                           "line": 28,
@@ -312,8 +312,8 @@
                       "quasis": [
                         {
                           "type": "TemplateElement",
-                          "start": 560,
-                          "end": 571,
+                          "start": 562,
+                          "end": 573,
                           "loc": {
                             "start": {
                               "line": 28,
@@ -334,8 +334,8 @@
                     },
                     {
                       "type": "ArrowFunctionExpression",
-                      "start": 574,
-                      "end": 605,
+                      "start": 576,
+                      "end": 607,
                       "loc": {
                         "start": {
                           "line": 28,
@@ -353,8 +353,8 @@
                       "params": [
                         {
                           "type": "Identifier",
-                          "start": 575,
-                          "end": 580,
+                          "start": 577,
+                          "end": 582,
                           "loc": {
                             "start": {
                               "line": 28,
@@ -371,8 +371,8 @@
                       ],
                       "body": {
                         "type": "CallExpression",
-                        "start": 585,
-                        "end": 605,
+                        "start": 587,
+                        "end": 607,
                         "loc": {
                           "start": {
                             "line": 28,
@@ -385,8 +385,8 @@
                         },
                         "callee": {
                           "type": "MemberExpression",
-                          "start": 585,
-                          "end": 598,
+                          "start": 587,
+                          "end": 600,
                           "loc": {
                             "start": {
                               "line": 28,
@@ -399,8 +399,8 @@
                           },
                           "object": {
                             "type": "Identifier",
-                            "start": 585,
-                            "end": 590,
+                            "start": 587,
+                            "end": 592,
                             "loc": {
                               "start": {
                                 "line": 28,
@@ -416,8 +416,8 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 591,
-                            "end": 598,
+                            "start": 593,
+                            "end": 600,
                             "loc": {
                               "start": {
                                 "line": 28,
@@ -436,8 +436,8 @@
                         "arguments": [
                           {
                             "type": "Identifier",
-                            "start": 599,
-                            "end": 604,
+                            "start": 601,
+                            "end": 606,
                             "loc": {
                               "start": {
                                 "line": 28,
@@ -479,9 +479,9 @@
             },
             {
               "type": "CommentBlock",
-              "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { check, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      check('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
+              "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { ensure, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      ensure('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
               "start": 118,
-              "end": 506,
+              "end": 508,
               "loc": {
                 "start": {
                   "line": 10,
@@ -515,9 +515,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { check, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      check('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
+            "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { ensure, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      ensure('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
             "start": 118,
-            "end": 506,
+            "end": 508,
             "loc": {
               "start": {
                 "line": 10,
@@ -553,9 +553,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { check, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      check('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
+      "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { ensure, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      ensure('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
       "start": 118,
-      "end": 506,
+      "end": 508,
       "loc": {
         "start": {
           "line": 10,
@@ -770,9 +770,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { check, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      check('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
+      "value": "*\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { ensure, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      ensure('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n ",
       "start": 118,
-      "end": 506,
+      "end": 508,
       "loc": {
         "start": {
           "line": 10,
@@ -799,8 +799,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 507,
-      "end": 513,
+      "start": 509,
+      "end": 515,
       "loc": {
         "start": {
           "line": 27,
@@ -826,8 +826,8 @@
         "binop": null
       },
       "value": "function",
-      "start": 514,
-      "end": 522,
+      "start": 516,
+      "end": 524,
       "loc": {
         "start": {
           "line": 27,
@@ -852,8 +852,8 @@
         "binop": null
       },
       "value": "isArray",
-      "start": 523,
-      "end": 530,
+      "start": 525,
+      "end": 532,
       "loc": {
         "start": {
           "line": 27,
@@ -877,8 +877,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 530,
-      "end": 531,
+      "start": 532,
+      "end": 533,
       "loc": {
         "start": {
           "line": 27,
@@ -902,8 +902,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 531,
-      "end": 532,
+      "start": 533,
+      "end": 534,
       "loc": {
         "start": {
           "line": 27,
@@ -927,8 +927,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 533,
-      "end": 534,
+      "start": 535,
+      "end": 536,
       "loc": {
         "start": {
           "line": 27,
@@ -955,8 +955,8 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 539,
-      "end": 545,
+      "start": 541,
+      "end": 547,
       "loc": {
         "start": {
           "line": 28,
@@ -981,8 +981,8 @@
         "binop": null
       },
       "value": "Predicate",
-      "start": 546,
-      "end": 555,
+      "start": 548,
+      "end": 557,
       "loc": {
         "start": {
           "line": 28,
@@ -1007,8 +1007,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 555,
-      "end": 556,
+      "start": 557,
+      "end": 558,
       "loc": {
         "start": {
           "line": 28,
@@ -1033,8 +1033,8 @@
         "binop": null
       },
       "value": "to",
-      "start": 556,
-      "end": 558,
+      "start": 558,
+      "end": 560,
       "loc": {
         "start": {
           "line": 28,
@@ -1058,8 +1058,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 558,
-      "end": 559,
+      "start": 560,
+      "end": 561,
       "loc": {
         "start": {
           "line": 28,
@@ -1083,8 +1083,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 559,
-      "end": 560,
+      "start": 561,
+      "end": 562,
       "loc": {
         "start": {
           "line": 28,
@@ -1110,8 +1110,8 @@
         "updateContext": null
       },
       "value": "be an array",
-      "start": 560,
-      "end": 571,
+      "start": 562,
+      "end": 573,
       "loc": {
         "start": {
           "line": 28,
@@ -1135,8 +1135,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 571,
-      "end": 572,
+      "start": 573,
+      "end": 574,
       "loc": {
         "start": {
           "line": 28,
@@ -1161,8 +1161,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 572,
-      "end": 573,
+      "start": 574,
+      "end": 575,
       "loc": {
         "start": {
           "line": 28,
@@ -1186,8 +1186,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 574,
-      "end": 575,
+      "start": 576,
+      "end": 577,
       "loc": {
         "start": {
           "line": 28,
@@ -1212,8 +1212,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 575,
-      "end": 580,
+      "start": 577,
+      "end": 582,
       "loc": {
         "start": {
           "line": 28,
@@ -1237,8 +1237,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 580,
-      "end": 581,
+      "start": 582,
+      "end": 583,
       "loc": {
         "start": {
           "line": 28,
@@ -1263,8 +1263,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 582,
-      "end": 584,
+      "start": 584,
+      "end": 586,
       "loc": {
         "start": {
           "line": 28,
@@ -1289,8 +1289,8 @@
         "binop": null
       },
       "value": "Array",
-      "start": 585,
-      "end": 590,
+      "start": 587,
+      "end": 592,
       "loc": {
         "start": {
           "line": 28,
@@ -1315,8 +1315,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 590,
-      "end": 591,
+      "start": 592,
+      "end": 593,
       "loc": {
         "start": {
           "line": 28,
@@ -1341,8 +1341,8 @@
         "binop": null
       },
       "value": "isArray",
-      "start": 591,
-      "end": 598,
+      "start": 593,
+      "end": 600,
       "loc": {
         "start": {
           "line": 28,
@@ -1366,8 +1366,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 598,
-      "end": 599,
+      "start": 600,
+      "end": 601,
       "loc": {
         "start": {
           "line": 28,
@@ -1392,8 +1392,8 @@
         "binop": null
       },
       "value": "value",
-      "start": 599,
-      "end": 604,
+      "start": 601,
+      "end": 606,
       "loc": {
         "start": {
           "line": 28,
@@ -1417,8 +1417,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 604,
-      "end": 605,
+      "start": 606,
+      "end": 607,
       "loc": {
         "start": {
           "line": 28,
@@ -1442,8 +1442,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 605,
-      "end": 606,
+      "start": 607,
+      "end": 608,
       "loc": {
         "start": {
           "line": 28,
@@ -1468,8 +1468,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 606,
-      "end": 607,
+      "start": 608,
+      "end": 609,
       "loc": {
         "start": {
           "line": 28,
@@ -1493,8 +1493,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 608,
-      "end": 609,
+      "start": 610,
+      "end": 611,
       "loc": {
         "start": {
           "line": 29,
@@ -1519,8 +1519,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 610,
-      "end": 610,
+      "start": 612,
+      "end": 612,
       "loc": {
         "start": {
           "line": 30,

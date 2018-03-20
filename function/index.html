@@ -711,11 +711,11 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { and, check, isDefined, isGreaterThan, isInteger, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { and, ensure, isDefined, isGreaterThan, isInteger, TinyType } from &apos;tiny-types&apos;;
 
 class AgeInYears extends TinyType {
     constructor(public readonly value: number) {
-        check(&apos;Percentage&apos;, value, and(isDefined(), isInteger(), isGreaterThan(18));
+        ensure(&apos;Percentage&apos;, value, and(isDefined(), isInteger(), isGreaterThan(18));
     }
 }</code></pre>
     </div>
@@ -908,18 +908,18 @@ Please see the tests for examples of usage.</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Basic usage</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isDefined } from &apos;tiny-types&apos;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isDefined } from &apos;tiny-types&apos;
 
 const username = &apos;jan-molak&apos;
-check(&apos;Username&apos;, username, isDefined());</code></pre>
+ensure(&apos;Username&apos;, username, isDefined());</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Ensuring validity of a domain object upon creation</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { TinyType, check, isDefined, isInteger, isInRange } from &apos;tiny-types&apos;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { TinyType, ensure, isDefined, isInteger, isInRange } from &apos;tiny-types&apos;
 
 class Age extends TinyType {
   constructor(public readonly value: number) {
-    check(&apos;Age&apos;, value, isDefined(), isInteger(), isInRange(0, 125));
+    ensure(&apos;Age&apos;, value, isDefined(), isInteger(), isInRange(0, 125));
   }
 }</code></pre>
     </div>
@@ -1001,23 +1001,23 @@ Applies to <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScrip
     
   <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Array</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, hasLengthOf, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, hasLengthOf, TinyType } from &apos;tiny-types&apos;;
 
 class Tuple extends TinyType {
   constructor(public readonly values: any[]) {
      super();
-     check(&apos;Tuple&apos;, values, hasLengthOf(2));
+     ensure(&apos;Tuple&apos;, values, hasLengthOf(2));
   }
 }</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">String</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, hasLengthOf, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, hasLengthOf, TinyType } from &apos;tiny-types&apos;;
 
 class Username extends TinyType {
   constructor(public readonly value: string) {
      super();
-     check(&apos;Username&apos;, value, hasLengthOf(8));
+     ensure(&apos;Username&apos;, value, hasLengthOf(8));
   }
 }</code></pre>
     </div>
@@ -1090,14 +1090,14 @@ class Username extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isArray, TinyType, TinyTypeOf } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isArray, TinyType, TinyTypeOf } from &apos;tiny-types&apos;;
 
 class Name extends TinyTypeOf&lt;string&gt;() {}
 
 class Names extends TinyType {
   constructor(public readonly values: Name[]) {
      super();
-     check(&apos;Names&apos;, values, isArray());
+     ensure(&apos;Names&apos;, values, isArray());
   }
 }</code></pre>
     </div>
@@ -1168,11 +1168,11 @@ class Names extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isDefined, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isDefined, TinyType } from &apos;tiny-types&apos;;
 
 class Name extends TinyType {
     constructor(public readonly value: string) {
-      check(&apos;Name&apos;, value, isDefined());
+      ensure(&apos;Name&apos;, value, isDefined());
     }
 }</code></pre>
     </div>
@@ -1260,7 +1260,7 @@ This <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate<
     
   <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Comparing Tiny Types</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isEqualTo, TinyType, TinyTypeOf } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isEqualTo, TinyType, TinyTypeOf } from &apos;tiny-types&apos;;
 
 class AccountId         extends TinyTypeOf&lt;number&gt;() {}
 class Command           extends TinyTypeOf&lt;AccountId&gt;() {}
@@ -1269,17 +1269,17 @@ class UpgradeAccount    extends Command {}
 class AccountsService {
     constructor(public readonly loggedInUser: AccountId) {}
     handle(command: Command) {
-        check(&apos;AccountId&apos;, command.value, isEqualTo(this.loggedInUser));
+        ensure(&apos;AccountId&apos;, command.value, isEqualTo(this.loggedInUser));
     }
  }</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Comparing primitives</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isEqualTo, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isEqualTo, TinyType } from &apos;tiny-types&apos;;
 
 class Admin extends TinyType {
     constructor(public readonly id: number) {
-        check(&apos;Admin::id&apos;, id, isEqualTo(1));
+        ensure(&apos;Admin::id&apos;, id, isEqualTo(1));
     }
 }</code></pre>
     </div>
@@ -1368,11 +1368,11 @@ class Admin extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isGreaterThan, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isGreaterThan, TinyType } from &apos;tiny-types&apos;;
 
 class AgeInYears extends TinyType {
     constructor(public readonly value: number) {
-        check(&apos;Age in years&apos;, value, isGreaterThan(0));
+        ensure(&apos;Age in years&apos;, value, isGreaterThan(0));
     }
 }</code></pre>
     </div>
@@ -1459,11 +1459,11 @@ class AgeInYears extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isGreaterThanOrEqualTo, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isGreaterThanOrEqualTo, TinyType } from &apos;tiny-types&apos;;
 
 class AgeInYears extends TinyType {
     constructor(public readonly value: number) {
-        check(&apos;Age in years&apos;, value, isGreaterThanOrEqualTo(18));
+        ensure(&apos;Age in years&apos;, value, isGreaterThanOrEqualTo(18));
     }
 }</code></pre>
     </div>
@@ -1556,12 +1556,12 @@ class AgeInYears extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isInRange, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isInRange, TinyType } from &apos;tiny-types&apos;;
 
 class InvestmentLengthInYears extends TinyType {
     constructor(public readonly value: number) {
         super();
-        check(&apos;InvestmentLengthInYears&apos;, value, isInRange(1, 5));
+        ensure(&apos;InvestmentLengthInYears&apos;, value, isInRange(1, 5));
     }
 }</code></pre>
     </div>
@@ -1632,11 +1632,11 @@ class InvestmentLengthInYears extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { and, isInteger, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isInteger, TinyType } from &apos;tiny-types&apos;;
 
 class AgeInYears extends TinyType {
     constructor(public readonly value: number) {
-        check(&apos;Age in years&apos;, value, isInteger());
+        ensure(&apos;Age in years&apos;, value, isInteger());
     }
 }</code></pre>
     </div>
@@ -1723,11 +1723,11 @@ class AgeInYears extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isLessThan, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isLessThan, TinyType } from &apos;tiny-types&apos;;
 
 class InvestmentPeriodInYears extends TinyType {
     constructor(public readonly value: number) {
-        check(&apos;Investment period in years&apos;, value, isLessThan(50));
+        ensure(&apos;Investment period in years&apos;, value, isLessThan(50));
     }
 }</code></pre>
     </div>
@@ -1814,11 +1814,11 @@ class InvestmentPeriodInYears extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isLessThanOrEqualTo, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isLessThanOrEqualTo, TinyType } from &apos;tiny-types&apos;;
 
 class InvestmentPeriod extends TinyType {
     constructor(public readonly value: number) {
-        check(&apos;InvestmentPeriod&apos;, value, isLessThanOrEqualTo(50));
+        ensure(&apos;InvestmentPeriod&apos;, value, isLessThanOrEqualTo(50));
     }
 }</code></pre>
     </div>
@@ -1905,13 +1905,13 @@ class InvestmentPeriod extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isOneOf, TinyType } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isOneOf, TinyType } from &apos;tiny-types&apos;;
 
 class StreetLight extends TinyType {
     constructor(public readonly value: string) {
         super();
 
-        check(&apos;StreetLight&apos;, value, isOneOf(&apos;red&apos;, &apos;yellow&apos;, &apos;green&apos;));
+        ensure(&apos;StreetLight&apos;, value, isOneOf(&apos;red&apos;, &apos;yellow&apos;, &apos;green&apos;));
     }
 }</code></pre>
     </div>
@@ -2077,11 +2077,11 @@ class StreetLight extends TinyType {
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { check, isEqualTo, isGreaterThan, isLessThan, or } from &apos;tiny-types&apos;;
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isEqualTo, isGreaterThan, isLessThan, or } from &apos;tiny-type&apos;l
 
 class Percentage extends TinyType {
     constructor(public readonly value: number) {
-        check(&apos;Percentage&apos;, value, or(isEqualTo(0), isGreaterThan(0)), or(isLessThan(100), isEqualTo(100));
+        ensure(&apos;Percentage&apos;, value, or(isEqualTo(0), isGreaterThan(0)), or(isLessThan(100), isEqualTo(100));
     }
 }</code></pre>
     </div>

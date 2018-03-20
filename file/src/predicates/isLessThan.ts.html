@@ -65,11 +65,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @desc Ensures that the `value` is less than the `upperBound`.
  *
  * @example
- * import { check, isLessThan, TinyType } from &apos;tiny-types&apos;;
+ * import { ensure, isLessThan, TinyType } from &apos;tiny-types&apos;;
  *
  * class InvestmentPeriodInYears extends TinyType {
  *     constructor(public readonly value: number) {
- *         check(&apos;Investment period in years&apos;, value, isLessThan(50));
+ *         ensure(&apos;Investment period in years&apos;, value, isLessThan(50));
  *     }
  * }
  *

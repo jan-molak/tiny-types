@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 949,
+  "end": 951,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 949,
+    "end": 951,
     "loc": {
       "start": {
         "line": 1,
@@ -304,9 +304,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { check, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         check('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
+            "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { ensure, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         ensure('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
             "start": 300,
-            "end": 809,
+            "end": 811,
             "loc": {
               "start": {
                 "line": 16,
@@ -322,8 +322,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 810,
-        "end": 948,
+        "start": 812,
+        "end": 950,
         "loc": {
           "start": {
             "line": 33,
@@ -338,8 +338,8 @@
         "source": null,
         "declaration": {
           "type": "FunctionDeclaration",
-          "start": 817,
-          "end": 948,
+          "start": 819,
+          "end": 950,
           "loc": {
             "start": {
               "line": 33,
@@ -352,8 +352,8 @@
           },
           "id": {
             "type": "Identifier",
-            "start": 826,
-            "end": 835,
+            "start": 828,
+            "end": 837,
             "loc": {
               "start": {
                 "line": 33,
@@ -374,8 +374,8 @@
           "params": [
             {
               "type": "Identifier",
-              "start": 836,
-              "end": 846,
+              "start": 838,
+              "end": 848,
               "loc": {
                 "start": {
                   "line": 33,
@@ -391,8 +391,8 @@
             },
             {
               "type": "Identifier",
-              "start": 848,
-              "end": 858,
+              "start": 850,
+              "end": 860,
               "loc": {
                 "start": {
                   "line": 33,
@@ -409,8 +409,8 @@
           ],
           "body": {
             "type": "BlockStatement",
-            "start": 860,
-            "end": 948,
+            "start": 862,
+            "end": 950,
             "loc": {
               "start": {
                 "line": 33,
@@ -424,8 +424,8 @@
             "body": [
               {
                 "type": "ReturnStatement",
-                "start": 866,
-                "end": 946,
+                "start": 868,
+                "end": 948,
                 "loc": {
                   "start": {
                     "line": 34,
@@ -438,8 +438,8 @@
                 },
                 "argument": {
                   "type": "CallExpression",
-                  "start": 873,
-                  "end": 945,
+                  "start": 875,
+                  "end": 947,
                   "loc": {
                     "start": {
                       "line": 34,
@@ -452,8 +452,8 @@
                   },
                   "callee": {
                     "type": "Identifier",
-                    "start": 873,
-                    "end": 876,
+                    "start": 875,
+                    "end": 878,
                     "loc": {
                       "start": {
                         "line": 34,
@@ -470,8 +470,8 @@
                   "arguments": [
                     {
                       "type": "CallExpression",
-                      "start": 877,
-                      "end": 911,
+                      "start": 879,
+                      "end": 913,
                       "loc": {
                         "start": {
                           "line": 34,
@@ -484,8 +484,8 @@
                       },
                       "callee": {
                         "type": "Identifier",
-                        "start": 877,
-                        "end": 899,
+                        "start": 879,
+                        "end": 901,
                         "loc": {
                           "start": {
                             "line": 34,
@@ -502,8 +502,8 @@
                       "arguments": [
                         {
                           "type": "Identifier",
-                          "start": 900,
-                          "end": 910,
+                          "start": 902,
+                          "end": 912,
                           "loc": {
                             "start": {
                               "line": 34,
@@ -521,8 +521,8 @@
                     },
                     {
                       "type": "CallExpression",
-                      "start": 913,
-                      "end": 944,
+                      "start": 915,
+                      "end": 946,
                       "loc": {
                         "start": {
                           "line": 34,
@@ -535,8 +535,8 @@
                       },
                       "callee": {
                         "type": "Identifier",
-                        "start": 913,
-                        "end": 932,
+                        "start": 915,
+                        "end": 934,
                         "loc": {
                           "start": {
                             "line": 34,
@@ -553,8 +553,8 @@
                       "arguments": [
                         {
                           "type": "Identifier",
-                          "start": 933,
-                          "end": 943,
+                          "start": 935,
+                          "end": 945,
                           "loc": {
                             "start": {
                               "line": 34,
@@ -595,9 +595,9 @@
             },
             {
               "type": "CommentBlock",
-              "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { check, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         check('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
+              "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { ensure, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         ensure('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
               "start": 300,
-              "end": 809,
+              "end": 811,
               "loc": {
                 "start": {
                   "line": 16,
@@ -631,9 +631,9 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { check, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         check('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
+            "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { ensure, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         ensure('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
             "start": 300,
-            "end": 809,
+            "end": 811,
             "loc": {
               "start": {
                 "line": 16,
@@ -669,9 +669,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { check, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         check('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
+      "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { ensure, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         ensure('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
       "start": 300,
-      "end": 809,
+      "end": 811,
       "loc": {
         "start": {
           "line": 16,
@@ -1252,9 +1252,9 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { check, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         check('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
+      "value": "*\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { ensure, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         ensure('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n ",
       "start": 300,
-      "end": 809,
+      "end": 811,
       "loc": {
         "start": {
           "line": 16,
@@ -1281,8 +1281,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 810,
-      "end": 816,
+      "start": 812,
+      "end": 818,
       "loc": {
         "start": {
           "line": 33,
@@ -1308,8 +1308,8 @@
         "binop": null
       },
       "value": "function",
-      "start": 817,
-      "end": 825,
+      "start": 819,
+      "end": 827,
       "loc": {
         "start": {
           "line": 33,
@@ -1334,8 +1334,8 @@
         "binop": null
       },
       "value": "isInRange",
-      "start": 826,
-      "end": 835,
+      "start": 828,
+      "end": 837,
       "loc": {
         "start": {
           "line": 33,
@@ -1359,8 +1359,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 835,
-      "end": 836,
+      "start": 837,
+      "end": 838,
       "loc": {
         "start": {
           "line": 33,
@@ -1385,8 +1385,8 @@
         "binop": null
       },
       "value": "lowerBound",
-      "start": 836,
-      "end": 846,
+      "start": 838,
+      "end": 848,
       "loc": {
         "start": {
           "line": 33,
@@ -1411,8 +1411,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 846,
-      "end": 847,
+      "start": 848,
+      "end": 849,
       "loc": {
         "start": {
           "line": 33,
@@ -1437,8 +1437,8 @@
         "binop": null
       },
       "value": "upperBound",
-      "start": 848,
-      "end": 858,
+      "start": 850,
+      "end": 860,
       "loc": {
         "start": {
           "line": 33,
@@ -1462,8 +1462,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 858,
-      "end": 859,
+      "start": 860,
+      "end": 861,
       "loc": {
         "start": {
           "line": 33,
@@ -1487,8 +1487,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 860,
-      "end": 861,
+      "start": 862,
+      "end": 863,
       "loc": {
         "start": {
           "line": 33,
@@ -1515,8 +1515,8 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 866,
-      "end": 872,
+      "start": 868,
+      "end": 874,
       "loc": {
         "start": {
           "line": 34,
@@ -1541,8 +1541,8 @@
         "binop": null
       },
       "value": "and",
-      "start": 873,
-      "end": 876,
+      "start": 875,
+      "end": 878,
       "loc": {
         "start": {
           "line": 34,
@@ -1566,8 +1566,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 876,
-      "end": 877,
+      "start": 878,
+      "end": 879,
       "loc": {
         "start": {
           "line": 34,
@@ -1592,8 +1592,8 @@
         "binop": null
       },
       "value": "isGreaterThanOrEqualTo",
-      "start": 877,
-      "end": 899,
+      "start": 879,
+      "end": 901,
       "loc": {
         "start": {
           "line": 34,
@@ -1617,8 +1617,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 899,
-      "end": 900,
+      "start": 901,
+      "end": 902,
       "loc": {
         "start": {
           "line": 34,
@@ -1643,8 +1643,8 @@
         "binop": null
       },
       "value": "lowerBound",
-      "start": 900,
-      "end": 910,
+      "start": 902,
+      "end": 912,
       "loc": {
         "start": {
           "line": 34,
@@ -1668,8 +1668,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 910,
-      "end": 911,
+      "start": 912,
+      "end": 913,
       "loc": {
         "start": {
           "line": 34,
@@ -1694,8 +1694,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 911,
-      "end": 912,
+      "start": 913,
+      "end": 914,
       "loc": {
         "start": {
           "line": 34,
@@ -1720,8 +1720,8 @@
         "binop": null
       },
       "value": "isLessThanOrEqualTo",
-      "start": 913,
-      "end": 932,
+      "start": 915,
+      "end": 934,
       "loc": {
         "start": {
           "line": 34,
@@ -1745,8 +1745,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 932,
-      "end": 933,
+      "start": 934,
+      "end": 935,
       "loc": {
         "start": {
           "line": 34,
@@ -1771,8 +1771,8 @@
         "binop": null
       },
       "value": "upperBound",
-      "start": 933,
-      "end": 943,
+      "start": 935,
+      "end": 945,
       "loc": {
         "start": {
           "line": 34,
@@ -1796,8 +1796,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 943,
-      "end": 944,
+      "start": 945,
+      "end": 946,
       "loc": {
         "start": {
           "line": 34,
@@ -1821,8 +1821,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 944,
-      "end": 945,
+      "start": 946,
+      "end": 947,
       "loc": {
         "start": {
           "line": 34,
@@ -1847,8 +1847,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 945,
-      "end": 946,
+      "start": 947,
+      "end": 948,
       "loc": {
         "start": {
           "line": 34,
@@ -1872,8 +1872,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 947,
-      "end": 948,
+      "start": 949,
+      "end": 950,
       "loc": {
         "start": {
           "line": 35,
@@ -1898,8 +1898,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 949,
-      "end": 949,
+      "start": 951,
+      "end": 951,
       "loc": {
         "start": {
           "line": 36,

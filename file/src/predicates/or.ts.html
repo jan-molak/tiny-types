@@ -68,11 +68,11 @@ import { Failure, Predicate, Result, Success } from &apos;./Predicate&apos;;
  * @desc Ensures that the `value` meets at least one of the provided {@link Predicate}s.
  *
  * @example
- * import { check, isEqualTo, isGreaterThan, isLessThan, or } from &apos;tiny-types&apos;;
+ * import { ensure, isEqualTo, isGreaterThan, isLessThan, or } from &apos;tiny-type&apos;l
  *
  * class Percentage extends TinyType {
  *     constructor(public readonly value: number) {
- *         check(&apos;Percentage&apos;, value, or(isEqualTo(0), isGreaterThan(0)), or(isLessThan(100), isEqualTo(100));
+ *         ensure(&apos;Percentage&apos;, value, or(isEqualTo(0), isGreaterThan(0)), or(isLessThan(100), isEqualTo(100));
  *     }
  * }
  *
