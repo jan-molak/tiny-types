@@ -11,6 +11,10 @@ TinyTypes is an [npm module](https://www.npmjs.com/package/tiny-types) that make
 projects to give domain meaning to primitive types. It also helps to avoid all sorts of bugs 
 and makes your code easier to refactor. [Learn more.](https://janmolak.com/tiny-types-in-typescript-4680177f026e)
 
+## API Docs
+
+API documentation is available at [jan-molak.github.io/tiny-types/](https://jan-molak.github.io/tiny-types/).
+
 ## Installation
 
 To install the module from npm:

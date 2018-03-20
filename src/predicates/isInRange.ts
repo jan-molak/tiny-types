@@ -7,12 +7,12 @@ import { Predicate } from './Predicate';
  * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`
  *
  * @example
- * import { check, isInRange, TinyType } from 'tiny-types';
+ * import { ensure, isInRange, TinyType } from 'tiny-types';
  *
  * class InvestmentLengthInYears extends TinyType {
  *     constructor(public readonly value: number) {
  *         super();
- *         check('InvestmentLengthInYears', value, isInRange(1, 5));
+ *         ensure('InvestmentLengthInYears', value, isInRange(1, 5));
  *     }
  * }
  *

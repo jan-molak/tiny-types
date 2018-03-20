@@ -7,11 +7,11 @@ import { Failure, Predicate, Result, Success } from './Predicate';
  * @desc Ensures that the `value` meets all the provided {@link Predicate}s.
  *
  * @example
- * import { and, check, isDefined, isGreaterThan, isInteger, TinyType } from 'tiny-types';
+ * import { and, ensure, isDefined, isGreaterThan, isInteger, TinyType } from 'tiny-types';
  *
  * class AgeInYears extends TinyType {
  *     constructor(public readonly value: number) {
- *         check('Percentage', value, and(isDefined(), isInteger(), isGreaterThan(18));
+ *         ensure('Percentage', value, and(isDefined(), isInteger(), isGreaterThan(18));
  *     }
  * }
  *

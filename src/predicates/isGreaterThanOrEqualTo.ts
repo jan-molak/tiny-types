@@ -7,11 +7,11 @@ import { Predicate } from './Predicate';
  * @desc Ensures that the `value` is greater than or equal to the `lowerBound`.
  *
  * @example
- * import { check, isGreaterThanOrEqualTo, TinyType } from 'tiny-types';
+ * import { ensure, isGreaterThanOrEqualTo, TinyType } from 'tiny-types';
  *
  * class AgeInYears extends TinyType {
  *     constructor(public readonly value: number) {
- *         check('Age in years', value, isGreaterThanOrEqualTo(18));
+ *         ensure('Age in years', value, isGreaterThanOrEqualTo(18));
  *     }
  * }
  *

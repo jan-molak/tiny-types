@@ -9,7 +9,7 @@ export function isEqualTo<T>(expectedValue: T): Predicate<T>;
  * This {@link Predicate} is typically used in combination with other {@link Predicate}s.
  *
  * @example <caption>Comparing Tiny Types</caption>
- * import { check, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';
+ * import { ensure, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';
  *
  * class AccountId         extends TinyTypeOf<number>() {}
  * class Command           extends TinyTypeOf<AccountId>() {}
@@ -18,16 +18,16 @@ export function isEqualTo<T>(expectedValue: T): Predicate<T>;
  * class AccountsService {
  *     constructor(public readonly loggedInUser: AccountId) {}
  *     handle(command: Command) {
- *         check('AccountId', command.value, isEqualTo(this.loggedInUser));
+ *         ensure('AccountId', command.value, isEqualTo(this.loggedInUser));
  *     }
  *  }
  *
  * @example <caption>Comparing primitives</caption>
- * import { check, isEqualTo, TinyType } from 'tiny-types';
+ * import { ensure, isEqualTo, TinyType } from 'tiny-types';
  *
  * class Admin extends TinyType {
  *     constructor(public readonly id: number) {
- *         check('Admin::id', id, isEqualTo(1));
+ *         ensure('Admin::id', id, isEqualTo(1));
  *     }
  * }
  *

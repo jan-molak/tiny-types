@@ -4,14 +4,14 @@ import { Predicate } from './Predicate';
  * @desc Ensures that the `value` is an {@link Array}.
  *
  * @example
- * import { check, isArray, TinyType, TinyTypeOf } from 'tiny-types';
+ * import { ensure, isArray, TinyType, TinyTypeOf } from 'tiny-types';
  *
  * class Name extends TinyTypeOf<string>() {}
  *
  * class Names extends TinyType {
  *   constructor(public readonly values: Name[]) {
  *      super();
- *      check('Names', values, isArray());
+ *      ensure('Names', values, isArray());
  *   }
  * }
  *

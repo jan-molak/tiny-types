@@ -4,17 +4,17 @@ import { and, Failure, isArray, isDefined, isGreaterThan, Predicate } from './pr
  * @desc The `ensure` function verifies if the value meets the specified {Predicate}s.
  *
  * @example <caption>Basic usage</caption>
- * import { check, isDefined } from 'tiny-types'
+ * import { ensure, isDefined } from 'tiny-types'
  *
  * const username = 'jan-molak'
- * check('Username', username, isDefined());
+ * ensure('Username', username, isDefined());
  *
  * @example <caption>Ensuring validity of a domain object upon creation</caption>
- * import { TinyType, check, isDefined, isInteger, isInRange } from 'tiny-types'
+ * import { TinyType, ensure, isDefined, isInteger, isInRange } from 'tiny-types'
  *
  * class Age extends TinyType {
  *   constructor(public readonly value: number) {
- *     check('Age', value, isDefined(), isInteger(), isInRange(0, 125));
+ *     ensure('Age', value, isDefined(), isInteger(), isInRange(0, 125));
  *   }
  * }
  *

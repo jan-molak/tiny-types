@@ -7,22 +7,22 @@ export interface HasLength { length: number; }
  * Applies to {@link String}s, {@link Array}s and anything that has a `.length` property.
  *
  * @example <caption>Array</caption>
- * import { check, hasLengthOf, TinyType } from 'tiny-types';
+ * import { ensure, hasLengthOf, TinyType } from 'tiny-types';
  *
  * class Tuple extends TinyType {
  *   constructor(public readonly values: any[]) {
  *      super();
- *      check('Tuple', values, hasLengthOf(2));
+ *      ensure('Tuple', values, hasLengthOf(2));
  *   }
  * }
  *
  * @example <caption>String</caption>
- * import { check, hasLengthOf, TinyType } from 'tiny-types';
+ * import { ensure, hasLengthOf, TinyType } from 'tiny-types';
  *
  * class Username extends TinyType {
  *   constructor(public readonly value: string) {
  *      super();
- *      check('Username', value, hasLengthOf(8));
+ *      ensure('Username', value, hasLengthOf(8));
  *   }
  * }
  *

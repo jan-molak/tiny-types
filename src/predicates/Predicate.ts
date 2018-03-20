@@ -31,7 +31,7 @@ export type Condition<T> = (value: T) => boolean;
  * you can either extend the {@link Predicate}, or use the {@link Predicate.to} factory method.
  *
  * @example <caption>Assuming we'd like to create an isDefined() predicate:</caption>
- * check(`some value`, value, isDefined());
+ * ensure(`some value`, value, isDefined());
  *
  * @example <caption>We can either use the Predicate.to factory method:</caption>
  *

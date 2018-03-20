@@ -6,13 +6,13 @@ import { Predicate } from './Predicate';
  * @desc Ensures that the `value` is equal to one of the `allowedValues`
  *
  * @example
- * import { check, isOneOf, TinyType } from 'tiny-types';
+ * import { ensure, isOneOf, TinyType } from 'tiny-types';
  *
  * class StreetLight extends TinyType {
  *     constructor(public readonly value: string) {
  *         super();
  *
- *         check('StreetLight', value, isOneOf('red', 'yellow', 'green'));
+ *         ensure('StreetLight', value, isOneOf('red', 'yellow', 'green'));
  *     }
  * }
  *

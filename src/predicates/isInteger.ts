@@ -4,11 +4,11 @@ import { Predicate } from './Predicate';
  * @desc Ensures that the `value` is an integer {@link Number}.
  *
  * @example
- * import { and, isInteger, TinyType } from 'tiny-types';
+ * import { ensure, isInteger, TinyType } from 'tiny-types';
  *
  * class AgeInYears extends TinyType {
  *     constructor(public readonly value: number) {
- *         check('Age in years', value, isInteger());
+ *         ensure('Age in years', value, isInteger());
  *     }
  * }
  *
