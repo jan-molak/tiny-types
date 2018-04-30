@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/index.ts | tiny-types</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">spec/predicates/isBoolean.spec.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -61,15 +61,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/index.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export * from &apos;./check&apos;;
-export * from &apos;./ensure&apos;;
-export * from &apos;./objects/deprecated&apos;;
-export * from &apos;./predicates&apos;;
-export * from &apos;./match&apos;;
-export * from &apos;./pattern-matching/PatternMatcher&apos;;
-export * from &apos;./TinyType&apos;;
-export { JSONArray, JSONObject, JSONPrimitive, JSONValue, Serialised, Serialisable } from &apos;./types&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/isBoolean.spec.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+import { given } from &apos;mocha-testdata&apos;;
+
+import { ensure, isBoolean, TinyType } from &apos;../../src&apos;;
+import { expect } from &apos;../expect&apos;;
+
+describe(&apos;predicates&apos;, () =&gt; {
+
+    /** @test {isBoolean} */
+    describe(&apos;::isBoolean&apos;, () =&gt; {
+
+        class MarketingOptIn extends TinyType {
+            constructor(public readonly value: boolean) {
+                super();
+
+                ensure(&apos;MarketingOptIn&apos;, value, isBoolean());
+            }
+        }
+
+        it(&apos;ensures that the argument is a boolean value&apos;, () =&gt; {
+            expect(new MarketingOptIn(false)).to.not.throw;                  // tslint:disable-line:no-unused-expression
+        });
+
+        given(
+            undefined,
+            null,
+            {},
+            &apos;string&apos;,
+            5,
+        ).it(&apos;complains if the value is not a boolean&apos;, (value: any) =&gt; {
+            expect(() =&gt; new MarketingOptIn(value)).to.throw(`MarketingOptIn should be a boolean value`);
+        });
+    });
+});
 </code></pre>
 
 </div>

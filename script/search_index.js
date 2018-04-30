@@ -13,13 +13,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber10",
+    "test-file/spec/match.spec.ts.html#lineNumber17",
     " default rules ",
     "test"
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber17",
+    "test-file/spec/match.spec.ts.html#lineNumber10",
     " default rules ",
     "test"
   ],
@@ -108,6 +108,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/predicates/isboolean~isboolean",
+    "function/index.html#static-function-isBoolean",
+    "<span>isBoolean</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isBoolean</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/predicates/isdefined~isdefined",
     "function/index.html#static-function-isDefined",
     "<span>isDefined</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isDefined</span>",
@@ -156,9 +162,21 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/predicates/isnumber~isnumber",
+    "function/index.html#static-function-isNumber",
+    "<span>isNumber</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isNumber</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/predicates/isoneof~isoneof",
     "function/index.html#static-function-isOneOf",
     "<span>isOneOf</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isOneOf</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/isstring~isstring",
+    "function/index.html#static-function-isString",
+    "<span>isString</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isString</span>",
     "function"
   ],
   [
@@ -361,13 +379,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber295",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber280",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber280",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber295",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
@@ -487,7 +505,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -505,7 +523,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -565,7 +583,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -577,13 +595,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isString.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -601,25 +619,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -631,13 +631,49 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
     "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -699,6 +735,18 @@ window.esdocSearchIndex = [
     "",
     "test-file/spec/predicates/isArray.spec.ts.html#lineNumber21",
     "predicates ::isArray ensures that the argument is an array",
+    "test"
+  ],
+  [
+    "isboolean src/predicates/isboolean.ts~isboolean,isboolean",
+    "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber7",
+    "predicates ::isBoolean",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber21",
+    "predicates ::isBoolean ensures that the argument is a boolean value",
     "test"
   ],
   [
@@ -834,6 +882,18 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "isnumber src/predicates/isnumber.ts~isnumber,isnumber",
+    "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber7",
+    "predicates ::isNumber",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber21",
+    "predicates ::isNumber ensures that the argument in a number",
+    "test"
+  ],
+  [
     "isoneof src/predicates/isoneof.ts~isoneof,isoneof",
     "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber7",
     "predicates ::isOneOf",
@@ -843,6 +903,18 @@ window.esdocSearchIndex = [
     "",
     "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber25",
     "predicates ::isOneOf complains if the value not one the allowed ones",
+    "test"
+  ],
+  [
+    "isstring src/predicates/isstring.ts~isstring,isstring",
+    "test-file/spec/predicates/isString.spec.ts.html#lineNumber7",
+    "predicates ::isString",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isString.spec.ts.html#lineNumber21",
+    "predicates ::isString ensures that the argument in a string",
     "test"
   ],
   [
@@ -871,13 +943,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber40",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber49",
     "significantFields ",
     "test"
   ],
   [
     "",
-    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber49",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber40",
     "significantFields ",
     "test"
   ],
@@ -966,6 +1038,12 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "spec/predicates/isboolean.spec.ts",
+    "test-file/spec/predicates/isBoolean.spec.ts.html",
+    "spec/predicates/isBoolean.spec.ts",
+    "testFile"
+  ],
+  [
     "spec/predicates/isdefined.spec.ts",
     "test-file/spec/predicates/isDefined.spec.ts.html",
     "spec/predicates/isDefined.spec.ts",
@@ -1014,9 +1092,21 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "spec/predicates/isnumber.spec.ts",
+    "test-file/spec/predicates/isNumber.spec.ts.html",
+    "spec/predicates/isNumber.spec.ts",
+    "testFile"
+  ],
+  [
     "spec/predicates/isoneof.spec.ts",
     "test-file/spec/predicates/isOneOf.spec.ts.html",
     "spec/predicates/isOneOf.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isstring.spec.ts",
+    "test-file/spec/predicates/isString.spec.ts.html",
+    "spec/predicates/isString.spec.ts",
     "testFile"
   ],
   [
@@ -1518,6 +1608,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/predicates/isboolean.ts",
+    "file/src/predicates/isBoolean.ts.html",
+    "src/predicates/isBoolean.ts",
+    "file"
+  ],
+  [
     "src/predicates/isdefined.ts",
     "file/src/predicates/isDefined.ts.html",
     "src/predicates/isDefined.ts",
@@ -1566,9 +1662,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/predicates/isnumber.ts",
+    "file/src/predicates/isNumber.ts.html",
+    "src/predicates/isNumber.ts",
+    "file"
+  ],
+  [
     "src/predicates/isoneof.ts",
     "file/src/predicates/isOneOf.ts.html",
     "src/predicates/isOneOf.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isstring.ts",
+    "file/src/predicates/isString.ts.html",
+    "src/predicates/isString.ts",
     "file"
   ],
   [

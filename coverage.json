@@ -1,7 +1,7 @@
 {
-  "coverage": "67.03%",
-  "expectCount": 91,
-  "actualCount": 61,
+  "coverage": "68.08%",
+  "expectCount": 94,
+  "actualCount": 64,
   "files": {
     "src/TinyType.ts": {
       "expectCount": 5,
@@ -146,6 +146,11 @@
       "actualCount": 1,
       "undocumentLines": []
     },
+    "src/predicates/isBoolean.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
     "src/predicates/isDefined.ts": {
       "expectCount": 1,
       "actualCount": 1,
@@ -186,7 +191,17 @@
       "actualCount": 1,
       "undocumentLines": []
     },
+    "src/predicates/isNumber.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
     "src/predicates/isOneOf.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/isString.ts": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
