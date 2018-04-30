@@ -27,7 +27,7 @@ describe('predicates', () => {
             {},
             false,
             5,
-        ).it('complains if the value is not an array and provides', (value: any) => {
+        ).it('complains if the value is not an array', (value: any) => {
             expect(() => new Strings(value)).to.throw(`Collection should be an array`);
         });
     });
