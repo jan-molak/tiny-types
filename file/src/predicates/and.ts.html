@@ -104,11 +104,14 @@ class And&lt;T&gt; extends Predicate&lt;T&gt; {
 
     /** @override */
     check(value: T): Result&lt;T&gt; {
-        const firstUnmet = this.predicates
-            .map(predicate =&gt; predicate.check(value))
-            .find(result =&gt; result instanceof Failure);
+        for (const predicate of this.predicates) {
+            const result = predicate.check(value);
+            if (result instanceof Failure) {
+                return result;
+            }
+        }
 
-        return firstUnmet || new Success(value);
+        return new Success(value);
     }
 }
 </code></pre>

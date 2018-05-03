@@ -64,8 +64,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/and.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
 import { given } from &apos;mocha-testdata&apos;;
+import sinon = require(&apos;sinon&apos;);
 
-import { and, ensure, isDefined, isGreaterThan, isInteger, isLessThan, or, TinyType } from &apos;../../src&apos;;
+import { and, ensure, isDefined, isGreaterThan, isInteger, isLessThan, Predicate, TinyType } from &apos;../../src&apos;;
 import { expect } from &apos;../expect&apos;;
 
 describe(&apos;predicates&apos;, () =&gt; {
@@ -102,6 +103,22 @@ describe(&apos;predicates&apos;, () =&gt; {
 
         it(&apos;complains if there are no predicates specified&apos;, () =&gt; {
             expect(() =&gt; and()).to.throw(`Looks like you haven&apos;t specified any predicates to check the value against?`);
+        });
+
+        it(&apos;stops evaluating the predicates upon the first failure&apos;, () =&gt; {
+            const predicateEvaluated = sinon.spy();
+            const predicateReturning = (result: boolean) =&gt; Predicate.to(result ? &apos;pass&apos; : &apos;fail&apos;, (value: any) =&gt; {
+                predicateEvaluated();
+                return result;
+            });
+
+            expect(() =&gt; ensure(&apos;value&apos;, null, and(
+                predicateReturning(true),
+                predicateReturning(false),
+                predicateReturning(true),
+            ))).to.throw(&apos;value should fail&apos;);
+
+            expect(predicateEvaluated.callCount).to.equal(2);
         });
     });
 });
