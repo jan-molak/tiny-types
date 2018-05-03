@@ -1,7 +1,8 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
+import sinon = require('sinon');
 
-import { and, ensure, isDefined, isGreaterThan, isInteger, isLessThan, or, TinyType } from '../../src';
+import { and, ensure, isDefined, isGreaterThan, isInteger, isLessThan, Predicate, TinyType } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -38,6 +39,22 @@ describe('predicates', () => {
 
         it('complains if there are no predicates specified', () => {
             expect(() => and()).to.throw(`Looks like you haven't specified any predicates to check the value against?`);
+        });
+
+        it('stops evaluating the predicates upon the first failure', () => {
+            const predicateEvaluated = sinon.spy();
+            const predicateReturning = (result: boolean) => Predicate.to(result ? 'pass' : 'fail', (value: any) => {
+                predicateEvaluated();
+                return result;
+            });
+
+            expect(() => ensure('value', null, and(
+                predicateReturning(true),
+                predicateReturning(false),
+                predicateReturning(true),
+            ))).to.throw('value should fail');
+
+            expect(predicateEvaluated.callCount).to.equal(2);
         });
     });
 });
