@@ -11,7 +11,7 @@ import { Failure, Predicate, Result, Success } from './Predicate';
  *
  * class AgeInYears extends TinyType {
  *     constructor(public readonly value: number) {
- *         ensure('Percentage', value, and(isDefined(), isInteger(), isGreaterThan(18));
+ *         ensure('AgeInYears', value, and(isDefined(), isInteger(), isGreaterThan(18));
  *     }
  * }
  *
