@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/predicates/isEqualTo.ts | tiny-types</title>
+  <title data-ice="title">src/predicates/property.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -62,49 +62,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/predicates/isEqualTo.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { TinyType } from &apos;../TinyType&apos;;
-import { Predicate } from &apos;./Predicate&apos;;
-
-export function isEqualTo(expectedValue: TinyType): Predicate&lt;TinyType&gt;;
-export function isEqualTo&lt;T&gt;(expectedValue: T): Predicate&lt;T&gt;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/predicates/property.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { and } from &apos;./and&apos;;
+import { isDefined } from &apos;./isDefined&apos;;
+import { Failure, Predicate, Result, Success } from &apos;./Predicate&apos;;
 
 /**
- * @desc Ensures that the `value` is equal to `expectedValue`.
- * This {@link Predicate} is typically used in combination with other {@link Predicate}s.
+ * @desc Ensures that the `property` of the `value` meets the `predicates`
  *
- * @example &lt;caption&gt;Comparing Tiny Types&lt;/caption&gt;
- * import { ensure, isEqualTo, TinyType, TinyTypeOf } from &apos;tiny-types&apos;;
+ * @example
+ * import { ensure, isGreaterThan, property, TinyType } from &apos;tiny-types&apos;;
  *
- * class AccountId         extends TinyTypeOf&lt;number&gt;() {}
- * class Command           extends TinyTypeOf&lt;AccountId&gt;() {}
- * class UpgradeAccount    extends Command {}
- *
- * class AccountsService {
- *     constructor(public readonly loggedInUser: AccountId) {}
- *     handle(command: Command) {
- *         ensure(&apos;AccountId&apos;, command.value, isEqualTo(this.loggedInUser));
- *     }
- *  }
- *
- * @example &lt;caption&gt;Comparing primitives&lt;/caption&gt;
- * import { ensure, isEqualTo, TinyType } from &apos;tiny-types&apos;;
- *
- * class Admin extends TinyType {
- *     constructor(public readonly id: number) {
- *         ensure(&apos;Admin::id&apos;, id, isEqualTo(1));
+ * class Name extends TinyType {
+ *     constructor(public readonly value: string) {
+ *         super();
+ *         ensure(&apos;Name&apos;, value, property(&apos;length&apos;, isGreaterThan(3)));
  *     }
  * }
  *
- * @param {string | number | symbol | TinyType | object} expectedValue
- * @returns {Predicate&lt;any&gt;}
+ * @returns {Predicate&lt;T&gt;}
  */
-export function isEqualTo(expectedValue: any): Predicate&lt;any&gt; {
-    return Predicate.to(`be equal to ${ expectedValue }`, (value: any) =&gt;
-        (!! value &amp;&amp; value.equals &amp;&amp; expectedValue &amp;&amp; expectedValue.equals)
-            ? value.equals(expectedValue)
-            : value === expectedValue,
-    );
+export function property&lt;T, K extends keyof T&gt;(prop: K, ...predicates: Array&lt;Predicate&lt;T[K]&gt;&gt;): Predicate&lt;T&gt; {
+    return new HaveProperty&lt;T, K&gt;(prop, and(...predicates));
+}
+
+/** @access private */
+class HaveProperty&lt;T, K extends keyof T&gt; extends Predicate&lt;T&gt; {
+
+    constructor(private readonly prop: K, private readonly predicate: Predicate&lt;T[K]&gt;) {
+        super();
+    }
+
+    /** @override */
+    check(value: T): Result&lt;T&gt; {
+        const result = this.predicate.check(value[this.prop]);
+
+        return result instanceof Failure
+            ? new Failure(value, `have ${ this.prop } that ${ result.description }`
+                .replace(/\bbe\b/gi, &apos;is&apos;)
+                .replace(/\beither is\b/gi, &apos;is either&apos;),
+            )
+            : new Success(value);
+    }
 }
 </code></pre>
 

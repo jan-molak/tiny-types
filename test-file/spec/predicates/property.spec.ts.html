@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/predicates/isEqualTo.ts | tiny-types</title>
+  <title data-ice="title">spec/predicates/property.spec.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -62,50 +62,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/predicates/isEqualTo.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { TinyType } from &apos;../TinyType&apos;;
-import { Predicate } from &apos;./Predicate&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/property.spec.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+import { given } from &apos;mocha-testdata&apos;;
 
-export function isEqualTo(expectedValue: TinyType): Predicate&lt;TinyType&gt;;
-export function isEqualTo&lt;T&gt;(expectedValue: T): Predicate&lt;T&gt;;
+import { ensure, isDefined, isGreaterThanOrEqualTo, isString, property, TinyType } from &apos;../../src&apos;;
+import { expect } from &apos;../expect&apos;;
 
-/**
- * @desc Ensures that the `value` is equal to `expectedValue`.
- * This {@link Predicate} is typically used in combination with other {@link Predicate}s.
- *
- * @example &lt;caption&gt;Comparing Tiny Types&lt;/caption&gt;
- * import { ensure, isEqualTo, TinyType, TinyTypeOf } from &apos;tiny-types&apos;;
- *
- * class AccountId         extends TinyTypeOf&lt;number&gt;() {}
- * class Command           extends TinyTypeOf&lt;AccountId&gt;() {}
- * class UpgradeAccount    extends Command {}
- *
- * class AccountsService {
- *     constructor(public readonly loggedInUser: AccountId) {}
- *     handle(command: Command) {
- *         ensure(&apos;AccountId&apos;, command.value, isEqualTo(this.loggedInUser));
- *     }
- *  }
- *
- * @example &lt;caption&gt;Comparing primitives&lt;/caption&gt;
- * import { ensure, isEqualTo, TinyType } from &apos;tiny-types&apos;;
- *
- * class Admin extends TinyType {
- *     constructor(public readonly id: number) {
- *         ensure(&apos;Admin::id&apos;, id, isEqualTo(1));
- *     }
- * }
- *
- * @param {string | number | symbol | TinyType | object} expectedValue
- * @returns {Predicate&lt;any&gt;}
- */
-export function isEqualTo(expectedValue: any): Predicate&lt;any&gt; {
-    return Predicate.to(`be equal to ${ expectedValue }`, (value: any) =&gt;
-        (!! value &amp;&amp; value.equals &amp;&amp; expectedValue &amp;&amp; expectedValue.equals)
-            ? value.equals(expectedValue)
-            : value === expectedValue,
-    );
-}
+describe(&apos;predicates&apos;, () =&gt; {
+
+    /** @test {property} */
+    describe(&apos;::property&apos;, () =&gt; {
+
+        /** @test {property} */
+        describe(&apos;shifts the focus from the value itself to its property&apos;, () =&gt; {
+
+            class Name extends TinyType {
+                constructor(public readonly value: string) {
+                    super();
+                    ensure(&apos;Name&apos;, value,
+                        isDefined(),
+                        property(&apos;length&apos;, isDefined(), isGreaterThanOrEqualTo(3)),
+                        isString(),
+                    );
+                }
+            }
+
+            /** @test {property} */
+            it(&apos;ensures that the property meets the predicates&apos;, () =&gt; {
+                expect(() =&gt; new Name(&apos;Jan&apos;)).to.not.throw;                  // tslint:disable-line:no-unused-expression
+            });
+
+            given(
+                undefined,
+                null,
+            ).
+            it(&apos;complains when the value is undefined&apos;, (value: any) =&gt; {
+                expect(() =&gt; new Name({ length: value } as any)).
+                    to.throw(`Name should have length that is defined`);
+            });
+
+            given&lt;any, string&gt;(
+                [undefined,             &apos;Name should be defined&apos;],
+                [{ length: undefined }, &apos;Name should have length that is defined&apos;],
+                [&apos;JM&apos;,                  &apos;Name should have length that is either equal to 3 or is greater than 3&apos;],
+                [[&apos;J&apos;, &apos;a&apos;, &apos;n&apos;],       &apos;Name should be a string&apos;],
+            ).
+            it(&apos;can be composed with other predicates&apos;, (value: any, expectedError: string) =&gt; {
+                expect(() =&gt; new Name(value)).
+                    to.throw(expectedError);
+            });
+        });
+    });
+});
 </code></pre>
 
 </div>

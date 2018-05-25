@@ -13,13 +13,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber10",
+    "test-file/spec/match.spec.ts.html#lineNumber17",
     " default rules ",
     "test"
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber17",
+    "test-file/spec/match.spec.ts.html#lineNumber10",
     " default rules ",
     "test"
   ],
@@ -189,6 +189,12 @@ window.esdocSearchIndex = [
     "tiny-types/lib/predicates/or~or",
     "function/index.html#static-function-or",
     "<span>or</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/or</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/property~property",
+    "function/index.html#static-function-property",
+    "<span>property</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/property</span>",
     "function"
   ],
   [
@@ -379,13 +385,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber280",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber295",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber295",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber280",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
@@ -583,37 +589,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -625,19 +607,49 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
     "test-file/spec/predicates/isString.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/property.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -655,13 +667,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -673,7 +685,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -709,13 +721,13 @@ window.esdocSearchIndex = [
   ],
   [
     "haslengthof src/predicates/haslengthof.ts~haslengthof,haslengthof",
-    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber36",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber32",
     "predicates ::hasLengthOf when used with arrays",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber50",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber46",
     "predicates ::hasLengthOf when used with arrays ensures that the value has a correct length",
     "test"
   ],
@@ -781,7 +793,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber62",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber63",
     "predicates ::isEqualTo when working with Tiny Types complains if the objects are not identical by value",
     "test"
   ],
@@ -793,7 +805,7 @@ window.esdocSearchIndex = [
   ],
   [
     "isequalto src/predicates/isequalto.ts~isequalto,isequalto",
-    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber72",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber73",
     "predicates ::isEqualTo when working with primitive types",
     "test"
   ],
@@ -939,6 +951,24 @@ window.esdocSearchIndex = [
     "",
     "test-file/spec/predicates/or.spec.ts.html#lineNumber33",
     "predicates ::or concatenates the error messages in a human-friendly way",
+    "test"
+  ],
+  [
+    "property src/predicates/property.ts~property,property",
+    "test-file/spec/predicates/property.spec.ts.html#lineNumber7",
+    "predicates ::property",
+    "test"
+  ],
+  [
+    "property src/predicates/property.ts~property,property",
+    "test-file/spec/predicates/property.spec.ts.html#lineNumber9",
+    "predicates ::property shifts the focus from the value itself to its property",
+    "test"
+  ],
+  [
+    "property src/predicates/property.ts~property,property",
+    "test-file/spec/predicates/property.spec.ts.html#lineNumber24",
+    "predicates ::property shifts the focus from the value itself to its property ensures that the property meets the predicates",
     "test"
   ],
   [
@@ -1119,6 +1149,12 @@ window.esdocSearchIndex = [
     "spec/predicates/or.spec.ts",
     "test-file/spec/predicates/or.spec.ts.html",
     "spec/predicates/or.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/property.spec.ts",
+    "test-file/spec/predicates/property.spec.ts.html",
+    "spec/predicates/property.spec.ts",
     "testFile"
   ],
   [
@@ -1689,6 +1725,12 @@ window.esdocSearchIndex = [
     "src/predicates/or.ts",
     "file/src/predicates/or.ts.html",
     "src/predicates/or.ts",
+    "file"
+  ],
+  [
+    "src/predicates/property.ts",
+    "file/src/predicates/property.ts.html",
+    "src/predicates/property.ts",
     "file"
   ],
   [

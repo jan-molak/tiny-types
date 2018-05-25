@@ -57,6 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isOneOf">isOneOf</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-property">property</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -646,6 +647,35 @@ single-value <span><a href="class/src/TinyType.ts~TinyType.html">TinyType</a></s
       
     </td>
   </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-property">property</a></span></span><span class="code" data-ice="signature">(prop: <span>*</span>, predicates: ...<span>*</span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Ensures that the <code>property</code> of the <code>value</code> meets the <code>predicates</code></p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
 </tbody>
 </table>
 </div>
@@ -1032,15 +1062,16 @@ class Age extends TinyType {
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/predicates/hasLengthOf.ts.html#lineNumber39">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/predicates/hasLengthOf.ts.html#lineNumber43">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {hasLengthOf} from &apos;<span><a href="file/src/predicates/hasLengthOf.ts.html#lineNumber39">tiny-types/lib/predicates/hasLengthOf</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {hasLengthOf} from &apos;<span><a href="file/src/predicates/hasLengthOf.ts.html#lineNumber43">tiny-types/lib/predicates/hasLengthOf</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Ensures that the <code>value</code> is of <code>expectedLength</code>.
 Applies to <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>s, <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>s and anything that has a <code>.length</code> property.</p>
+<p>This function is an alias for to <code>property(&apos;length&apos;, isDefined(), isEqualTo(expectedLength))</code></p>
 </div>
 
   
@@ -1119,7 +1150,7 @@ class Username extends TinyType {
       
     <li data-ice="test"><span><a href="test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber7">predicates ::hasLengthOf</a></span></li>
 <li data-ice="test"><span><a href="test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber9">predicates ::hasLengthOf when used with strings</a></span></li>
-<li data-ice="test"><span><a href="test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber36">predicates ::hasLengthOf when used with arrays</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber32">predicates ::hasLengthOf when used with arrays</a></span></li>
 </ul>
   </div>
 
@@ -1456,7 +1487,7 @@ class Admin extends TinyType {
       
     <li data-ice="test"><span><a href="test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber7">predicates ::isEqualTo</a></span></li>
 <li data-ice="test"><span><a href="test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber9">predicates ::isEqualTo when working with Tiny Types</a></span></li>
-<li data-ice="test"><span><a href="test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber72">predicates ::isEqualTo when working with primitive types</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber73">predicates ::isEqualTo when working with primitive types</a></span></li>
 </ul>
   </div>
 
@@ -2413,11 +2444,111 @@ class Percentage extends TinyType {
   
   
 </div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-property">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">property</span><span class="code" data-ice="signature">(prop: <span>*</span>, predicates: ...<span>*</span>): <span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/predicates/property.ts.html#lineNumber30">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {property} from &apos;<span><a href="file/src/predicates/property.ts.html#lineNumber30">tiny-types/lib/predicates/property</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Ensures that the <code>property</code> of the <code>value</code> meets the <code>predicates</code></p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">prop</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">predicates</td>
+      <td data-ice="type" class="code">...<span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span>&lt;<span>T</span>&gt;</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">import { ensure, isGreaterThan, property, TinyType } from &apos;tiny-types&apos;;
+
+class Name extends TinyType {
+    constructor(public readonly value: string) {
+        super();
+        ensure(&apos;Name&apos;, value, property(&apos;length&apos;, isGreaterThan(3)));
+    }
+}</code></pre>
+    </div>
+</div>
+
+  <div data-ice="tests">
+    <h4>Test:</h4>
+    <ul>
+      
+    <li data-ice="test"><span><a href="test-file/spec/predicates/property.spec.ts.html#lineNumber7">predicates ::property</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/predicates/property.spec.ts.html#lineNumber9">predicates ::property shifts the focus from the value itself to its property</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/predicates/property.spec.ts.html#lineNumber24">predicates ::property shifts the focus from the value itself to its property ensures that the property meets the predicates</a></span></li>
+</ul>
+  </div>
+
+  
+  
+</div>
 </div>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>
