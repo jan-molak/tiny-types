@@ -18,7 +18,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument is an array', () => {
-            expect(new Strings(['lorem', 'ipsum'])).to.not.throw;          // tslint:disable-line:no-unused-expression
+            expect(() => new Strings(['lorem', 'ipsum'])).to.not.throw;      // tslint:disable-line:no-unused-expression
         });
 
         given(

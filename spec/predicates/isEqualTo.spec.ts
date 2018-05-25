@@ -29,7 +29,8 @@ describe('predicates', () => {
 
                 const upgradeOwnAccount = new UpgradeAccount(loggedInUser);
 
-                expect(accounts.handle(upgradeOwnAccount)).to.not.throw;     // tslint:disable-line:no-unused-expression
+                // tslint:disable-next-line:no-unused-expression
+                expect(() => accounts.handle(upgradeOwnAccount)).to.not.throw;
             });
 
             it('complains if the objects are not identical by value', () => {
@@ -58,7 +59,8 @@ describe('predicates', () => {
                 [],
             ).
             it('ensures they are equal', (value: any) => {
-                expect(ensure('Val', value, isEqualTo(value))).to.not.throw;  // tslint:disable-line:no-unused-expression
+                // tslint:disable-next-line:no-unused-expression
+                expect(() => ensure('Val', value, isEqualTo(value))).to.not.throw;
             });
 
             given(

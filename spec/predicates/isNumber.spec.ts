@@ -17,7 +17,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument in a number', () => {
-            expect(new Percentage(42)).to.not.throw;                         // tslint:disable-line:no-unused-expression
+            expect(() => new Percentage(42)).to.not.throw;                   // tslint:disable-line:no-unused-expression
         });
 
         given(

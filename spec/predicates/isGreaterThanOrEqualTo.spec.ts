@@ -18,7 +18,7 @@ describe('predicates', () => {
 
         given(0, 1).
         it('ensures that the argument is greater than or equal to a specified number', (value: number) => {
-            expect(new InvestmentLength(value)).to.not.throw;                // tslint:disable-line:no-unused-expression
+            expect(() => new InvestmentLength(value)).to.not.throw;          // tslint:disable-line:no-unused-expression
         });
 
         it('complains if the argument is less than the lower bound', () => {

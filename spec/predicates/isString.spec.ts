@@ -17,7 +17,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument in a string', () => {
-            expect(new FirstName('Jan')).to.not.throw;                       // tslint:disable-line:no-unused-expression
+            expect(() => new FirstName('Jan')).to.not.throw;                 // tslint:disable-line:no-unused-expression
         });
 
         given(
