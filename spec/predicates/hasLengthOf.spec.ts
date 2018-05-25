@@ -24,19 +24,11 @@ describe('predicates', () => {
             });
 
             given(
-                undefined,
-                null,
-            ).
-            it('complains when the value is undefined', (value: any) => {
-                expect(() => new Password(value)).to.throw(`Password should have a length of 8`);
-            });
-
-            given(
                 '7_chars',
                 '9___chars',
             ).
             it('complains if the value is of incorrect length', (value: string) => {
-                expect(() => new Password(value)).to.throw(`Password should have a length of 8`);
+                expect(() => new Password(value)).to.throw(`Password should have length that is equal to 8`);
             });
         });
 
@@ -59,7 +51,7 @@ describe('predicates', () => {
                 ['a', 'b', 'c'],
             ).
             it('complains if the value is of incorrect length', (values: string[]) => {
-                expect(() => new Collection(values)).to.throw(`Collection should have a length of 2`);
+                expect(() => new Collection(values)).to.throw(`Collection should have length that is equal to 2`);
             });
         });
     });

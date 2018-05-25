@@ -1,10 +1,15 @@
+import { isDefined } from './isDefined';
+import { isEqualTo } from './isEqualTo';
 import { Predicate } from './Predicate';
+import { property } from './property';
 
 export interface HasLength { length: number; }
 
 /**
  * @desc Ensures that the `value` is of `expectedLength`.
  * Applies to {@link String}s, {@link Array}s and anything that has a `.length` property.
+ *
+ * This function is an alias for to `property('length', isDefined(), isEqualTo(expectedLength))`
  *
  * @example <caption>Array</caption>
  * import { ensure, hasLengthOf, TinyType } from 'tiny-types';
@@ -30,9 +35,5 @@ export interface HasLength { length: number; }
  * @returns {Predicate}
  */
 export function hasLengthOf(expectedLength: number): Predicate<HasLength> {
-    const actualLengthOf = (value: HasLength) => (!! value && value.length);
-
-    return Predicate.to(`have a length of ${ expectedLength }`, (value: HasLength) =>
-        actualLengthOf(value) === expectedLength,
-    );
+    return property('length', isDefined(), isEqualTo(expectedLength));
 }

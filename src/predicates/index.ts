@@ -15,3 +15,4 @@ export * from './isOneOf';
 export * from './isString';
 export * from './or';
 export * from './Predicate';
+export * from './property';
