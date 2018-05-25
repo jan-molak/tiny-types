@@ -124,9 +124,9 @@ describe('pattern-matching', () => {
             ).it('matches object by constructor function', (input: DomainEvent, expected_result: string) => {
 
                 const result = new ObjectMatcher<DomainEvent, string>(input)
-                    .when(AccountCreated, ({account_name}) => `Account created for ${ account_name }`)
-                    .when(AccountConfirmed, ({account_name, email}) => `Account confirmed for ${ account_name } at ${ email }`)
-                    .when(DomainEvent, ({timestamp}) => `Some DomainEvent received`)
+                    .when(AccountCreated, ({account_name}: AccountCreated) => `Account created for ${ account_name }`)
+                    .when(AccountConfirmed, ({account_name, email}: AccountConfirmed) => `Account confirmed for ${ account_name } at ${ email }`)
+                    .when(DomainEvent, ({timestamp}: DomainEvent) => `Some DomainEvent received`)
                     .else(_ => `else, received "${_}"`);
 
                 expect(result).to.equal(expected_result);
