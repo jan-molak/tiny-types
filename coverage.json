@@ -1,7 +1,7 @@
 {
-  "coverage": "67%",
-  "expectCount": 100,
-  "actualCount": 67,
+  "coverage": "66.66%",
+  "expectCount": 102,
+  "actualCount": 68,
   "files": {
     "src/TinyType.ts": {
       "expectCount": 5,
@@ -29,14 +29,15 @@
       "undocumentLines": []
     },
     "src/objects/equal.ts": {
-      "expectCount": 9,
-      "actualCount": 4,
+      "expectCount": 11,
+      "actualCount": 5,
       "undocumentLines": [
-        28,
-        29,
-        48,
-        49,
-        50
+        30,
+        31,
+        32,
+        51,
+        52,
+        53
       ]
     },
     "src/objects/significantFields.ts": {
