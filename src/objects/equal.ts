@@ -9,6 +9,8 @@ export function equal(v1: any, v2: any): boolean {
             return false;
         case both(arePrimitives, v1, v2):
             return checkIdentityOf(v1, v2);
+        case both(areObjects, v1, v2) && sameClass(v1, v2) && both(areDates, v1, v2):
+            return checkTimestamps(v1, v2);
         case both(areObjects, v1, v2) && sameClass(v1, v2):
             return checkSignificantFieldsOf(v1, v2);
     }
@@ -17,6 +19,7 @@ export function equal(v1: any, v2: any): boolean {
 }
 
 const areObjects     = (_: any) => new Object(_) === _;
+const areDates       = (_: any) => _ instanceof Date;
 const arePrimitives  = (_: any) => ! areObjects(_); // arrays are objects
 
 function both(condition: (_: any) => boolean, v1: any, v2: any): boolean {
@@ -29,6 +32,10 @@ const sameLength = (v1: { length: number }, v2: { length: number }) => v1.length
 
 function checkIdentityOf(v1: any, v2: any) {
     return v1 === v2;
+}
+
+function checkTimestamps(v1: Date, v2: Date) {
+    return v1.getTime() === v2.getTime();
 }
 
 function checkSignificantFieldsOf(o1: object, o2: object) {

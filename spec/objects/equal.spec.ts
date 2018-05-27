@@ -133,4 +133,32 @@ describe('equal', () => {
             expect(PrivateAlice.equals(PrivateRyan)).to.be.false;            // tslint:disable-line:no-unused-expression
         });
     });
+
+    /** @test {TinyType#equals} */
+    describe('when used with Dates', () => {
+        const
+            dateInstance1 = new Date('2018-05-01T12:00:00.000Z'),
+            dateInstance2 = new Date('2018-05-01T12:00:00.000Z'),
+            dateInstance3 = new Date('2018-05-01T12:00:00.000Z'),
+            differentDate = new Date('2042-05-01T12:15:30.000Z');
+
+        it('is reflexive', () => {
+            expect(equal(dateInstance1, dateInstance1)).to.be.true;          // tslint:disable-line:no-unused-expression
+        });
+
+        it('is symmetric', () => {
+            expect(equal(dateInstance1, dateInstance2)).to.be.true;          // tslint:disable-line:no-unused-expression
+            expect(equal(dateInstance2, dateInstance1)).to.equal(equal(dateInstance1, dateInstance2));
+        });
+
+        it('is transitive', () => {
+            expect(equal(dateInstance1, dateInstance2)).to.be.true;          // tslint:disable-line:no-unused-expression
+            expect(equal(dateInstance2, dateInstance3)).to.be.true;          // tslint:disable-line:no-unused-expression
+            expect(equal(dateInstance3, dateInstance1)).to.be.true;          // tslint:disable-line:no-unused-expression
+        });
+
+        it('returns false when subjects are not equal', () => {
+            expect(equal(dateInstance1, differentDate)).to.be.false;         // tslint:disable-line:no-unused-expression
+        });
+    });
 });
