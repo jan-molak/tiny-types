@@ -109,7 +109,8 @@ describe('TinyType', () => {
                 constructor(public readonly area: Area,
                             public readonly district: District,
                             public readonly sector: Sector,
-                            public readonly unit: Unit,) {
+                            public readonly unit: Unit,
+                ) {
                     super();
                 }
             }
@@ -265,7 +266,8 @@ describe('TinyType', () => {
 
                 constructor(public readonly firstName: FirstName,
                             public readonly lastName: LastName,
-                            public readonly age: Age,) {
+                            public readonly age: Age,
+                ) {
                     super();
                 }
 
