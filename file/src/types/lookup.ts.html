@@ -86,7 +86,8 @@ export type IsNeverWorker&lt;S extends string&gt; = (
 // Worker needed because of https://github.com/Microsoft/TypeScript/issues/18118
 export type IsNever&lt;T extends string&gt; = Not&lt;HaveIntersection&lt;IsNeverWorker&lt;T&gt;, &apos;false&apos;&gt;&gt;;
 
-export type IsFunction&lt;T&gt; = IsNever&lt;keyof T&gt;;
+// http://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-9.html
+export type IsFunction&lt;T&gt; = IsNever&lt;Extract&lt;keyof T, string&gt;&gt;;
 
 export type NonFunctionProps&lt;T&gt; = {
     [K in keyof T]: {
