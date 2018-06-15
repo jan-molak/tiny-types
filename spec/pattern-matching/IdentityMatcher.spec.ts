@@ -39,7 +39,7 @@ describe('pattern-matching', () => {
 
             const result = new IdentityMatcher(s)
                 .when(s, _ => `received "some symbol"`)
-                .else(_ => `else, received "${_}"`);
+                .else(_ => `else, received "${_.toString()}"`);
 
             expect(result).to.equal('received "some symbol"');
         });

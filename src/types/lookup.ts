@@ -21,7 +21,8 @@ export type IsNeverWorker<S extends string> = (
 // Worker needed because of https://github.com/Microsoft/TypeScript/issues/18118
 export type IsNever<T extends string> = Not<HaveIntersection<IsNeverWorker<T>, 'false'>>;
 
-export type IsFunction<T> = IsNever<keyof T>;
+// http://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-9.html
+export type IsFunction<T> = IsNever<Extract<keyof T, string>>;
 
 export type NonFunctionProps<T> = {
     [K in keyof T]: {
