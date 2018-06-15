@@ -5,6 +5,7 @@ import { expect } from '../expect';
 
 describe('pattern-matching', () => {
     describe('IdentityMatcher', () => {
+
         given(
             [true, 'received "true"'],
             [false, 'received "false"'],
