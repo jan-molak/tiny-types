@@ -325,19 +325,19 @@ window.esdocSearchIndex = [
   ],
   [
     "tinytype src/tinytype.ts~tinytype,tinytype",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber310",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber326",
     "TinyType wrapping a single value de-serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber421",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber437",
     "TinyType wrapping a single value de-serialisation custom fromJSON can de-serialise a serialised single-value TinyType",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber426",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber442",
     "TinyType wrapping a single value de-serialisation custom fromJSON can recursively de-serialise a serialised complex TinyType",
     "test"
   ],
@@ -392,6 +392,12 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/TinyType.spec.ts.html#lineNumber280",
+    "TinyType wrapping a single value serialisation ::toJSON ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber311",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
@@ -541,6 +547,12 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
+    "pattern-matching",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
@@ -548,12 +560,6 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber6",
-    "pattern-matching",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -625,67 +631,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isString.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -697,7 +643,61 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -716,6 +716,12 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isString.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
