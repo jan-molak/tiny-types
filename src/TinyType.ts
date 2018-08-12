@@ -126,17 +126,22 @@ export abstract class TinyType implements Serialisable {
      * @returns {JSONValue}
      */
     toJSON(): JSONObject | NonNullJSONPrimitive {
-        const isPrimitive = (value: any) => Object(value) !== value;
+        const
+            isObject = (value: any) => Object(value) === value,
+            isPrimitive = (value: any) => Object(value) !== value;
+
         function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
             switch (true) {
                 case value && !! value.toJSON:
                     return value.toJSON();
                 case value && Array.isArray(value):
                     return value.map(v => toJSON(v));
-                case value && ! isPrimitive(value):
-                    return JSON.stringify(value);
+                case value && isObject(value):
+                    return JSON.parse(JSON.stringify(value));
+                case value && isPrimitive(value):
+                    return value;
                 default:
-                    return value;       // todo: could this ever be a null?
+                    return JSON.stringify(value);
             }
         }
 

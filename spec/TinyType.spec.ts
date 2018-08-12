@@ -207,13 +207,25 @@ describe('TinyType', () => {
                     }]);
                 });
 
+                it(`should serialise a plain-old JavaScript object`, () => {
+                    class Parameters extends TinyTypeOf<{ [parameter: string]: string}>() {}
+
+                    const parameters = new Parameters({
+                        env: 'prod'
+                    });
+
+                    expect(parameters.toJSON()).to.deep.equal({
+                        env: 'prod'
+                    });
+                });
+
                 it(`should JSON.stringify any object that can't be represented in a more sensible way`, () => {
-                    class TT extends TinyTypeOf<object>() {
+                    class TT extends TinyTypeOf<number>() {
                     }
 
-                    const tt = new TT(new Object({key: 'value'}));
+                    const tt = new TT(NaN);
 
-                    expect(tt.toJSON()).to.equal('{"key":"value"}');
+                    expect(tt.toJSON()).to.equal('null');
                 });
             });
         });
