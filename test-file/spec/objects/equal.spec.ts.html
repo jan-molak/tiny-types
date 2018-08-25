@@ -226,6 +226,32 @@ describe(&apos;equal&apos;, () =&gt; {
             expect(equal(dateInstance1, differentDate)).to.be.false;         // tslint:disable-line:no-unused-expression
         });
     });
+
+    /** @test {TinyType#equals} */
+    describe(&apos;when used with Arrays&apos;, () =&gt; {
+        class Name extends TinyTypeOf&lt;string&gt;() {}
+
+        it(&apos;returns false when arrays are of different length&apos;, () =&gt; {
+            expect(equal(
+                [ new Name(&apos;Alice&apos;), new Name(&apos;Bob&apos;) ],
+                [ new Name(&apos;Alice&apos;), new Name(&apos;Bob&apos;), new Name(&apos;Cyril&apos;) ],
+            )).to.equal(false);
+        });
+
+        it(&apos;returns false when arrays contain different items&apos;, () =&gt; {
+            expect(equal(
+                [ new Name(&apos;Alice&apos;), new Name(&apos;Bob&apos;), new Name(&apos;Cyril&apos;)],
+                [ new Name(&apos;Alice&apos;), new Name(&apos;Bob&apos;), new Name(&apos;Cynthia&apos;) ],
+            )).to.equal(false);
+        });
+
+        it(&apos;returns true when both arrays contain equal items&apos;, () =&gt; {
+            expect(equal(
+                [ new Name(&apos;Alice&apos;), new Name(&apos;Bob&apos;), new Name(&apos;Cynthia&apos;) ],
+                [ new Name(&apos;Alice&apos;), new Name(&apos;Bob&apos;), new Name(&apos;Cynthia&apos;) ],
+            )).to.equal(true);
+        });
+    });
 });
 </code></pre>
 
