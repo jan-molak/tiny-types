@@ -161,4 +161,30 @@ describe('equal', () => {
             expect(equal(dateInstance1, differentDate)).to.be.false;         // tslint:disable-line:no-unused-expression
         });
     });
+
+    /** @test {TinyType#equals} */
+    describe('when used with Arrays', () => {
+        class Name extends TinyTypeOf<string>() {}
+
+        it('returns false when arrays are of different length', () => {
+            expect(equal(
+                [ new Name('Alice'), new Name('Bob') ],
+                [ new Name('Alice'), new Name('Bob'), new Name('Cyril') ],
+            )).to.equal(false);
+        });
+
+        it('returns false when arrays contain different items', () => {
+            expect(equal(
+                [ new Name('Alice'), new Name('Bob'), new Name('Cyril')],
+                [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],
+            )).to.equal(false);
+        });
+
+        it('returns true when both arrays contain equal items', () => {
+            expect(equal(
+                [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],
+                [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],
+            )).to.equal(true);
+        });
+    });
 });
