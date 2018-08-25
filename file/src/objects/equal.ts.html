@@ -113,7 +113,7 @@ function checkSignificantFieldsOf(o1: object, o2: object) {
     }
 
     return fieldsOfObject1.reduce((previousFieldsAreEqual: boolean, field: string) =&gt; {
-        const currentFieldIsEqual = !! o1[field] &amp;&amp; !! o2[field] &amp;&amp; equal(o1[field], o2[field]);
+        const currentFieldIsEqual = equal(o1[field], o2[field]);
         return previousFieldsAreEqual &amp;&amp; currentFieldIsEqual;
     }, true);
 }

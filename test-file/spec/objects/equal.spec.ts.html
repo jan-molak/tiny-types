@@ -200,6 +200,30 @@ describe(&apos;equal&apos;, () =&gt; {
     });
 
     /** @test {TinyType#equals} */
+    describe(&apos;when used with TinyTypes with optional fields&apos;, () =&gt; {
+
+        class FirstName extends TinyTypeOf&lt;string&gt;() {}
+        class LastName extends TinyTypeOf&lt;string&gt;() {}
+
+        class Magician extends TinyType {
+            constructor(
+                public readonly firstName: FirstName,
+                public readonly lastName?: LastName,
+            ) {
+                super();
+            }
+        }
+
+        it(&apos;returns true when the non-optional fields are equal&apos;, () =&gt; {
+            const
+                t1 = new Magician(new FirstName(&apos;Teller&apos;)),
+                t2 = new Magician(new FirstName(&apos;Teller&apos;));
+
+            expect(equal(t1, t2)).to.equal(true);
+        });
+    });
+
+        /** @test {TinyType#equals} */
     describe(&apos;when used with Dates&apos;, () =&gt; {
         const
             dateInstance1 = new Date(&apos;2018-05-01T12:00:00.000Z&apos;),
