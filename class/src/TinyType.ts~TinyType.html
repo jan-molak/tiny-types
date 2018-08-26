@@ -37,6 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-check">check</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#objects">objects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deprecated">deprecated</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stringify">stringify</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
@@ -121,7 +122,7 @@ class Person extends TinyType {
     <ul>
       
     <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber6">TinyType</a></span></li>
-<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber326">TinyType wrapping a single value de-serialisation</a></span></li>
+<li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber360">TinyType wrapping a single value de-serialisation</a></span></li>
 <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber9">TinyType wrapping a single value definition</a></span></li>
 <li data-ice="test"><span><a href="test-file/spec/match.spec.ts.html#lineNumber75"> when working with TinyTypes</a></span></li>
 <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber44">TinyType wrapping a single value definition needs to extend the TinyType for types with more than one value</a></span></li>
@@ -212,7 +213,7 @@ class Person extends TinyType {
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html#instance-method-toString">toString</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/TinyType.ts~TinyType.html#instance-method-toString">toString</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -362,7 +363,7 @@ p1.equals(p2) === true</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber153">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyType.ts.html#lineNumber150">source</a></span></span>
     </span>
   </h3>
 
@@ -435,7 +436,7 @@ person.toJSON() === { firstName: &apos;John&apos;, lastName: &apos;Smith&apos;, 
     <h4>Test:</h4>
     <ul>
       
-    <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber221">TinyType wrapping a single value serialisation</a></span></li>
+    <li data-ice="test"><span><a href="test-file/spec/TinyType.spec.ts.html#lineNumber255">TinyType wrapping a single value serialisation</a></span></li>
 </ul>
   </div>
 
@@ -450,7 +451,7 @@ person.toJSON() === { firstName: &apos;John&apos;, lastName: &apos;Smith&apos;, 
     
     
     
-    <span class="code" data-ice="name">toString</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="code" data-ice="name">toString</span><span class="code" data-ice="signature">(): <span>*</span></span>
     <span class="right-info">
       
       
@@ -473,7 +474,7 @@ person.toJSON() === { firstName: &apos;John&apos;, lastName: &apos;Smith&apos;, 
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
           
         </tr>
       </tbody>

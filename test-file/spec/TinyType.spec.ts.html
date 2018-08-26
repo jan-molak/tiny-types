@@ -37,6 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-check">check</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#objects">objects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deprecated">deprecated</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stringify">stringify</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
@@ -211,6 +212,25 @@ describe(&apos;TinyType&apos;, () =&gt; {
 
                 expect(postcode.toString())
                     .to.equal(&apos;Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))&apos;);
+            });
+
+            it(&apos;prints the array-type properties&apos;, () =&gt; {
+                class Name extends TinyTypeOf&lt;string&gt;() {}
+                class Names extends TinyTypeOf&lt;Name[]&gt;() {}
+
+                const names = new Names([ new Name(&apos;Alice&apos;), new Name(&apos;Bob&apos;) ]);
+
+                expect(names.toString())
+                    .to.equal(&apos;Names(value=Array(Name(value=Alice), Name(value=Bob)))&apos;);
+            });
+
+            it(&apos;prints the object-type properties&apos;, () =&gt; {
+                class Dictionary extends TinyTypeOf&lt;{ [key: string ]: string }&gt;() {}
+
+                const dictionary = new Dictionary({ greeting: &apos;Hello&apos;, subject: &apos;World&apos; });
+
+                expect(dictionary.toString())
+                    .to.equal(&apos;Dictionary(value=Object(greeting=Hello, subject=World))&apos;);
             });
         });
 
