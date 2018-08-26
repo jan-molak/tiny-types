@@ -1,5 +1,5 @@
 import { ensure } from './ensure';
-import { equal, significantFieldsOf } from './objects';
+import { equal, significantFieldsOf, stringify } from './objects';
 import { isDefined } from './predicates';
 import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
 
@@ -88,11 +88,7 @@ export abstract class TinyType implements Serialisable {
     }
 
     toString() {
-        const fields = significantFieldsOf(this).reduce((acc: string[], field: string) => {
-            return acc.concat(`${field}=${this[field]}`);
-        }, []);
-
-        return `${this.constructor.name}(${fields.join(', ')})`;
+        return stringify(this);
     }
 
     /**

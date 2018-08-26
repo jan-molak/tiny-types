@@ -147,6 +147,25 @@ describe('TinyType', () => {
                 expect(postcode.toString())
                     .to.equal('Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))');
             });
+
+            it('prints the array-type properties', () => {
+                class Name extends TinyTypeOf<string>() {}
+                class Names extends TinyTypeOf<Name[]>() {}
+
+                const names = new Names([ new Name('Alice'), new Name('Bob') ]);
+
+                expect(names.toString())
+                    .to.equal('Names(value=Array(Name(value=Alice), Name(value=Bob)))');
+            });
+
+            it('prints the object-type properties', () => {
+                class Dictionary extends TinyTypeOf<{ [key: string ]: string }>() {}
+
+                const dictionary = new Dictionary({ greeting: 'Hello', subject: 'World' });
+
+                expect(dictionary.toString())
+                    .to.equal('Dictionary(value=Object(greeting=Hello, subject=World))');
+            });
         });
 
         /** @test {TinyType#toJSON} */
