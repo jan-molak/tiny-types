@@ -1566,7 +1566,7 @@
     "__docId__": 80,
     "kind": "file",
     "name": "src/objects/stringify.ts",
-    "content": "import { significantFieldsOf } from './significantFields';\n\n/**\n * @access private\n */\n\nconst isObject     = (_: any) => new Object(_) === _;\nconst isDate       = (_: any) => _ instanceof Date;\nconst isArray      = (_: any) => Array.isArray(_);\nconst isPrimitive  = (_: any) => ! isObject(_);\n\nexport function stringify(v: any): string {\n    switch (true) {\n        case isArray(v):\n            return `${v.constructor.name}(${ v.map(i => stringify(i)).join(', ') })`;\n\n        case isDate(v):\n            return v.toISOString();\n\n        case isObject(v):\n\n            const fields = significantFieldsOf(v)\n                .map(field => ({ field, value: stringify(v[field]) }))\n                .reduce((acc: string[], current: { field: string, value: string }) => {\n                    return acc.concat(`${current.field}=${current.value}`);\n                }, []);\n\n            return `${v.constructor.name}(${fields.join(', ')})`;\n\n        case isPrimitive(v):\n        default:\n            return `${ v }`;\n    }\n}\n",
+    "content": "import { significantFieldsOf } from './significantFields';\n\nconst isObject     = (_: any) => new Object(_) === _;\nconst isDate       = (_: any) => _ instanceof Date;\nconst isArray      = (_: any) => Array.isArray(_);\nconst isPrimitive  = (_: any) => ! isObject(_);\n\n/**\n * @access private\n */\nexport function stringify(v: any): string {\n    switch (true) {\n        case isArray(v):\n            return `${v.constructor.name}(${ v.map(i => stringify(i)).join(', ') })`;\n\n        case isDate(v):\n            return v.toISOString();\n\n        case isObject(v):\n\n            const fields = significantFieldsOf(v)\n                .map(field => ({ field, value: stringify(v[field]) }))\n                .reduce((acc: string[], current: { field: string, value: string }) => {\n                    return acc.concat(`${current.field}=${current.value}`);\n                }, []);\n\n            return `${v.constructor.name}(${fields.join(', ')})`;\n\n        case isPrimitive(v):\n        default:\n            return `${ v }`;\n    }\n}\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/src/objects/stringify.ts",
     "access": "public",
@@ -1582,13 +1582,13 @@
     "async": false,
     "static": true,
     "longname": "src/objects/stringify.ts~isObject",
-    "access": "private",
+    "access": "public",
     "export": false,
     "importPath": "tiny-types/lib/objects/stringify",
     "importStyle": null,
-    "description": "",
-    "lineNumber": 5,
-    "ignore": true,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
     "params": [
       {
         "name": "_",
@@ -1597,7 +1597,8 @@
         ]
       }
     ],
-    "return": null
+    "return": null,
+    "ignore": true
   },
   {
     "__docId__": 82,
@@ -1613,7 +1614,7 @@
     "importPath": "tiny-types/lib/objects/stringify",
     "importStyle": null,
     "description": null,
-    "lineNumber": 6,
+    "lineNumber": 3,
     "undocument": true,
     "params": [
       {
@@ -1640,7 +1641,7 @@
     "importPath": "tiny-types/lib/objects/stringify",
     "importStyle": null,
     "description": null,
-    "lineNumber": 7,
+    "lineNumber": 4,
     "undocument": true,
     "params": [
       {
@@ -1667,7 +1668,7 @@
     "importPath": "tiny-types/lib/objects/stringify",
     "importStyle": null,
     "description": null,
-    "lineNumber": 8,
+    "lineNumber": 5,
     "undocument": true,
     "params": [
       {
@@ -1689,31 +1690,25 @@
     "async": false,
     "static": true,
     "longname": "src/objects/stringify.ts~stringify",
-    "access": "public",
+    "access": "private",
     "export": true,
     "importPath": "tiny-types/lib/objects/stringify",
     "importStyle": "{stringify}",
     "description": "",
-    "lineNumber": 12,
+    "lineNumber": 19,
+    "ignore": true,
     "params": [
       {
-        "nullable": null,
-        "types": [
-          "undefined"
-        ],
-        "spread": false,
-        "optional": false,
         "name": "v",
-        "description": ""
+        "types": [
+          "*"
+        ]
       }
     ],
     "return": {
-      "nullable": null,
       "types": [
         "string"
-      ],
-      "spread": false,
-      "description": ""
+      ]
     }
   },
   {

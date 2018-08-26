@@ -1,7 +1,7 @@
 {
-  "coverage": "65.42%",
+  "coverage": "64.48%",
   "expectCount": 107,
-  "actualCount": 70,
+  "actualCount": 69,
   "files": {
     "src/TinyType.ts": {
       "expectCount": 5,
@@ -47,11 +47,12 @@
     },
     "src/objects/stringify.ts": {
       "expectCount": 5,
-      "actualCount": 2,
+      "actualCount": 1,
       "undocumentLines": [
-        6,
-        7,
-        8
+        2,
+        3,
+        4,
+        5
       ]
     },
     "src/pattern-matching/IdentityMatcher.ts": {
