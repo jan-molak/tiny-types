@@ -1,14 +1,13 @@
 import { significantFieldsOf } from './significantFields';
 
-/**
- * @access private
- */
-
 const isObject     = (_: any) => new Object(_) === _;
 const isDate       = (_: any) => _ instanceof Date;
 const isArray      = (_: any) => Array.isArray(_);
 const isPrimitive  = (_: any) => ! isObject(_);
 
+/**
+ * @access private
+ */
 export function stringify(v: any): string {
     switch (true) {
         case isArray(v):
