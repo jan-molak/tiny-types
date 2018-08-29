@@ -1,8 +1,34 @@
 import 'mocha';
+import { given } from 'mocha-testdata';
+
 import { Serialised, TinyType, TinyTypeOf } from '../src';
 import { expect } from './expect';
 
 describe('Serialisation', () => {
+
+    describe('of single-value TinyTypes', () => {
+
+        class Amount extends TinyTypeOf<number>() {}
+        class Name extends TinyTypeOf<string>() {}
+        class Vote extends TinyTypeOf<boolean>() {}
+        class Maybe extends TinyType {
+            constructor(public readonly value: any) {
+                super();
+            }
+        }
+
+        given([
+            { obj: new Amount(0),        expectedType: 'number'    },
+            { obj: new Amount(10/3),     expectedType: 'number'    },
+            { obj: new Name('Jan'),      expectedType: 'string'    },
+            { obj: new Vote(true),       expectedType: 'boolean'   },
+            { obj: new Vote(false),      expectedType: 'boolean'   },
+            { obj: new Maybe(undefined), expectedType: 'undefined' },
+        ]).
+        it('preserves the type of the wrapped value', ({ obj, expectedType: expectedType }) => {
+            expect(obj.toJSON()).to.be.an(expectedType);
+        });
+    });
 
     describe('of TinyTypes wrapping several primitive values', () => {
 
