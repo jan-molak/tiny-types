@@ -64,10 +64,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/serialisation.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+import { given } from &apos;mocha-testdata&apos;;
+
 import { Serialised, TinyType, TinyTypeOf } from &apos;../src&apos;;
 import { expect } from &apos;./expect&apos;;
 
 describe(&apos;Serialisation&apos;, () =&gt; {
+
+    describe(&apos;of single-value TinyTypes&apos;, () =&gt; {
+
+        class Amount extends TinyTypeOf&lt;number&gt;() {}
+        class Name extends TinyTypeOf&lt;string&gt;() {}
+        class Vote extends TinyTypeOf&lt;boolean&gt;() {}
+        class Maybe extends TinyType {
+            constructor(public readonly value: any) {
+                super();
+            }
+        }
+
+        given([
+            { obj: new Amount(0),        expectedType: &apos;number&apos;    },
+            { obj: new Amount(10/3),     expectedType: &apos;number&apos;    },
+            { obj: new Name(&apos;Jan&apos;),      expectedType: &apos;string&apos;    },
+            { obj: new Vote(true),       expectedType: &apos;boolean&apos;   },
+            { obj: new Vote(false),      expectedType: &apos;boolean&apos;   },
+            { obj: new Maybe(undefined), expectedType: &apos;undefined&apos; },
+        ]).
+        it(&apos;preserves the type of the wrapped value&apos;, ({ obj, expectedType: expectedType }) =&gt; {
+            expect(obj.toJSON()).to.be.an(expectedType);
+        });
+    });
 
     describe(&apos;of TinyTypes wrapping several primitive values&apos;, () =&gt; {
 

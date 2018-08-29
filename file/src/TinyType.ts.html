@@ -189,7 +189,9 @@ export abstract class TinyType implements Serialisable {
     toJSON(): JSONObject | NonNullJSONPrimitive {
         const
             isObject = (value: any) =&gt; Object(value) === value,
-            isPrimitive = (value: any) =&gt; Object(value) !== value;
+            isSerialisablePrimitive = (value: any) =&gt;
+                !! ~ [&apos;string&apos;, &apos;boolean&apos;, &apos;null&apos;, &apos;undefined&apos;].indexOf(typeof value) ||
+                (typeof value === &apos;number&apos; &amp;&amp; ! isNaN(value) &amp;&amp; ! ~ [ Infinity, -Infinity ].indexOf(value));
 
         function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
             switch (true) {
@@ -199,7 +201,7 @@ export abstract class TinyType implements Serialisable {
                     return value.map(v =&gt; toJSON(v));
                 case value &amp;&amp; isObject(value):
                     return JSON.parse(JSON.stringify(value));
-                case value &amp;&amp; isPrimitive(value):
+                case isSerialisablePrimitive(value):
                     return value;
                 default:
                     return JSON.stringify(value);
