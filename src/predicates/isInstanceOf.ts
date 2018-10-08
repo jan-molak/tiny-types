@@ -12,8 +12,7 @@ import { Predicate } from './Predicate';
  *     }
  * }
  *
- * @param {T} value
- * @param {new (...args: any[]): T} type
+ * @param {Constructor<T>} type
  * @returns {Predicate<T>}
  */
 export function isInstanceOf<T>(type: { new (...args: any[]): T }): Predicate<T> {
