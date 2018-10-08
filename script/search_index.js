@@ -13,13 +13,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber17",
+    "test-file/spec/match.spec.ts.html#lineNumber10",
     " default rules ",
     "test"
   ],
   [
     "",
-    "test-file/spec/match.spec.ts.html#lineNumber10",
+    "test-file/spec/match.spec.ts.html#lineNumber17",
     " default rules ",
     "test"
   ],
@@ -141,6 +141,12 @@ window.esdocSearchIndex = [
     "tiny-types/lib/predicates/isinrange~isinrange",
     "function/index.html#static-function-isInRange",
     "<span>isInRange</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isInRange</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/isinstanceof~isinstanceof",
+    "function/index.html#static-function-isInstanceOf",
+    "<span>isInstanceOf</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isInstanceOf</span>",
     "function"
   ],
   [
@@ -403,7 +409,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber329",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber314",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
@@ -415,7 +421,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber314",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber329",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
@@ -601,25 +607,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
-    "pattern-matching",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
   [
     "",
-    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber6",
     "pattern-matching",
     "test"
   ],
   [
     "",
-    "test-file/spec/pattern-matching/ObjectMatcher.spec.ts.html#lineNumber6",
+    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
+    "pattern-matching",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/pattern-matching/rules/MatchesAnything.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -679,49 +685,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/property.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/predicates/isString.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -733,31 +697,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isInstanceOf.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -769,13 +715,79 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/property.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
     "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -948,6 +960,18 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "isinstanceof src/predicates/isinstanceof.ts~isinstanceof,isinstanceof",
+    "test-file/spec/predicates/isInstanceOf.spec.ts.html#lineNumber7",
+    "predicates ::isInstanceOf",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInstanceOf.spec.ts.html#lineNumber21",
+    "predicates ::isInstanceOf ensures that the argument is an instance of Date",
+    "test"
+  ],
+  [
     "isinteger src/predicates/isinteger.ts~isinteger,isinteger",
     "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber7",
     "predicates ::isInteger",
@@ -1069,13 +1093,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber40",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber49",
     "significantFields ",
     "test"
   ],
   [
     "",
-    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber49",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber40",
     "significantFields ",
     "test"
   ],
@@ -1197,6 +1221,12 @@ window.esdocSearchIndex = [
     "spec/predicates/isinrange.spec.ts",
     "test-file/spec/predicates/isInRange.spec.ts.html",
     "spec/predicates/isInRange.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isinstanceof.spec.ts",
+    "test-file/spec/predicates/isInstanceOf.spec.ts.html",
+    "spec/predicates/isInstanceOf.spec.ts",
     "testFile"
   ],
   [
@@ -1779,6 +1809,12 @@ window.esdocSearchIndex = [
     "src/predicates/isinrange.ts",
     "file/src/predicates/isInRange.ts.html",
     "src/predicates/isInRange.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isinstanceof.ts",
+    "file/src/predicates/isInstanceOf.ts.html",
+    "src/predicates/isInstanceOf.ts",
     "file"
   ],
   [

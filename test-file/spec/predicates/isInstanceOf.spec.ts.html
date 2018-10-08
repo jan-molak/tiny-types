@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/predicates/isLessThan.ts | tiny-types</title>
+  <title data-ice="title">spec/predicates/isInstanceOf.spec.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -63,31 +63,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/predicates/isLessThan.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Predicate } from &apos;./Predicate&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/isInstanceOf.spec.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+import { given } from &apos;mocha-testdata&apos;;
 
-/**
- * @desc Ensures that the `value` is less than the `upperBound`.
- *
- * @example
- * import { ensure, isLessThan, TinyType } from &apos;tiny-types&apos;;
- *
- * class InvestmentPeriodInYears extends TinyType {
- *     constructor(public readonly value: number) {
- *         ensure(&apos;Investment period in years&apos;, value, isLessThan(50));
- *     }
- * }
- *
- * @param {number} upperBound
- * @returns {Predicate&lt;number&gt;}
- */
-export function isLessThan(upperBound: number): Predicate&lt;number&gt; {
-    return Predicate.to(`be less than ${ upperBound }`, (value: number) =&gt;
-        typeof value === &apos;number&apos; &amp;&amp;
-        isFinite(value) &amp;&amp;
-        value &lt; upperBound,
-    );
-}
+import { ensure, isInstanceOf, TinyType } from &apos;../../src&apos;;
+import { expect } from &apos;../expect&apos;;
+
+describe(&apos;predicates&apos;, () =&gt; {
+
+    /** @test {isInstanceOf} */
+    describe(&apos;::isInstanceOf&apos;, () =&gt; {
+        class Birthday extends TinyType {
+            constructor(public readonly value: Date) {
+                super();
+
+                ensure(&apos;Birthday&apos;, value, isInstanceOf(Date));
+            }
+        }
+
+        it(&apos;ensures that the argument is an instance of Date&apos;, () =&gt; {
+            expect(() =&gt; new Birthday(new Date())).to.not.throw;              // tslint:disable-line:no-unused-expression
+        });
+
+        given(
+            &apos;2018-10-10&apos;,
+            undefined,
+            null,
+            {},
+            &apos;string&apos;,
+        ).it(&apos;complains if the value does not meet the predicate&apos;, (value: any) =&gt; {
+            expect(() =&gt; new Birthday(value)).to.throw(`Birthday should be instance of Date`);
+        });
+    });
+});
 </code></pre>
 
 </div>
