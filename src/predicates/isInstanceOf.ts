@@ -15,6 +15,6 @@ import { Predicate } from './Predicate';
  * @param {Constructor<T>} type
  * @returns {Predicate<T>}
  */
-export function isInstanceOf<T>(type: { new (...args: any[]): T }): Predicate<T> {
+export function isInstanceOf<T>(type: new (...args: any[]) => T): Predicate<T> {
     return Predicate.to(`be instance of ${type.name}`, (value: T) => value instanceof type);
 }

@@ -19,7 +19,7 @@ import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised }
  *
  * @returns a dynamically created base class your tiny type can extend from
  */
-export function TinyTypeOf<T>(): { new(_: T): { value: T } & TinyType } {
+export function TinyTypeOf<T>(): new(_: T) => { value: T } & TinyType {
     return class extends TinyType {
         constructor(public readonly value: T) {
             super();
