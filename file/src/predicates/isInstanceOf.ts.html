@@ -81,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @param {Constructor&lt;T&gt;} type
  * @returns {Predicate&lt;T&gt;}
  */
-export function isInstanceOf&lt;T&gt;(type: { new (...args: any[]): T }): Predicate&lt;T&gt; {
+export function isInstanceOf&lt;T&gt;(type: new (...args: any[]) =&gt; T): Predicate&lt;T&gt; {
     return Predicate.to(`be instance of ${type.name}`, (value: T) =&gt; value instanceof type);
 }
 </code></pre>
