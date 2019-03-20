@@ -65,7 +65,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/types/serialisation.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { JSONValue } from &apos;./json&apos;;
-import { NonFunctionProps } from &apos;./lookup&apos;;
 
 export interface Serialisable&lt;S extends JSONValue = JSONValue&gt; {
     toJSON(): S;
@@ -74,7 +73,7 @@ export interface Serialisable&lt;S extends JSONValue = JSONValue&gt; {
 /**
  * @experimental
  */
-export type Serialised&lt;T extends object&gt; = { [P in NonFunctionProps&lt;T&gt;]: JSONValue };
+export type Serialised&lt;T extends object&gt; = JSONValue;
 </code></pre>
 
 </div>

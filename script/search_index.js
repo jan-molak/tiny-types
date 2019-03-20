@@ -1890,12 +1890,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/types/lookup.ts",
-    "file/src/types/lookup.ts.html",
-    "src/types/lookup.ts",
-    "file"
-  ],
-  [
     "src/types/serialisation.ts",
     "file/src/types/serialisation.ts.html",
     "src/types/serialisation.ts",

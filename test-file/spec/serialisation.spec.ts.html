@@ -67,7 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
 import { given } from &apos;mocha-testdata&apos;;
 
-import { Serialised, TinyType, TinyTypeOf } from &apos;../src&apos;;
+import { JSONObject, Serialised, TinyType, TinyTypeOf } from &apos;../src&apos;;
 import { expect } from &apos;./expect&apos;;
 
 describe(&apos;Serialisation&apos;, () =&gt; {
@@ -101,7 +101,7 @@ describe(&apos;Serialisation&apos;, () =&gt; {
         class Person extends TinyType {
             public role: string = &apos;dev&apos;;
 
-            static fromJSON(o: Serialised&lt;Person&gt;): Person {
+            static fromJSON(o: JSONObject): Person {
                 return new Person(o.firstName as string, o.lastName as string, o.age as number);
             }
 
@@ -116,7 +116,7 @@ describe(&apos;Serialisation&apos;, () =&gt; {
 
         it(&apos;uses only the significant fields and retains their type&apos;, () =&gt; {
             const p = new Person(&apos;John&apos;, &apos;Smith&apos;, 42);
-            const serialised = p.toJSON() as Serialised&lt;Person&gt;;
+            const serialised = p.toJSON() as JSONObject;
 
             expect(Object.keys(serialised)).to.include.ordered.members([&apos;age&apos;, &apos;firstName&apos;, &apos;lastName&apos;, &apos;role&apos;]);
             expect(Object.keys(serialised)).to.not.include.members([&apos;speak&apos;, &apos;toJSON&apos;, &apos;toString&apos;]);
@@ -142,7 +142,7 @@ describe(&apos;Serialisation&apos;, () =&gt; {
         class AnotherPerson extends TinyType {
             public role: string = &apos;dev&apos;;
 
-            static fromJSON(o: Serialised&lt;AnotherPerson&gt;): AnotherPerson {
+            static fromJSON(o: JSONObject): AnotherPerson {
                 return new AnotherPerson(
                     FirstName.fromJSON(o.firstName as string),
                     LastName.fromJSON(o.lastName as string),
@@ -164,7 +164,7 @@ describe(&apos;Serialisation&apos;, () =&gt; {
 
         it(&apos;uses only the significant fields and retains the type of their respective values&apos;, () =&gt; {
             const p = new AnotherPerson(new FirstName(&apos;John&apos;), new LastName(&apos;Smith&apos;), new Age(42));
-            const serialised = p.toJSON() as Serialised&lt;AnotherPerson&gt;;
+            const serialised = p.toJSON() as JSONObject;
 
             expect(Object.keys(serialised)).to.include.ordered.members([&apos;age&apos;, &apos;firstName&apos;, &apos;lastName&apos;, &apos;role&apos;]);
             expect(Object.keys(serialised)).to.not.include.members([&apos;speak&apos;, &apos;toJSON&apos;, &apos;toString&apos;]);
@@ -186,7 +186,7 @@ describe(&apos;Serialisation&apos;, () =&gt; {
         }
 
         class Allocation extends TinyType {
-            static fromJSON = (o: Serialised&lt;Allocation&gt;) =&gt; new Allocation(
+            static fromJSON = (o: JSONObject) =&gt; new Allocation(
                 EmployeeId.fromJSON(o.employeeId as number),
                 DepartmentId.fromJSON(o.departmentId as string),
             )

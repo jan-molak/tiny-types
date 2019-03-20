@@ -99,7 +99,7 @@ firstName.value === &apos;Jan&apos;;</code>
     name1 = new FirstName(&apos;Jan&apos;),
     name2 = new FirstName(&apos;Jan&apos;);
 
-name1.equals(name2) === true;</code>
+name1.equals(name2) === true; </code>
 </code></pre>
 <h4 id="tostring">ToString</h4><p>An additional feature of tiny types is a built-in <code>toString()</code> method:</p>
 <pre><code class="lang-typescript"><code class="source-code prettyprint">const name = new FirstName(&apos;Jan&apos;);
@@ -128,7 +128,8 @@ class Person extends TinyType {
     ) {
         super();
     }
-}</code>
+}
+</code>
 </code></pre>
 <p>You can also mix and match both of the above definition styles:</p>
 <pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyType, TinyTypeOf } from &apos;tiny-types&apos;;
