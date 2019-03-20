@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { Serialised, TinyType, TinyTypeOf } from '../src';
+import { JSONObject, Serialised, TinyType, TinyTypeOf } from '../src';
 import { expect } from './expect';
 
 describe('Serialisation', () => {
@@ -35,7 +35,7 @@ describe('Serialisation', () => {
         class Person extends TinyType {
             public role: string = 'dev';
 
-            static fromJSON(o: Serialised<Person>): Person {
+            static fromJSON(o: JSONObject): Person {
                 return new Person(o.firstName as string, o.lastName as string, o.age as number);
             }
 
@@ -50,7 +50,7 @@ describe('Serialisation', () => {
 
         it('uses only the significant fields and retains their type', () => {
             const p = new Person('John', 'Smith', 42);
-            const serialised = p.toJSON() as Serialised<Person>;
+            const serialised = p.toJSON() as JSONObject;
 
             expect(Object.keys(serialised)).to.include.ordered.members(['age', 'firstName', 'lastName', 'role']);
             expect(Object.keys(serialised)).to.not.include.members(['speak', 'toJSON', 'toString']);
@@ -76,7 +76,7 @@ describe('Serialisation', () => {
         class AnotherPerson extends TinyType {
             public role: string = 'dev';
 
-            static fromJSON(o: Serialised<AnotherPerson>): AnotherPerson {
+            static fromJSON(o: JSONObject): AnotherPerson {
                 return new AnotherPerson(
                     FirstName.fromJSON(o.firstName as string),
                     LastName.fromJSON(o.lastName as string),
@@ -98,7 +98,7 @@ describe('Serialisation', () => {
 
         it('uses only the significant fields and retains the type of their respective values', () => {
             const p = new AnotherPerson(new FirstName('John'), new LastName('Smith'), new Age(42));
-            const serialised = p.toJSON() as Serialised<AnotherPerson>;
+            const serialised = p.toJSON() as JSONObject;
 
             expect(Object.keys(serialised)).to.include.ordered.members(['age', 'firstName', 'lastName', 'role']);
             expect(Object.keys(serialised)).to.not.include.members(['speak', 'toJSON', 'toString']);
@@ -120,7 +120,7 @@ describe('Serialisation', () => {
         }
 
         class Allocation extends TinyType {
-            static fromJSON = (o: Serialised<Allocation>) => new Allocation(
+            static fromJSON = (o: JSONObject) => new Allocation(
                 EmployeeId.fromJSON(o.employeeId as number),
                 DepartmentId.fromJSON(o.departmentId as string),
             )

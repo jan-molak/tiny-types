@@ -121,7 +121,7 @@ export abstract class TinyType implements Serialisable {
      *
      * @returns {JSONValue}
      */
-    toJSON(): JSONObject | NonNullJSONPrimitive {
+    toJSON(): JSONValue {
         const
             isObject = (value: any) => Object(value) === value,
             isSerialisablePrimitive = (value: any) =>
