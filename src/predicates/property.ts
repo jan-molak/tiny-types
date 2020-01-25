@@ -33,7 +33,7 @@ class HaveProperty<T, K extends keyof T> extends Predicate<T> {
         const result = this.predicate.check(value[this.prop]);
 
         return result instanceof Failure
-            ? new Failure(value, `have ${ this.prop } that ${ result.description }`
+            ? new Failure(value, `have a property "${ this.prop }" that ${ result.description }`
                 .replace(/\bbe\b/gi, 'is')
                 .replace(/\beither is\b/gi, 'is either'),
             )

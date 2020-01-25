@@ -34,13 +34,13 @@ describe('predicates', () => {
             ).
             it('complains when the value is undefined', (value: any) => {
                 expect(() => new Name({ length: value } as any)).
-                    to.throw(`Name should have length that is defined`);
+                    to.throw(`Name should have a property "length" that is defined`);
             });
 
             given<any, string>(
                 [undefined,             'Name should be defined'],
-                [{ length: undefined }, 'Name should have length that is defined'],
-                ['JM',                  'Name should have length that is either equal to 3 or is greater than 3'],
+                [{ length: undefined }, 'Name should have a property "length" that is defined'],
+                ['JM',                  'Name should have a property "length" that is either equal to 3 or is greater than 3'],
                 [['J', 'a', 'n'],       'Name should be a string'],
             ).
             it('can be composed with other predicates', (value: any, expectedError: string) => {
