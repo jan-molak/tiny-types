@@ -94,7 +94,7 @@ describe(&apos;predicates&apos;, () =&gt; {
                 &apos;9___chars&apos;,
             ).
             it(&apos;complains if the value is of incorrect length&apos;, (value: string) =&gt; {
-                expect(() =&gt; new Password(value)).to.throw(`Password should have length that is equal to 8`);
+                expect(() =&gt; new Password(value)).to.throw(`Password should have a property &quot;length&quot; that is equal to 8`);
             });
         });
 
@@ -117,7 +117,7 @@ describe(&apos;predicates&apos;, () =&gt; {
                 [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;],
             ).
             it(&apos;complains if the value is of incorrect length&apos;, (values: string[]) =&gt; {
-                expect(() =&gt; new Collection(values)).to.throw(`Collection should have length that is equal to 2`);
+                expect(() =&gt; new Collection(values)).to.throw(`Collection should have a property &quot;length&quot; that is equal to 2`);
             });
         });
     });

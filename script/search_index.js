@@ -415,13 +415,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber345",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber329",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber329",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber345",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
@@ -607,7 +607,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -619,7 +619,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/pattern-matching/IdentityMatcher.spec.ts.html#lineNumber5",
+    "test-file/spec/pattern-matching/StringMatcher.spec.ts.html#lineNumber5",
     "pattern-matching",
     "test"
   ],
@@ -685,19 +685,31 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isString.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -709,13 +721,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isInteger.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -727,7 +745,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber5",
+    "test-file/spec/predicates/isOneOf.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isString.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -745,43 +775,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isInRange.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
   [
     "",
-    "test-file/spec/predicates/isGreaterThanOrEqualTo.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isLessThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -1093,13 +1093,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber49",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber40",
     "significantFields ",
     "test"
   ],
   [
     "",
-    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber40",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber49",
     "significantFields ",
     "test"
   ],
