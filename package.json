@@ -40,7 +40,7 @@
   "homepage": "https://github.com/jan-molak/tiny-types#readme",
   "devDependencies": {
     "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.6",
+    "@types/mocha": "^7.0.1",
     "@types/node": "^10.14.1",
     "@types/sinon": "^7.0.10",
     "@types/sinon-chai": "^3.2.2",
