@@ -48,7 +48,7 @@
     "cheerio": "^1.0.0-rc.2",
     "commitizen": "^4.0.3",
     "coveralls": "^3.0.3",
-    "cz-conventional-changelog": "^2.1.0",
+    "cz-conventional-changelog": "^3.1.0",
     "esdoc": "^1.1.0",
     "esdoc-importpath-plugin": "^1.0.2",
     "esdoc-standard-plugin": "^1.0.0",
