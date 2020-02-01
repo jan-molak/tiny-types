@@ -54,7 +54,7 @@
     "esdoc-standard-plugin": "^1.0.0",
     "esdoc-typescript-plugin": "^1.0.1",
     "gh-pages": "^2.0.1",
-    "mocha": "^6.0.2",
+    "mocha": "^7.0.1",
     "mocha-testdata": "^1.2.0",
     "nyc": "^15.0.0",
     "rimraf": "^2.6.3",
