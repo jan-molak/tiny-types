@@ -20,7 +20,7 @@ describe('predicates', () => {
             expect(() => new AgeInYears(42)).to.not.throw;                   // tslint:disable-line:no-unused-expression
         });
 
-        given(
+        given([
             1 / 3,
             0.42,
             undefined,
@@ -29,7 +29,8 @@ describe('predicates', () => {
             Infinity,
             {},
             'string',
-        ).it('complains if the value is not an integer', (value: any) => {
+        ]).
+        it('complains if the value is not an integer', (value: any) => {
             expect(() => new AgeInYears(value)).to.throw(`AgeInYears should be an integer`);
         });
     });

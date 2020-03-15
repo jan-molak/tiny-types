@@ -24,14 +24,15 @@ describe('predicates', () => {
             expect(() => new InvestmentLength(-1)).to.throw(`InvestmentLength should be greater than 0`);
         });
 
-        given(
+        given([
             0,
             -1,
             undefined,
             null,
             {},
             'string',
-        ).it('complains if the value does not meet the predicate', (value: any) => {
+        ]).
+        it('complains if the value does not meet the predicate', (value: any) => {
             expect(() => new InvestmentLength(value)).to.throw(`InvestmentLength should be greater than 0`);
         });
     });

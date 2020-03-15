@@ -9,9 +9,11 @@ describe('pattern-matching', () => {
 
         describe('MatchesAnything', () => {
 
-            given(
-                1, false, {},
-            ).it('is always executed', (input: any) => {
+            given([
+                1,
+                false,
+                {},
+            ]).it('is always executed', (input: any) => {
                 const rule = new MatchesAnything(_ => _);
 
                 expect(rule.matches(input)).to.be.true;                              // tslint:disable-line:no-unused-expression

@@ -20,7 +20,7 @@ describe('predicates', () => {
             expect(() => new Percentage(42)).to.not.throw;                   // tslint:disable-line:no-unused-expression
         });
 
-        given(
+        given([
             1 / 3,
             0.42,
             0o3,
@@ -28,16 +28,18 @@ describe('predicates', () => {
             NaN,
             Infinity,
             -Infinity,
-        ).it('works for any type of number', (value: any) => {
+        ]).
+        it('works for any type of number', (value: any) => {
             expect(() => new Percentage(value)).to.not.throw;                // tslint:disable-line:no-unused-expression
         });
 
-        given(
+        given([
             undefined,
             null,
             {},
             'string',
-        ).it('complains if the value is not a number', (value: any) => {
+        ]).
+        it('complains if the value is not a number', (value: any) => {
             expect(() => new Percentage(value)).to.throw(`Percentage should be a number`);
         });
     });

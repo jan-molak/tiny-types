@@ -27,12 +27,12 @@ describe('predicates', () => {
                 .to.throw(`StreetLight should either be equal to red, be equal to yellow or be equal to green`);
         });
 
-        given(
+        given([
             undefined,
             null,
             {},
             false,
-        ).
+        ]).
         it('complains if the value is of a wrong type', (value: any) => {
             expect(() => new StreetLight(value))
                 .to.throw(`StreetLight should either be equal to red, be equal to yellow or be equal to green`);

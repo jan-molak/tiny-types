@@ -21,13 +21,14 @@ describe('predicates', () => {
             expect(() => new MarketingOptIn(false)).to.not.throw;            // tslint:disable-line:no-unused-expression
         });
 
-        given(
+        given([
             undefined,
             null,
             {},
             'string',
             5,
-        ).it('complains if the value is not a boolean', (value: any) => {
+        ]).
+        it('complains if the value is not a boolean', (value: any) => {
             expect(() => new MarketingOptIn(value)).to.throw(`MarketingOptIn should be a boolean value`);
         });
     });

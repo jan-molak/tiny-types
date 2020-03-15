@@ -20,12 +20,13 @@ describe('predicates', () => {
             expect(() => new UserName('Jan')).to.not.throw;                  // tslint:disable-line:no-unused-expression
         });
 
-        given<any>(
+        given<any>([
             'Jan',
             '',
             true,
             false,
-        ).it('works for any defined value, even the "falsy" ones', (value: any) => {
+        ]).
+        it('works for any defined value, even the "falsy" ones', (value: any) => {
             expect(() => new UserName(value)).to.not.throw;                  // tslint:disable-line:no-unused-expression
         });
     });

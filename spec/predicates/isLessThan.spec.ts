@@ -24,12 +24,13 @@ describe('predicates', () => {
             expect(() => new InvestmentLength(55)).to.throw(`InvestmentLength should be less than 50`);
         });
 
-        given(
+        given([
             undefined,
             null,
             {},
             'string',
-        ).it('complains if the value is not an integer', (value: any) => {
+        ]).
+        it('complains if the value is not an integer', (value: any) => {
             expect(() => new InvestmentLength(value)).to.throw(`InvestmentLength should be less than 50`);
         });
     });

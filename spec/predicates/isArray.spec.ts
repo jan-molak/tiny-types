@@ -21,13 +21,14 @@ describe('predicates', () => {
             expect(() => new Strings(['lorem', 'ipsum'])).to.not.throw;      // tslint:disable-line:no-unused-expression
         });
 
-        given(
+        given([
             undefined,
             null,
             {},
             false,
             5,
-        ).it('complains if the value is not an array', (value: any) => {
+        ]).
+        it('complains if the value is not an array', (value: any) => {
             expect(() => new Strings(value)).to.throw(`Collection should be an array`);
         });
     });
