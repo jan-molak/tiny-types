@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rimraf docs lib reports",
     "lint": "tslint --project tsconfig.json --config tslint.json --format stylish",
-    "test": "nyc --report-dir ./reports/coverage mocha --opts ./mocha.opts 'spec/**/*.spec.*'",
+    "test": "nyc --report-dir ./reports/coverage mocha 'spec/**/*.spec.*'",
     "package": "tsc --project tsconfig.json",
     "verify": "npm run clean && npm run lint && npm test && npm run package",
     "doc": "esdoc",
