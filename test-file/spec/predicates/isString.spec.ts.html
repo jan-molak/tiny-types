@@ -86,13 +86,14 @@ describe(&apos;predicates&apos;, () =&gt; {
             expect(() =&gt; new FirstName(&apos;Jan&apos;)).to.not.throw;                 // tslint:disable-line:no-unused-expression
         });
 
-        given(
+        given([
             undefined,
             null,
             {},
             [],
             42,
-        ).it(&apos;complains if the value is not a string&apos;, (value: any) =&gt; {
+        ]).
+        it(&apos;complains if the value is not a string&apos;, (value: any) =&gt; {
             expect(() =&gt; new FirstName(value)).to.throw(`FirstName should be a string`);
         });
     });

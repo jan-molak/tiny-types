@@ -86,13 +86,14 @@ describe(&apos;predicates&apos;, () =&gt; {
             expect(() =&gt; new Birthday(new Date())).to.not.throw;              // tslint:disable-line:no-unused-expression
         });
 
-        given(
+        given([
             &apos;2018-10-10&apos;,
             undefined,
             null,
             {},
             &apos;string&apos;,
-        ).it(&apos;complains if the value does not meet the predicate&apos;, (value: any) =&gt; {
+        ]).
+        it(&apos;complains if the value does not meet the predicate&apos;, (value: any) =&gt; {
             expect(() =&gt; new Birthday(value)).to.throw(`Birthday should be instance of Date`);
         });
     });

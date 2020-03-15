@@ -87,13 +87,14 @@ describe(&apos;predicates&apos;, () =&gt; {
             expect(() =&gt; new Strings([&apos;lorem&apos;, &apos;ipsum&apos;])).to.not.throw;      // tslint:disable-line:no-unused-expression
         });
 
-        given(
+        given([
             undefined,
             null,
             {},
             false,
             5,
-        ).it(&apos;complains if the value is not an array&apos;, (value: any) =&gt; {
+        ]).
+        it(&apos;complains if the value is not an array&apos;, (value: any) =&gt; {
             expect(() =&gt; new Strings(value)).to.throw(`Collection should be an array`);
         });
     });

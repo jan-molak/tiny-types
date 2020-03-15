@@ -114,7 +114,7 @@ describe(&apos;predicates&apos;, () =&gt; {
         /** @test {isEqualTo} */
         describe(&apos;when working with primitive types&apos;, () =&gt; {
 
-            given(
+            given([
                 null,
                 undefined,
                 Infinity,
@@ -123,19 +123,19 @@ describe(&apos;predicates&apos;, () =&gt; {
                 &apos;string&apos;,
                 {},
                 [],
-            ).
+            ]).
             it(&apos;ensures they are equal&apos;, (value: any) =&gt; {
                 // tslint:disable-next-line:no-unused-expression
                 expect(() =&gt; ensure(&apos;Val&apos;, value, isEqualTo(value))).to.not.throw;
             });
 
-            given(
+            given([
                 1,
                 false,
                 &apos;string&apos;,
                 {},
                 [],
-            ).
+            ]).
             it(&apos;complains if they are not equal&apos;, (value: any) =&gt; {
                 expect(() =&gt; ensure(&apos;Value&apos;, value, isEqualTo(&apos;expected value&apos;)))
                     .to.throw(&apos;Value should be equal to expected value&apos;);

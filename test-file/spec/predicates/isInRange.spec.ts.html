@@ -98,12 +98,12 @@ describe(&apos;predicates&apos;, () =&gt; {
                 .to.throw(`InvestmentLength should either be less than 5 or be equal to 5`);
         });
 
-        given(
+        given([
             undefined,
             null,
             {},
             false,
-        ).
+        ]).
         it(&apos;complains if the value is of a wrong type&apos;, (value: any) =&gt; {
             expect(() =&gt; new InvestmentLength(value))
                 .to.throw(`InvestmentLength should either be equal to 1 or be greater than 1`);

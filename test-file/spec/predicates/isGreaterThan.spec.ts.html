@@ -90,14 +90,15 @@ describe(&apos;predicates&apos;, () =&gt; {
             expect(() =&gt; new InvestmentLength(-1)).to.throw(`InvestmentLength should be greater than 0`);
         });
 
-        given(
+        given([
             0,
             -1,
             undefined,
             null,
             {},
             &apos;string&apos;,
-        ).it(&apos;complains if the value does not meet the predicate&apos;, (value: any) =&gt; {
+        ]).
+        it(&apos;complains if the value does not meet the predicate&apos;, (value: any) =&gt; {
             expect(() =&gt; new InvestmentLength(value)).to.throw(`InvestmentLength should be greater than 0`);
         });
     });

@@ -75,9 +75,11 @@ describe(&apos;pattern-matching&apos;, () =&gt; {
 
         describe(&apos;MatchesAnything&apos;, () =&gt; {
 
-            given(
-                1, false, {},
-            ).it(&apos;is always executed&apos;, (input: any) =&gt; {
+            given([
+                1,
+                false,
+                {},
+            ]).it(&apos;is always executed&apos;, (input: any) =&gt; {
                 const rule = new MatchesAnything(_ =&gt; _);
 
                 expect(rule.matches(input)).to.be.true;                              // tslint:disable-line:no-unused-expression

@@ -86,12 +86,13 @@ describe(&apos;predicates&apos;, () =&gt; {
             expect(() =&gt; new UserName(&apos;Jan&apos;)).to.not.throw;                  // tslint:disable-line:no-unused-expression
         });
 
-        given&lt;any&gt;(
+        given&lt;any&gt;([
             &apos;Jan&apos;,
             &apos;&apos;,
             true,
             false,
-        ).it(&apos;works for any defined value, even the &quot;falsy&quot; ones&apos;, (value: any) =&gt; {
+        ]).
+        it(&apos;works for any defined value, even the &quot;falsy&quot; ones&apos;, (value: any) =&gt; {
             expect(() =&gt; new UserName(value)).to.not.throw;                  // tslint:disable-line:no-unused-expression
         });
     });

@@ -92,13 +92,14 @@ describe(&apos;predicates&apos;, () =&gt; {
                 .to.throw(`InvestmentLength should either be equal to 0 or be greater than 0`);
         });
 
-        given(
+        given([
             -1,
             undefined,
             null,
             {},
             &apos;string&apos;,
-        ).it(&apos;complains if the value does not meet the predicate&apos;, (value: any) =&gt; {
+        ]).
+        it(&apos;complains if the value does not meet the predicate&apos;, (value: any) =&gt; {
             expect(() =&gt; new InvestmentLength(value))
                 .to.throw(`InvestmentLength should either be equal to 0 or be greater than 0`);
         });
