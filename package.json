@@ -42,7 +42,7 @@
     "@types/chai": "^4.1.7",
     "@types/mocha": "^7.0.1",
     "@types/node": "^12.12.28",
-    "@types/sinon": "^7.0.10",
+    "@types/sinon": "^9.0.0",
     "@types/sinon-chai": "^3.2.2",
     "chai": "^4.2.0",
     "cheerio": "^1.0.0-rc.2",
