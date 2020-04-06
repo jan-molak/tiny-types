@@ -162,6 +162,29 @@ event1.equals(event2) === true;
 
 event1.toString() === &apos;AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))&apos;</code>
 </code></pre>
+<h2 id="guaranteed-runtime-correctness">Guaranteed runtime correctness</h2><p>The best way to guarantee runtime correctness of your domain models is to ensure that no tiny type can ever hold invalid data at runtime.
+This way, when a function receives an instance of a tiny type, it does not need to perform any checks on it and can simply trust that 
+its value is correct. OK, but how do you guarantee that? </p>
+<p>Let me show you an example. </p>
+<p>Imagine that upon registering a customer on your website you need to ask them their age.
+How would you model the concept of &quot;age&quot; in your system?</p>
+<p>You might consider using a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"><code>number</code></a> for this purpose:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">const age = 35;</code>
+</code></pre>
+<p>However, this is far from ideal as &quot;age&quot; is not just <em>any</em> number: it can&apos;t be negative, it has to be an integer, and it&apos;s highly unlikely that your customers would ever be <a href="https://www.ecma-international.org/ecma-262/10.0/index.html#sec-ecmascript-language-types-number-type">2&lt;sup&gt;53&lt;/sup&gt;-1 years old</a>.</p>
+<p>All that means that there are certain <em>rules</em> that an object representing &quot;age&quot; needs to obey, certain <em>constraints</em> that its value has to meet in order to be considered valid.</p>
+<p>You might have already guessed that my recommendation to you would be to define a tiny type representing <code>Age</code>, but not just that.
+You should also take it a step further and use the <a href="https://jan-molak.github.io/tiny-types/function/index.html#static-function-ensure"><code>ensure</code></a> function together with other <a href="https://jan-molak.github.io/tiny-types/identifiers.html#predicates"><code>predicates</code></a> to describe the constraints the underlying value has to meet:</p>
+<pre><code class="lang-typescript"><code class="source-code prettyprint">import { TinyType, ensure, isDefined, isInteger, isInRange } from &apos;tiny-types&apos;
+
+class Age extends TinyType {
+  constructor(public readonly value: number) {
+    ensure(&apos;Age&apos;, value, isDefined(), isInteger(), isInRange(0, 125));
+  }
+} </code>
+</code></pre>
+<p>With a tiny type defined as per the above code sample you can eliminate entire classes of errors. You also have one place in your
+system where you define what &quot;age&quot; means.</p>
 <h2 id="serialisation-to-json">Serialisation to JSON</h2><p>Every TinyType defines 
 a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON%28%29_behavior"><code>toJSON()</code> method</a>, 
 which returns a JSON representation of the object. This means that you can use TinyTypes 
@@ -243,6 +266,7 @@ as the object you&apos;re trying to de-serialise, it can at least help you to av
 <p>Found a bug? Need a feature? Raise <a href="https://github.com/jan-molak/tiny-types/issues?state=open">an issue</a>
 or submit a pull request.</p>
 <p>Have feedback? Let me know on twitter: <a href="https://twitter.com/JanMolak">@JanMolak</a></p>
+<p>And if TinyTypes have made your life a little bit easier, please consider <a href="https://github.com/sponsors/jan-molak">sponsoring their ongoing development</a> &#x1F647;</p>
 <h2 id="license">License</h2><p>TinyTypes library is licensed under the <a href="https://github.com/jan-molak/tiny-types/blob/master/LICENSE.md">Apache-2.0</a> license.</p>
 <hr>
 <p><em>- Copyright &#xA9; 2018- <a href="https://janmolak.com">Jan Molak</a></em></p>
