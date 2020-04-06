@@ -9,7 +9,7 @@ describe(`::match`, () => {
 
     /** @test {match} */
     describe('default rules', () => {
-        it(`uses the default rule if a more specific one has not been defined`, () => {
+        it(`uses the default rule when no identical match is found for a string value`, () => {
             const result = match('four')
                 .when('five', _ => `high five`)
                 .when('six', _ => `got your six`)
@@ -18,7 +18,7 @@ describe(`::match`, () => {
             expect(result).to.equal('got four');
         });
 
-        it(`uses the default rule if a more specific one has not been defined`, () => {
+        it(`uses the default rule when no identical match is found for a numerical value`, () => {
             const result = match(4)
                 .when(5, _ => `high five`)
                 .when(6, _ => `got your six`)

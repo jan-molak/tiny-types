@@ -186,6 +186,41 @@ const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age
 person.toJSON() === { firstName: 'Bruce', lastName: 'Smith', age: 55 }
 ```
 
+## Guaranteed runtime correctness
+
+The best way to guarantee runtime correctness of your domain models is to ensure that no tiny type can ever hold invalid data at runtime.
+This way, when a function receives an instance of a tiny type, it does not need to perform any checks on it and can simply trust that 
+its value is correct. OK, but how do you guarantee that? 
+
+Let me show you an example. 
+
+Imagine that upon registering a customer on your website you need to ask them their age.
+How would you model the concept of "age" in your system?
+
+You might consider using a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) for this purpose:
+```typescript
+const age = 35;
+```
+However, this is far from ideal as "age" is not just _any_ number: it can't be negative, it has to be an integer, and it's highly unlikely that your customers would ever be [2<sup>53</sup>-1 years old](https://www.ecma-international.org/ecma-262/10.0/index.html#sec-ecmascript-language-types-number-type).
+
+All that means that there are certain _rules_ that an object representing "age" needs to obey, certain _constraints_ that its value has to meet in order to be considered valid.
+
+You might have already guessed that my recommendation to you would be to define a tiny type representing `Age`, but not just that.
+You should also take it a step further and use the [`ensure`](https://jan-molak.github.io/tiny-types/function/index.html#static-function-ensure) function together with other [`predicates`](https://jan-molak.github.io/tiny-types/identifiers.html#predicates) to describe the constraints the underlying value has to meet:
+
+```typescript
+import { TinyType, ensure, isDefined, isInteger, isInRange } from 'tiny-types'
+
+class Age extends TinyType {
+  constructor(public readonly value: number) {
+    ensure('Age', value, isDefined(), isInteger(), isInRange(0, 125));
+  }
+} 
+```
+
+With a tiny type defined as per the above code sample you can eliminate entire classes of errors. You also have one place in your
+system where you define what "age" means.
+
 ## De-serialisation from JSON
 
 Although you could define standalone de-serialisers, I like to define them 
@@ -250,6 +285,8 @@ Found a bug? Need a feature? Raise [an issue](https://github.com/jan-molak/tiny-
 or submit a pull request.
 
 Have feedback? Let me know on twitter: [@JanMolak](https://twitter.com/JanMolak)
+
+And if TinyTypes have made your life a little bit easier, please consider [sponsoring their ongoing development](https://github.com/sponsors/jan-molak) 🙇
 
 ## License
 
