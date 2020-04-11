@@ -192,6 +192,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/predicates/matches~matches",
+    "function/index.html#static-function-matches",
+    "<span>matches</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/matches</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/predicates/or~or",
     "function/index.html#static-function-or",
     "<span>or</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/or</span>",
@@ -757,6 +763,12 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/matches.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/or.spec.ts.html#lineNumber5",
     "predicates",
     "test"
@@ -1050,6 +1062,18 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "matches src/predicates/matches.ts~matches,matches",
+    "test-file/spec/predicates/matches.spec.ts.html#lineNumber7",
+    "predicates ::matches",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/matches.spec.ts.html#lineNumber21",
+    "predicates ::matches ensures that the argument matches a regular expression",
+    "test"
+  ],
+  [
     "or src/predicates/or.ts~or,or",
     "test-file/spec/predicates/or.spec.ts.html#lineNumber7",
     "predicates ::or",
@@ -1263,6 +1287,12 @@ window.esdocSearchIndex = [
     "spec/predicates/isstring.spec.ts",
     "test-file/spec/predicates/isString.spec.ts.html",
     "spec/predicates/isString.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/matches.spec.ts",
+    "test-file/spec/predicates/matches.spec.ts.html",
+    "spec/predicates/matches.spec.ts",
     "testFile"
   ],
   [
@@ -1851,6 +1881,12 @@ window.esdocSearchIndex = [
     "src/predicates/isstring.ts",
     "file/src/predicates/isString.ts.html",
     "src/predicates/isString.ts",
+    "file"
+  ],
+  [
+    "src/predicates/matches.ts",
+    "file/src/predicates/matches.ts.html",
+    "src/predicates/matches.ts",
     "file"
   ],
   [

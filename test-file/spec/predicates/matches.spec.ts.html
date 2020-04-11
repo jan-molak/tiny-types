@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">spec/predicates/isBoolean.spec.ts | tiny-types</title>
+  <title data-ice="title">spec/predicates/matches.spec.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -64,28 +64,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/isBoolean.spec.ts</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/matches.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
 import { given } from &apos;mocha-testdata&apos;;
 
-import { ensure, isBoolean, TinyType } from &apos;../../src&apos;;
+import { ensure, matches, TinyType } from &apos;../../src&apos;;
 import { expect } from &apos;../expect&apos;;
 
 describe(&apos;predicates&apos;, () =&gt; {
 
-    /** @test {isBoolean} */
-    describe(&apos;::isBoolean&apos;, () =&gt; {
+    /** @test {matches} */
+    describe(&apos;::matches&apos;, () =&gt; {
 
-        class MarketingOptIn extends TinyType {
-            constructor(public readonly value: boolean) {
+        class CompanyEmailAddress extends TinyType {
+            constructor(public readonly value: string) {
                 super();
 
-                ensure(&apos;MarketingOptIn&apos;, value, isBoolean());
+                ensure(&apos;CompanyEmailAddress&apos;, value, matches(/[a-z]+\.[a-z]@example\.org/));
             }
         }
 
-        it(&apos;ensures that the argument is a boolean value&apos;, () =&gt; {
-            expect(() =&gt; new MarketingOptIn(false)).to.not.throw;            // tslint:disable-line:no-unused-expression
+        it(&apos;ensures that the argument matches a regular expression&apos;, () =&gt; {
+            expect(() =&gt; new CompanyEmailAddress(&apos;jan.molak@example.org&apos;)).to.not.throw; // tslint:disable-line:no-unused-expression
         });
 
         given([
@@ -95,8 +95,9 @@ describe(&apos;predicates&apos;, () =&gt; {
             &apos;string&apos;,
             5,
         ]).
-        it(&apos;complains if the value is not a boolean&apos;, (value: any) =&gt; {
-            expect(() =&gt; new MarketingOptIn(value)).to.throw(`MarketingOptIn should be a boolean value`);
+        it(&apos;complains if the value does not match the regular expression&apos;, (value: any) =&gt; {
+            expect(() =&gt; new CompanyEmailAddress(value))
+                .to.throw(`CompanyEmailAddress should match pattern /[a-z]+\\.[a-z]@example\\.org/`);
         });
     });
 });

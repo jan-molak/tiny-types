@@ -1,7 +1,7 @@
 {
-  "coverage": "64.81%",
-  "expectCount": 108,
-  "actualCount": 70,
+  "coverage": "65.13%",
+  "expectCount": 109,
+  "actualCount": 71,
   "files": {
     "src/TinyType.ts": {
       "expectCount": 5,
@@ -218,6 +218,11 @@
       "undocumentLines": []
     },
     "src/predicates/isString.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/predicates/matches.ts": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
