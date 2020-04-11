@@ -3071,7 +3071,7 @@
     "__docId__": 154,
     "kind": "file",
     "name": "src/predicates/endsWith.ts",
-    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` ends with a given suffix.\n *\n * @example\n * import { endsWith, ensure, TinyType } from 'tiny-types';\n *\n * class TextFileName extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         ensure('TextFileName', value, endsWith('.txt'));\n *     }\n * }\n *\n * @returns {Predicate<string>}\n */\nexport function endsWith(suffix: string): Predicate<string> {\n    return Predicate.to(`end with '${ suffix }'`, (value: string) =>\n        typeof value === 'string'\n            && value.endsWith(suffix),\n    );\n}\n",
+    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` ends with a given suffix.\n *\n * @example\n * import { endsWith, ensure, TinyType } from 'tiny-types';\n *\n * class TextFileName extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         ensure('TextFileName', value, endsWith('.txt'));\n *     }\n * }\n *\n * @param {string} suffix\n *\n * @returns {Predicate<string>}\n */\nexport function endsWith(suffix: string): Predicate<string> {\n    return Predicate.to(`end with '${ suffix }'`, (value: string) =>\n        typeof value === 'string'\n            && value.endsWith(suffix),\n    );\n}\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/src/predicates/endsWith.ts",
     "access": "public",
@@ -3095,11 +3095,23 @@
     "examples": [
       "import { endsWith, ensure, TinyType } from 'tiny-types';\n\nclass TextFileName extends TinyType {\n    constructor(public readonly value: string) {\n        super();\n\n        ensure('TextFileName', value, endsWith('.txt'));\n    }\n}"
     ],
-    "lineNumber": 28,
+    "lineNumber": 30,
     "unknown": [
       {
         "tagName": "@returns",
         "tagValue": "{Predicate<string>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "suffix",
+        "description": ""
       }
     ],
     "return": {
@@ -3109,15 +3121,7 @@
       ],
       "spread": false,
       "description": ""
-    },
-    "params": [
-      {
-        "name": "suffix",
-        "types": [
-          "*"
-        ]
-      }
-    ]
+    }
   },
   {
     "__docId__": 156,
@@ -3924,7 +3928,7 @@
     "__docId__": 187,
     "kind": "file",
     "name": "src/predicates/matches.ts",
-    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` matches {@link RegExp}.\n *\n * @example\n * import { ensure, matches, TinyType } from 'tiny-types';\n *\n *\n * class CompanyEmailAddress extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *         ensure('EmailAddress', value, matches(/[a-z]+\\.[a-z]+@example\\.org/));\n *     }\n * }\n *\n * @returns {Predicate<string>}\n */\nexport function matches(expression: RegExp): Predicate<string> {\n    return Predicate.to(`match pattern ${ expression }`, (value: string) => expression.test(value));\n}\n",
+    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` matches {@link RegExp}.\n *\n * @example\n * import { ensure, matches, TinyType } from 'tiny-types';\n *\n *\n * class CompanyEmailAddress extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *         ensure('EmailAddress', value, matches(/[a-z]+\\.[a-z]+@example\\.org/));\n *     }\n * }\n *\n * @param {RegExp} expression\n *\n * @returns {Predicate<string>}\n */\nexport function matches(expression: RegExp): Predicate<string> {\n    return Predicate.to(`match pattern ${ expression }`, (value: string) => expression.test(value));\n}\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/src/predicates/matches.ts",
     "access": "public",
@@ -3948,11 +3952,23 @@
     "examples": [
       "import { ensure, matches, TinyType } from 'tiny-types';\n\n\nclass CompanyEmailAddress extends TinyType {\n    constructor(public readonly value: string) {\n        super();\n        ensure('EmailAddress', value, matches(/[a-z]+\\.[a-z]+@example\\.org/));\n    }\n}"
     ],
-    "lineNumber": 28,
+    "lineNumber": 30,
     "unknown": [
       {
         "tagName": "@returns",
         "tagValue": "{Predicate<string>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "RegExp"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "expression",
+        "description": ""
       }
     ],
     "return": {
@@ -3962,15 +3978,7 @@
       ],
       "spread": false,
       "description": ""
-    },
-    "params": [
-      {
-        "name": "expression",
-        "types": [
-          "*"
-        ]
-      }
-    ]
+    }
   },
   {
     "__docId__": 189,
@@ -4262,7 +4270,7 @@
     "__docId__": 202,
     "kind": "file",
     "name": "src/predicates/startsWith.ts",
-    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` starts with a given prefix.\n *\n * @example\n * import { ensure, startsWith, TinyType } from 'tiny-types';\n *\n * class Username extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         ensure('Username', value, startsWith('usr'));\n *     }\n * }\n *\n * @returns {Predicate<string>}\n */\nexport function startsWith(prefix: string): Predicate<string> {\n    return Predicate.to(`start with '${ prefix }'`, (value: string) =>\n        typeof value === 'string'\n            && value.startsWith(prefix),\n    );\n}\n",
+    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` starts with a given prefix.\n *\n * @example\n * import { ensure, startsWith, TinyType } from 'tiny-types';\n *\n * class Username extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         ensure('Username', value, startsWith('usr'));\n *     }\n * }\n *\n * @param {string} prefix\n *\n * @returns {Predicate<string>}\n */\nexport function startsWith(prefix: string): Predicate<string> {\n    return Predicate.to(`start with '${ prefix }'`, (value: string) =>\n        typeof value === 'string'\n            && value.startsWith(prefix),\n    );\n}\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/src/predicates/startsWith.ts",
     "access": "public",
@@ -4286,11 +4294,23 @@
     "examples": [
       "import { ensure, startsWith, TinyType } from 'tiny-types';\n\nclass Username extends TinyType {\n    constructor(public readonly value: string) {\n        super();\n\n        ensure('Username', value, startsWith('usr'));\n    }\n}"
     ],
-    "lineNumber": 28,
+    "lineNumber": 30,
     "unknown": [
       {
         "tagName": "@returns",
         "tagValue": "{Predicate<string>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "prefix",
+        "description": ""
       }
     ],
     "return": {
@@ -4300,15 +4320,7 @@
       ],
       "spread": false,
       "description": ""
-    },
-    "params": [
-      {
-        "name": "prefix",
-        "types": [
-          "*"
-        ]
-      }
-    ]
+    }
   },
   {
     "__docId__": 204,
