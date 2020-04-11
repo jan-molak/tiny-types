@@ -286,7 +286,10 @@ or submit a pull request.
 
 Have feedback? Let me know on twitter: [@JanMolak](https://twitter.com/JanMolak)
 
-And if TinyTypes have made your life a little bit easier, please consider [sponsoring their ongoing development](https://github.com/sponsors/jan-molak) 🙇
+## Before you go
+
+☕ If TinyTypes have made your life a little bit easier and saved at least \$5 worth of your time,
+please consider repaying the favour and [buying me a coffee](https://github.com/sponsors/jan-molak) via [Github Sponsors](https://github.com/sponsors/jan-molak). Thanks! 🙏
 
 ## License
 

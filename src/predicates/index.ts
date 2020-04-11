@@ -14,6 +14,7 @@ export * from './isNumber';
 export * from './isOneOf';
 export * from './isString';
 export * from './isInstanceOf';
+export * from './matches';
 export * from './or';
 export * from './Predicate';
 export * from './property';
