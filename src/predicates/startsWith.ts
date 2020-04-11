@@ -14,6 +14,8 @@ import { Predicate } from './Predicate';
  *     }
  * }
  *
+ * @param {string} prefix
+ *
  * @returns {Predicate<string>}
  */
 export function startsWith(prefix: string): Predicate<string> {

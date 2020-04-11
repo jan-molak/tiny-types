@@ -14,6 +14,8 @@ import { Predicate } from './Predicate';
  *     }
  * }
  *
+ * @param {string} suffix
+ *
  * @returns {Predicate<string>}
  */
 export function endsWith(suffix: string): Predicate<string> {

@@ -14,6 +14,8 @@ import { Predicate } from './Predicate';
  *     }
  * }
  *
+ * @param {RegExp} expression
+ *
  * @returns {Predicate<string>}
  */
 export function matches(expression: RegExp): Predicate<string> {
