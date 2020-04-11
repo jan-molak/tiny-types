@@ -288,7 +288,7 @@ Have feedback? Let me know on twitter: [@JanMolak](https://twitter.com/JanMolak)
 
 ## Before you go
 
-☕ If TinyTypes have made your life a little bit easier and saved at least \$5 worth of your time,
+☕ If TinyTypes have made your life a little bit easier and saved at least $5 worth of your time,
 please consider repaying the favour and [buying me a coffee](https://github.com/sponsors/jan-molak) via [Github Sponsors](https://github.com/sponsors/jan-molak). Thanks! 🙏
 
 ## License
