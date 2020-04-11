@@ -3872,7 +3872,7 @@
     "__docId__": 185,
     "kind": "file",
     "name": "src/predicates/matches.ts",
-    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` matches {@link RegExp}.\n *\n * @example\n * import { ensure, matches, TinyType } from 'tiny-types';\n *\n *\n * class CompanyEmailAddress extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *         ensure('EmailAddress', value, matches(/[a-z]+\\.[a-z]@example\\.org/));\n *     }\n * }\n *\n * @returns {Predicate<string>}\n */\nexport function matches(expression: RegExp): Predicate<string> {\n    return Predicate.to(`match pattern ${ expression }`, (value: string) => expression.test(value));\n}\n",
+    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` matches {@link RegExp}.\n *\n * @example\n * import { ensure, matches, TinyType } from 'tiny-types';\n *\n *\n * class CompanyEmailAddress extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *         ensure('EmailAddress', value, matches(/[a-z]+\\.[a-z]+@example\\.org/));\n *     }\n * }\n *\n * @returns {Predicate<string>}\n */\nexport function matches(expression: RegExp): Predicate<string> {\n    return Predicate.to(`match pattern ${ expression }`, (value: string) => expression.test(value));\n}\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/src/predicates/matches.ts",
     "access": "public",
@@ -3894,7 +3894,7 @@
     "importStyle": "{matches}",
     "description": "Ensures that the `value` matches {@link RegExp}.",
     "examples": [
-      "import { ensure, matches, TinyType } from 'tiny-types';\n\n\nclass CompanyEmailAddress extends TinyType {\n    constructor(public readonly value: string) {\n        super();\n        ensure('EmailAddress', value, matches(/[a-z]+\\.[a-z]@example\\.org/));\n    }\n}"
+      "import { ensure, matches, TinyType } from 'tiny-types';\n\n\nclass CompanyEmailAddress extends TinyType {\n    constructor(public readonly value: string) {\n        super();\n        ensure('EmailAddress', value, matches(/[a-z]+\\.[a-z]+@example\\.org/));\n    }\n}"
     ],
     "lineNumber": 28,
     "unknown": [

@@ -2580,7 +2580,7 @@ class FirstName extends TinyType {
 class CompanyEmailAddress extends TinyType {
     constructor(public readonly value: string) {
         super();
-        ensure(&apos;EmailAddress&apos;, value, matches(/[a-z]+\.[a-z]@example\.org/));
+        ensure(&apos;EmailAddress&apos;, value, matches(/[a-z]+\.[a-z]+@example\.org/));
     }
 }</code></pre>
     </div>
