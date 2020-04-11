@@ -90,6 +90,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/predicates/endswith~endswith",
+    "function/index.html#static-function-endsWith",
+    "<span>endsWith</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/endsWith</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/ensure~ensure",
     "function/index.html#static-function-ensure",
     "<span>ensure</span> <span class=\"search-result-import-path\">tiny-types/lib/ensure</span>",
@@ -207,6 +213,12 @@ window.esdocSearchIndex = [
     "tiny-types/lib/predicates/property~property",
     "function/index.html#static-function-property",
     "<span>property</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/property</span>",
+    "function"
+  ],
+  [
+    "tiny-types/lib/predicates/startswith~startswith",
+    "function/index.html#static-function-startsWith",
+    "<span>startsWith</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/startsWith</span>",
     "function"
   ],
   [
@@ -691,6 +703,12 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/isDefined.spec.ts.html#lineNumber5",
     "predicates",
     "test"
@@ -781,7 +799,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/startsWith.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/and.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/endsWith.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -794,12 +824,6 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -825,6 +849,18 @@ window.esdocSearchIndex = [
     "",
     "test-file/spec/predicates/and.spec.ts.html#lineNumber32",
     "predicates ::and stops evaluating the predicates upon the first failure",
+    "test"
+  ],
+  [
+    "endswith src/predicates/endswith.ts~endswith,endswith",
+    "test-file/spec/predicates/endsWith.spec.ts.html#lineNumber7",
+    "predicates ::endsWith",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/endsWith.spec.ts.html#lineNumber21",
+    "predicates ::endsWith ensures that the argument ends with a given suffix",
     "test"
   ],
   [
@@ -1110,6 +1146,18 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "startswith src/predicates/startswith.ts~startswith,startswith",
+    "test-file/spec/predicates/startsWith.spec.ts.html#lineNumber7",
+    "predicates ::startsWith",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/startsWith.spec.ts.html#lineNumber21",
+    "predicates ::startsWith ensures that the argument starts with a given prefix",
+    "test"
+  ],
+  [
     "significantfields significantfields,significantfields",
     "test-file/spec/objects/significantFields.spec.ts.html#lineNumber5",
     "significantFields",
@@ -1197,6 +1245,12 @@ window.esdocSearchIndex = [
     "spec/predicates/and.spec.ts",
     "test-file/spec/predicates/and.spec.ts.html",
     "spec/predicates/and.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/endswith.spec.ts",
+    "test-file/spec/predicates/endsWith.spec.ts.html",
+    "spec/predicates/endsWith.spec.ts",
     "testFile"
   ],
   [
@@ -1305,6 +1359,12 @@ window.esdocSearchIndex = [
     "spec/predicates/property.spec.ts",
     "test-file/spec/predicates/property.spec.ts.html",
     "spec/predicates/property.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/startswith.spec.ts",
+    "test-file/spec/predicates/startsWith.spec.ts.html",
+    "spec/predicates/startsWith.spec.ts",
     "testFile"
   ],
   [
@@ -1788,6 +1848,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/predicates/endswith.ts",
+    "file/src/predicates/endsWith.ts.html",
+    "src/predicates/endsWith.ts",
+    "file"
+  ],
+  [
     "src/predicates/haslengthof.ts",
     "file/src/predicates/hasLengthOf.ts.html",
     "src/predicates/hasLengthOf.ts",
@@ -1899,6 +1965,12 @@ window.esdocSearchIndex = [
     "src/predicates/property.ts",
     "file/src/predicates/property.ts.html",
     "src/predicates/property.ts",
+    "file"
+  ],
+  [
+    "src/predicates/startswith.ts",
+    "file/src/predicates/startsWith.ts.html",
+    "src/predicates/startsWith.ts",
     "file"
   ],
   [

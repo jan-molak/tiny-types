@@ -1,7 +1,7 @@
 {
-  "coverage": "65.13%",
-  "expectCount": 109,
-  "actualCount": 71,
+  "coverage": "65.76%",
+  "expectCount": 111,
+  "actualCount": 73,
   "files": {
     "src/TinyType.ts": {
       "expectCount": 5,
@@ -147,6 +147,11 @@
         43
       ]
     },
+    "src/predicates/endsWith.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
     "src/predicates/hasLengthOf.ts": {
       "expectCount": 1,
       "actualCount": 1,
@@ -243,6 +248,11 @@
         43,
         44
       ]
+    },
+    "src/predicates/startsWith.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
     }
   }
 }

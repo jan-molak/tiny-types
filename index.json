@@ -3070,6 +3070,58 @@
   {
     "__docId__": 154,
     "kind": "file",
+    "name": "src/predicates/endsWith.ts",
+    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` ends with a given suffix.\n *\n * @example\n * import { endsWith, ensure, TinyType } from 'tiny-types';\n *\n * class TextFileName extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         ensure('TextFileName', value, endsWith('.txt'));\n *     }\n * }\n *\n * @returns {Predicate<string>}\n */\nexport function endsWith(suffix: string): Predicate<string> {\n    return Predicate.to(`end with '${ suffix }'`, (value: string) =>\n        typeof value === 'string'\n            && value.endsWith(suffix),\n    );\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/jan-molak/tiny-types/src/predicates/endsWith.ts",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 155,
+    "kind": "function",
+    "name": "endsWith",
+    "memberof": "src/predicates/endsWith.ts",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/predicates/endsWith.ts~endsWith",
+    "access": "public",
+    "export": true,
+    "importPath": "tiny-types/lib/predicates/endsWith",
+    "importStyle": "{endsWith}",
+    "description": "Ensures that the `value` ends with a given suffix.",
+    "examples": [
+      "import { endsWith, ensure, TinyType } from 'tiny-types';\n\nclass TextFileName extends TinyType {\n    constructor(public readonly value: string) {\n        super();\n\n        ensure('TextFileName', value, endsWith('.txt'));\n    }\n}"
+    ],
+    "lineNumber": 28,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Predicate<string>}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Predicate<string>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": [
+      {
+        "name": "suffix",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 156,
+    "kind": "file",
     "name": "src/predicates/hasLengthOf.ts",
     "content": "import { isDefined } from './isDefined';\nimport { isEqualTo } from './isEqualTo';\nimport { Predicate } from './Predicate';\nimport { property } from './property';\n\nexport interface HasLength { length: number; }\n\n/**\n * @desc Ensures that the `value` is of `expectedLength`.\n * Applies to {@link String}s, {@link Array}s and anything that has a `.length` property.\n *\n * This function is an alias for to `property('length', isDefined(), isEqualTo(expectedLength))`\n *\n * @example <caption>Array</caption>\n * import { ensure, hasLengthOf, TinyType } from 'tiny-types';\n *\n * class Tuple extends TinyType {\n *   constructor(public readonly values: any[]) {\n *      super();\n *      ensure('Tuple', values, hasLengthOf(2));\n *   }\n * }\n *\n * @example <caption>String</caption>\n * import { ensure, hasLengthOf, TinyType } from 'tiny-types';\n *\n * class Username extends TinyType {\n *   constructor(public readonly value: string) {\n *      super();\n *      ensure('Username', value, hasLengthOf(8));\n *   }\n * }\n *\n * @param {number} expectedLength\n * @returns {Predicate}\n */\nexport function hasLengthOf(expectedLength: number): Predicate<HasLength> {\n    return property('length', isDefined(), isEqualTo(expectedLength));\n}\n",
     "static": true,
@@ -3079,7 +3131,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 155,
+    "__docId__": 157,
     "kind": "function",
     "name": "hasLengthOf",
     "memberof": "src/predicates/hasLengthOf.ts",
@@ -3125,10 +3177,10 @@
     }
   },
   {
-    "__docId__": 156,
+    "__docId__": 158,
     "kind": "file",
     "name": "src/predicates/index.ts",
-    "content": "export * from './and';\nexport * from './hasLengthOf';\nexport * from './isArray';\nexport * from './isBoolean';\nexport * from './isDefined';\nexport * from './isEqualTo';\nexport * from './isGreaterThan';\nexport * from './isGreaterThanOrEqualTo';\nexport * from './isInRange';\nexport * from './isInteger';\nexport * from './isLessThan';\nexport * from './isLessThanOrEqualTo';\nexport * from './isNumber';\nexport * from './isOneOf';\nexport * from './isString';\nexport * from './isInstanceOf';\nexport * from './matches';\nexport * from './or';\nexport * from './Predicate';\nexport * from './property';\n",
+    "content": "export * from './and';\nexport * from './endsWith';\nexport * from './hasLengthOf';\nexport * from './isArray';\nexport * from './isBoolean';\nexport * from './isDefined';\nexport * from './isEqualTo';\nexport * from './isGreaterThan';\nexport * from './isGreaterThanOrEqualTo';\nexport * from './isInRange';\nexport * from './isInteger';\nexport * from './isLessThan';\nexport * from './isLessThanOrEqualTo';\nexport * from './isNumber';\nexport * from './isOneOf';\nexport * from './isString';\nexport * from './isInstanceOf';\nexport * from './matches';\nexport * from './or';\nexport * from './Predicate';\nexport * from './property';\nexport * from './startsWith';\n",
     "static": true,
     "longname": "/home/travis/build/jan-molak/tiny-types/src/predicates/index.ts",
     "access": "public",
@@ -3136,7 +3188,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 157,
+    "__docId__": 159,
     "kind": "file",
     "name": "src/predicates/isArray.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is an {@link Array}.\n *\n * @example\n * import { ensure, isArray, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class Name extends TinyTypeOf<string>() {}\n *\n * class Names extends TinyType {\n *   constructor(public readonly values: Name[]) {\n *      super();\n *      ensure('Names', values, isArray());\n *   }\n * }\n *\n * @returns {Predicate<T[]>}\n */\nexport function isArray<T>(): Predicate<T[]> {\n    return Predicate.to(`be an array`, (value: T[]) => Array.isArray(value));\n}\n",
@@ -3147,7 +3199,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 158,
+    "__docId__": 160,
     "kind": "function",
     "name": "isArray",
     "memberof": "src/predicates/isArray.ts",
@@ -3181,7 +3233,7 @@
     "params": []
   },
   {
-    "__docId__": 159,
+    "__docId__": 161,
     "kind": "file",
     "name": "src/predicates/isBoolean.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is a {@link Boolean} value.\n *\n * @example\n * import { ensure, isBoolean, TinyType } from 'tiny-types';\n *\n * class MarketingOptIn extends TinyType {\n *     constructor(public readonly value: boolean) {\n *         ensure('MarketingOptIn', value, isBoolean());\n *     }\n * }\n *\n * @returns {Predicate<boolean>}\n */\nexport function isBoolean(): Predicate<boolean> {\n    return Predicate.to(`be a boolean value`, (value: boolean) => typeof value === 'boolean');\n}\n",
@@ -3192,7 +3244,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 160,
+    "__docId__": 162,
     "kind": "function",
     "name": "isBoolean",
     "memberof": "src/predicates/isBoolean.ts",
@@ -3226,7 +3278,7 @@
     "params": []
   },
   {
-    "__docId__": 161,
+    "__docId__": 163,
     "kind": "file",
     "name": "src/predicates/isDefined.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is defined as anything other than {@link null} or {@link undefined}.\n *\n * @example\n * import { ensure, isDefined, TinyType } from 'tiny-types';\n *\n * class Name extends TinyType {\n *     constructor(public readonly value: string) {\n *       ensure('Name', value, isDefined());\n *     }\n * }\n *\n * @returns {Predicate<T>}\n */\nexport function isDefined<T>(): Predicate<T> {\n    return Predicate.to(`be defined`, (value: T) =>\n        ! (value === null || value === undefined),\n    );\n}\n",
@@ -3237,7 +3289,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 162,
+    "__docId__": 164,
     "kind": "function",
     "name": "isDefined",
     "memberof": "src/predicates/isDefined.ts",
@@ -3271,7 +3323,7 @@
     "params": []
   },
   {
-    "__docId__": 163,
+    "__docId__": 165,
     "kind": "file",
     "name": "src/predicates/isEqualTo.ts",
     "content": "import { TinyType } from '../TinyType';\nimport { Predicate } from './Predicate';\n\nexport function isEqualTo(expectedValue: TinyType): Predicate<TinyType>;\nexport function isEqualTo<T>(expectedValue: T): Predicate<T>;\n\n/**\n * @desc Ensures that the `value` is equal to `expectedValue`.\n * This {@link Predicate} is typically used in combination with other {@link Predicate}s.\n *\n * @example <caption>Comparing Tiny Types</caption>\n * import { ensure, isEqualTo, TinyType, TinyTypeOf } from 'tiny-types';\n *\n * class AccountId         extends TinyTypeOf<number>() {}\n * class Command           extends TinyTypeOf<AccountId>() {}\n * class UpgradeAccount    extends Command {}\n *\n * class AccountsService {\n *     constructor(public readonly loggedInUser: AccountId) {}\n *     handle(command: Command) {\n *         ensure('AccountId', command.value, isEqualTo(this.loggedInUser));\n *     }\n *  }\n *\n * @example <caption>Comparing primitives</caption>\n * import { ensure, isEqualTo, TinyType } from 'tiny-types';\n *\n * class Admin extends TinyType {\n *     constructor(public readonly id: number) {\n *         ensure('Admin::id', id, isEqualTo(1));\n *     }\n * }\n *\n * @param {string | number | symbol | TinyType | object} expectedValue\n * @returns {Predicate<any>}\n */\nexport function isEqualTo(expectedValue: any): Predicate<any> {\n    return Predicate.to(`be equal to ${ expectedValue }`, (value: any) =>\n        (!! value && value.equals && expectedValue && expectedValue.equals)\n            ? value.equals(expectedValue)\n            : value === expectedValue,\n    );\n}\n",
@@ -3282,7 +3334,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 164,
+    "__docId__": 166,
     "kind": "function",
     "name": "isEqualTo",
     "memberof": "src/predicates/isEqualTo.ts",
@@ -3332,7 +3384,7 @@
     }
   },
   {
-    "__docId__": 165,
+    "__docId__": 167,
     "kind": "file",
     "name": "src/predicates/isGreaterThan.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is greater than the `lowerBound`.\n *\n * @example\n * import { ensure, isGreaterThan, TinyType } from 'tiny-types';\n *\n * class AgeInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         ensure('Age in years', value, isGreaterThan(0));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @returns {Predicate<number>}\n */\nexport function isGreaterThan(lowerBound: number): Predicate<number> {\n    return Predicate.to(`be greater than ${ lowerBound }`, (value: number) =>\n        typeof value === 'number' &&\n        isFinite(value) &&\n        lowerBound < value,\n    );\n}\n",
@@ -3343,7 +3395,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 166,
+    "__docId__": 168,
     "kind": "function",
     "name": "isGreaterThan",
     "memberof": "src/predicates/isGreaterThan.ts",
@@ -3388,7 +3440,7 @@
     }
   },
   {
-    "__docId__": 167,
+    "__docId__": 169,
     "kind": "file",
     "name": "src/predicates/isGreaterThanOrEqualTo.ts",
     "content": "import { isEqualTo } from './isEqualTo';\nimport { isGreaterThan } from './isGreaterThan';\nimport { or } from './or';\nimport { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound`.\n *\n * @example\n * import { ensure, isGreaterThanOrEqualTo, TinyType } from 'tiny-types';\n *\n * class AgeInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         ensure('Age in years', value, isGreaterThanOrEqualTo(18));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @returns {Predicate<number>}\n */\nexport function isGreaterThanOrEqualTo(lowerBound: number): Predicate<number> {\n    return or(isEqualTo(lowerBound), isGreaterThan(lowerBound));\n}\n",
@@ -3399,7 +3451,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 168,
+    "__docId__": 170,
     "kind": "function",
     "name": "isGreaterThanOrEqualTo",
     "memberof": "src/predicates/isGreaterThanOrEqualTo.ts",
@@ -3444,7 +3496,7 @@
     }
   },
   {
-    "__docId__": 169,
+    "__docId__": 171,
     "kind": "file",
     "name": "src/predicates/isInRange.ts",
     "content": "import { and } from './and';\nimport { isGreaterThanOrEqualTo } from './isGreaterThanOrEqualTo';\nimport { isLessThanOrEqualTo } from './isLessThanOrEqualTo';\nimport { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is greater than or equal to the `lowerBound` and less than or equal to the `upperBound`\n *\n * @example\n * import { ensure, isInRange, TinyType } from 'tiny-types';\n *\n * class InvestmentLengthInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         super();\n *         ensure('InvestmentLengthInYears', value, isInRange(1, 5));\n *     }\n * }\n *\n * @param {number} lowerBound\n * @param {number} upperBound\n * @returns {Predicate<number>}\n */\nexport function isInRange(lowerBound: number, upperBound: number): Predicate<number> {\n    return and(isGreaterThanOrEqualTo(lowerBound), isLessThanOrEqualTo(upperBound));\n}\n",
@@ -3455,7 +3507,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 170,
+    "__docId__": 172,
     "kind": "function",
     "name": "isInRange",
     "memberof": "src/predicates/isInRange.ts",
@@ -3510,7 +3562,7 @@
     }
   },
   {
-    "__docId__": 171,
+    "__docId__": 173,
     "kind": "file",
     "name": "src/predicates/isInstanceOf.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is an instance of `type`\n *\n * @example\n * import { ensure, isInstanceOf, TinyType } from 'tiny-types';\n *\n * class Birthday extends TinyType {\n *     constructor(public readonly value: Date) {\n *         ensure('Date', value, isInstanceOf(Date));\n *     }\n * }\n *\n * @param {Constructor<T>} type\n * @returns {Predicate<T>}\n */\nexport function isInstanceOf<T>(type: new (...args: any[]) => T): Predicate<T> {\n    return Predicate.to(`be instance of ${type.name}`, (value: T) => value instanceof type);\n}\n",
@@ -3521,7 +3573,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 172,
+    "__docId__": 174,
     "kind": "function",
     "name": "isInstanceOf",
     "memberof": "src/predicates/isInstanceOf.ts",
@@ -3566,7 +3618,7 @@
     }
   },
   {
-    "__docId__": 173,
+    "__docId__": 175,
     "kind": "file",
     "name": "src/predicates/isInteger.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is an integer {@link Number}.\n *\n * @example\n * import { ensure, isInteger, TinyType } from 'tiny-types';\n *\n * class AgeInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         ensure('Age in years', value, isInteger());\n *     }\n * }\n *\n * @returns {Predicate<number>}\n */\nexport function isInteger(): Predicate<number> {\n    return Predicate.to(`be an integer`, (value: number) =>\n        typeof value === 'number' &&\n        isFinite(value) &&\n        Math.floor(value) === value,\n    );\n}\n",
@@ -3577,7 +3629,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 174,
+    "__docId__": 176,
     "kind": "function",
     "name": "isInteger",
     "memberof": "src/predicates/isInteger.ts",
@@ -3611,7 +3663,7 @@
     "params": []
   },
   {
-    "__docId__": 175,
+    "__docId__": 177,
     "kind": "file",
     "name": "src/predicates/isLessThan.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is less than the `upperBound`.\n *\n * @example\n * import { ensure, isLessThan, TinyType } from 'tiny-types';\n *\n * class InvestmentPeriodInYears extends TinyType {\n *     constructor(public readonly value: number) {\n *         ensure('Investment period in years', value, isLessThan(50));\n *     }\n * }\n *\n * @param {number} upperBound\n * @returns {Predicate<number>}\n */\nexport function isLessThan(upperBound: number): Predicate<number> {\n    return Predicate.to(`be less than ${ upperBound }`, (value: number) =>\n        typeof value === 'number' &&\n        isFinite(value) &&\n        value < upperBound,\n    );\n}\n",
@@ -3622,7 +3674,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 176,
+    "__docId__": 178,
     "kind": "function",
     "name": "isLessThan",
     "memberof": "src/predicates/isLessThan.ts",
@@ -3667,7 +3719,7 @@
     }
   },
   {
-    "__docId__": 177,
+    "__docId__": 179,
     "kind": "file",
     "name": "src/predicates/isLessThanOrEqualTo.ts",
     "content": "import { isEqualTo } from './isEqualTo';\nimport { isLessThan } from './isLessThan';\nimport { or } from './or';\nimport { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is less than or equal to the `upperBound`.\n *\n * @example\n * import { ensure, isLessThanOrEqualTo, TinyType } from 'tiny-types';\n *\n * class InvestmentPeriod extends TinyType {\n *     constructor(public readonly value: number) {\n *         ensure('InvestmentPeriod', value, isLessThanOrEqualTo(50));\n *     }\n * }\n *\n * @param {number} upperBound\n * @returns {Predicate<number>}\n */\nexport function isLessThanOrEqualTo(upperBound: number): Predicate<number> {\n    return or(isLessThan(upperBound), isEqualTo(upperBound));\n}\n",
@@ -3678,7 +3730,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 178,
+    "__docId__": 180,
     "kind": "function",
     "name": "isLessThanOrEqualTo",
     "memberof": "src/predicates/isLessThanOrEqualTo.ts",
@@ -3723,7 +3775,7 @@
     }
   },
   {
-    "__docId__": 179,
+    "__docId__": 181,
     "kind": "file",
     "name": "src/predicates/isNumber.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is a {@link Number}.\n *\n * @example\n * import { ensure, isNumber, TinyType } from 'tiny-types';\n *\n * class Percentage extends TinyType {\n *     constructor(public readonly value: number) {\n *         ensure('Percentage', value, isNumber());\n *     }\n * }\n *\n * @returns {Predicate<number>}\n */\nexport function isNumber(): Predicate<number> {\n    return Predicate.to(`be a number`, (value: number) => typeof value === 'number');\n}\n",
@@ -3734,7 +3786,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 180,
+    "__docId__": 182,
     "kind": "function",
     "name": "isNumber",
     "memberof": "src/predicates/isNumber.ts",
@@ -3768,7 +3820,7 @@
     "params": []
   },
   {
-    "__docId__": 181,
+    "__docId__": 183,
     "kind": "file",
     "name": "src/predicates/isOneOf.ts",
     "content": "import { isEqualTo } from './isEqualTo';\nimport { or } from './or';\nimport { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is equal to one of the `allowedValues`\n *\n * @example\n * import { ensure, isOneOf, TinyType } from 'tiny-types';\n *\n * class StreetLight extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         ensure('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n *     }\n * }\n *\n * @param {...T[]} allowedValues\n * @returns {Predicate<T>}\n */\nexport function isOneOf<T>(...allowedValues: T[]): Predicate<T> {\n    return or(...allowedValues.map(allowed => isEqualTo(allowed)));\n}\n",
@@ -3779,7 +3831,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 182,
+    "__docId__": 184,
     "kind": "function",
     "name": "isOneOf",
     "memberof": "src/predicates/isOneOf.ts",
@@ -3824,7 +3876,7 @@
     }
   },
   {
-    "__docId__": 183,
+    "__docId__": 185,
     "kind": "file",
     "name": "src/predicates/isString.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` is an integer {@link Number}.\n *\n * @example\n * import { ensure, isString, TinyType } from 'tiny-types';\n *\n * class FirstName extends TinyType {\n *     constructor(public readonly value: string) {\n *         ensure('FirstName', value, isString());\n *     }\n * }\n *\n * @returns {Predicate<string>}\n */\nexport function isString(): Predicate<string> {\n    return Predicate.to(`be a string`, (value: string) => typeof value === 'string');\n}\n",
@@ -3835,7 +3887,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 184,
+    "__docId__": 186,
     "kind": "function",
     "name": "isString",
     "memberof": "src/predicates/isString.ts",
@@ -3869,7 +3921,7 @@
     "params": []
   },
   {
-    "__docId__": 185,
+    "__docId__": 187,
     "kind": "file",
     "name": "src/predicates/matches.ts",
     "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` matches {@link RegExp}.\n *\n * @example\n * import { ensure, matches, TinyType } from 'tiny-types';\n *\n *\n * class CompanyEmailAddress extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *         ensure('EmailAddress', value, matches(/[a-z]+\\.[a-z]+@example\\.org/));\n *     }\n * }\n *\n * @returns {Predicate<string>}\n */\nexport function matches(expression: RegExp): Predicate<string> {\n    return Predicate.to(`match pattern ${ expression }`, (value: string) => expression.test(value));\n}\n",
@@ -3880,7 +3932,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 186,
+    "__docId__": 188,
     "kind": "function",
     "name": "matches",
     "memberof": "src/predicates/matches.ts",
@@ -3921,7 +3973,7 @@
     ]
   },
   {
-    "__docId__": 187,
+    "__docId__": 189,
     "kind": "file",
     "name": "src/predicates/or.ts",
     "content": "import { isArray } from './isArray';\nimport { isDefined } from './isDefined';\nimport { isGreaterThan } from './isGreaterThan';\nimport { Failure, Predicate, Result, Success } from './Predicate';\n\n/**\n * @desc Ensures that the `value` meets at least one of the provided {@link Predicate}s.\n *\n * @example\n * import { ensure, isEqualTo, isGreaterThan, isLessThan, or } from 'tiny-type'l\n *\n * class Percentage extends TinyType {\n *     constructor(public readonly value: number) {\n *         ensure('Percentage', value, or(isEqualTo(0), isGreaterThan(0)), or(isLessThan(100), isEqualTo(100));\n *     }\n * }\n *\n * @param {Predicate<T>} predicates\n * @returns {Predicate<T>}\n */\nexport function or<T>(...predicates: Array<Predicate<T>>): Predicate<T> {\n    return new Or<T>(predicates);\n}\n\n/** @access private */\nclass Or<T> extends Predicate<T> {\n\n    constructor(private readonly predicates: Array<Predicate<T>>) {\n        super();\n\n        if ([\n                _ => isDefined().check(_),\n                _ => isArray().check(_),\n                _ => isGreaterThan(0).check(_.length),\n            ].some(check => check(this.predicates) instanceof Failure)\n        ) {\n            throw new Error(`Looks like you haven\\'t specified any predicates to check the value against?`);\n        }\n    }\n\n    /** @override */\n    check(value: T): Result<T> {\n        const results    = this.predicates.map(predicate => predicate.check(value));\n        const anySuccess = results.some(result => result instanceof Success);\n\n        const failures = results.filter(_ => _ instanceof Failure)\n            .map((_: Result<T>) => (_ as Failure<T>).description);\n\n        const describe = (issues: string[]) => `either ${issues.join(', ').replace(/,([^,]*)$/, ' or$1')}`;\n\n        return anySuccess\n            ? new Success(value)\n            : new Failure(value, describe(failures));\n    }\n}\n",
@@ -3932,7 +3984,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 188,
+    "__docId__": 190,
     "kind": "function",
     "name": "or",
     "memberof": "src/predicates/or.ts",
@@ -3977,7 +4029,7 @@
     }
   },
   {
-    "__docId__": 189,
+    "__docId__": 191,
     "kind": "class",
     "name": "Or",
     "memberof": "src/predicates/or.ts",
@@ -3996,7 +4048,7 @@
     "ignore": true
   },
   {
-    "__docId__": 190,
+    "__docId__": 192,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/predicates/or.ts~Or",
@@ -4010,7 +4062,7 @@
     "undocument": true
   },
   {
-    "__docId__": 191,
+    "__docId__": 193,
     "kind": "member",
     "name": "predicates",
     "memberof": "src/predicates/or.ts~Or",
@@ -4027,7 +4079,7 @@
     }
   },
   {
-    "__docId__": 192,
+    "__docId__": 194,
     "kind": "method",
     "name": "check",
     "memberof": "src/predicates/or.ts~Or",
@@ -4054,7 +4106,7 @@
     }
   },
   {
-    "__docId__": 193,
+    "__docId__": 195,
     "kind": "file",
     "name": "src/predicates/property.ts",
     "content": "import { and } from './and';\nimport { isDefined } from './isDefined';\nimport { Failure, Predicate, Result, Success } from './Predicate';\n\n/**\n * @desc Ensures that the `property` of the `value` meets the `predicates`\n *\n * @example\n * import { ensure, isGreaterThan, property, TinyType } from 'tiny-types';\n *\n * class Name extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *         ensure('Name', value, property('length', isGreaterThan(3)));\n *     }\n * }\n *\n * @returns {Predicate<T>}\n */\nexport function property<T, K extends keyof T>(prop: K, ...predicates: Array<Predicate<T[K]>>): Predicate<T> {\n    return new HaveProperty<T, K>(prop, and(...predicates));\n}\n\n/** @access private */\nclass HaveProperty<T, K extends keyof T> extends Predicate<T> {\n\n    constructor(private readonly prop: K, private readonly predicate: Predicate<T[K]>) {\n        super();\n    }\n\n    /** @override */\n    check(value: T): Result<T> {\n        const result = this.predicate.check(value[this.prop]);\n\n        return result instanceof Failure\n            ? new Failure(value, `have a property \"${ this.prop }\" that ${ result.description }`\n                .replace(/\\bbe\\b/gi, 'is')\n                .replace(/\\beither is\\b/gi, 'is either'),\n            )\n            : new Success(value);\n    }\n}\n",
@@ -4065,7 +4117,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 194,
+    "__docId__": 196,
     "kind": "function",
     "name": "property",
     "memberof": "src/predicates/property.ts",
@@ -4113,7 +4165,7 @@
     ]
   },
   {
-    "__docId__": 195,
+    "__docId__": 197,
     "kind": "class",
     "name": "HaveProperty",
     "memberof": "src/predicates/property.ts",
@@ -4132,7 +4184,7 @@
     "ignore": true
   },
   {
-    "__docId__": 196,
+    "__docId__": 198,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/predicates/property.ts~HaveProperty",
@@ -4146,7 +4198,7 @@
     "undocument": true
   },
   {
-    "__docId__": 197,
+    "__docId__": 199,
     "kind": "member",
     "name": "prop",
     "memberof": "src/predicates/property.ts~HaveProperty",
@@ -4163,7 +4215,7 @@
     }
   },
   {
-    "__docId__": 198,
+    "__docId__": 200,
     "kind": "member",
     "name": "predicate",
     "memberof": "src/predicates/property.ts~HaveProperty",
@@ -4180,7 +4232,7 @@
     }
   },
   {
-    "__docId__": 199,
+    "__docId__": 201,
     "kind": "method",
     "name": "check",
     "memberof": "src/predicates/property.ts~HaveProperty",
@@ -4207,7 +4259,59 @@
     }
   },
   {
-    "__docId__": 200,
+    "__docId__": 202,
+    "kind": "file",
+    "name": "src/predicates/startsWith.ts",
+    "content": "import { Predicate } from './Predicate';\n\n/**\n * @desc Ensures that the `value` starts with a given prefix.\n *\n * @example\n * import { ensure, startsWith, TinyType } from 'tiny-types';\n *\n * class Username extends TinyType {\n *     constructor(public readonly value: string) {\n *         super();\n *\n *         ensure('Username', value, startsWith('usr'));\n *     }\n * }\n *\n * @returns {Predicate<string>}\n */\nexport function startsWith(prefix: string): Predicate<string> {\n    return Predicate.to(`start with '${ prefix }'`, (value: string) =>\n        typeof value === 'string'\n            && value.startsWith(prefix),\n    );\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/jan-molak/tiny-types/src/predicates/startsWith.ts",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 203,
+    "kind": "function",
+    "name": "startsWith",
+    "memberof": "src/predicates/startsWith.ts",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/predicates/startsWith.ts~startsWith",
+    "access": "public",
+    "export": true,
+    "importPath": "tiny-types/lib/predicates/startsWith",
+    "importStyle": "{startsWith}",
+    "description": "Ensures that the `value` starts with a given prefix.",
+    "examples": [
+      "import { ensure, startsWith, TinyType } from 'tiny-types';\n\nclass Username extends TinyType {\n    constructor(public readonly value: string) {\n        super();\n\n        ensure('Username', value, startsWith('usr'));\n    }\n}"
+    ],
+    "lineNumber": 28,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Predicate<string>}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Predicate<string>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": [
+      {
+        "name": "prefix",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 204,
     "kind": "file",
     "name": "src/types/constructors.ts",
     "content": "export type Constructor<T> = new (...args: any[]) => T;\nexport type ConstructorOrAbstract<T = {}> = Function & { prototype: T };                  // tslint:disable-line:ban-types\nexport type ConstructorAbstractOrInstance<T = {}> = T | ConstructorOrAbstract;            // tslint:disable-line:ban-types\n",
@@ -4218,7 +4322,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 201,
+    "__docId__": 205,
     "kind": "file",
     "name": "src/types/index.ts",
     "content": "export * from './constructors';\nexport * from './json';\nexport * from './list';\nexport * from './serialisation';\n",
@@ -4229,7 +4333,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 202,
+    "__docId__": 206,
     "kind": "file",
     "name": "src/types/json.ts",
     "content": "export type Null = null;\nexport type NonNullJSONPrimitive = string | number | boolean;\nexport type JSONPrimitive = NonNullJSONPrimitive | Null;\nexport interface JSONObject {\n    [_: string]: JSONPrimitive | JSONObject | JSONArray;\n}\nexport interface JSONArray extends Array<JSONValue> {}                         // tslint:disable-line:no-empty-interface\nexport type JSONValue = JSONPrimitive | JSONObject | JSONArray;\n",
@@ -4240,7 +4344,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 203,
+    "__docId__": 207,
     "kind": "file",
     "name": "src/types/list.ts",
     "content": "export type List<T> = T[];\n",
@@ -4251,7 +4355,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 204,
+    "__docId__": 208,
     "kind": "file",
     "name": "src/types/serialisation.ts",
     "content": "import { JSONValue } from './json';\n\nexport interface Serialisable<S extends JSONValue = JSONValue> {\n    toJSON(): S;\n}\n\n/**\n * @experimental\n */\nexport type Serialised<T extends object> = JSONValue;\n",
@@ -4278,7 +4382,7 @@
     "access": "public"
   },
   {
-    "__docId__": 205,
+    "__docId__": 209,
     "kind": "testFile",
     "name": "spec/TinyType.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\nimport { JSONObject, JSONPrimitive, TinyType, TinyTypeOf } from '../src';\nimport { expect } from './expect';\n\n/** @test {TinyType} */\ndescribe('TinyType', () => {\n\n    describe('wrapping a single value', () => {\n\n        /** @test {TinyType} */\n        describe('definition', () => {\n\n            /** @test {TinyTypeOf} */\n            it('can be a one-liner for TinyTypes representing a single value', () => {\n                class FirstName extends TinyTypeOf<string>() {\n                }\n\n                const firstName = new FirstName('Jan');\n\n                expect(firstName.value).to.equal('Jan');\n                expect(firstName).to.be.instanceOf(FirstName);\n                expect(firstName).to.be.instanceOf(TinyType);\n                expect(firstName.constructor.name).to.equal('FirstName');\n                expect(firstName.toString()).to.equal('FirstName(value=Jan)');\n            });\n\n            /** @test {TinyTypeOf} */\n            it('prevents null and undefined when the single-line definition style is used', () => {\n                class FirstName extends TinyTypeOf<string>() {\n                }\n\n                expect(() => new FirstName(null as any)).to.throw('FirstName should be defined');\n                expect(() => new FirstName(undefined as any)).to.throw('FirstName should be defined');\n            });\n\n            /**\n             * @test {TinyType}\n             * @test {TinyTypeOf}\n             */\n            it('needs to extend the TinyType for types with more than one value', () => {\n                class FirstName extends TinyTypeOf<string>() {\n                }\n\n                class LastName extends TinyTypeOf<string>() {\n                }\n\n                class FullName extends TinyType {\n                    constructor(public readonly firstName: FirstName,\n                                public readonly lastName: LastName) {\n                        super();\n                    }\n                }\n\n                const fullName = new FullName(new FirstName('Jan'), new LastName('Molak'));\n\n                expect(fullName.firstName.value).to.equal('Jan');\n                expect(fullName.lastName.value).to.equal('Molak');\n                expect(fullName).to.be.instanceOf(FullName);\n                expect(fullName).to.be.instanceOf(FullName);\n                expect(fullName.constructor.name).to.equal('FullName');\n                expect(fullName.toString()).to.equal('FullName(firstName=FirstName(value=Jan), lastName=LastName(value=Molak))');\n            });\n\n            /**\n             * @test {TinyType}\n             * @test {TinyTypeOf}\n             */\n            it('can be mixed and matched', () => {\n                const now = new Date(Date.UTC(2018, 2, 12, 0, 30, 0));\n\n                class UserName extends TinyTypeOf<string>() {\n                }\n\n                class Timestamp extends TinyTypeOf<Date>() {\n                    toString() {\n                        return `Timestamp(value=${this.value.toISOString()})`;\n                    }\n                }\n\n                abstract class DomainEvent extends TinyTypeOf<Timestamp>() {\n                }\n\n                class AccountCreated extends DomainEvent {\n                    constructor(public readonly username: UserName, timestamp: Timestamp) {\n                        super(timestamp);\n                    }\n                }\n\n                const e = new AccountCreated(new UserName('jan-molak'), new Timestamp(now));\n\n                expect(e.toString()).to.equal(\n                    'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))',\n                );\n            });\n        });\n\n        /** @test {TinyType#toString} */\n        describe('::toString', () => {\n            class Area extends TinyTypeOf<string>() {}\n\n            class District extends TinyTypeOf<number>() {}\n\n            class Sector extends TinyTypeOf<number>() {}\n\n            class Unit extends TinyTypeOf<string>() {}\n\n            class Postcode extends TinyType {\n                constructor(public readonly area: Area,\n                            public readonly district: District,\n                            public readonly sector: Sector,\n                            public readonly unit: Unit,\n                ) {\n                    super();\n                }\n            }\n\n            it('mentions the class and its properties', () => {\n                const area = new Area('GU');\n\n                expect(area.toString()).to.equal('Area(value=GU)');\n            });\n\n            it('mentions the class and its fields, but not the methods', () => {\n                class Person extends TinyType {\n                    constructor(public readonly name: string) {\n                        super();\n                    }\n\n                    rename = (newName: string) => new Person(newName);\n                }\n\n                const p = new Person('James');\n\n                expect(p.toString())\n                    .to.equal('Person(name=James)');\n            });\n\n            it('only cares about the fields, not the methods', () => {\n                const postcode = new Postcode(\n                    new Area('GU'),\n                    new District(15),\n                    new Sector(9),\n                    new Unit('NZ'),\n                );\n\n                expect(postcode.toString())\n                    .to.equal('Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))');\n            });\n\n            it('prints the array-type properties', () => {\n                class Name extends TinyTypeOf<string>() {}\n                class Names extends TinyTypeOf<Name[]>() {}\n\n                const names = new Names([ new Name('Alice'), new Name('Bob') ]);\n\n                expect(names.toString())\n                    .to.equal('Names(value=Array(Name(value=Alice), Name(value=Bob)))');\n            });\n\n            it('prints the object-type properties', () => {\n                class Dictionary extends TinyTypeOf<{ [key: string ]: string }>() {}\n\n                const dictionary = new Dictionary({ greeting: 'Hello', subject: 'World' });\n\n                expect(dictionary.toString())\n                    .to.equal('Dictionary(value=Object(greeting=Hello, subject=World))');\n            });\n        });\n\n        /** @test {TinyType#toJSON} */\n        describe('serialisation', () => {\n\n            class FirstName extends TinyTypeOf<string>() {}\n\n            class LastName extends TinyTypeOf<string>() {}\n\n            class Age extends TinyTypeOf<number>() {}\n\n            class Person extends TinyType {\n                constructor(public readonly firstName: FirstName,\n                            public readonly lastName: LastName,\n                            public readonly age: Age,\n                ) {\n                    super();\n                }\n            }\n\n            class People extends TinyTypeOf<Person[]>() {\n            }\n\n            describe('::toJSON', () => {\n\n                given<TinyType & { value: any }>(\n                    new FirstName('Bruce'),\n                    new Age(55),\n                ).it('should serialise a single-value TinyType to just its value', input => {\n                    expect(input.toJSON()).to.equal(input.value);\n                });\n\n                it('should serialise a complex TinyType recursively', () => {\n\n                    const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));\n\n                    expect(person.toJSON()).to.deep.equal({\n                        firstName: 'Bruce',\n                        lastName: 'Smith',\n                        age: 55,\n                    });\n                });\n\n                it(`should serialise an array recursively`, () => {\n                    const people = new People([\n                        new Person(new FirstName('Alice'), new LastName('Jones'), new Age(62)),\n                        new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55)),\n                    ]);\n\n                    expect(people.toJSON()).to.deep.equal([{\n                        firstName: 'Alice',\n                        lastName: 'Jones',\n                        age: 62,\n                    }, {\n                        firstName: 'Bruce',\n                        lastName: 'Smith',\n                        age: 55,\n                    }]);\n                });\n\n                it(`should serialise a plain-old JavaScript object`, () => {\n                    class Parameters extends TinyTypeOf<{ [parameter: string]: string}>() {}\n\n                    const parameters = new Parameters({\n                        env: 'prod'\n                    });\n\n                    expect(parameters.toJSON()).to.deep.equal({\n                        env: 'prod'\n                    });\n                });\n\n                it(`should JSON.stringify any object that can't be represented in a more sensible way`, () => {\n                    class TT extends TinyTypeOf<number>() {\n                    }\n\n                    const tt = new TT(NaN);\n\n                    expect(tt.toJSON()).to.equal('null');\n                });\n            });\n        });\n\n        /** @test {TinyType} */\n        describe('de-serialisation', () => {\n\n            type SerialisedFirstName = string & JSONPrimitive;\n\n            class FirstName extends TinyTypeOf<string>() {\n                static fromJSON = (v: SerialisedFirstName) => new FirstName(v);\n\n                toJSON(): SerialisedFirstName {\n                    return super.toJSON() as SerialisedFirstName;\n                }\n            }\n\n            type SerialisedLastName = string & JSONPrimitive;\n\n            class LastName extends TinyTypeOf<string>() {\n                static fromJSON = (v: SerialisedLastName) => new LastName(v);\n\n                toJSON(): SerialisedLastName {\n                    return super.toJSON() as SerialisedLastName;\n                }\n            }\n\n            type SerialisedAge = number & JSONPrimitive;\n\n            class Age extends TinyTypeOf<number>() {\n                static fromJSON = (v: SerialisedAge) => new Age(v);\n\n                toJSON(): SerialisedAge {\n                    return super.toJSON() as SerialisedAge;\n                }\n            }\n\n            interface SerialisedPerson extends JSONObject {\n                firstName: SerialisedFirstName;\n                lastName: SerialisedLastName;\n                age: SerialisedAge;\n            }\n\n            class Person extends TinyType {\n                static fromJSON = (v: SerialisedPerson) => new Person(\n                    FirstName.fromJSON(v.firstName),\n                    LastName.fromJSON(v.lastName),\n                    Age.fromJSON(v.age),\n                )\n\n                constructor(public readonly firstName: FirstName,\n                            public readonly lastName: LastName,\n                            public readonly age: Age,\n                ) {\n                    super();\n                }\n\n                toJSON(): SerialisedPerson {\n                    return super.toJSON() as SerialisedPerson;\n                }\n            }\n\n            it('custom fromJSON can de-serialise a serialised single-value TinyType', () => {\n                const firstName = new FirstName('Jan');\n\n                // tslint:disable-next-line:no-unused-expression\n                expect(FirstName.fromJSON(firstName.toJSON()).equals(firstName)).to.be.true;\n            });\n\n            it('custom fromJSON can recursively de-serialise a serialised complex TinyType', () => {\n                const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));\n\n                // tslint:disable-next-line:no-unused-expression\n                expect(Person.fromJSON(person.toJSON()).equals(person)).to.be.true;\n            });\n        });\n    });\n});\n",
@@ -4289,7 +4393,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 206,
+    "__docId__": 210,
     "kind": "test",
     "name": "describe0",
     "testId": 0,
@@ -4305,7 +4409,7 @@
     ]
   },
   {
-    "__docId__": 207,
+    "__docId__": 211,
     "kind": "test",
     "name": "describe1",
     "testId": 1,
@@ -4318,7 +4422,7 @@
     "lineNumber": 7
   },
   {
-    "__docId__": 208,
+    "__docId__": 212,
     "kind": "test",
     "name": "describe2",
     "testId": 2,
@@ -4334,7 +4438,7 @@
     ]
   },
   {
-    "__docId__": 209,
+    "__docId__": 213,
     "kind": "test",
     "name": "it3",
     "testId": 3,
@@ -4350,7 +4454,7 @@
     ]
   },
   {
-    "__docId__": 210,
+    "__docId__": 214,
     "kind": "test",
     "name": "it4",
     "testId": 4,
@@ -4366,7 +4470,7 @@
     ]
   },
   {
-    "__docId__": 211,
+    "__docId__": 215,
     "kind": "test",
     "name": "it5",
     "testId": 5,
@@ -4383,7 +4487,7 @@
     ]
   },
   {
-    "__docId__": 212,
+    "__docId__": 216,
     "kind": "test",
     "name": "it6",
     "testId": 6,
@@ -4400,7 +4504,7 @@
     ]
   },
   {
-    "__docId__": 213,
+    "__docId__": 217,
     "kind": "test",
     "name": "describe7",
     "testId": 7,
@@ -4416,7 +4520,7 @@
     ]
   },
   {
-    "__docId__": 214,
+    "__docId__": 218,
     "kind": "test",
     "name": "it8",
     "testId": 8,
@@ -4429,7 +4533,7 @@
     "lineNumber": 186
   },
   {
-    "__docId__": 215,
+    "__docId__": 219,
     "kind": "test",
     "name": "it9",
     "testId": 9,
@@ -4442,7 +4546,7 @@
     "lineNumber": 190
   },
   {
-    "__docId__": 216,
+    "__docId__": 220,
     "kind": "test",
     "name": "it10",
     "testId": 10,
@@ -4455,7 +4559,7 @@
     "lineNumber": 214
   },
   {
-    "__docId__": 217,
+    "__docId__": 221,
     "kind": "test",
     "name": "it11",
     "testId": 11,
@@ -4468,7 +4572,7 @@
     "lineNumber": 219
   },
   {
-    "__docId__": 218,
+    "__docId__": 222,
     "kind": "test",
     "name": "it12",
     "testId": 12,
@@ -4481,7 +4585,7 @@
     "lineNumber": 240
   },
   {
-    "__docId__": 219,
+    "__docId__": 223,
     "kind": "test",
     "name": "describe13",
     "testId": 13,
@@ -4497,7 +4601,7 @@
     ]
   },
   {
-    "__docId__": 220,
+    "__docId__": 224,
     "kind": "test",
     "name": "describe14",
     "testId": 14,
@@ -4510,7 +4614,7 @@
     "lineNumber": 302
   },
   {
-    "__docId__": 221,
+    "__docId__": 225,
     "kind": "test",
     "name": "it15",
     "testId": 15,
@@ -4523,7 +4627,7 @@
     "lineNumber": 306
   },
   {
-    "__docId__": 222,
+    "__docId__": 226,
     "kind": "test",
     "name": "it16",
     "testId": 16,
@@ -4535,7 +4639,7 @@
     "lineNumber": 314
   },
   {
-    "__docId__": 223,
+    "__docId__": 227,
     "kind": "test",
     "name": "it17",
     "testId": 17,
@@ -4547,7 +4651,7 @@
     "lineNumber": 329
   },
   {
-    "__docId__": 224,
+    "__docId__": 228,
     "kind": "test",
     "name": "it18",
     "testId": 18,
@@ -4559,7 +4663,7 @@
     "lineNumber": 345
   },
   {
-    "__docId__": 225,
+    "__docId__": 229,
     "kind": "test",
     "name": "describe19",
     "testId": 19,
@@ -4575,7 +4679,7 @@
     ]
   },
   {
-    "__docId__": 226,
+    "__docId__": 230,
     "kind": "test",
     "name": "it20",
     "testId": 20,
@@ -4588,7 +4692,7 @@
     "lineNumber": 471
   },
   {
-    "__docId__": 227,
+    "__docId__": 231,
     "kind": "test",
     "name": "it21",
     "testId": 21,
@@ -4601,7 +4705,7 @@
     "lineNumber": 476
   },
   {
-    "__docId__": 228,
+    "__docId__": 232,
     "kind": "testFile",
     "name": "spec/json.spec.ts",
     "content": "import 'mocha';\nimport { JSONArray, JSONObject, JSONPrimitive, JSONValue } from '../src/types';\n\ndescribe('JSON', () => {\n\n    const\n        Some_String: string = 'string',\n        Some_Number: number = 1,\n        Some_Boolean: boolean = false,\n        Some_Object = {k1: Some_String, k2: Some_Number},\n        Some_Array = [Some_String, Some_Number, Some_Boolean, Some_Object];\n\n    /** @test {JSONArray} */\n    describe('JSONArray', () => {\n        it(`describes an array that's a valid JSON`, () => {\n            const array: JSONArray = Some_Array;\n        });\n    });\n\n    /** @test {JSONObject} */\n    describe('JSONObject', () => {\n        it(`describes a JavaScript object serialised to JSON`, () => {\n            const object: JSONObject = {\n                string: Some_String,\n                number: Some_Number,\n                boolean: Some_Boolean,\n                object: Some_Object,\n                array: Some_Array,\n            };\n        });\n    });\n\n    /** @test {JSONPrimitive} */\n    describe('JSONPrimitive', () => {\n        it(`describes any primitive that can be part of JSON`, () => {\n            const s: JSONPrimitive = 'string',\n                n: JSONPrimitive = 42,\n                b: JSONPrimitive = false,\n                e: JSONPrimitive = null;\n        });\n    });\n\n    /** @test {JSONValue} */\n    describe('JSONValue', () => {\n        it('describes any value that can be represented as JSON', () => {\n            const\n                ss: JSONValue = Some_String,\n                sn: JSONValue = Some_Number,\n                sb: JSONValue = Some_Boolean,\n                so: JSONValue = Some_Object,\n                sa: JSONValue = Some_Array;\n        });\n    });\n});\n",
@@ -4612,7 +4716,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 229,
+    "__docId__": 233,
     "kind": "test",
     "name": "describe22",
     "testId": 22,
@@ -4625,7 +4729,7 @@
     "lineNumber": 2
   },
   {
-    "__docId__": 230,
+    "__docId__": 234,
     "kind": "test",
     "name": "describe23",
     "testId": 23,
@@ -4641,7 +4745,7 @@
     ]
   },
   {
-    "__docId__": 231,
+    "__docId__": 235,
     "kind": "test",
     "name": "it24",
     "testId": 24,
@@ -4653,7 +4757,7 @@
     "lineNumber": 6
   },
   {
-    "__docId__": 232,
+    "__docId__": 236,
     "kind": "test",
     "name": "describe25",
     "testId": 25,
@@ -4669,7 +4773,7 @@
     ]
   },
   {
-    "__docId__": 233,
+    "__docId__": 237,
     "kind": "test",
     "name": "it26",
     "testId": 26,
@@ -4681,7 +4785,7 @@
     "lineNumber": 12
   },
   {
-    "__docId__": 234,
+    "__docId__": 238,
     "kind": "test",
     "name": "describe27",
     "testId": 27,
@@ -4697,7 +4801,7 @@
     ]
   },
   {
-    "__docId__": 235,
+    "__docId__": 239,
     "kind": "test",
     "name": "it28",
     "testId": 28,
@@ -4709,7 +4813,7 @@
     "lineNumber": 24
   },
   {
-    "__docId__": 236,
+    "__docId__": 240,
     "kind": "test",
     "name": "describe29",
     "testId": 29,
@@ -4725,7 +4829,7 @@
     ]
   },
   {
-    "__docId__": 237,
+    "__docId__": 241,
     "kind": "test",
     "name": "it30",
     "testId": 30,
@@ -4738,7 +4842,7 @@
     "lineNumber": 30
   },
   {
-    "__docId__": 238,
+    "__docId__": 242,
     "kind": "testFile",
     "name": "spec/match.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\nimport { match, TinyType, TinyTypeOf } from '../src';\nimport { IdentityMatcher, ObjectMatcher, StringMatcher } from '../src/pattern-matching';\nimport { expect } from './expect';\n\n/** @test {match} */\ndescribe(`::match`, () => {\n\n    /** @test {match} */\n    describe('default rules', () => {\n        it(`uses the default rule when no identical match is found for a string value`, () => {\n            const result = match('four')\n                .when('five', _ => `high five`)\n                .when('six', _ => `got your six`)\n                .else(n => `got ${n}`);\n\n            expect(result).to.equal('got four');\n        });\n\n        it(`uses the default rule when no identical match is found for a numerical value`, () => {\n            const result = match(4)\n                .when(5, _ => `high five`)\n                .when(6, _ => `got your six`)\n                .else(n => `got ${n}`);\n\n            expect(result).to.equal('got 4');\n        });\n    });\n\n    describe('when selecting a matcher', () => {\n        abstract class DomainEvent {\n            constructor(public readonly timestamp: Date = new Date()) {\n            }\n        }\n\n        class ConcreteEvent extends DomainEvent {\n        }\n\n        class EmaiAddress extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n            }\n        }\n\n        given([\n            { input: 5,                                     pattern: 1,                                     expected_matcher: IdentityMatcher },\n            { input: Symbol('some'),                        pattern: Symbol('other'),                       expected_matcher: IdentityMatcher },\n            { input: 'hello',                               pattern: 'hello',                               expected_matcher: StringMatcher },\n            { input: 'hello',                               pattern: /^[Hh]ello/,                           expected_matcher: StringMatcher },\n            { input: new EmaiAddress('user@domain.org'),    pattern: new EmaiAddress('user@domain.org'),    expected_matcher: ObjectMatcher },\n            { input: new ConcreteEvent(),                   pattern: ConcreteEvent,                         expected_matcher: ObjectMatcher },\n            { input: new ConcreteEvent(),                   pattern: DomainEvent,                           expected_matcher: ObjectMatcher },\n        ]).\n        it(`uses a matcher appropriate to the input`, ({input, pattern, expected_matcher}) => {\n            expect(match(input).when(pattern, _ => _)).to.be.instanceOf(expected_matcher);\n        });\n    });\n\n    /**\n     * @test {match}\n     * @test {TinyType}\n     * @test {TinyTypeOf}\n     */\n    describe('when working with TinyTypes', () => {\n\n        class AccountId extends TinyTypeOf<number>() {}\n        abstract class Command extends TinyTypeOf<AccountId>() {}\n        class OpenAccount extends Command {}\n        class CloseAccount extends Command {}\n        class SuspendAccount extends Command {}\n\n        given([\n            { command: new OpenAccount(new AccountId(42)),      expected: 'Open AccountId(value=42)'                            },\n            { command: new CloseAccount(new AccountId(42)),     expected: 'Close AccountId(value=42)'                           },\n            { command: new SuspendAccount(new AccountId(42)),   expected: 'Command: SuspendAccount(value=AccountId(value=42))'  },\n            { command: null,                                    expected: 'Unrecognised input: null'                            },\n        ]).\n        it('matches a TinyType by type', ({ command, expected }) => {\n            const result = match(command)\n                .when(OpenAccount,  ({ value }) => `Open ${ value }`)\n                .when(CloseAccount, ({ value }) => `Close ${ value }`)\n                .when(Command,      _ => `Command: ${ _ }`)\n                .else(_ => `Unrecognised input: ${_}`);\n\n            expect(result).to.equal(expected);\n        });\n\n        given([\n            { command: new OpenAccount(new AccountId(42)),      expected: 'Open AccountId(value=42)'                            },\n            { command: new CloseAccount(new AccountId(42)),     expected: 'Close AccountId(value=42)'                           },\n            { command: new SuspendAccount(new AccountId(42)),   expected: 'Command: SuspendAccount(value=AccountId(value=42))'  },\n            { command: null,                                    expected: 'Unrecognised input: null'                            },\n        ]).\n        it('matches a TinyType by value', ({ command, expected }) => {\n            const result = match(command)\n                .when(new OpenAccount(new AccountId(42)),   ({ value }) => `Open ${ value }`)\n                .when(new CloseAccount(new AccountId(42)),  ({ value }) => `Close ${ value }`)\n                .when(new SuspendAccount(new AccountId(42)), _ => `Command: ${ _ }`)\n                .else(_ => `Unrecognised input: ${_}`);\n\n            expect(result).to.equal(expected);\n        });\n    });\n});\n",
@@ -4749,7 +4853,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 239,
+    "__docId__": 243,
     "kind": "test",
     "name": "describe31",
     "testId": 31,
@@ -4764,7 +4868,7 @@
     ]
   },
   {
-    "__docId__": 240,
+    "__docId__": 244,
     "kind": "test",
     "name": "describe32",
     "testId": 32,
@@ -4780,7 +4884,7 @@
     ]
   },
   {
-    "__docId__": 241,
+    "__docId__": 245,
     "kind": "test",
     "name": "it33",
     "testId": 33,
@@ -4792,7 +4896,7 @@
     "lineNumber": 10
   },
   {
-    "__docId__": 242,
+    "__docId__": 246,
     "kind": "test",
     "name": "it34",
     "testId": 34,
@@ -4804,7 +4908,7 @@
     "lineNumber": 17
   },
   {
-    "__docId__": 243,
+    "__docId__": 247,
     "kind": "test",
     "name": "describe35",
     "testId": 35,
@@ -4817,7 +4921,7 @@
     "lineNumber": 25
   },
   {
-    "__docId__": 244,
+    "__docId__": 248,
     "kind": "test",
     "name": "describe36",
     "testId": 36,
@@ -4835,7 +4939,7 @@
     ]
   },
   {
-    "__docId__": 245,
+    "__docId__": 249,
     "kind": "testFile",
     "name": "spec/objects/deprecated.spec.ts",
     "content": "import 'mocha';\nimport * as sinon from 'sinon';\nimport { deprecated } from '../../src/objects';\nimport { expect } from '../expect';\n\n/** @test {deprecated} */\ndescribe('deprecated', () => {\n\n    describe('when used to annotate a class', () => {\n        it('logs a warning when the class is constructed', () => {\n            const consoleWarn = sinon.spy();\n\n            @deprecated(undefined, consoleWarn)\n            class Foo {\n            }\n\n            const foo = new Foo();\n\n            expect(consoleWarn)\n                .to.have.been.calledWith('Foo has been deprecated.');\n        });\n\n        it('can provide additional suggestion on what other class should be used instead', () => {\n            const consoleWarn = sinon.spy();\n\n            @deprecated('Please use Bar instead.', consoleWarn)\n            class Foo {\n            }\n\n            const foo = new Foo();\n\n            expect(consoleWarn)\n                .to.have.been.calledWith('Foo has been deprecated. Please use Bar instead.');\n        });\n\n        it('maintains the type and behaviour of the annotated class', () => {\n            const consoleWarn = sinon.spy();\n\n            @deprecated('Please use Client instead.', consoleWarn)\n            class Person {\n                constructor(public readonly name: string) {\n                }\n            }\n\n            const p = new Person('Alice');\n\n            expect(consoleWarn)\n                .to.have.been.calledWith('Person has been deprecated. Please use Client instead.');\n\n            expect(p).to.be.instanceOf(Person);\n        });\n    });\n\n    describe('when used to annotate a method', () => {\n\n        it('logs a warning when the method is used', () => {\n            const consoleWarn = sinon.spy();\n\n            class Person {\n                @deprecated('', consoleWarn)\n                greet()   { return null; }\n                welcome() { return null; }\n            }\n\n            const p = new Person();\n            p.greet();\n\n            expect(consoleWarn)\n                .to.have.been.calledWith('Person#greet has been deprecated.');\n        });\n\n        it('can provide additional suggestion on what other method should be used instead', () => {\n            const consoleWarn = sinon.spy();\n\n            class Person {\n\n                @deprecated('Please use Person#welcome instead.', consoleWarn)\n                greet()   { return null; }\n                welcome() { return null; }\n            }\n\n            const p = new Person();\n            p.greet();\n\n            expect(consoleWarn)\n                .to.have.been.calledWith('Person#greet has been deprecated. Please use Person#welcome instead.');\n        });\n\n        it('maintains the behaviour of the annotated method', () => {\n            const consoleWarn = sinon.spy();\n\n            class Person {\n                constructor(public readonly name: string) {\n                }\n\n                @deprecated('Please use Person#welcome instead.', consoleWarn)\n                greet(greeting: string) {\n                    return `${ greeting }, my name is ${this.name}`;\n                }\n            }\n\n            const p = new Person('Alice');\n\n            expect(p.greet('Hi')).to.equal('Hi, my name is Alice');\n\n            expect(consoleWarn)\n                .to.have.been.calledWith('Person#greet has been deprecated. Please use Person#welcome instead.');\n        });\n    });\n\n    describe('when used to deprecate a function', () => {\n        it('logs a warning when the function is used', () => {\n            const consoleWarn = sinon.spy();\n\n            function foo() {\n                return null;\n            }\n\n            const deprecatedFoo = deprecated('Please use bar instead.', consoleWarn)(foo);\n\n            deprecatedFoo();\n\n            expect(consoleWarn)\n                .to.have.been.calledWith('foo has been deprecated. Please use bar instead.');\n\n        });\n\n        it('logs a warning when an arrow function is used', () => {\n            const consoleWarn = sinon.spy();\n\n            const foo = () => null;\n\n            const deprecatedFoo = deprecated('Please use bar instead.', consoleWarn)(foo);\n\n            deprecatedFoo();\n\n            expect(consoleWarn)\n                .to.have.been.calledWith('foo has been deprecated. Please use bar instead.');\n        });\n    });\n\n    describe('when used incorrectly', () => {\n\n        it('complains', () => {\n            const consoleWarn = sinon.spy();\n\n            expect(() => deprecated('something that does not make sense')(42))\n                .to.throw(`Only a class, method or function can be marked as deprecated. number given.`);\n        });\n    })\n});\n",
@@ -4846,7 +4950,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 246,
+    "__docId__": 250,
     "kind": "test",
     "name": "describe37",
     "testId": 37,
@@ -4862,7 +4966,7 @@
     ]
   },
   {
-    "__docId__": 247,
+    "__docId__": 251,
     "kind": "test",
     "name": "describe38",
     "testId": 38,
@@ -4875,7 +4979,7 @@
     "lineNumber": 13
   },
   {
-    "__docId__": 248,
+    "__docId__": 252,
     "kind": "test",
     "name": "it39",
     "testId": 39,
@@ -4888,7 +4992,7 @@
     "lineNumber": 14
   },
   {
-    "__docId__": 249,
+    "__docId__": 253,
     "kind": "test",
     "name": "it40",
     "testId": 40,
@@ -4901,7 +5005,7 @@
     "lineNumber": 31
   },
   {
-    "__docId__": 250,
+    "__docId__": 254,
     "kind": "test",
     "name": "it41",
     "testId": 41,
@@ -4914,7 +5018,7 @@
     "lineNumber": 48
   },
   {
-    "__docId__": 251,
+    "__docId__": 255,
     "kind": "test",
     "name": "describe42",
     "testId": 42,
@@ -4927,7 +5031,7 @@
     "lineNumber": 70
   },
   {
-    "__docId__": 252,
+    "__docId__": 256,
     "kind": "test",
     "name": "it43",
     "testId": 43,
@@ -4940,7 +5044,7 @@
     "lineNumber": 71
   },
   {
-    "__docId__": 253,
+    "__docId__": 257,
     "kind": "test",
     "name": "it44",
     "testId": 44,
@@ -4953,7 +5057,7 @@
     "lineNumber": 103
   },
   {
-    "__docId__": 254,
+    "__docId__": 258,
     "kind": "test",
     "name": "it45",
     "testId": 45,
@@ -4966,7 +5070,7 @@
     "lineNumber": 135
   },
   {
-    "__docId__": 255,
+    "__docId__": 259,
     "kind": "test",
     "name": "describe46",
     "testId": 46,
@@ -4979,7 +5083,7 @@
     "lineNumber": 168
   },
   {
-    "__docId__": 256,
+    "__docId__": 260,
     "kind": "test",
     "name": "it47",
     "testId": 47,
@@ -4992,7 +5096,7 @@
     "lineNumber": 169
   },
   {
-    "__docId__": 257,
+    "__docId__": 261,
     "kind": "test",
     "name": "it48",
     "testId": 48,
@@ -5005,7 +5109,7 @@
     "lineNumber": 185
   },
   {
-    "__docId__": 258,
+    "__docId__": 262,
     "kind": "test",
     "name": "describe49",
     "testId": 49,
@@ -5018,7 +5122,7 @@
     "lineNumber": 194
   },
   {
-    "__docId__": 259,
+    "__docId__": 263,
     "kind": "test",
     "name": "it50",
     "testId": 50,
@@ -5031,7 +5135,7 @@
     "lineNumber": 195
   },
   {
-    "__docId__": 260,
+    "__docId__": 264,
     "kind": "testFile",
     "name": "spec/objects/equal.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { TinyType, TinyTypeOf } from '../../src';\nimport { equal } from '../../src/objects';\nimport { expect } from '../expect';\n\n/** @test {equal} */\ndescribe('equal', () => {\n    describe('when used with primitives', () => {\n\n        given<any>(undefined, null, false, 'string', 42).\n        it('is reflexive', (primitive: any) => {\n            expect(equal(primitive, primitive)).to.be.true;                  // tslint:disable-line:no-unused-expression\n        });\n\n        given<{ v1: any, v2: any }>(\n            { v1: false,    v2: false             },\n            { v1: false,    v2: Boolean(false)    },\n            { v1: 'string', v2: 'string'          },\n            { v1: 'string', v2: String('string')  },\n            { v1: 42,       v2: 42                },\n            { v1: 42,       v2: Number(42)        },\n            { v1: 42,       v2: 42.0              },\n            { v1: 42,       v2: Number(42.0)      },\n        ).\n        it('is symmetric', ({ v1, v2 }) => {\n            expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression\n            expect(equal(v1, v2)).to.equal(equal(v2, v1));\n        });\n\n        given<{ v1: any, v2: any, v3: any }>(\n            { v1: false,    v2: false,    v3: false     },\n            { v1: 'string', v2: 'string', v3: 'string'  },\n            { v1: 42,       v2: 42,       v3: 42        },\n        ).\n        it('is transitive', ({ v1, v2, v3 }) => {\n            expect(equal(v1, v2)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(equal(v2, v3)).to.be.true;                               // tslint:disable-line:no-unused-expression\n            expect(equal(v3, v1)).to.be.true;                               // tslint:disable-line:no-unused-expression\n        });\n\n        given<{ v1: any, v2: any }>(\n            { v1: false,    v2: true       },\n            { v1: 'apple',  v2: 'orange'   },\n            { v1: 42,       v2: 24         },\n            { v1: false,    v2: 'elephant' },\n            { v1: null,     v2: undefined  },\n        ).\n        it('returns false when subjects are not equal', ({ v1, v2 }) => {\n            expect(equal(v1, v2)).to.be.false;                               // tslint:disable-line:no-unused-expression\n        });\n    });\n\n    /** @test {TinyType#equals} */\n    describe('when used with TinyTypes', () => {\n\n        class Name extends TinyTypeOf<string>() {}\n        class Age  extends TinyTypeOf<number>() {}\n\n        class Person extends TinyType {\n            constructor(public readonly name: Name, public readonly role: Age) {\n                super();\n            }\n        }\n\n        // Please note that there's not much point in wrapping an array into a tiny type, as it doesn't provide\n        // methods you'd expect from a list, such as map, reduce, forEach, etc.\n        // What People is here to demonstrate is that `equals` works equally well (pun intended)\n        // with tiny types with a member field of type Array.\n        class People extends TinyTypeOf<Person[]>() {}\n\n        const\n            Alice   = new Name('Alice'),\n            Bob     = new Name('Bob'),\n            MsAlice = new Person(Alice, new Age(28)),\n            MrBob   = new Person(Alice, new Age(38)),\n            Team    = new People([MsAlice, MrBob]),\n            Team2   = new People([MsAlice]);\n\n        given<TinyType>(Alice, MsAlice, Team).\n        it('is reflexive', (value: TinyType) => {\n            expect(equal(value, value)).to.be.true;                          // tslint:disable-line:no-unused-expression\n        });\n\n        given<{ v1: TinyType, v2: TinyType }>(\n            { v1: new Name('Alice'),    v2: new Name('Alice')   },\n            { v1: new Age(28),          v2: new Age(28)         },\n            { v1: Team,                 v2: Team                },\n            { v1: new Person(Alice, new Age(28)), v2: new Person(Alice, new Age(28))  },\n        ).\n        it('is symmetric', ({ v1, v2 }) => {\n            expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression\n            expect(equal(v1, v2)).to.equal(equal(v2, v1));\n        });\n\n        given<{ v1: TinyType, v2: TinyType, v3: TinyType }>(\n            { v1: new Name('Alice'),    v2: new Name('Alice'),  v3: new Name('Alice') },\n            { v1: new Age(28),          v2: new Age(28),        v3: new Age(28)       },\n            { v1: new Person(Alice, new Age(28)), v2: new Person(Alice, new Age(28)), v3: new Person(Alice, new Age(28)) },\n        ).\n        it('is transitive', ({ v1, v2, v3 }) => {\n            expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression\n            expect(equal(v2, v3)).to.be.true;                                // tslint:disable-line:no-unused-expression\n            expect(equal(v3, v1)).to.be.true;                                // tslint:disable-line:no-unused-expression\n        });\n\n        given<{ v1: any, v2: any }>(\n            { v1: Alice,    v2: null    },\n            { v1: Alice,    v2: Bob     },\n            { v1: Bob,      v2: 'cat'   },\n            { v1: Alice,    v2: MsAlice },\n            { v1: MsAlice,  v2: MrBob   },\n            { v1: MrBob,    v2: Team    },\n            { v1: Team,     v2: Team2   },\n        ).\n        it('returns false when subjects are not equal', ({ v1, v2 }) => {\n            expect(equal(v1, v2)).to.be.false;                               // tslint:disable-line:no-unused-expression\n        });\n\n        it('compares public and private member fields', () => {\n            class PrivatePerson extends TinyType {\n                constructor(private readonly name: Name, private readonly age: Age) {\n                    super();\n                }\n            }\n\n            const\n                PrivateAlice = new PrivatePerson(new Name('Alice'), new Age(28)),\n                PrivateRyan  = new PrivatePerson(new Name('Ryan'), new Age(28));\n\n            expect(PrivateAlice.equals(PrivateAlice)).to.be.true;            // tslint:disable-line:no-unused-expression\n            expect(PrivateAlice.equals(PrivateRyan)).to.be.false;            // tslint:disable-line:no-unused-expression\n        });\n    });\n\n    /** @test {TinyType#equals} */\n    describe('when used with TinyTypes with optional fields', () => {\n\n        class FirstName extends TinyTypeOf<string>() {}\n        class LastName extends TinyTypeOf<string>() {}\n\n        class Magician extends TinyType {\n            constructor(\n                public readonly firstName: FirstName,\n                public readonly lastName?: LastName,\n            ) {\n                super();\n            }\n        }\n\n        it('returns true when the non-optional fields are equal', () => {\n            const\n                t1 = new Magician(new FirstName('Teller')),\n                t2 = new Magician(new FirstName('Teller'));\n\n            expect(equal(t1, t2)).to.equal(true);\n        });\n    });\n\n        /** @test {TinyType#equals} */\n    describe('when used with Dates', () => {\n        const\n            dateInstance1 = new Date('2018-05-01T12:00:00.000Z'),\n            dateInstance2 = new Date('2018-05-01T12:00:00.000Z'),\n            dateInstance3 = new Date('2018-05-01T12:00:00.000Z'),\n            differentDate = new Date('2042-05-01T12:15:30.000Z');\n\n        it('is reflexive', () => {\n            expect(equal(dateInstance1, dateInstance1)).to.be.true;          // tslint:disable-line:no-unused-expression\n        });\n\n        it('is symmetric', () => {\n            expect(equal(dateInstance1, dateInstance2)).to.be.true;          // tslint:disable-line:no-unused-expression\n            expect(equal(dateInstance2, dateInstance1)).to.equal(equal(dateInstance1, dateInstance2));\n        });\n\n        it('is transitive', () => {\n            expect(equal(dateInstance1, dateInstance2)).to.be.true;          // tslint:disable-line:no-unused-expression\n            expect(equal(dateInstance2, dateInstance3)).to.be.true;          // tslint:disable-line:no-unused-expression\n            expect(equal(dateInstance3, dateInstance1)).to.be.true;          // tslint:disable-line:no-unused-expression\n        });\n\n        it('returns false when subjects are not equal', () => {\n            expect(equal(dateInstance1, differentDate)).to.be.false;         // tslint:disable-line:no-unused-expression\n        });\n    });\n\n    /** @test {TinyType#equals} */\n    describe('when used with Arrays', () => {\n        class Name extends TinyTypeOf<string>() {}\n\n        it('returns false when arrays are of different length', () => {\n            expect(equal(\n                [ new Name('Alice'), new Name('Bob') ],\n                [ new Name('Alice'), new Name('Bob'), new Name('Cyril') ],\n            )).to.equal(false);\n        });\n\n        it('returns false when arrays contain different items', () => {\n            expect(equal(\n                [ new Name('Alice'), new Name('Bob'), new Name('Cyril')],\n                [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],\n            )).to.equal(false);\n        });\n\n        it('returns true when both arrays contain equal items', () => {\n            expect(equal(\n                [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],\n                [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],\n            )).to.equal(true);\n        });\n    });\n});\n",
@@ -5042,7 +5146,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 261,
+    "__docId__": 265,
     "kind": "test",
     "name": "describe51",
     "testId": 51,
@@ -5058,7 +5162,7 @@
     ]
   },
   {
-    "__docId__": 262,
+    "__docId__": 266,
     "kind": "test",
     "name": "describe52",
     "testId": 52,
@@ -5071,7 +5175,7 @@
     "lineNumber": 8
   },
   {
-    "__docId__": 263,
+    "__docId__": 267,
     "kind": "test",
     "name": "describe53",
     "testId": 53,
@@ -5087,7 +5191,7 @@
     ]
   },
   {
-    "__docId__": 264,
+    "__docId__": 268,
     "kind": "test",
     "name": "it54",
     "testId": 54,
@@ -5100,7 +5204,7 @@
     "lineNumber": 92
   },
   {
-    "__docId__": 265,
+    "__docId__": 269,
     "kind": "test",
     "name": "describe55",
     "testId": 55,
@@ -5116,7 +5220,7 @@
     ]
   },
   {
-    "__docId__": 266,
+    "__docId__": 270,
     "kind": "test",
     "name": "it56",
     "testId": 56,
@@ -5129,7 +5233,7 @@
     "lineNumber": 142
   },
   {
-    "__docId__": 267,
+    "__docId__": 271,
     "kind": "test",
     "name": "describe57",
     "testId": 57,
@@ -5145,7 +5249,7 @@
     ]
   },
   {
-    "__docId__": 268,
+    "__docId__": 272,
     "kind": "test",
     "name": "it58",
     "testId": 58,
@@ -5158,7 +5262,7 @@
     "lineNumber": 150
   },
   {
-    "__docId__": 269,
+    "__docId__": 273,
     "kind": "test",
     "name": "it59",
     "testId": 59,
@@ -5171,7 +5275,7 @@
     "lineNumber": 153
   },
   {
-    "__docId__": 270,
+    "__docId__": 274,
     "kind": "test",
     "name": "it60",
     "testId": 60,
@@ -5184,7 +5288,7 @@
     "lineNumber": 157
   },
   {
-    "__docId__": 271,
+    "__docId__": 275,
     "kind": "test",
     "name": "it61",
     "testId": 61,
@@ -5197,7 +5301,7 @@
     "lineNumber": 162
   },
   {
-    "__docId__": 272,
+    "__docId__": 276,
     "kind": "test",
     "name": "describe62",
     "testId": 62,
@@ -5213,7 +5317,7 @@
     ]
   },
   {
-    "__docId__": 273,
+    "__docId__": 277,
     "kind": "test",
     "name": "it63",
     "testId": 63,
@@ -5226,7 +5330,7 @@
     "lineNumber": 176
   },
   {
-    "__docId__": 274,
+    "__docId__": 278,
     "kind": "test",
     "name": "it64",
     "testId": 64,
@@ -5239,7 +5343,7 @@
     "lineNumber": 179
   },
   {
-    "__docId__": 275,
+    "__docId__": 279,
     "kind": "test",
     "name": "it65",
     "testId": 65,
@@ -5252,7 +5356,7 @@
     "lineNumber": 182
   },
   {
-    "__docId__": 276,
+    "__docId__": 280,
     "kind": "testFile",
     "name": "spec/objects/significantFields.spec.ts",
     "content": "import 'mocha';\nimport { significantFieldsOf } from '../../src/objects';\nimport { expect } from '../expect';\n\n/** @test {significantFields} */\ndescribe('significantFields', () => {\n    it('returns the names of private and public member fields of an instantiated object', () => {\n       class Person {\n           private age: number = 42;\n           constructor(public readonly firstName: string, private readonly lastName: string) {}\n           toString() {\n               return `${this.firstName} ${this.lastName} ${this.age}`;\n           }\n       }\n\n       const p = new Person('John', 'Smith');\n\n       expect(significantFieldsOf(p)).contain.members(['firstName', 'lastName', 'age']);\n    });\n\n    it(`returns the names of object's fields`, () => {\n        const p = {\n            firstName: 'John',\n            lastName: 'Smith',\n            age: 42,\n            toString: () => `some string`,\n        };\n\n        expect(significantFieldsOf(p)).contain.members(['firstName', 'lastName', 'age']);\n    });\n\n    it(`returns the keys of an array`, () => {\n        const list = [ 'a', 'b', 'c' ];\n\n        expect(significantFieldsOf(list)).contain.members([ '0', '1', '2', 'length' ]);\n    });\n});\n",
@@ -5263,7 +5367,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 277,
+    "__docId__": 281,
     "kind": "test",
     "name": "describe66",
     "testId": 66,
@@ -5279,7 +5383,7 @@
     ]
   },
   {
-    "__docId__": 278,
+    "__docId__": 282,
     "kind": "test",
     "name": "it67",
     "testId": 67,
@@ -5292,7 +5396,7 @@
     "lineNumber": 6
   },
   {
-    "__docId__": 279,
+    "__docId__": 283,
     "kind": "test",
     "name": "it68",
     "testId": 68,
@@ -5304,7 +5408,7 @@
     "lineNumber": 40
   },
   {
-    "__docId__": 280,
+    "__docId__": 284,
     "kind": "test",
     "name": "it69",
     "testId": 69,
@@ -5316,7 +5420,7 @@
     "lineNumber": 49
   },
   {
-    "__docId__": 281,
+    "__docId__": 285,
     "kind": "testFile",
     "name": "spec/pattern-matching/IdentityMatcher.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\nimport { IdentityMatcher } from '../../src/pattern-matching';\nimport { expect } from '../expect';\n\ndescribe('pattern-matching', () => {\n    describe('IdentityMatcher', () => {\n\n        given(\n            [true, 'received \"true\"'],\n            [false, 'received \"false\"'],\n        ).it('matches a boolean', (input: boolean, expected_result: string) => {\n\n            const result = new IdentityMatcher(input)\n                .when(true, _ => `received \"true\"`)\n                .else(_ => `received \"false\"`);\n\n            expect(result).to.equal(expected_result);\n        });\n\n        given(\n            [-1, 'received \"-1\"'],\n            [0.1, 'received \"0.1\"'],\n            [5, 'else, received \"5\"'],\n            // [NaN, 'received \"NaN\"'],\n            [Infinity, 'to infinity and beyond!'],\n        ).it('matches a number', (input: number, expected_result: string) => {\n\n            const result = new IdentityMatcher(input)\n                .when(-1, _ => `received \"-1\"`)\n                .when(0.1, _ => `received \"0.1\"`)\n                .when(Infinity, _ => `to infinity and beyond!`)\n                .else(_ => `else, received \"${_}\"`);\n\n            expect(result).to.equal(expected_result);\n        });\n\n        it('matches a symbol', () => {\n            const s = Symbol('some symbol');\n\n            const result = new IdentityMatcher(s)\n                .when(s, _ => `received \"some symbol\"`)\n                .else(_ => `else, received \"${_.toString()}\"`);\n\n            expect(result).to.equal('received \"some symbol\"');\n        });\n    });\n});\n",
@@ -5327,7 +5431,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 282,
+    "__docId__": 286,
     "kind": "test",
     "name": "describe70",
     "testId": 70,
@@ -5340,7 +5444,7 @@
     "lineNumber": 5
   },
   {
-    "__docId__": 283,
+    "__docId__": 287,
     "kind": "test",
     "name": "describe71",
     "testId": 71,
@@ -5353,7 +5457,7 @@
     "lineNumber": 6
   },
   {
-    "__docId__": 284,
+    "__docId__": 288,
     "kind": "test",
     "name": "it72",
     "testId": 72,
@@ -5366,7 +5470,7 @@
     "lineNumber": 23
   },
   {
-    "__docId__": 285,
+    "__docId__": 289,
     "kind": "testFile",
     "name": "spec/pattern-matching/ObjectMatcher.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { TinyType } from '../../src';\nimport { ObjectMatcher } from '../../src/pattern-matching';\nimport { expect } from '../expect';\n\ndescribe('pattern-matching', () => {\n    describe('ObjectMatcher', () => {\n\n        describe('when working with Tiny Types', () => {\n\n            class Name extends TinyType {\n                constructor(public readonly value: string) {\n                    super();\n                }\n            }\n\n            class EmailAddress extends TinyType {\n                constructor(public readonly value: string) {\n                    super();\n                }\n            }\n\n            given(\n                [new Name('Jan'), `matched \"Jan\"`],\n                [new Name('John'), `matched \"John\"`],\n                [new Name('Sara'), `else, received \"Name(value=Sara)\"`],\n            ).it('matches equal objects', (input: Name, expectedMessage: string) => {\n                const result = new ObjectMatcher<TinyType, string>(input)\n                    .when(new Name('Jan'), _ => `matched \"Jan\"`)\n                    .when(new Name('John'), _ => `matched \"John\"`)\n                    .else(_ => `else, received \"${_}\"`);\n\n                expect(result).to.equal(expectedMessage);\n            });\n\n            it('matches identical objects', () => {\n                const input = {field: 'value'};\n\n                const result = new ObjectMatcher(input)\n                    .when(input, _ => `matched by identity`)\n                    .else(_ => `else, received \"${_}\"`);\n\n                expect(result).to.equal(`matched by identity`);\n            });\n\n            given(\n                [new Name('Jan'), `matched by equality`],\n                [new Name('John'), `matched by type`],\n                [new EmailAddress('jan@example.com'), `else, received \"EmailAddress(value=jan@example.com)\"`],\n            ).it('can be mixed', (input: Name, expectedMessage: string) => {\n                const result = new ObjectMatcher<TinyType, string>(input)\n                    .when(new Name('Jan'), _ => `matched by equality`)\n                    .when(Name, _ => `matched by type`)\n                    .else(_ => `else, received \"${_}\"`);\n\n                expect(result).to.equal(expectedMessage);\n            });\n        });\n\n        describe('when working with regular classes', () => {\n            abstract class DomainEvent {\n                constructor(public readonly timestamp: Date) {\n                }\n            }\n\n            class AccountCreated extends DomainEvent {\n                constructor(public readonly account_name: string, timestamp: Date) {\n                    super(timestamp);\n                }\n            }\n\n            class AccountConfirmed extends DomainEvent {\n                constructor(public readonly account_name: string,\n                            public readonly email: string,\n                            timestamp: Date,) {\n                    super(timestamp);\n                }\n            }\n\n            class UnclassifiedEvent extends DomainEvent {\n            }\n\n            given(\n                [\n                    new AccountCreated('jan-molak', new Date()),\n                    `AccountCreated`,\n                ],\n                [\n                    new AccountConfirmed('jan-molak', 'jan.molak@serenity.io', new Date()),\n                    `AccountConfirmed`,\n                ],\n                [\n                    new UnclassifiedEvent(new Date()),\n                    `UnclassifiedEvent`,\n                ],\n            ).it('matches object by constructor function', (input: DomainEvent, expected_result: string) => {\n\n                const result = new ObjectMatcher<DomainEvent, string>(input)\n                    .when(AccountCreated, _ => `AccountCreated`)\n                    .when(AccountConfirmed, _ => `AccountConfirmed`)\n                    .when(DomainEvent, _ => `UnclassifiedEvent`)\n                    .else(_ => `else, received \"${_}\"`);\n\n                expect(result).to.equal(expected_result);\n            });\n\n            // todo: mixed constructor/tiny?\n\n            given(\n                [\n                    new AccountCreated('jan-molak', new Date()),\n                    `Account created for jan-molak`,\n                ],\n                [\n                    new AccountConfirmed('jan-molak', 'jan.molak@serenity.io', new Date()),\n                    `Account confirmed for jan-molak at jan.molak@serenity.io`,\n                ],\n                [\n                    new UnclassifiedEvent(new Date()),\n                    `Some DomainEvent received`,\n                ],\n            ).it('matches object by constructor function', (input: DomainEvent, expected_result: string) => {\n\n                const result = new ObjectMatcher<DomainEvent, string>(input)\n                    .when(AccountCreated, ({account_name}: AccountCreated) => `Account created for ${ account_name }`)\n                    .when(AccountConfirmed, ({account_name, email}: AccountConfirmed) => `Account confirmed for ${ account_name } at ${ email }`)\n                    .when(DomainEvent, ({timestamp}: DomainEvent) => `Some DomainEvent received`)\n                    .else(_ => `else, received \"${_}\"`);\n\n                expect(result).to.equal(expected_result);\n            });\n        });\n    });\n});\n",
@@ -5377,7 +5481,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 286,
+    "__docId__": 290,
     "kind": "test",
     "name": "describe73",
     "testId": 73,
@@ -5390,7 +5494,7 @@
     "lineNumber": 6
   },
   {
-    "__docId__": 287,
+    "__docId__": 291,
     "kind": "test",
     "name": "describe74",
     "testId": 74,
@@ -5403,7 +5507,7 @@
     "lineNumber": 7
   },
   {
-    "__docId__": 288,
+    "__docId__": 292,
     "kind": "test",
     "name": "describe75",
     "testId": 75,
@@ -5416,7 +5520,7 @@
     "lineNumber": 8
   },
   {
-    "__docId__": 289,
+    "__docId__": 293,
     "kind": "test",
     "name": "it76",
     "testId": 76,
@@ -5429,7 +5533,7 @@
     "lineNumber": 40
   },
   {
-    "__docId__": 290,
+    "__docId__": 294,
     "kind": "test",
     "name": "describe77",
     "testId": 77,
@@ -5442,7 +5546,7 @@
     "lineNumber": 55
   },
   {
-    "__docId__": 291,
+    "__docId__": 295,
     "kind": "testFile",
     "name": "spec/pattern-matching/StringMatcher.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\nimport { StringMatcher } from '../../src/pattern-matching';\nimport { expect } from '../expect';\n\ndescribe('pattern-matching', () => {\n    describe('StringMatcher', () => {\n\n        given(\n            ['hello', 'matched a regular expression'],\n            ['hello world', 'matched the identity matcher'],\n        ).it('matches string and regular expressions', (input: string, expected_result: string) => {\n            const result = new StringMatcher(input)\n                .when('hello world', _ => `matched the identity matcher`)\n                .when(/^[Hh]ello.*$/, _ => `matched a regular expression`)\n                .else(_ => `else, received \"${_}\"`);\n\n            expect(result).to.equal(expected_result);\n        });\n    });\n});\n",
@@ -5453,7 +5557,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 292,
+    "__docId__": 296,
     "kind": "test",
     "name": "describe78",
     "testId": 78,
@@ -5466,7 +5570,7 @@
     "lineNumber": 5
   },
   {
-    "__docId__": 293,
+    "__docId__": 297,
     "kind": "test",
     "name": "describe79",
     "testId": 79,
@@ -5479,7 +5583,7 @@
     "lineNumber": 6
   },
   {
-    "__docId__": 294,
+    "__docId__": 298,
     "kind": "testFile",
     "name": "spec/pattern-matching/rules/MatchesAnything.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\nimport { MatchesAnything } from '../../../src/pattern-matching/rules';\nimport { expect } from '../../expect';\n\ndescribe('pattern-matching', () => {\n\n    describe('rules', () => {\n\n        describe('MatchesAnything', () => {\n\n            given([\n                1,\n                false,\n                {},\n            ]).it('is always executed', (input: any) => {\n                const rule = new MatchesAnything(_ => _);\n\n                expect(rule.matches(input)).to.be.true;                              // tslint:disable-line:no-unused-expression\n            });\n        });\n    });\n});\n",
@@ -5490,7 +5594,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 295,
+    "__docId__": 299,
     "kind": "test",
     "name": "describe80",
     "testId": 80,
@@ -5503,7 +5607,7 @@
     "lineNumber": 5
   },
   {
-    "__docId__": 296,
+    "__docId__": 300,
     "kind": "test",
     "name": "describe81",
     "testId": 81,
@@ -5516,7 +5620,7 @@
     "lineNumber": 6
   },
   {
-    "__docId__": 297,
+    "__docId__": 301,
     "kind": "test",
     "name": "describe82",
     "testId": 82,
@@ -5529,7 +5633,7 @@
     "lineNumber": 7
   },
   {
-    "__docId__": 298,
+    "__docId__": 302,
     "kind": "testFile",
     "name": "spec/predicates/and.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\nimport sinon = require('sinon');\n\nimport { and, ensure, isDefined, isGreaterThan, isInteger, isLessThan, Predicate, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {and} */\n    describe('::and', () => {\n\n        class InvestmentLengthInYears extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n                ensure('InvestmentLengthInYears', value, and(\n                    isDefined(),\n                    isInteger(),\n                    isGreaterThan(0),\n                    isLessThan(50),\n                ));\n            }\n        }\n\n        it('ensures that all the predicates are met', () => {\n            expect(() => new InvestmentLengthInYears(10)).to.not.throw;      // tslint:disable-line:no-unused-expression\n        });\n\n        given(\n            [ null, 'InvestmentLengthInYears should be defined' ],\n            [ 0.2,  'InvestmentLengthInYears should be an integer' ],\n            [ -2,   'InvestmentLengthInYears should be greater than 0' ],\n            [ 52,   'InvestmentLengthInYears should be less than 50' ],\n        ).\n        it('complains upon the first unmet predicate', (value: any, errorMessage: string) => {\n            expect(() => new InvestmentLengthInYears(value))\n                .to.throw(errorMessage);\n        });\n\n        it('complains if there are no predicates specified', () => {\n            expect(() => and()).to.throw(`Looks like you haven't specified any predicates to check the value against?`);\n        });\n\n        it('stops evaluating the predicates upon the first failure', () => {\n            const predicateEvaluated = sinon.spy();\n            const predicateReturning = (result: boolean) => Predicate.to(result ? 'pass' : 'fail', (value: any) => {\n                predicateEvaluated();\n                return result;\n            });\n\n            expect(() => ensure('value', null, and(\n                predicateReturning(true),\n                predicateReturning(false),\n                predicateReturning(true),\n            ))).to.throw('value should fail');\n\n            expect(predicateEvaluated.callCount).to.equal(2);\n        });\n    });\n});\n",
@@ -5540,7 +5644,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 299,
+    "__docId__": 303,
     "kind": "test",
     "name": "describe83",
     "testId": 83,
@@ -5553,7 +5657,7 @@
     "lineNumber": 5
   },
   {
-    "__docId__": 300,
+    "__docId__": 304,
     "kind": "test",
     "name": "describe84",
     "testId": 84,
@@ -5569,7 +5673,7 @@
     ]
   },
   {
-    "__docId__": 301,
+    "__docId__": 305,
     "kind": "test",
     "name": "it85",
     "testId": 85,
@@ -5582,7 +5686,7 @@
     "lineNumber": 21
   },
   {
-    "__docId__": 302,
+    "__docId__": 306,
     "kind": "test",
     "name": "it86",
     "testId": 86,
@@ -5595,7 +5699,7 @@
     "lineNumber": 29
   },
   {
-    "__docId__": 303,
+    "__docId__": 307,
     "kind": "test",
     "name": "it87",
     "testId": 87,
@@ -5608,7 +5712,60 @@
     "lineNumber": 32
   },
   {
-    "__docId__": 304,
+    "__docId__": 308,
+    "kind": "testFile",
+    "name": "spec/predicates/endsWith.spec.ts",
+    "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { endsWith, ensure, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {endsWith} */\n    describe('::endsWith', () => {\n\n        class TextFileName extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n\n                ensure('TextFileName', value, endsWith('.txt'));\n            }\n        }\n\n        it('ensures that the argument ends with a given suffix', () => {\n            expect(() => new TextFileName('notes.txt')).to.not.throw; // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            'string',\n            5,\n        ]).\n        it('complains if the value does not end with a given suffix', (value: any) => {\n            expect(() => new TextFileName(value))\n                .to.throw(`TextFileName should end with '.txt'`);\n        });\n    });\n});\n",
+    "static": true,
+    "longname": "/home/travis/build/jan-molak/tiny-types/spec/predicates/endsWith.spec.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 309,
+    "kind": "test",
+    "name": "describe88",
+    "testId": 88,
+    "memberof": "spec/predicates/endsWith.spec.ts",
+    "testDepth": 0,
+    "static": true,
+    "longname": "spec/predicates/endsWith.spec.ts~describe88",
+    "access": null,
+    "description": "predicates",
+    "lineNumber": 5
+  },
+  {
+    "__docId__": 310,
+    "kind": "test",
+    "name": "describe89",
+    "testId": 89,
+    "memberof": "spec/predicates/endsWith.spec.ts~describe88",
+    "testDepth": 1,
+    "static": true,
+    "longname": "spec/predicates/endsWith.spec.ts~describe88.describe89",
+    "access": null,
+    "description": "::endsWith",
+    "lineNumber": 7,
+    "testTargets": [
+      "endsWith"
+    ]
+  },
+  {
+    "__docId__": 311,
+    "kind": "test",
+    "name": "it90",
+    "testId": 90,
+    "memberof": "spec/predicates/endsWith.spec.ts~describe88.describe89",
+    "testDepth": 2,
+    "static": true,
+    "longname": "spec/predicates/endsWith.spec.ts~describe88.describe89.it90",
+    "access": null,
+    "description": "ensures that the argument ends with a given suffix",
+    "lineNumber": 21
+  },
+  {
+    "__docId__": 312,
     "kind": "testFile",
     "name": "spec/predicates/hasLengthOf.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, hasLengthOf, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {hasLengthOf} */\n    describe('::hasLengthOf', () => {\n\n        /** @test {hasLengthOf} */\n        describe('when used with strings', () => {\n            class Password extends TinyType {\n                constructor(public readonly value: string) {\n                    super();\n\n                    ensure('Password', value, hasLengthOf(8));\n                }\n            }\n\n            it('ensures that the value has a correct length', () => {\n                expect(() => new Password('P@ssw0rd')).to.not.throw;         // tslint:disable-line:no-unused-expression\n            });\n\n            given(\n                '7_chars',\n                '9___chars',\n            ).\n            it('complains if the value is of incorrect length', (value: string) => {\n                expect(() => new Password(value)).to.throw(`Password should have a property \"length\" that is equal to 8`);\n            });\n        });\n\n        /** @test {hasLengthOf} */\n        describe('when used with arrays', () => {\n            class Collection extends TinyType {\n                constructor(public readonly values: string[]) {\n                    super();\n\n                    ensure('Collection', values, hasLengthOf(2));\n                }\n            }\n\n            it('ensures that the value has a correct length', () => {\n                expect(() => new Collection(['a', 'b'])).to.not.throw;       // tslint:disable-line:no-unused-expression\n            });\n\n            given(\n                ['a'],\n                ['a', 'b', 'c'],\n            ).\n            it('complains if the value is of incorrect length', (values: string[]) => {\n                expect(() => new Collection(values)).to.throw(`Collection should have a property \"length\" that is equal to 2`);\n            });\n        });\n    });\n});\n",
@@ -5619,27 +5776,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 305,
+    "__docId__": 313,
     "kind": "test",
-    "name": "describe88",
-    "testId": 88,
+    "name": "describe91",
+    "testId": 91,
     "memberof": "spec/predicates/hasLengthOf.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/hasLengthOf.spec.ts~describe88",
+    "longname": "spec/predicates/hasLengthOf.spec.ts~describe91",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 306,
+    "__docId__": 314,
     "kind": "test",
-    "name": "describe89",
-    "testId": 89,
-    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe88",
+    "name": "describe92",
+    "testId": 92,
+    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe91",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/hasLengthOf.spec.ts~describe88.describe89",
+    "longname": "spec/predicates/hasLengthOf.spec.ts~describe91.describe92",
     "access": null,
     "description": "::hasLengthOf",
     "lineNumber": 7,
@@ -5648,14 +5805,14 @@
     ]
   },
   {
-    "__docId__": 307,
+    "__docId__": 315,
     "kind": "test",
-    "name": "describe90",
-    "testId": 90,
-    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe88.describe89",
+    "name": "describe93",
+    "testId": 93,
+    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe91.describe92",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/hasLengthOf.spec.ts~describe88.describe89.describe90",
+    "longname": "spec/predicates/hasLengthOf.spec.ts~describe91.describe92.describe93",
     "access": null,
     "description": "when used with strings",
     "lineNumber": 9,
@@ -5664,27 +5821,27 @@
     ]
   },
   {
-    "__docId__": 308,
+    "__docId__": 316,
     "kind": "test",
-    "name": "it91",
-    "testId": 91,
-    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe88.describe89.describe90",
+    "name": "it94",
+    "testId": 94,
+    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe91.describe92.describe93",
     "testDepth": 3,
     "static": true,
-    "longname": "spec/predicates/hasLengthOf.spec.ts~describe88.describe89.describe90.it91",
+    "longname": "spec/predicates/hasLengthOf.spec.ts~describe91.describe92.describe93.it94",
     "access": null,
     "description": "ensures that the value has a correct length",
     "lineNumber": 23
   },
   {
-    "__docId__": 309,
+    "__docId__": 317,
     "kind": "test",
-    "name": "describe92",
-    "testId": 92,
-    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe88.describe89",
+    "name": "describe95",
+    "testId": 95,
+    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe91.describe92",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/hasLengthOf.spec.ts~describe88.describe89.describe92",
+    "longname": "spec/predicates/hasLengthOf.spec.ts~describe91.describe92.describe95",
     "access": null,
     "description": "when used with arrays",
     "lineNumber": 32,
@@ -5693,20 +5850,20 @@
     ]
   },
   {
-    "__docId__": 310,
+    "__docId__": 318,
     "kind": "test",
-    "name": "it93",
-    "testId": 93,
-    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe88.describe89.describe92",
+    "name": "it96",
+    "testId": 96,
+    "memberof": "spec/predicates/hasLengthOf.spec.ts~describe91.describe92.describe95",
     "testDepth": 3,
     "static": true,
-    "longname": "spec/predicates/hasLengthOf.spec.ts~describe88.describe89.describe92.it93",
+    "longname": "spec/predicates/hasLengthOf.spec.ts~describe91.describe92.describe95.it96",
     "access": null,
     "description": "ensures that the value has a correct length",
     "lineNumber": 46
   },
   {
-    "__docId__": 311,
+    "__docId__": 319,
     "kind": "testFile",
     "name": "spec/predicates/isArray.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isArray, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isArray} */\n    describe('::isArray', () => {\n\n        class Strings extends TinyType {\n            constructor(public readonly values: string[]) {\n                super();\n\n                ensure('Collection', values, isArray());\n            }\n        }\n\n        it('ensures that the argument is an array', () => {\n            expect(() => new Strings(['lorem', 'ipsum'])).to.not.throw;      // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            false,\n            5,\n        ]).\n        it('complains if the value is not an array', (value: any) => {\n            expect(() => new Strings(value)).to.throw(`Collection should be an array`);\n        });\n    });\n});\n",
@@ -5717,27 +5874,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 312,
+    "__docId__": 320,
     "kind": "test",
-    "name": "describe94",
-    "testId": 94,
+    "name": "describe97",
+    "testId": 97,
     "memberof": "spec/predicates/isArray.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isArray.spec.ts~describe94",
+    "longname": "spec/predicates/isArray.spec.ts~describe97",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 313,
+    "__docId__": 321,
     "kind": "test",
-    "name": "describe95",
-    "testId": 95,
-    "memberof": "spec/predicates/isArray.spec.ts~describe94",
+    "name": "describe98",
+    "testId": 98,
+    "memberof": "spec/predicates/isArray.spec.ts~describe97",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isArray.spec.ts~describe94.describe95",
+    "longname": "spec/predicates/isArray.spec.ts~describe97.describe98",
     "access": null,
     "description": "::isArray",
     "lineNumber": 7,
@@ -5746,20 +5903,20 @@
     ]
   },
   {
-    "__docId__": 314,
+    "__docId__": 322,
     "kind": "test",
-    "name": "it96",
-    "testId": 96,
-    "memberof": "spec/predicates/isArray.spec.ts~describe94.describe95",
+    "name": "it99",
+    "testId": 99,
+    "memberof": "spec/predicates/isArray.spec.ts~describe97.describe98",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isArray.spec.ts~describe94.describe95.it96",
+    "longname": "spec/predicates/isArray.spec.ts~describe97.describe98.it99",
     "access": null,
     "description": "ensures that the argument is an array",
     "lineNumber": 21
   },
   {
-    "__docId__": 315,
+    "__docId__": 323,
     "kind": "testFile",
     "name": "spec/predicates/isBoolean.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isBoolean, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isBoolean} */\n    describe('::isBoolean', () => {\n\n        class MarketingOptIn extends TinyType {\n            constructor(public readonly value: boolean) {\n                super();\n\n                ensure('MarketingOptIn', value, isBoolean());\n            }\n        }\n\n        it('ensures that the argument is a boolean value', () => {\n            expect(() => new MarketingOptIn(false)).to.not.throw;            // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            'string',\n            5,\n        ]).\n        it('complains if the value is not a boolean', (value: any) => {\n            expect(() => new MarketingOptIn(value)).to.throw(`MarketingOptIn should be a boolean value`);\n        });\n    });\n});\n",
@@ -5770,27 +5927,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 316,
+    "__docId__": 324,
     "kind": "test",
-    "name": "describe97",
-    "testId": 97,
+    "name": "describe100",
+    "testId": 100,
     "memberof": "spec/predicates/isBoolean.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isBoolean.spec.ts~describe97",
+    "longname": "spec/predicates/isBoolean.spec.ts~describe100",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 317,
+    "__docId__": 325,
     "kind": "test",
-    "name": "describe98",
-    "testId": 98,
-    "memberof": "spec/predicates/isBoolean.spec.ts~describe97",
+    "name": "describe101",
+    "testId": 101,
+    "memberof": "spec/predicates/isBoolean.spec.ts~describe100",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isBoolean.spec.ts~describe97.describe98",
+    "longname": "spec/predicates/isBoolean.spec.ts~describe100.describe101",
     "access": null,
     "description": "::isBoolean",
     "lineNumber": 7,
@@ -5799,20 +5956,20 @@
     ]
   },
   {
-    "__docId__": 318,
+    "__docId__": 326,
     "kind": "test",
-    "name": "it99",
-    "testId": 99,
-    "memberof": "spec/predicates/isBoolean.spec.ts~describe97.describe98",
+    "name": "it102",
+    "testId": 102,
+    "memberof": "spec/predicates/isBoolean.spec.ts~describe100.describe101",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isBoolean.spec.ts~describe97.describe98.it99",
+    "longname": "spec/predicates/isBoolean.spec.ts~describe100.describe101.it102",
     "access": null,
     "description": "ensures that the argument is a boolean value",
     "lineNumber": 21
   },
   {
-    "__docId__": 319,
+    "__docId__": 327,
     "kind": "testFile",
     "name": "spec/predicates/isDefined.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isDefined, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isDefined} */\n    describe('::isDefined', () => {\n        class UserName extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n\n                ensure('UserName', value, isDefined());\n            }\n        }\n\n        it('ensures that the value is defined', () => {\n            expect(() => new UserName('Jan')).to.not.throw;                  // tslint:disable-line:no-unused-expression\n        });\n\n        given<any>([\n            'Jan',\n            '',\n            true,\n            false,\n        ]).\n        it('works for any defined value, even the \"falsy\" ones', (value: any) => {\n            expect(() => new UserName(value)).to.not.throw;                  // tslint:disable-line:no-unused-expression\n        });\n    });\n});\n",
@@ -5823,27 +5980,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 320,
+    "__docId__": 328,
     "kind": "test",
-    "name": "describe100",
-    "testId": 100,
+    "name": "describe103",
+    "testId": 103,
     "memberof": "spec/predicates/isDefined.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isDefined.spec.ts~describe100",
+    "longname": "spec/predicates/isDefined.spec.ts~describe103",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 321,
+    "__docId__": 329,
     "kind": "test",
-    "name": "describe101",
-    "testId": 101,
-    "memberof": "spec/predicates/isDefined.spec.ts~describe100",
+    "name": "describe104",
+    "testId": 104,
+    "memberof": "spec/predicates/isDefined.spec.ts~describe103",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isDefined.spec.ts~describe100.describe101",
+    "longname": "spec/predicates/isDefined.spec.ts~describe103.describe104",
     "access": null,
     "description": "::isDefined",
     "lineNumber": 7,
@@ -5852,20 +6009,20 @@
     ]
   },
   {
-    "__docId__": 322,
+    "__docId__": 330,
     "kind": "test",
-    "name": "it102",
-    "testId": 102,
-    "memberof": "spec/predicates/isDefined.spec.ts~describe100.describe101",
+    "name": "it105",
+    "testId": 105,
+    "memberof": "spec/predicates/isDefined.spec.ts~describe103.describe104",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isDefined.spec.ts~describe100.describe101.it102",
+    "longname": "spec/predicates/isDefined.spec.ts~describe103.describe104.it105",
     "access": null,
     "description": "ensures that the value is defined",
     "lineNumber": 21
   },
   {
-    "__docId__": 323,
+    "__docId__": 331,
     "kind": "testFile",
     "name": "spec/predicates/isEqualTo.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isEqualTo, TinyTypeOf } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isEqualTo} */\n    describe('::isEqualTo', () => {\n\n        /** @test {isEqualTo} */\n        describe('when working with Tiny Types', () => {\n\n            class AccountId         extends TinyTypeOf<number>() {}\n            class Command           extends TinyTypeOf<AccountId>() {}\n            class UpgradeAccount    extends Command {}\n\n            class AccountsService {\n                constructor(public readonly loggedInUser: AccountId) {}\n                handle(command: Command) {\n                    ensure('AccountId', command.value, isEqualTo(this.loggedInUser));\n                }\n            }\n\n            it('ensures that objects are identical by value', () => {\n                const loggedInUser      = new AccountId(42);\n                const accounts          = new AccountsService(loggedInUser);\n\n                const upgradeOwnAccount = new UpgradeAccount(loggedInUser);\n\n                // tslint:disable-next-line:no-unused-expression\n                expect(() => accounts.handle(upgradeOwnAccount)).to.not.throw;\n            });\n\n            it('complains if the objects are not identical by value', () => {\n                const hacker            = new AccountId(666);\n                const anotherUser       = new AccountId(42);\n                const accounts          = new AccountsService(hacker);\n\n                const upgradeAnotherAccount = new UpgradeAccount(anotherUser);\n\n                expect(() => accounts.handle(upgradeAnotherAccount))\n                    .to.throw('AccountId should be equal to AccountId(value=666)');\n            });\n        });\n\n        /** @test {isEqualTo} */\n        describe('when working with primitive types', () => {\n\n            given([\n                null,\n                undefined,\n                Infinity,\n                1,\n                false,\n                'string',\n                {},\n                [],\n            ]).\n            it('ensures they are equal', (value: any) => {\n                // tslint:disable-next-line:no-unused-expression\n                expect(() => ensure('Val', value, isEqualTo(value))).to.not.throw;\n            });\n\n            given([\n                1,\n                false,\n                'string',\n                {},\n                [],\n            ]).\n            it('complains if they are not equal', (value: any) => {\n                expect(() => ensure('Value', value, isEqualTo('expected value')))\n                    .to.throw('Value should be equal to expected value');\n            });\n        });\n    });\n});\n",
@@ -5876,27 +6033,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 324,
+    "__docId__": 332,
     "kind": "test",
-    "name": "describe103",
-    "testId": 103,
+    "name": "describe106",
+    "testId": 106,
     "memberof": "spec/predicates/isEqualTo.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isEqualTo.spec.ts~describe103",
+    "longname": "spec/predicates/isEqualTo.spec.ts~describe106",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 325,
+    "__docId__": 333,
     "kind": "test",
-    "name": "describe104",
-    "testId": 104,
-    "memberof": "spec/predicates/isEqualTo.spec.ts~describe103",
+    "name": "describe107",
+    "testId": 107,
+    "memberof": "spec/predicates/isEqualTo.spec.ts~describe106",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isEqualTo.spec.ts~describe103.describe104",
+    "longname": "spec/predicates/isEqualTo.spec.ts~describe106.describe107",
     "access": null,
     "description": "::isEqualTo",
     "lineNumber": 7,
@@ -5905,14 +6062,14 @@
     ]
   },
   {
-    "__docId__": 326,
+    "__docId__": 334,
     "kind": "test",
-    "name": "describe105",
-    "testId": 105,
-    "memberof": "spec/predicates/isEqualTo.spec.ts~describe103.describe104",
+    "name": "describe108",
+    "testId": 108,
+    "memberof": "spec/predicates/isEqualTo.spec.ts~describe106.describe107",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isEqualTo.spec.ts~describe103.describe104.describe105",
+    "longname": "spec/predicates/isEqualTo.spec.ts~describe106.describe107.describe108",
     "access": null,
     "description": "when working with Tiny Types",
     "lineNumber": 9,
@@ -5921,40 +6078,40 @@
     ]
   },
   {
-    "__docId__": 327,
+    "__docId__": 335,
     "kind": "test",
-    "name": "it106",
-    "testId": 106,
-    "memberof": "spec/predicates/isEqualTo.spec.ts~describe103.describe104.describe105",
+    "name": "it109",
+    "testId": 109,
+    "memberof": "spec/predicates/isEqualTo.spec.ts~describe106.describe107.describe108",
     "testDepth": 3,
     "static": true,
-    "longname": "spec/predicates/isEqualTo.spec.ts~describe103.describe104.describe105.it106",
+    "longname": "spec/predicates/isEqualTo.spec.ts~describe106.describe107.describe108.it109",
     "access": null,
     "description": "ensures that objects are identical by value",
     "lineNumber": 56
   },
   {
-    "__docId__": 328,
+    "__docId__": 336,
     "kind": "test",
-    "name": "it107",
-    "testId": 107,
-    "memberof": "spec/predicates/isEqualTo.spec.ts~describe103.describe104.describe105",
+    "name": "it110",
+    "testId": 110,
+    "memberof": "spec/predicates/isEqualTo.spec.ts~describe106.describe107.describe108",
     "testDepth": 3,
     "static": true,
-    "longname": "spec/predicates/isEqualTo.spec.ts~describe103.describe104.describe105.it107",
+    "longname": "spec/predicates/isEqualTo.spec.ts~describe106.describe107.describe108.it110",
     "access": null,
     "description": "complains if the objects are not identical by value",
     "lineNumber": 63
   },
   {
-    "__docId__": 329,
+    "__docId__": 337,
     "kind": "test",
-    "name": "describe108",
-    "testId": 108,
-    "memberof": "spec/predicates/isEqualTo.spec.ts~describe103.describe104",
+    "name": "describe111",
+    "testId": 111,
+    "memberof": "spec/predicates/isEqualTo.spec.ts~describe106.describe107",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isEqualTo.spec.ts~describe103.describe104.describe108",
+    "longname": "spec/predicates/isEqualTo.spec.ts~describe106.describe107.describe111",
     "access": null,
     "description": "when working with primitive types",
     "lineNumber": 73,
@@ -5963,7 +6120,7 @@
     ]
   },
   {
-    "__docId__": 330,
+    "__docId__": 338,
     "kind": "testFile",
     "name": "spec/predicates/isGreaterThan.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isGreaterThan, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isGreaterThan} */\n    describe('::isGreaterThan', () => {\n        class InvestmentLength extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n\n                ensure('InvestmentLength', value, isGreaterThan(0));\n            }\n        }\n\n        it('ensures that the argument is greater than a specified number', () => {\n            expect(() => new InvestmentLength(5)).to.not.throw;              // tslint:disable-line:no-unused-expression\n        });\n\n        it('complains if the argument is more than a specified number', () => {\n            expect(() => new InvestmentLength(-1)).to.throw(`InvestmentLength should be greater than 0`);\n        });\n\n        given([\n            0,\n            -1,\n            undefined,\n            null,\n            {},\n            'string',\n        ]).\n        it('complains if the value does not meet the predicate', (value: any) => {\n            expect(() => new InvestmentLength(value)).to.throw(`InvestmentLength should be greater than 0`);\n        });\n    });\n});\n",
@@ -5974,27 +6131,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 331,
+    "__docId__": 339,
     "kind": "test",
-    "name": "describe109",
-    "testId": 109,
+    "name": "describe112",
+    "testId": 112,
     "memberof": "spec/predicates/isGreaterThan.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isGreaterThan.spec.ts~describe109",
+    "longname": "spec/predicates/isGreaterThan.spec.ts~describe112",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 332,
+    "__docId__": 340,
     "kind": "test",
-    "name": "describe110",
-    "testId": 110,
-    "memberof": "spec/predicates/isGreaterThan.spec.ts~describe109",
+    "name": "describe113",
+    "testId": 113,
+    "memberof": "spec/predicates/isGreaterThan.spec.ts~describe112",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isGreaterThan.spec.ts~describe109.describe110",
+    "longname": "spec/predicates/isGreaterThan.spec.ts~describe112.describe113",
     "access": null,
     "description": "::isGreaterThan",
     "lineNumber": 7,
@@ -6003,33 +6160,33 @@
     ]
   },
   {
-    "__docId__": 333,
+    "__docId__": 341,
     "kind": "test",
-    "name": "it111",
-    "testId": 111,
-    "memberof": "spec/predicates/isGreaterThan.spec.ts~describe109.describe110",
+    "name": "it114",
+    "testId": 114,
+    "memberof": "spec/predicates/isGreaterThan.spec.ts~describe112.describe113",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isGreaterThan.spec.ts~describe109.describe110.it111",
+    "longname": "spec/predicates/isGreaterThan.spec.ts~describe112.describe113.it114",
     "access": null,
     "description": "ensures that the argument is greater than a specified number",
     "lineNumber": 21
   },
   {
-    "__docId__": 334,
+    "__docId__": 342,
     "kind": "test",
-    "name": "it112",
-    "testId": 112,
-    "memberof": "spec/predicates/isGreaterThan.spec.ts~describe109.describe110",
+    "name": "it115",
+    "testId": 115,
+    "memberof": "spec/predicates/isGreaterThan.spec.ts~describe112.describe113",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isGreaterThan.spec.ts~describe109.describe110.it112",
+    "longname": "spec/predicates/isGreaterThan.spec.ts~describe112.describe113.it115",
     "access": null,
     "description": "complains if the argument is more than a specified number",
     "lineNumber": 24
   },
   {
-    "__docId__": 335,
+    "__docId__": 343,
     "kind": "testFile",
     "name": "spec/predicates/isGreaterThanOrEqualTo.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isGreaterThanOrEqualTo, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isGreaterThanOrEqualTo} */\n    describe('::isGreaterThanOrEqualTo', () => {\n        class InvestmentLength extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n\n                ensure('InvestmentLength', value, isGreaterThanOrEqualTo(0));\n            }\n        }\n\n        given(0, 1).\n        it('ensures that the argument is greater than or equal to a specified number', (value: number) => {\n            expect(() => new InvestmentLength(value)).to.not.throw;          // tslint:disable-line:no-unused-expression\n        });\n\n        it('complains if the argument is less than the lower bound', () => {\n            expect(() => new InvestmentLength(-1))\n                .to.throw(`InvestmentLength should either be equal to 0 or be greater than 0`);\n        });\n\n        given([\n            -1,\n            undefined,\n            null,\n            {},\n            'string',\n        ]).\n        it('complains if the value does not meet the predicate', (value: any) => {\n            expect(() => new InvestmentLength(value))\n                .to.throw(`InvestmentLength should either be equal to 0 or be greater than 0`);\n        });\n    });\n});\n",
@@ -6040,27 +6197,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 336,
+    "__docId__": 344,
     "kind": "test",
-    "name": "describe113",
-    "testId": 113,
+    "name": "describe116",
+    "testId": 116,
     "memberof": "spec/predicates/isGreaterThanOrEqualTo.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe113",
+    "longname": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe116",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 337,
+    "__docId__": 345,
     "kind": "test",
-    "name": "describe114",
-    "testId": 114,
-    "memberof": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe113",
+    "name": "describe117",
+    "testId": 117,
+    "memberof": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe116",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe113.describe114",
+    "longname": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe116.describe117",
     "access": null,
     "description": "::isGreaterThanOrEqualTo",
     "lineNumber": 7,
@@ -6069,20 +6226,20 @@
     ]
   },
   {
-    "__docId__": 338,
+    "__docId__": 346,
     "kind": "test",
-    "name": "it115",
-    "testId": 115,
-    "memberof": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe113.describe114",
+    "name": "it118",
+    "testId": 118,
+    "memberof": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe116.describe117",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe113.describe114.it115",
+    "longname": "spec/predicates/isGreaterThanOrEqualTo.spec.ts~describe116.describe117.it118",
     "access": null,
     "description": "complains if the argument is less than the lower bound",
     "lineNumber": 25
   },
   {
-    "__docId__": 339,
+    "__docId__": 347,
     "kind": "testFile",
     "name": "spec/predicates/isInRange.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isInRange, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isInRange} */\n    describe('::isInRange', () => {\n\n        class InvestmentLength extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n\n                ensure('InvestmentLength', value, isInRange(1, 5));\n            }\n        }\n\n        given(1, 2, 3, 4, 5).\n        it('ensures that the value is within the range specified', (value: number) => {\n            expect(() => new InvestmentLength(value)).to.not.throw;          // tslint:disable-line:no-unused-expression\n        });\n\n        it('complains if the value is lower than the lower bound', () => {\n            expect(() => new InvestmentLength(0))\n                .to.throw(`InvestmentLength should either be equal to 1 or be greater than 1`);\n        });\n\n        it('complains if the value is greater than the upper bound', () => {\n            expect(() => new InvestmentLength(6))\n                .to.throw(`InvestmentLength should either be less than 5 or be equal to 5`);\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            false,\n        ]).\n        it('complains if the value is of a wrong type', (value: any) => {\n            expect(() => new InvestmentLength(value))\n                .to.throw(`InvestmentLength should either be equal to 1 or be greater than 1`);\n        });\n    });\n});\n",
@@ -6093,27 +6250,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 340,
+    "__docId__": 348,
     "kind": "test",
-    "name": "describe116",
-    "testId": 116,
+    "name": "describe119",
+    "testId": 119,
     "memberof": "spec/predicates/isInRange.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isInRange.spec.ts~describe116",
+    "longname": "spec/predicates/isInRange.spec.ts~describe119",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 341,
+    "__docId__": 349,
     "kind": "test",
-    "name": "describe117",
-    "testId": 117,
-    "memberof": "spec/predicates/isInRange.spec.ts~describe116",
+    "name": "describe120",
+    "testId": 120,
+    "memberof": "spec/predicates/isInRange.spec.ts~describe119",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isInRange.spec.ts~describe116.describe117",
+    "longname": "spec/predicates/isInRange.spec.ts~describe119.describe120",
     "access": null,
     "description": "::isInRange",
     "lineNumber": 7,
@@ -6122,33 +6279,33 @@
     ]
   },
   {
-    "__docId__": 342,
+    "__docId__": 350,
     "kind": "test",
-    "name": "it118",
-    "testId": 118,
-    "memberof": "spec/predicates/isInRange.spec.ts~describe116.describe117",
+    "name": "it121",
+    "testId": 121,
+    "memberof": "spec/predicates/isInRange.spec.ts~describe119.describe120",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isInRange.spec.ts~describe116.describe117.it118",
+    "longname": "spec/predicates/isInRange.spec.ts~describe119.describe120.it121",
     "access": null,
     "description": "complains if the value is lower than the lower bound",
     "lineNumber": 25
   },
   {
-    "__docId__": 343,
+    "__docId__": 351,
     "kind": "test",
-    "name": "it119",
-    "testId": 119,
-    "memberof": "spec/predicates/isInRange.spec.ts~describe116.describe117",
+    "name": "it122",
+    "testId": 122,
+    "memberof": "spec/predicates/isInRange.spec.ts~describe119.describe120",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isInRange.spec.ts~describe116.describe117.it119",
+    "longname": "spec/predicates/isInRange.spec.ts~describe119.describe120.it122",
     "access": null,
     "description": "complains if the value is greater than the upper bound",
     "lineNumber": 29
   },
   {
-    "__docId__": 344,
+    "__docId__": 352,
     "kind": "testFile",
     "name": "spec/predicates/isInstanceOf.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isInstanceOf, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isInstanceOf} */\n    describe('::isInstanceOf', () => {\n        class Birthday extends TinyType {\n            constructor(public readonly value: Date) {\n                super();\n\n                ensure('Birthday', value, isInstanceOf(Date));\n            }\n        }\n\n        it('ensures that the argument is an instance of Date', () => {\n            expect(() => new Birthday(new Date())).to.not.throw;              // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            '2018-10-10',\n            undefined,\n            null,\n            {},\n            'string',\n        ]).\n        it('complains if the value does not meet the predicate', (value: any) => {\n            expect(() => new Birthday(value)).to.throw(`Birthday should be instance of Date`);\n        });\n    });\n});\n",
@@ -6159,27 +6316,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 345,
+    "__docId__": 353,
     "kind": "test",
-    "name": "describe120",
-    "testId": 120,
+    "name": "describe123",
+    "testId": 123,
     "memberof": "spec/predicates/isInstanceOf.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isInstanceOf.spec.ts~describe120",
+    "longname": "spec/predicates/isInstanceOf.spec.ts~describe123",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 346,
+    "__docId__": 354,
     "kind": "test",
-    "name": "describe121",
-    "testId": 121,
-    "memberof": "spec/predicates/isInstanceOf.spec.ts~describe120",
+    "name": "describe124",
+    "testId": 124,
+    "memberof": "spec/predicates/isInstanceOf.spec.ts~describe123",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isInstanceOf.spec.ts~describe120.describe121",
+    "longname": "spec/predicates/isInstanceOf.spec.ts~describe123.describe124",
     "access": null,
     "description": "::isInstanceOf",
     "lineNumber": 7,
@@ -6188,20 +6345,20 @@
     ]
   },
   {
-    "__docId__": 347,
+    "__docId__": 355,
     "kind": "test",
-    "name": "it122",
-    "testId": 122,
-    "memberof": "spec/predicates/isInstanceOf.spec.ts~describe120.describe121",
+    "name": "it125",
+    "testId": 125,
+    "memberof": "spec/predicates/isInstanceOf.spec.ts~describe123.describe124",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isInstanceOf.spec.ts~describe120.describe121.it122",
+    "longname": "spec/predicates/isInstanceOf.spec.ts~describe123.describe124.it125",
     "access": null,
     "description": "ensures that the argument is an instance of Date",
     "lineNumber": 21
   },
   {
-    "__docId__": 348,
+    "__docId__": 356,
     "kind": "testFile",
     "name": "spec/predicates/isInteger.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isInteger, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isInteger} */\n    describe('::isInteger', () => {\n        class AgeInYears extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n\n                ensure('AgeInYears', value, isInteger());\n            }\n        }\n\n        it('ensures that the argument in an integer', () => {\n            expect(() => new AgeInYears(42)).to.not.throw;                   // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            1 / 3,\n            0.42,\n            undefined,\n            null,\n            NaN,\n            Infinity,\n            {},\n            'string',\n        ]).\n        it('complains if the value is not an integer', (value: any) => {\n            expect(() => new AgeInYears(value)).to.throw(`AgeInYears should be an integer`);\n        });\n    });\n});\n",
@@ -6212,27 +6369,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 349,
+    "__docId__": 357,
     "kind": "test",
-    "name": "describe123",
-    "testId": 123,
+    "name": "describe126",
+    "testId": 126,
     "memberof": "spec/predicates/isInteger.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isInteger.spec.ts~describe123",
+    "longname": "spec/predicates/isInteger.spec.ts~describe126",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 350,
+    "__docId__": 358,
     "kind": "test",
-    "name": "describe124",
-    "testId": 124,
-    "memberof": "spec/predicates/isInteger.spec.ts~describe123",
+    "name": "describe127",
+    "testId": 127,
+    "memberof": "spec/predicates/isInteger.spec.ts~describe126",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isInteger.spec.ts~describe123.describe124",
+    "longname": "spec/predicates/isInteger.spec.ts~describe126.describe127",
     "access": null,
     "description": "::isInteger",
     "lineNumber": 7,
@@ -6241,20 +6398,20 @@
     ]
   },
   {
-    "__docId__": 351,
+    "__docId__": 359,
     "kind": "test",
-    "name": "it125",
-    "testId": 125,
-    "memberof": "spec/predicates/isInteger.spec.ts~describe123.describe124",
+    "name": "it128",
+    "testId": 128,
+    "memberof": "spec/predicates/isInteger.spec.ts~describe126.describe127",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isInteger.spec.ts~describe123.describe124.it125",
+    "longname": "spec/predicates/isInteger.spec.ts~describe126.describe127.it128",
     "access": null,
     "description": "ensures that the argument in an integer",
     "lineNumber": 21
   },
   {
-    "__docId__": 352,
+    "__docId__": 360,
     "kind": "testFile",
     "name": "spec/predicates/isLessThan.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isLessThan, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isLessThan} */\n    describe('::isLessThan', () => {\n        class InvestmentLength extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n\n                ensure('InvestmentLength', value, isLessThan(50));\n            }\n        }\n\n        it('ensures that the argument is less than a specified number', () => {\n            expect(() => new InvestmentLength(5)).to.not.throw;              // tslint:disable-line:no-unused-expression\n        });\n\n        it('complains if the argument is more than a specified number', () => {\n            expect(() => new InvestmentLength(55)).to.throw(`InvestmentLength should be less than 50`);\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            'string',\n        ]).\n        it('complains if the value is not an integer', (value: any) => {\n            expect(() => new InvestmentLength(value)).to.throw(`InvestmentLength should be less than 50`);\n        });\n    });\n});\n",
@@ -6265,27 +6422,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 353,
+    "__docId__": 361,
     "kind": "test",
-    "name": "describe126",
-    "testId": 126,
+    "name": "describe129",
+    "testId": 129,
     "memberof": "spec/predicates/isLessThan.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isLessThan.spec.ts~describe126",
+    "longname": "spec/predicates/isLessThan.spec.ts~describe129",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 354,
+    "__docId__": 362,
     "kind": "test",
-    "name": "describe127",
-    "testId": 127,
-    "memberof": "spec/predicates/isLessThan.spec.ts~describe126",
+    "name": "describe130",
+    "testId": 130,
+    "memberof": "spec/predicates/isLessThan.spec.ts~describe129",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isLessThan.spec.ts~describe126.describe127",
+    "longname": "spec/predicates/isLessThan.spec.ts~describe129.describe130",
     "access": null,
     "description": "::isLessThan",
     "lineNumber": 7,
@@ -6294,33 +6451,33 @@
     ]
   },
   {
-    "__docId__": 355,
+    "__docId__": 363,
     "kind": "test",
-    "name": "it128",
-    "testId": 128,
-    "memberof": "spec/predicates/isLessThan.spec.ts~describe126.describe127",
+    "name": "it131",
+    "testId": 131,
+    "memberof": "spec/predicates/isLessThan.spec.ts~describe129.describe130",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isLessThan.spec.ts~describe126.describe127.it128",
+    "longname": "spec/predicates/isLessThan.spec.ts~describe129.describe130.it131",
     "access": null,
     "description": "ensures that the argument is less than a specified number",
     "lineNumber": 21
   },
   {
-    "__docId__": 356,
+    "__docId__": 364,
     "kind": "test",
-    "name": "it129",
-    "testId": 129,
-    "memberof": "spec/predicates/isLessThan.spec.ts~describe126.describe127",
+    "name": "it132",
+    "testId": 132,
+    "memberof": "spec/predicates/isLessThan.spec.ts~describe129.describe130",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isLessThan.spec.ts~describe126.describe127.it129",
+    "longname": "spec/predicates/isLessThan.spec.ts~describe129.describe130.it132",
     "access": null,
     "description": "complains if the argument is more than a specified number",
     "lineNumber": 24
   },
   {
-    "__docId__": 357,
+    "__docId__": 365,
     "kind": "testFile",
     "name": "spec/predicates/isLessThanOrEqual.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isLessThanOrEqualTo, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isLessThanOrEqualTo} */\n    describe('::isLessThanOrEqualTo', () => {\n        class InvestmentLength extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n\n                ensure('InvestmentLength', value, isLessThanOrEqualTo(50));\n            }\n        }\n\n        given(49, 50).\n        it('ensures that the argument is less than or equal to the upper bound', (value: number) => {\n            expect(() => new InvestmentLength(value)).to.not.throw;          // tslint:disable-line:no-unused-expression\n        });\n\n        it('complains if the argument is greater than the upper bound', () => {\n            expect(() => new InvestmentLength(55))\n                .to.throw(`InvestmentLength should either be less than 50 or be equal to 50`);\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            'string',\n        ]).\n        it('complains if the value is not an integer', (value: any) => {\n            expect(() => new InvestmentLength(value))\n                .to.throw(`InvestmentLength should either be less than 50 or be equal to 50`);\n        });\n    });\n});\n",
@@ -6331,27 +6488,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 358,
+    "__docId__": 366,
     "kind": "test",
-    "name": "describe130",
-    "testId": 130,
+    "name": "describe133",
+    "testId": 133,
     "memberof": "spec/predicates/isLessThanOrEqual.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isLessThanOrEqual.spec.ts~describe130",
+    "longname": "spec/predicates/isLessThanOrEqual.spec.ts~describe133",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 359,
+    "__docId__": 367,
     "kind": "test",
-    "name": "describe131",
-    "testId": 131,
-    "memberof": "spec/predicates/isLessThanOrEqual.spec.ts~describe130",
+    "name": "describe134",
+    "testId": 134,
+    "memberof": "spec/predicates/isLessThanOrEqual.spec.ts~describe133",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isLessThanOrEqual.spec.ts~describe130.describe131",
+    "longname": "spec/predicates/isLessThanOrEqual.spec.ts~describe133.describe134",
     "access": null,
     "description": "::isLessThanOrEqualTo",
     "lineNumber": 7,
@@ -6360,20 +6517,20 @@
     ]
   },
   {
-    "__docId__": 360,
+    "__docId__": 368,
     "kind": "test",
-    "name": "it132",
-    "testId": 132,
-    "memberof": "spec/predicates/isLessThanOrEqual.spec.ts~describe130.describe131",
+    "name": "it135",
+    "testId": 135,
+    "memberof": "spec/predicates/isLessThanOrEqual.spec.ts~describe133.describe134",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isLessThanOrEqual.spec.ts~describe130.describe131.it132",
+    "longname": "spec/predicates/isLessThanOrEqual.spec.ts~describe133.describe134.it135",
     "access": null,
     "description": "complains if the argument is greater than the upper bound",
     "lineNumber": 25
   },
   {
-    "__docId__": 361,
+    "__docId__": 369,
     "kind": "testFile",
     "name": "spec/predicates/isNumber.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isNumber, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isNumber} */\n    describe('::isNumber', () => {\n        class Percentage extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n\n                ensure('Percentage', value, isNumber());\n            }\n        }\n\n        it('ensures that the argument in a number', () => {\n            expect(() => new Percentage(42)).to.not.throw;                   // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            1 / 3,\n            0.42,\n            0o3,\n            0xB4D455,\n            NaN,\n            Infinity,\n            -Infinity,\n        ]).\n        it('works for any type of number', (value: any) => {\n            expect(() => new Percentage(value)).to.not.throw;                // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            'string',\n        ]).\n        it('complains if the value is not a number', (value: any) => {\n            expect(() => new Percentage(value)).to.throw(`Percentage should be a number`);\n        });\n    });\n});\n",
@@ -6384,27 +6541,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 362,
+    "__docId__": 370,
     "kind": "test",
-    "name": "describe133",
-    "testId": 133,
+    "name": "describe136",
+    "testId": 136,
     "memberof": "spec/predicates/isNumber.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isNumber.spec.ts~describe133",
+    "longname": "spec/predicates/isNumber.spec.ts~describe136",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 363,
+    "__docId__": 371,
     "kind": "test",
-    "name": "describe134",
-    "testId": 134,
-    "memberof": "spec/predicates/isNumber.spec.ts~describe133",
+    "name": "describe137",
+    "testId": 137,
+    "memberof": "spec/predicates/isNumber.spec.ts~describe136",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isNumber.spec.ts~describe133.describe134",
+    "longname": "spec/predicates/isNumber.spec.ts~describe136.describe137",
     "access": null,
     "description": "::isNumber",
     "lineNumber": 7,
@@ -6413,20 +6570,20 @@
     ]
   },
   {
-    "__docId__": 364,
+    "__docId__": 372,
     "kind": "test",
-    "name": "it135",
-    "testId": 135,
-    "memberof": "spec/predicates/isNumber.spec.ts~describe133.describe134",
+    "name": "it138",
+    "testId": 138,
+    "memberof": "spec/predicates/isNumber.spec.ts~describe136.describe137",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isNumber.spec.ts~describe133.describe134.it135",
+    "longname": "spec/predicates/isNumber.spec.ts~describe136.describe137.it138",
     "access": null,
     "description": "ensures that the argument in a number",
     "lineNumber": 21
   },
   {
-    "__docId__": 365,
+    "__docId__": 373,
     "kind": "testFile",
     "name": "spec/predicates/isOneOf.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isOneOf, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isOneOf} */\n    describe('::isOneOf', () => {\n\n        class StreetLight extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n\n                ensure('StreetLight', value, isOneOf('red', 'yellow', 'green'));\n            }\n        }\n\n        given('red', 'yellow', 'green').\n        it('ensures that the value is equal to one of the allowed values', (value: string) => {\n            expect(() => new StreetLight(value)).to.not.throw;               // tslint:disable-line:no-unused-expression\n        });\n\n        it('complains if the value not one the allowed ones', () => {\n            expect(() => new StreetLight('green-ish'))\n                .to.throw(`StreetLight should either be equal to red, be equal to yellow or be equal to green`);\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            false,\n        ]).\n        it('complains if the value is of a wrong type', (value: any) => {\n            expect(() => new StreetLight(value))\n                .to.throw(`StreetLight should either be equal to red, be equal to yellow or be equal to green`);\n        });\n    });\n});\n",
@@ -6437,27 +6594,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 366,
+    "__docId__": 374,
     "kind": "test",
-    "name": "describe136",
-    "testId": 136,
+    "name": "describe139",
+    "testId": 139,
     "memberof": "spec/predicates/isOneOf.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isOneOf.spec.ts~describe136",
+    "longname": "spec/predicates/isOneOf.spec.ts~describe139",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 367,
+    "__docId__": 375,
     "kind": "test",
-    "name": "describe137",
-    "testId": 137,
-    "memberof": "spec/predicates/isOneOf.spec.ts~describe136",
+    "name": "describe140",
+    "testId": 140,
+    "memberof": "spec/predicates/isOneOf.spec.ts~describe139",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isOneOf.spec.ts~describe136.describe137",
+    "longname": "spec/predicates/isOneOf.spec.ts~describe139.describe140",
     "access": null,
     "description": "::isOneOf",
     "lineNumber": 7,
@@ -6466,20 +6623,20 @@
     ]
   },
   {
-    "__docId__": 368,
+    "__docId__": 376,
     "kind": "test",
-    "name": "it138",
-    "testId": 138,
-    "memberof": "spec/predicates/isOneOf.spec.ts~describe136.describe137",
+    "name": "it141",
+    "testId": 141,
+    "memberof": "spec/predicates/isOneOf.spec.ts~describe139.describe140",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isOneOf.spec.ts~describe136.describe137.it138",
+    "longname": "spec/predicates/isOneOf.spec.ts~describe139.describe140.it141",
     "access": null,
     "description": "complains if the value not one the allowed ones",
     "lineNumber": 25
   },
   {
-    "__docId__": 369,
+    "__docId__": 377,
     "kind": "testFile",
     "name": "spec/predicates/isString.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isString, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {isString} */\n    describe('::isString', () => {\n        class FirstName extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n\n                ensure('FirstName', value, isString());\n            }\n        }\n\n        it('ensures that the argument in a string', () => {\n            expect(() => new FirstName('Jan')).to.not.throw;                 // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            [],\n            42,\n        ]).\n        it('complains if the value is not a string', (value: any) => {\n            expect(() => new FirstName(value)).to.throw(`FirstName should be a string`);\n        });\n    });\n});\n",
@@ -6490,27 +6647,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 370,
+    "__docId__": 378,
     "kind": "test",
-    "name": "describe139",
-    "testId": 139,
+    "name": "describe142",
+    "testId": 142,
     "memberof": "spec/predicates/isString.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/isString.spec.ts~describe139",
+    "longname": "spec/predicates/isString.spec.ts~describe142",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 371,
+    "__docId__": 379,
     "kind": "test",
-    "name": "describe140",
-    "testId": 140,
-    "memberof": "spec/predicates/isString.spec.ts~describe139",
+    "name": "describe143",
+    "testId": 143,
+    "memberof": "spec/predicates/isString.spec.ts~describe142",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/isString.spec.ts~describe139.describe140",
+    "longname": "spec/predicates/isString.spec.ts~describe142.describe143",
     "access": null,
     "description": "::isString",
     "lineNumber": 7,
@@ -6519,20 +6676,20 @@
     ]
   },
   {
-    "__docId__": 372,
+    "__docId__": 380,
     "kind": "test",
-    "name": "it141",
-    "testId": 141,
-    "memberof": "spec/predicates/isString.spec.ts~describe139.describe140",
+    "name": "it144",
+    "testId": 144,
+    "memberof": "spec/predicates/isString.spec.ts~describe142.describe143",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/isString.spec.ts~describe139.describe140.it141",
+    "longname": "spec/predicates/isString.spec.ts~describe142.describe143.it144",
     "access": null,
     "description": "ensures that the argument in a string",
     "lineNumber": 21
   },
   {
-    "__docId__": 373,
+    "__docId__": 381,
     "kind": "testFile",
     "name": "spec/predicates/matches.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, matches, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {matches} */\n    describe('::matches', () => {\n\n        class CompanyEmailAddress extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n\n                ensure('CompanyEmailAddress', value, matches(/[a-z]+\\.[a-z]@example\\.org/));\n            }\n        }\n\n        it('ensures that the argument matches a regular expression', () => {\n            expect(() => new CompanyEmailAddress('jan.molak@example.org')).to.not.throw; // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            'string',\n            5,\n        ]).\n        it('complains if the value does not match the regular expression', (value: any) => {\n            expect(() => new CompanyEmailAddress(value))\n                .to.throw(`CompanyEmailAddress should match pattern /[a-z]+\\\\.[a-z]@example\\\\.org/`);\n        });\n    });\n});\n",
@@ -6543,27 +6700,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 374,
+    "__docId__": 382,
     "kind": "test",
-    "name": "describe142",
-    "testId": 142,
+    "name": "describe145",
+    "testId": 145,
     "memberof": "spec/predicates/matches.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/matches.spec.ts~describe142",
+    "longname": "spec/predicates/matches.spec.ts~describe145",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 375,
+    "__docId__": 383,
     "kind": "test",
-    "name": "describe143",
-    "testId": 143,
-    "memberof": "spec/predicates/matches.spec.ts~describe142",
+    "name": "describe146",
+    "testId": 146,
+    "memberof": "spec/predicates/matches.spec.ts~describe145",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/matches.spec.ts~describe142.describe143",
+    "longname": "spec/predicates/matches.spec.ts~describe145.describe146",
     "access": null,
     "description": "::matches",
     "lineNumber": 7,
@@ -6572,20 +6729,20 @@
     ]
   },
   {
-    "__docId__": 376,
+    "__docId__": 384,
     "kind": "test",
-    "name": "it144",
-    "testId": 144,
-    "memberof": "spec/predicates/matches.spec.ts~describe142.describe143",
+    "name": "it147",
+    "testId": 147,
+    "memberof": "spec/predicates/matches.spec.ts~describe145.describe146",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/matches.spec.ts~describe142.describe143.it144",
+    "longname": "spec/predicates/matches.spec.ts~describe145.describe146.it147",
     "access": null,
     "description": "ensures that the argument matches a regular expression",
     "lineNumber": 21
   },
   {
-    "__docId__": 377,
+    "__docId__": 385,
     "kind": "testFile",
     "name": "spec/predicates/or.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isDefined, isEqualTo, isGreaterThan, isInteger, isLessThan, or, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {or} */\n    describe('::or', () => {\n\n        class Percentage extends TinyType {\n            constructor(public readonly value: number) {\n                super();\n                ensure('Percentage', value,\n                    isDefined(),\n                    isInteger(),\n                    or(isEqualTo(0), isGreaterThan(0)),\n                    or(isLessThan(100), isEqualTo(100)),\n                );\n            }\n        }\n\n        given(0, 1, 99, 100).\n        it('ensures that at least one of the `or` predicates is met', (value: number) => {\n            expect(() => new Percentage(value)).to.not.throw;                // tslint:disable-line:no-unused-expression\n        });\n\n        given(\n            [-1,  'Percentage should either be equal to 0 or be greater than 0'],\n            [101, 'Percentage should either be less than 100 or be equal to 100'],\n        ).\n        it('complains if at least one of the `or` predicates is not met', (value: number, errorMessage: string) => {\n            expect(() => new Percentage(value))\n                .to.throw(errorMessage);\n        });\n\n        it('complains if there are no predicates specified', () => {\n            expect(() => or()).to.throw(`Looks like you haven't specified any predicates to check the value against?`);\n        });\n\n        it('concatenates the error messages in a human-friendly way', () => {\n           expect(() => ensure('Project name', 'node.js',\n               or(isEqualTo('Serenity/JS'), isEqualTo('TinyTypes'), isEqualTo('Build Monitor')),\n           )).to.throw(\n               'Project name should either be equal to Serenity/JS, be equal to TinyTypes or be equal to Build Monitor',\n           );\n        });\n    });\n});\n",
@@ -6596,27 +6753,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 378,
+    "__docId__": 386,
     "kind": "test",
-    "name": "describe145",
-    "testId": 145,
+    "name": "describe148",
+    "testId": 148,
     "memberof": "spec/predicates/or.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/or.spec.ts~describe145",
+    "longname": "spec/predicates/or.spec.ts~describe148",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 379,
+    "__docId__": 387,
     "kind": "test",
-    "name": "describe146",
-    "testId": 146,
-    "memberof": "spec/predicates/or.spec.ts~describe145",
+    "name": "describe149",
+    "testId": 149,
+    "memberof": "spec/predicates/or.spec.ts~describe148",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/or.spec.ts~describe145.describe146",
+    "longname": "spec/predicates/or.spec.ts~describe148.describe149",
     "access": null,
     "description": "::or",
     "lineNumber": 7,
@@ -6625,33 +6782,33 @@
     ]
   },
   {
-    "__docId__": 380,
+    "__docId__": 388,
     "kind": "test",
-    "name": "it147",
-    "testId": 147,
-    "memberof": "spec/predicates/or.spec.ts~describe145.describe146",
+    "name": "it150",
+    "testId": 150,
+    "memberof": "spec/predicates/or.spec.ts~describe148.describe149",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/or.spec.ts~describe145.describe146.it147",
+    "longname": "spec/predicates/or.spec.ts~describe148.describe149.it150",
     "access": null,
     "description": "complains if there are no predicates specified",
     "lineNumber": 30
   },
   {
-    "__docId__": 381,
+    "__docId__": 389,
     "kind": "test",
-    "name": "it148",
-    "testId": 148,
-    "memberof": "spec/predicates/or.spec.ts~describe145.describe146",
+    "name": "it151",
+    "testId": 151,
+    "memberof": "spec/predicates/or.spec.ts~describe148.describe149",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/or.spec.ts~describe145.describe146.it148",
+    "longname": "spec/predicates/or.spec.ts~describe148.describe149.it151",
     "access": null,
     "description": "concatenates the error messages in a human-friendly way",
     "lineNumber": 33
   },
   {
-    "__docId__": 382,
+    "__docId__": 390,
     "kind": "testFile",
     "name": "spec/predicates/property.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, isDefined, isGreaterThanOrEqualTo, isString, property, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {property} */\n    describe('::property', () => {\n\n        /** @test {property} */\n        describe('shifts the focus from the value itself to its property', () => {\n\n            class Name extends TinyType {\n                constructor(public readonly value: string) {\n                    super();\n                    ensure('Name', value,\n                        isDefined(),\n                        property('length', isDefined(), isGreaterThanOrEqualTo(3)),\n                        isString(),\n                    );\n                }\n            }\n\n            /** @test {property} */\n            it('ensures that the property meets the predicates', () => {\n                expect(() => new Name('Jan')).to.not.throw;                  // tslint:disable-line:no-unused-expression\n            });\n\n            given(\n                undefined,\n                null,\n            ).\n            it('complains when the value is undefined', (value: any) => {\n                expect(() => new Name({ length: value } as any)).\n                    to.throw(`Name should have a property \"length\" that is defined`);\n            });\n\n            given<any, string>(\n                [undefined,             'Name should be defined'],\n                [{ length: undefined }, 'Name should have a property \"length\" that is defined'],\n                ['JM',                  'Name should have a property \"length\" that is either equal to 3 or is greater than 3'],\n                [['J', 'a', 'n'],       'Name should be a string'],\n            ).\n            it('can be composed with other predicates', (value: any, expectedError: string) => {\n                expect(() => new Name(value)).\n                    to.throw(expectedError);\n            });\n        });\n    });\n});\n",
@@ -6662,27 +6819,27 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 383,
+    "__docId__": 391,
     "kind": "test",
-    "name": "describe149",
-    "testId": 149,
+    "name": "describe152",
+    "testId": 152,
     "memberof": "spec/predicates/property.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/predicates/property.spec.ts~describe149",
+    "longname": "spec/predicates/property.spec.ts~describe152",
     "access": null,
     "description": "predicates",
     "lineNumber": 5
   },
   {
-    "__docId__": 384,
+    "__docId__": 392,
     "kind": "test",
-    "name": "describe150",
-    "testId": 150,
-    "memberof": "spec/predicates/property.spec.ts~describe149",
+    "name": "describe153",
+    "testId": 153,
+    "memberof": "spec/predicates/property.spec.ts~describe152",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/predicates/property.spec.ts~describe149.describe150",
+    "longname": "spec/predicates/property.spec.ts~describe152.describe153",
     "access": null,
     "description": "::property",
     "lineNumber": 7,
@@ -6691,14 +6848,14 @@
     ]
   },
   {
-    "__docId__": 385,
+    "__docId__": 393,
     "kind": "test",
-    "name": "describe151",
-    "testId": 151,
-    "memberof": "spec/predicates/property.spec.ts~describe149.describe150",
+    "name": "describe154",
+    "testId": 154,
+    "memberof": "spec/predicates/property.spec.ts~describe152.describe153",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/predicates/property.spec.ts~describe149.describe150.describe151",
+    "longname": "spec/predicates/property.spec.ts~describe152.describe153.describe154",
     "access": null,
     "description": "shifts the focus from the value itself to its property",
     "lineNumber": 9,
@@ -6707,14 +6864,14 @@
     ]
   },
   {
-    "__docId__": 386,
+    "__docId__": 394,
     "kind": "test",
-    "name": "it152",
-    "testId": 152,
-    "memberof": "spec/predicates/property.spec.ts~describe149.describe150.describe151",
+    "name": "it155",
+    "testId": 155,
+    "memberof": "spec/predicates/property.spec.ts~describe152.describe153.describe154",
     "testDepth": 3,
     "static": true,
-    "longname": "spec/predicates/property.spec.ts~describe149.describe150.describe151.it152",
+    "longname": "spec/predicates/property.spec.ts~describe152.describe153.describe154.it155",
     "access": null,
     "description": "ensures that the property meets the predicates",
     "lineNumber": 24,
@@ -6723,7 +6880,60 @@
     ]
   },
   {
-    "__docId__": 387,
+    "__docId__": 395,
+    "kind": "testFile",
+    "name": "spec/predicates/startsWith.spec.ts",
+    "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { ensure, startsWith, TinyType } from '../../src';\nimport { expect } from '../expect';\n\ndescribe('predicates', () => {\n\n    /** @test {startsWith} */\n    describe('::startsWith', () => {\n\n        class Username extends TinyType {\n            constructor(public readonly value: string) {\n                super();\n\n                ensure('Username', value, startsWith('usr'));\n            }\n        }\n\n        it('ensures that the argument starts with a given prefix', () => {\n            expect(() => new Username('usr123')).to.not.throw; // tslint:disable-line:no-unused-expression\n        });\n\n        given([\n            undefined,\n            null,\n            {},\n            'string',\n            5,\n        ]).\n        it('complains if the value does not start with the given prefix', (value: any) => {\n            expect(() => new Username(value))\n                .to.throw(`Username should start with 'usr'`);\n        });\n    });\n});\n",
+    "static": true,
+    "longname": "/home/travis/build/jan-molak/tiny-types/spec/predicates/startsWith.spec.ts",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 396,
+    "kind": "test",
+    "name": "describe156",
+    "testId": 156,
+    "memberof": "spec/predicates/startsWith.spec.ts",
+    "testDepth": 0,
+    "static": true,
+    "longname": "spec/predicates/startsWith.spec.ts~describe156",
+    "access": null,
+    "description": "predicates",
+    "lineNumber": 5
+  },
+  {
+    "__docId__": 397,
+    "kind": "test",
+    "name": "describe157",
+    "testId": 157,
+    "memberof": "spec/predicates/startsWith.spec.ts~describe156",
+    "testDepth": 1,
+    "static": true,
+    "longname": "spec/predicates/startsWith.spec.ts~describe156.describe157",
+    "access": null,
+    "description": "::startsWith",
+    "lineNumber": 7,
+    "testTargets": [
+      "startsWith"
+    ]
+  },
+  {
+    "__docId__": 398,
+    "kind": "test",
+    "name": "it158",
+    "testId": 158,
+    "memberof": "spec/predicates/startsWith.spec.ts~describe156.describe157",
+    "testDepth": 2,
+    "static": true,
+    "longname": "spec/predicates/startsWith.spec.ts~describe156.describe157.it158",
+    "access": null,
+    "description": "ensures that the argument starts with a given prefix",
+    "lineNumber": 21
+  },
+  {
+    "__docId__": 399,
     "kind": "testFile",
     "name": "spec/serialisation.spec.ts",
     "content": "import 'mocha';\nimport { given } from 'mocha-testdata';\n\nimport { JSONObject, Serialised, TinyType, TinyTypeOf } from '../src';\nimport { expect } from './expect';\n\ndescribe('Serialisation', () => {\n\n    describe('of single-value TinyTypes', () => {\n\n        class Amount extends TinyTypeOf<number>() {}\n        class Name extends TinyTypeOf<string>() {}\n        class Vote extends TinyTypeOf<boolean>() {}\n        class Maybe extends TinyType {\n            constructor(public readonly value: any) {\n                super();\n            }\n        }\n\n        given([\n            { obj: new Amount(0),        expectedType: 'number'    },\n            { obj: new Amount(10/3),     expectedType: 'number'    },\n            { obj: new Name('Jan'),      expectedType: 'string'    },\n            { obj: new Vote(true),       expectedType: 'boolean'   },\n            { obj: new Vote(false),      expectedType: 'boolean'   },\n            { obj: new Maybe(undefined), expectedType: 'undefined' },\n        ]).\n        it('preserves the type of the wrapped value', ({ obj, expectedType: expectedType }) => {\n            expect(obj.toJSON()).to.be.an(expectedType);\n        });\n    });\n\n    describe('of TinyTypes wrapping several primitive values', () => {\n\n        class Person extends TinyType {\n            public role: string = 'dev';\n\n            static fromJSON(o: JSONObject): Person {\n                return new Person(o.firstName as string, o.lastName as string, o.age as number);\n            }\n\n            constructor(public readonly firstName: string, public readonly lastName: string, public readonly age: number) {\n                super();\n            }\n\n            speak() {\n                return `Hi, I'm ${this.firstName} ${this.lastName}`;\n            }\n        }\n\n        it('uses only the significant fields and retains their type', () => {\n            const p = new Person('John', 'Smith', 42);\n            const serialised = p.toJSON() as JSONObject;\n\n            expect(Object.keys(serialised)).to.include.ordered.members(['age', 'firstName', 'lastName', 'role']);\n            expect(Object.keys(serialised)).to.not.include.members(['speak', 'toJSON', 'toString']);\n\n            expect(serialised.age).to.be.a('number');\n            expect(serialised.firstName).to.be.a('string');\n            expect(serialised.lastName).to.be.a('string');\n            expect(serialised.role).to.be.a('string');\n        });\n    });\n\n    describe('of nested Tiny Types', () => {\n        class FirstName extends TinyTypeOf<string>() {\n            static fromJSON = (v: string) => new FirstName(v);\n        }\n        class LastName  extends TinyTypeOf<string>() {\n            static fromJSON = (v: string) => new LastName(v);\n        }\n        class Age extends TinyTypeOf<number>() {\n            static fromJSON = (v: number) => new Age(v);\n        }\n\n        class AnotherPerson extends TinyType {\n            public role: string = 'dev';\n\n            static fromJSON(o: JSONObject): AnotherPerson {\n                return new AnotherPerson(\n                    FirstName.fromJSON(o.firstName as string),\n                    LastName.fromJSON(o.lastName as string),\n                    Age.fromJSON(o.age as number),\n                );\n            }\n\n            constructor(public readonly firstName: FirstName,\n                        public readonly lastName: LastName,\n                        public readonly age: Age,\n            ) {\n                super();\n            }\n\n            speak() {\n                return `Hi, I'm ${this.firstName} ${this.lastName}`;\n            }\n        }\n\n        it('uses only the significant fields and retains the type of their respective values', () => {\n            const p = new AnotherPerson(new FirstName('John'), new LastName('Smith'), new Age(42));\n            const serialised = p.toJSON() as JSONObject;\n\n            expect(Object.keys(serialised)).to.include.ordered.members(['age', 'firstName', 'lastName', 'role']);\n            expect(Object.keys(serialised)).to.not.include.members(['speak', 'toJSON', 'toString']);\n\n            expect(serialised.age).to.be.a('number');\n            expect(serialised.firstName).to.be.a('string');\n            expect(serialised.lastName).to.be.a('string');\n            expect(serialised.role).to.be.a('string');\n        });\n    });\n\n    it('works both ways', () => {\n        class EmployeeId extends TinyTypeOf<number>() {\n            static fromJSON = (id: number) => new EmployeeId(id);\n        }\n\n        class DepartmentId extends TinyTypeOf<string>() {\n            static fromJSON = (id: string) => new DepartmentId(id);\n        }\n\n        class Allocation extends TinyType {\n            static fromJSON = (o: JSONObject) => new Allocation(\n                EmployeeId.fromJSON(o.employeeId as number),\n                DepartmentId.fromJSON(o.departmentId as string),\n            )\n\n            constructor(public readonly employeeId: EmployeeId, public readonly departmentId: DepartmentId) {\n                super();\n            }\n        }\n\n        const allocation = new Allocation(new EmployeeId(1), new DepartmentId('engineering'));\n\n        const deserialised = Allocation.fromJSON({ departmentId: 'engineering', employeeId: 1 });\n\n        expect(deserialised.equals(allocation)).to.be.true;                 // tslint:disable-line:no-unused-expression\n    });\n});\n",
@@ -6734,92 +6944,92 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 388,
+    "__docId__": 400,
     "kind": "test",
-    "name": "describe153",
-    "testId": 153,
+    "name": "describe159",
+    "testId": 159,
     "memberof": "spec/serialisation.spec.ts",
     "testDepth": 0,
     "static": true,
-    "longname": "spec/serialisation.spec.ts~describe153",
+    "longname": "spec/serialisation.spec.ts~describe159",
     "access": null,
     "description": "Serialisation",
     "lineNumber": 5
   },
   {
-    "__docId__": 389,
+    "__docId__": 401,
     "kind": "test",
-    "name": "describe154",
-    "testId": 154,
-    "memberof": "spec/serialisation.spec.ts~describe153",
+    "name": "describe160",
+    "testId": 160,
+    "memberof": "spec/serialisation.spec.ts~describe159",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/serialisation.spec.ts~describe153.describe154",
+    "longname": "spec/serialisation.spec.ts~describe159.describe160",
     "access": null,
     "description": "of single-value TinyTypes",
     "lineNumber": 6
   },
   {
-    "__docId__": 390,
+    "__docId__": 402,
     "kind": "test",
-    "name": "describe155",
-    "testId": 155,
-    "memberof": "spec/serialisation.spec.ts~describe153",
+    "name": "describe161",
+    "testId": 161,
+    "memberof": "spec/serialisation.spec.ts~describe159",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/serialisation.spec.ts~describe153.describe155",
+    "longname": "spec/serialisation.spec.ts~describe159.describe161",
     "access": null,
     "description": "of TinyTypes wrapping several primitive values",
     "lineNumber": 55
   },
   {
-    "__docId__": 391,
+    "__docId__": 403,
     "kind": "test",
-    "name": "it156",
-    "testId": 156,
-    "memberof": "spec/serialisation.spec.ts~describe153.describe155",
+    "name": "it162",
+    "testId": 162,
+    "memberof": "spec/serialisation.spec.ts~describe159.describe161",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/serialisation.spec.ts~describe153.describe155.it156",
+    "longname": "spec/serialisation.spec.ts~describe159.describe161.it162",
     "access": null,
     "description": "uses only the significant fields and retains their type",
     "lineNumber": 101
   },
   {
-    "__docId__": 392,
+    "__docId__": 404,
     "kind": "test",
-    "name": "describe157",
-    "testId": 157,
-    "memberof": "spec/serialisation.spec.ts~describe153",
+    "name": "describe163",
+    "testId": 163,
+    "memberof": "spec/serialisation.spec.ts~describe159",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/serialisation.spec.ts~describe153.describe157",
+    "longname": "spec/serialisation.spec.ts~describe159.describe163",
     "access": null,
     "description": "of nested Tiny Types",
     "lineNumber": 112
   },
   {
-    "__docId__": 393,
+    "__docId__": 405,
     "kind": "test",
-    "name": "it158",
-    "testId": 158,
-    "memberof": "spec/serialisation.spec.ts~describe153.describe157",
+    "name": "it164",
+    "testId": 164,
+    "memberof": "spec/serialisation.spec.ts~describe159.describe163",
     "testDepth": 2,
     "static": true,
-    "longname": "spec/serialisation.spec.ts~describe153.describe157.it158",
+    "longname": "spec/serialisation.spec.ts~describe159.describe163.it164",
     "access": null,
     "description": "uses only the significant fields and retains the type of their respective values",
     "lineNumber": 203
   },
   {
-    "__docId__": 394,
+    "__docId__": 406,
     "kind": "test",
-    "name": "it159",
-    "testId": 159,
-    "memberof": "spec/serialisation.spec.ts~describe153",
+    "name": "it165",
+    "testId": 165,
+    "memberof": "spec/serialisation.spec.ts~describe159",
     "testDepth": 1,
     "static": true,
-    "longname": "spec/serialisation.spec.ts~describe153.it159",
+    "longname": "spec/serialisation.spec.ts~describe159.it165",
     "access": null,
     "description": "works both ways",
     "lineNumber": 214

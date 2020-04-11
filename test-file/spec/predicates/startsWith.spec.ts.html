@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/predicates/or.ts | tiny-types</title>
+  <title data-ice="title">spec/predicates/startsWith.spec.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -66,62 +66,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/predicates/or.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isArray } from &apos;./isArray&apos;;
-import { isDefined } from &apos;./isDefined&apos;;
-import { isGreaterThan } from &apos;./isGreaterThan&apos;;
-import { Failure, Predicate, Result, Success } from &apos;./Predicate&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/startsWith.spec.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+import { given } from &apos;mocha-testdata&apos;;
 
-/**
- * @desc Ensures that the `value` meets at least one of the provided {@link Predicate}s.
- *
- * @example
- * import { ensure, isEqualTo, isGreaterThan, isLessThan, or } from &apos;tiny-type&apos;l
- *
- * class Percentage extends TinyType {
- *     constructor(public readonly value: number) {
- *         ensure(&apos;Percentage&apos;, value, or(isEqualTo(0), isGreaterThan(0)), or(isLessThan(100), isEqualTo(100));
- *     }
- * }
- *
- * @param {Predicate&lt;T&gt;} predicates
- * @returns {Predicate&lt;T&gt;}
- */
-export function or&lt;T&gt;(...predicates: Array&lt;Predicate&lt;T&gt;&gt;): Predicate&lt;T&gt; {
-    return new Or&lt;T&gt;(predicates);
-}
+import { ensure, startsWith, TinyType } from &apos;../../src&apos;;
+import { expect } from &apos;../expect&apos;;
 
-/** @access private */
-class Or&lt;T&gt; extends Predicate&lt;T&gt; {
+describe(&apos;predicates&apos;, () =&gt; {
 
-    constructor(private readonly predicates: Array&lt;Predicate&lt;T&gt;&gt;) {
-        super();
+    /** @test {startsWith} */
+    describe(&apos;::startsWith&apos;, () =&gt; {
 
-        if ([
-                _ =&gt; isDefined().check(_),
-                _ =&gt; isArray().check(_),
-                _ =&gt; isGreaterThan(0).check(_.length),
-            ].some(check =&gt; check(this.predicates) instanceof Failure)
-        ) {
-            throw new Error(`Looks like you haven\&apos;t specified any predicates to check the value against?`);
+        class Username extends TinyType {
+            constructor(public readonly value: string) {
+                super();
+
+                ensure(&apos;Username&apos;, value, startsWith(&apos;usr&apos;));
+            }
         }
-    }
 
-    /** @override */
-    check(value: T): Result&lt;T&gt; {
-        const results    = this.predicates.map(predicate =&gt; predicate.check(value));
-        const anySuccess = results.some(result =&gt; result instanceof Success);
+        it(&apos;ensures that the argument starts with a given prefix&apos;, () =&gt; {
+            expect(() =&gt; new Username(&apos;usr123&apos;)).to.not.throw; // tslint:disable-line:no-unused-expression
+        });
 
-        const failures = results.filter(_ =&gt; _ instanceof Failure)
-            .map((_: Result&lt;T&gt;) =&gt; (_ as Failure&lt;T&gt;).description);
-
-        const describe = (issues: string[]) =&gt; `either ${issues.join(&apos;, &apos;).replace(/,([^,]*)$/, &apos; or$1&apos;)}`;
-
-        return anySuccess
-            ? new Success(value)
-            : new Failure(value, describe(failures));
-    }
-}
+        given([
+            undefined,
+            null,
+            {},
+            &apos;string&apos;,
+            5,
+        ]).
+        it(&apos;complains if the value does not start with the given prefix&apos;, (value: any) =&gt; {
+            expect(() =&gt; new Username(value))
+                .to.throw(`Username should start with &apos;usr&apos;`);
+        });
+    });
+});
 </code></pre>
 
 </div>
