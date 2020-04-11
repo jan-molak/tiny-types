@@ -1,4 +1,5 @@
 export * from './and';
+export * from './endsWith';
 export * from './hasLengthOf';
 export * from './isArray';
 export * from './isBoolean';
@@ -18,3 +19,4 @@ export * from './matches';
 export * from './or';
 export * from './Predicate';
 export * from './property';
+export * from './startsWith';
