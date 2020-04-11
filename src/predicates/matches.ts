@@ -10,7 +10,7 @@ import { Predicate } from './Predicate';
  * class CompanyEmailAddress extends TinyType {
  *     constructor(public readonly value: string) {
  *         super();
- *         ensure('EmailAddress', value, matches(/[a-z]+\.[a-z]@example\.org/));
+ *         ensure('EmailAddress', value, matches(/[a-z]+\.[a-z]+@example\.org/));
  *     }
  * }
  *
