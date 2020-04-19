@@ -6,14 +6,13 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![npm](https://img.shields.io/npm/dm/tiny-types.svg)](https://npm-stat.com/charts.html?package=tiny-types)
 [![Known Vulnerabilities](https://snyk.io/test/github/jan-molak/tiny-types/badge.svg)](https://snyk.io/test/github/jan-molak/tiny-types)
+[![GitHub stars](https://img.shields.io/github/stars/jan-molak/tiny-types)](https://github.com/jan-molak/tiny-types)
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/JanMolak?style=social)](https://twitter.com/@JanMolak)
 
 TinyTypes is an [npm module](https://www.npmjs.com/package/tiny-types) that makes it easy for TypeScript and JavaScript
 projects to give domain meaning to primitive types. It also helps to avoid all sorts of bugs 
 and makes your code easier to refactor. [Learn more.](https://janmolak.com/tiny-types-in-typescript-4680177f026e)
-
-## API Docs
-
-API documentation is available at [jan-molak.github.io/tiny-types/](https://jan-molak.github.io/tiny-types/).
 
 ## Installation
 
@@ -22,6 +21,16 @@ To install the module from npm:
 ```
 npm install --save tiny-types
 ```
+
+## API Docs
+
+API documentation is available at [jan-molak.github.io/tiny-types/](https://jan-molak.github.io/tiny-types/).
+
+## For Enterprise
+
+<a href="https://tidelift.com/subscription/pkg/npm-tiny-types?utm_source=npm-tiny-types&utm_medium=referral&utm_campaign=enterprise&utm_term=repo" target="_blank"><img width="163" height="24" src="https://cdn2.hubspot.net/hubfs/4008838/website/logos/logos_for_download/Tidelift_primary-logo.png" class="tidelift-logo" /></a>
+
+TinyTypes are available as part of the [Tidelift Subscription](https://tidelift.com/subscription/pkg/npm-tiny-types?utm_source=npm-tiny-types&utm_medium=referral&utm_campaign=enterprise&utm_term=repo). The maintainers of TinyTypes and thousands of other packages are working with Tidelift to deliver one enterprise subscription that covers all of the open source you use. If you want the flexibility of open source and the confidence of commercial-grade software, this is for you. [Learn more.](https://tidelift.com/subscription/pkg/npm-tiny-types?utm_source=npm-tiny-types&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
 
 ## Defining Tiny Types
 
@@ -286,6 +295,8 @@ or submit a pull request.
 
 Have feedback? Let me know on twitter: [@JanMolak](https://twitter.com/JanMolak)
 
+[![Twitter Follow](https://img.shields.io/twitter/follow/JanMolak?style=social)](https://twitter.com/@JanMolak)
+
 ## Before you go
 
 ☕ If TinyTypes have made your life a little bit easier and saved at least $5 worth of your time,
@@ -294,7 +305,5 @@ please consider repaying the favour and [buying me a coffee](https://github.com/
 ## License
 
 TinyTypes library is licensed under the [Apache-2.0](https://github.com/jan-molak/tiny-types/blob/master/LICENSE.md) license.
-
-----
 
 _- Copyright &copy; 2018- [Jan Molak](https://janmolak.com)_
