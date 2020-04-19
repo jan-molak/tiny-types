@@ -1,0 +1,9 @@
+img.tidelift-logo {
+    margin-right:10px;
+    width:163px;
+    height:24px;
+}
+
+.github-markdown img {
+    box-shadow: none !important;
+}
