@@ -174,6 +174,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/predicates/isnotblank~isnotblank",
+    "function/index.html#static-function-isNotBlank",
+    "<span>isNotBlank</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isNotBlank</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/predicates/isnumber~isnumber",
     "function/index.html#static-function-isNumber",
     "<span>isNumber</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isNumber</span>",
@@ -763,6 +769,12 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/isNotBlank.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber5",
     "predicates",
     "test"
@@ -1062,6 +1074,18 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "isblank isblank,isblank",
+    "test-file/spec/predicates/isNotBlank.spec.ts.html#lineNumber7",
+    "predicates ::isNotBlank",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isNotBlank.spec.ts.html#lineNumber21",
+    "predicates ::isNotBlank ensures that the argument in not blank",
+    "test"
+  ],
+  [
     "isnumber src/predicates/isnumber.ts~isnumber,isnumber",
     "test-file/spec/predicates/isNumber.spec.ts.html#lineNumber7",
     "predicates ::isNumber",
@@ -1094,7 +1118,7 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/predicates/isString.spec.ts.html#lineNumber21",
-    "predicates ::isString ensures that the argument in a string",
+    "predicates ::isString ensures that the argument is a string",
     "test"
   ],
   [
@@ -1323,6 +1347,12 @@ window.esdocSearchIndex = [
     "spec/predicates/islessthanorequal.spec.ts",
     "test-file/spec/predicates/isLessThanOrEqual.spec.ts.html",
     "spec/predicates/isLessThanOrEqual.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isnotblank.spec.ts",
+    "test-file/spec/predicates/isNotBlank.spec.ts.html",
+    "spec/predicates/isNotBlank.spec.ts",
     "testFile"
   ],
   [
@@ -1929,6 +1959,12 @@ window.esdocSearchIndex = [
     "src/predicates/islessthanorequalto.ts",
     "file/src/predicates/isLessThanOrEqualTo.ts.html",
     "src/predicates/isLessThanOrEqualTo.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isnotblank.ts",
+    "file/src/predicates/isNotBlank.ts.html",
+    "src/predicates/isNotBlank.ts",
     "file"
   ],
   [
