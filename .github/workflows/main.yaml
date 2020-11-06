@@ -1,0 +1,50 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 10.x, 12.x, 14.x ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run clean
+      - run: npm run lint
+      - run: npm test
+        env:
+          CI: true
+
+  build:
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - run: npm ci
+      - run: npm run compile
+      - name: release
+        if: github.ref == 'refs/heads/master'
+        run: |
+          npm run doc
+          npm run publish:reports
+          npm run publish:site
+          npx semantic-release
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
