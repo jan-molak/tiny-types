@@ -26,6 +26,7 @@ jobs:
       - run: npm test
         env:
           CI: true
+
       - uses: actions/upload-artifact@v2
         if: matrix.node-version == '14.x'
         with:
@@ -35,7 +36,6 @@ jobs:
             reports
 
   build:
-    needs: verify
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -45,17 +45,49 @@ jobs:
           node-version: 14.x
       - run: npm ci
       - run: npm run compile
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lib
+          path: lib
+
+  report:
+    needs: [ verify, build ]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - run: npm ci
       - uses: actions/download-artifact@v2
         with:
           name: test-reports
-      - name: release
-        if: github.ref == 'refs/heads/master'
-        run: |
-          npm run doc
-          npm run publish:reports
-          npm run publish:site
-          npx semantic-release
+      - run: npm run publish:reports
+        env:
+          COVERALLS_REPO_TOKEN: ${{secrets.COVERALLS_REPO_TOKEN}}
+
+  site:
+    needs: [ verify, build ]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - run: npm ci
+      - run: npm run doc
+      - name: publish
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
+          CLEAN: true
+
+  release:
+    needs: [ site, report ]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - run: npm ci
+      - uses: actions/download-artifact@v2
+        with:
+          name: lib
+      - run: npx semantic-release
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
-          COVERALLS_REPO_TOKEN: ${{secrets.COVERALLS_REPO_TOKEN}}
