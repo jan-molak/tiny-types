@@ -26,6 +26,13 @@ jobs:
       - run: npm test
         env:
           CI: true
+      - uses: actions/upload-artifact@v2
+        if: matrix.node-version == '14.x'
+        with:
+          name: test-reports
+          path: |
+            .nyc_output
+            reports
 
   build:
     needs: verify
@@ -38,6 +45,9 @@ jobs:
           node-version: 14.x
       - run: npm ci
       - run: npm run compile
+      - uses: actions/download-artifact@v2
+        with:
+          name: test-reports
       - name: release
         if: github.ref == 'refs/heads/master'
         run: |
