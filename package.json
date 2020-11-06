@@ -12,7 +12,7 @@
     "verify": "npm run clean && npm run lint && npm test && npm run compile",
     "doc": "esdoc",
     "publish:reports": "nyc report --reporter=text-lcov | coveralls",
-    "publish:site": "gh-pages --silent --repo https://$GH_TOKEN@github.com/jan-molak/tiny-types.git -d docs",
+    "publish:site": "gh-pages --repo https://$GH_TOKEN@github.com/jan-molak/tiny-types.git -d docs",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
