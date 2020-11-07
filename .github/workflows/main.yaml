@@ -134,6 +134,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: lib
+          path: lib
       - run: npx semantic-release
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
