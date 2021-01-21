@@ -14,6 +14,7 @@ export * from './isLessThanOrEqualTo';
 export * from './isNotBlank';
 export * from './isNumber';
 export * from './isOneOf';
+export * from './isPlainObject';
 export * from './isString';
 export * from './isInstanceOf';
 export * from './matches';
