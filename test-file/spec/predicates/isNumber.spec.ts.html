@@ -58,6 +58,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isNotBlank">isNotBlank</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isNumber">isNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isOneOf">isOneOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isPlainObject">isPlainObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-matches">matches</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
@@ -87,7 +88,7 @@ describe(&apos;predicates&apos;, () =&gt; {
         }
 
         it(&apos;ensures that the argument in a number&apos;, () =&gt; {
-            expect(() =&gt; new Percentage(42)).to.not.throw;                   // tslint:disable-line:no-unused-expression
+            expect(() =&gt; new Percentage(42)).to.not.throw();
         });
 
         given([
@@ -100,7 +101,7 @@ describe(&apos;predicates&apos;, () =&gt; {
             -Infinity,
         ]).
         it(&apos;works for any type of number&apos;, (value: any) =&gt; {
-            expect(() =&gt; new Percentage(value)).to.not.throw;                // tslint:disable-line:no-unused-expression
+            expect(() =&gt; new Percentage(value)).to.not.throw();
         });
 
         given([

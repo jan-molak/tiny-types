@@ -192,6 +192,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/predicates/isplainobject~isplainobject",
+    "function/index.html#static-function-isPlainObject",
+    "<span>isPlainObject</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isPlainObject</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/predicates/isstring~isstring",
     "function/index.html#static-function-isString",
     "<span>isString</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isString</span>",
@@ -787,6 +793,12 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/isPlainObject.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/isString.spec.ts.html#lineNumber5",
     "predicates",
     "test"
@@ -1110,6 +1122,18 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "isplainobject src/predicates/isplainobject.ts~isplainobject,isplainobject",
+    "test-file/spec/predicates/isPlainObject.spec.ts.html#lineNumber7",
+    "predicates ::isPlainObject",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isPlainObject.spec.ts.html#lineNumber42",
+    "predicates ::isPlainObject complains if the value is not a plain object because of a modified constructor prototype",
+    "test"
+  ],
+  [
     "isstring src/predicates/isstring.ts~isstring,isstring",
     "test-file/spec/predicates/isString.spec.ts.html#lineNumber7",
     "predicates ::isString",
@@ -1365,6 +1389,12 @@ window.esdocSearchIndex = [
     "spec/predicates/isoneof.spec.ts",
     "test-file/spec/predicates/isOneOf.spec.ts.html",
     "spec/predicates/isOneOf.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isplainobject.spec.ts",
+    "test-file/spec/predicates/isPlainObject.spec.ts.html",
+    "spec/predicates/isPlainObject.spec.ts",
     "testFile"
   ],
   [
@@ -1977,6 +2007,12 @@ window.esdocSearchIndex = [
     "src/predicates/isoneof.ts",
     "file/src/predicates/isOneOf.ts.html",
     "src/predicates/isOneOf.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isplainobject.ts",
+    "file/src/predicates/isPlainObject.ts.html",
+    "src/predicates/isPlainObject.ts",
     "file"
   ],
   [

@@ -58,6 +58,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isNotBlank">isNotBlank</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isNumber">isNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isOneOf">isOneOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isPlainObject">isPlainObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-matches">matches</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
@@ -110,7 +111,7 @@ function deprecateClass(message: string, target: Constructor&lt;any&gt;, log: (.
 function deprecateMethod&lt;T extends object&gt;(message: string, target: T, propertyKey: string, descriptor: any, log: (...args: any[]) =&gt; void) {
     const originalMethod = descriptor.value;
 
-    descriptor.value = function(...args: any[]) {
+    descriptor.value = function (...args: any[]) {
         log(`${target.constructor.name}#${propertyKey} has been deprecated. ${ message }`.trim());
 
         return originalMethod.apply(this, args);

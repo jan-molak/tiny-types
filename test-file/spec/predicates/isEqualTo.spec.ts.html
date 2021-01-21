@@ -58,6 +58,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isNotBlank">isNotBlank</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isNumber">isNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isOneOf">isOneOf</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isPlainObject">isPlainObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-matches">matches</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-or">or</a></span></span></li>
@@ -100,7 +101,7 @@ describe(&apos;predicates&apos;, () =&gt; {
                 const upgradeOwnAccount = new UpgradeAccount(loggedInUser);
 
                 // tslint:disable-next-line:no-unused-expression
-                expect(() =&gt; accounts.handle(upgradeOwnAccount)).to.not.throw;
+                expect(() =&gt; accounts.handle(upgradeOwnAccount)).to.not.throw();
             });
 
             it(&apos;complains if the objects are not identical by value&apos;, () =&gt; {
@@ -130,7 +131,7 @@ describe(&apos;predicates&apos;, () =&gt; {
             ]).
             it(&apos;ensures they are equal&apos;, (value: any) =&gt; {
                 // tslint:disable-next-line:no-unused-expression
-                expect(() =&gt; ensure(&apos;Val&apos;, value, isEqualTo(value))).to.not.throw;
+                expect(() =&gt; ensure(&apos;Val&apos;, value, isEqualTo(value))).to.not.throw();
             });
 
             given([

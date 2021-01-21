@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">spec/predicates/property.spec.ts | tiny-types</title>
+  <title data-ice="title">spec/predicates/isPlainObject.spec.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -68,56 +68,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/property.spec.ts</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/isPlainObject.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
 import { given } from &apos;mocha-testdata&apos;;
 
-import { ensure, isDefined, isGreaterThanOrEqualTo, isString, property, TinyType } from &apos;../../src&apos;;
+import { ensure, isPlainObject } from &apos;../../src&apos;;
 import { expect } from &apos;../expect&apos;;
 
 describe(&apos;predicates&apos;, () =&gt; {
 
-    /** @test {property} */
-    describe(&apos;::property&apos;, () =&gt; {
+    /** @test {isPlainObject} */
+    describe(&apos;::isPlainObject&apos;, () =&gt; {
 
-        /** @test {property} */
-        describe(&apos;shifts the focus from the value itself to its property&apos;, () =&gt; {
+        given([
+            {},
+            { &apos;name&apos;: &apos;Alice&apos; },
+            Object.create({}),
+            Object.create(Object.prototype),
+            Object.create(null),
+        ]).
+        it(&apos;ensures that the argument is a plain object&apos;, (value: any) =&gt; {
+            expect(() =&gt; ensure(&apos;value&apos;, value, isPlainObject())).to.not.throw();
+        });
 
-            class Name extends TinyType {
-                constructor(public readonly value: string) {
-                    super();
-                    ensure(&apos;Name&apos;, value,
-                        isDefined(),
-                        property(&apos;length&apos;, isDefined(), isGreaterThanOrEqualTo(3)),
-                        isString(),
-                    );
-                }
+        class Person {
+            constructor(public readonly name: string) {
             }
+        }
 
-            /** @test {property} */
-            it(&apos;ensures that the property meets the predicates&apos;, () =&gt; {
-                expect(() =&gt; new Name(&apos;Jan&apos;)).to.not.throw();
-            });
+        given([
+            undefined,
+            null,
+            [],
+            false,
+            5,
+            &apos;name&apos;,
+            new Person(&apos;Jan&apos;),
+            () =&gt; {},
+        ]).
+        it(&apos;complains if the value is not a plain object&apos;, (value: any) =&gt; {
+            expect(() =&gt; ensure(&apos;value&apos;, value, isPlainObject())).to.throw(`value should be a plain object`);
+        });
 
-            given(
-                undefined,
-                null,
-            ).
-            it(&apos;complains when the value is undefined&apos;, (value: any) =&gt; {
-                expect(() =&gt; new Name({ length: value } as any)).
-                    to.throw(`Name should have a property &quot;length&quot; that is defined`);
-            });
+        it(&apos;complains if the value is not a plain object because of a modified constructor prototype&apos;, () =&gt; {
+            const value = new Person(&apos;Cindy&apos;);
+            (value as any).constructor.prototype = undefined;
 
-            given&lt;any, string&gt;(
-                [undefined,             &apos;Name should be defined&apos;],
-                [{ length: undefined }, &apos;Name should have a property &quot;length&quot; that is defined&apos;],
-                [&apos;JM&apos;,                  &apos;Name should have a property &quot;length&quot; that is either equal to 3 or is greater than 3&apos;],
-                [[&apos;J&apos;, &apos;a&apos;, &apos;n&apos;],       &apos;Name should be a string&apos;],
-            ).
-            it(&apos;can be composed with other predicates&apos;, (value: any, expectedError: string) =&gt; {
-                expect(() =&gt; new Name(value)).
-                    to.throw(expectedError);
-            });
+            expect(() =&gt; ensure(&apos;value&apos;, value, isPlainObject())).to.throw(`value should be a plain object`);
         });
     });
 });
