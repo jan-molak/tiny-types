@@ -23,7 +23,7 @@ describe('predicates', () => {
 
         given(0, 1, 99, 100).
         it('ensures that at least one of the `or` predicates is met', (value: number) => {
-            expect(() => new Percentage(value)).to.not.throw;                // tslint:disable-line:no-unused-expression
+            expect(() => new Percentage(value)).to.not.throw();
         });
 
         given(

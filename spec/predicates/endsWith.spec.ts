@@ -18,7 +18,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument ends with a given suffix', () => {
-            expect(() => new TextFileName('notes.txt')).to.not.throw; // tslint:disable-line:no-unused-expression
+            expect(() => new TextFileName('notes.txt')).to.not.throw();
         });
 
         given([

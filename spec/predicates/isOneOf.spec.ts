@@ -19,7 +19,7 @@ describe('predicates', () => {
 
         given('red', 'yellow', 'green').
         it('ensures that the value is equal to one of the allowed values', (value: string) => {
-            expect(() => new StreetLight(value)).to.not.throw;               // tslint:disable-line:no-unused-expression
+            expect(() => new StreetLight(value)).to.not.throw();
         });
 
         it('complains if the value not one the allowed ones', () => {

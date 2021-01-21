@@ -23,7 +23,7 @@ describe('predicates', () => {
         }
 
         it('ensures that all the predicates are met', () => {
-            expect(() => new InvestmentLengthInYears(10)).to.not.throw;      // tslint:disable-line:no-unused-expression
+            expect(() => new InvestmentLengthInYears(10)).to.not.throw();
         });
 
         given(

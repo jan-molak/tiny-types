@@ -18,7 +18,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument starts with a given prefix', () => {
-            expect(() => new Username('usr123')).to.not.throw; // tslint:disable-line:no-unused-expression
+            expect(() => new Username('usr123')).to.not.throw();
         });
 
         given([

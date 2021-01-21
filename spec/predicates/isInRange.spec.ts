@@ -19,7 +19,7 @@ describe('predicates', () => {
 
         given(1, 2, 3, 4, 5).
         it('ensures that the value is within the range specified', (value: number) => {
-            expect(() => new InvestmentLength(value)).to.not.throw;          // tslint:disable-line:no-unused-expression
+            expect(() => new InvestmentLength(value)).to.not.throw();
         });
 
         it('complains if the value is lower than the lower bound', () => {

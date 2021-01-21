@@ -20,7 +20,7 @@ describe('predicates', () => {
             }
 
             it('ensures that the value has a correct length', () => {
-                expect(() => new Password('P@ssw0rd')).to.not.throw;         // tslint:disable-line:no-unused-expression
+                expect(() => new Password('P@ssw0rd')).to.not.throw();
             });
 
             given(
@@ -43,7 +43,7 @@ describe('predicates', () => {
             }
 
             it('ensures that the value has a correct length', () => {
-                expect(() => new Collection(['a', 'b'])).to.not.throw;       // tslint:disable-line:no-unused-expression
+                expect(() => new Collection(['a', 'b'])).to.not.throw();
             });
 
             given(

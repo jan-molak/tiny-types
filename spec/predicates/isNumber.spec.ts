@@ -17,7 +17,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument in a number', () => {
-            expect(() => new Percentage(42)).to.not.throw;                   // tslint:disable-line:no-unused-expression
+            expect(() => new Percentage(42)).to.not.throw();
         });
 
         given([
@@ -30,7 +30,7 @@ describe('predicates', () => {
             -Infinity,
         ]).
         it('works for any type of number', (value: any) => {
-            expect(() => new Percentage(value)).to.not.throw;                // tslint:disable-line:no-unused-expression
+            expect(() => new Percentage(value)).to.not.throw();
         });
 
         given([

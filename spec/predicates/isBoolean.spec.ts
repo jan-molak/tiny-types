@@ -18,7 +18,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument is a boolean value', () => {
-            expect(() => new MarketingOptIn(false)).to.not.throw;            // tslint:disable-line:no-unused-expression
+            expect(() => new MarketingOptIn(false)).to.not.throw();
         });
 
         given([

@@ -25,7 +25,7 @@ describe('predicates', () => {
 
             /** @test {property} */
             it('ensures that the property meets the predicates', () => {
-                expect(() => new Name('Jan')).to.not.throw;                  // tslint:disable-line:no-unused-expression
+                expect(() => new Name('Jan')).to.not.throw();
             });
 
             given(

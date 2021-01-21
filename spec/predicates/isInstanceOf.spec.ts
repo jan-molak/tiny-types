@@ -17,7 +17,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument is an instance of Date', () => {
-            expect(() => new Birthday(new Date())).to.not.throw;              // tslint:disable-line:no-unused-expression
+            expect(() => new Birthday(new Date())).to.not.throw();
         });
 
         given([

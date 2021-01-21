@@ -17,7 +17,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the value is defined', () => {
-            expect(() => new UserName('Jan')).to.not.throw;                  // tslint:disable-line:no-unused-expression
+            expect(() => new UserName('Jan')).to.not.throw();
         });
 
         given<any>([
@@ -27,7 +27,7 @@ describe('predicates', () => {
             false,
         ]).
         it('works for any defined value, even the "falsy" ones', (value: any) => {
-            expect(() => new UserName(value)).to.not.throw;                  // tslint:disable-line:no-unused-expression
+            expect(() => new UserName(value)).to.not.throw();
         });
     });
 });

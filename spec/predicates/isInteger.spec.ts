@@ -17,7 +17,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument in an integer', () => {
-            expect(() => new AgeInYears(42)).to.not.throw;                   // tslint:disable-line:no-unused-expression
+            expect(() => new AgeInYears(42)).to.not.throw();
         });
 
         given([

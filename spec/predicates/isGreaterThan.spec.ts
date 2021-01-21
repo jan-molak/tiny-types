@@ -17,7 +17,7 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument is greater than a specified number', () => {
-            expect(() => new InvestmentLength(5)).to.not.throw;              // tslint:disable-line:no-unused-expression
+            expect(() => new InvestmentLength(5)).to.not.throw();
         });
 
         it('complains if the argument is more than a specified number', () => {

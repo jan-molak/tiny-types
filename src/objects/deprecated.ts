@@ -40,7 +40,7 @@ function deprecateClass(message: string, target: Constructor<any>, log: (...args
 function deprecateMethod<T extends object>(message: string, target: T, propertyKey: string, descriptor: any, log: (...args: any[]) => void) {
     const originalMethod = descriptor.value;
 
-    descriptor.value = function(...args: any[]) {
+    descriptor.value = function (...args: any[]) {
         log(`${target.constructor.name}#${propertyKey} has been deprecated. ${ message }`.trim());
 
         return originalMethod.apply(this, args);
