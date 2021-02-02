@@ -1134,6 +1134,12 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
+    "",
+    "test-file/spec/predicates/isPlainObject.spec.ts.html#lineNumber47",
+    "predicates ::isPlainObject is generic",
+    "test"
+  ],
+  [
     "isstring src/predicates/isstring.ts~isstring,isstring",
     "test-file/spec/predicates/isString.spec.ts.html#lineNumber7",
     "predicates ::isString",

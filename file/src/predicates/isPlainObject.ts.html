@@ -106,8 +106,8 @@ function isObject(value) {
  *
  * @returns {Predicate&lt;string&gt;}
  */
-export function isPlainObject(): Predicate&lt;object&gt; {
-    return Predicate.to(`be a plain object`, (value: object) =&gt; {
+export function isPlainObject&lt;T extends object = object&gt;(): Predicate&lt;T&gt; {
+    return Predicate.to(`be a plain object`, (value: T) =&gt; {
         if (! isObject(value)) {
             return false;
         }

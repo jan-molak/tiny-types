@@ -72,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
 import { given } from &apos;mocha-testdata&apos;;
 
-import { ensure, isPlainObject } from &apos;../../src&apos;;
+import { ensure, isPlainObject, isString, property } from &apos;../../src&apos;;
 import { expect } from &apos;../expect&apos;;
 
 describe(&apos;predicates&apos;, () =&gt; {
@@ -115,6 +115,18 @@ describe(&apos;predicates&apos;, () =&gt; {
             (value as any).constructor.prototype = undefined;
 
             expect(() =&gt; ensure(&apos;value&apos;, value, isPlainObject())).to.throw(`value should be a plain object`);
+        });
+
+        it(&apos;is generic&apos;, () =&gt; {
+            interface Person {
+                name: string;
+            }
+
+            const person: Person = { name: &apos;Jan&apos; };
+
+            expect(() =&gt; {
+                ensure(&apos;person&apos;, person, isPlainObject&lt;Person&gt;(), property(&apos;name&apos;, isString()))
+            }).to.not.throw();
         });
     });
 });
