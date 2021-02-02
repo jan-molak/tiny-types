@@ -1,7 +1,7 @@
 import 'mocha';
 import { given } from 'mocha-testdata';
 
-import { ensure, isPlainObject } from '../../src';
+import { ensure, isPlainObject, isString, property } from '../../src';
 import { expect } from '../expect';
 
 describe('predicates', () => {
@@ -44,6 +44,18 @@ describe('predicates', () => {
             (value as any).constructor.prototype = undefined;
 
             expect(() => ensure('value', value, isPlainObject())).to.throw(`value should be a plain object`);
+        });
+
+        it('is generic', () => {
+            interface Person {
+                name: string;
+            }
+
+            const person: Person = { name: 'Jan' };
+
+            expect(() => {
+                ensure('person', person, isPlainObject<Person>(), property('name', isString()))
+            }).to.not.throw();
         });
     });
 });
