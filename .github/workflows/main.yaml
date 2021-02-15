@@ -36,6 +36,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: matrix.node-version == '14.x'
         with:
+          retention-days: 1
           name: test-reports
           path: |
             .nyc_output
@@ -61,6 +62,7 @@ jobs:
       - run: npm run compile
       - uses: actions/upload-artifact@v2
         with:
+          retention-days: 1
           name: lib
           path: lib
 
