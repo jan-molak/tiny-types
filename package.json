@@ -59,7 +59,7 @@
     "mocha-testdata": "^1.2.0",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
-    "semantic-release": "^17.3.9",
+    "semantic-release": "^17.4.2",
     "sinon": "^9.2.4",
     "sinon-chai": "^3.5.0",
     "ts-node": "^9.1.1",
