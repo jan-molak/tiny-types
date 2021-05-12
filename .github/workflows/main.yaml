@@ -109,7 +109,7 @@ jobs:
       - run: npm ci
       - run: npm run doc
       - name: publish
-        uses: JamesIves/github-pages-deploy-action@4.1.2
+        uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           BRANCH: gh-pages
