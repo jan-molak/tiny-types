@@ -47,7 +47,7 @@
     "chai": "^4.3.4",
     "cheerio": "^1.0.0-rc.10",
     "commitizen": "^4.2.4",
-    "coveralls": "^3.1.0",
+    "coveralls": "^3.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "esdoc": "^1.1.0",
     "esdoc-importpath-plugin": "^1.0.2",
