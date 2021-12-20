@@ -5,6 +5,7 @@ export * from './isArray';
 export * from './isBoolean';
 export * from './isDefined';
 export * from './isEqualTo';
+export * from './isFunction';
 export * from './isGreaterThan';
 export * from './isGreaterThanOrEqualTo';
 export * from './isInRange';
