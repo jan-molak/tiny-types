@@ -38,6 +38,10 @@
     "url": "https://github.com/jan-molak/tiny-types/issues"
   },
   "homepage": "https://jan-molak.github.io/tiny-types/",
+  "engines": {
+    "node": "^14 || ^16",
+    "npm": "^6 || ^7 || ^8"
+  },
   "devDependencies": {
     "@types/chai": "^4.3.0",
     "@types/mocha": "^9.0.0",

@@ -10,10 +10,10 @@ import { Predicate } from './Predicate';
  *     ensure('callback', callback, isFunction());
  * }
  *
- * @returns {Predicate<boolean>}
+ * @returns {Predicate<Function>}
  */
-export function isFunction(): Predicate<Function> {
-    return Predicate.to(`be a function`, (value: Function) =>
+export function isFunction(): Predicate<(...args: any[]) => any> {
+    return Predicate.to(`be a function`, (value: (...args: any[]) => any) =>
         typeof value === 'function'
     );
 }
