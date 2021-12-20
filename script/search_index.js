@@ -132,6 +132,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/predicates/isfunction~isfunction",
+    "function/index.html#static-function-isFunction",
+    "<span>isFunction</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isFunction</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/predicates/isgreaterthan~isgreaterthan",
     "function/index.html#static-function-isGreaterThan",
     "<span>isGreaterThan</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isGreaterThan</span>",
@@ -733,6 +739,12 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/isFunction.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/isGreaterThan.spec.ts.html#lineNumber5",
     "predicates",
     "test"
@@ -981,6 +993,18 @@ window.esdocSearchIndex = [
     "isequalto src/predicates/isequalto.ts~isequalto,isequalto",
     "test-file/spec/predicates/isEqualTo.spec.ts.html#lineNumber73",
     "predicates ::isEqualTo when working with primitive types",
+    "test"
+  ],
+  [
+    "isfunction src/predicates/isfunction.ts~isfunction,isfunction",
+    "test-file/spec/predicates/isFunction.spec.ts.html#lineNumber7",
+    "predicates ::isFunction",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isFunction.spec.ts.html#lineNumber28",
+    "predicates ::isFunction ensures that the argument in a function",
     "test"
   ],
   [
@@ -1335,6 +1359,12 @@ window.esdocSearchIndex = [
     "spec/predicates/isequalto.spec.ts",
     "test-file/spec/predicates/isEqualTo.spec.ts.html",
     "spec/predicates/isEqualTo.spec.ts",
+    "testFile"
+  ],
+  [
+    "spec/predicates/isfunction.spec.ts",
+    "test-file/spec/predicates/isFunction.spec.ts.html",
+    "spec/predicates/isFunction.spec.ts",
     "testFile"
   ],
   [
@@ -1953,6 +1983,12 @@ window.esdocSearchIndex = [
     "src/predicates/isequalto.ts",
     "file/src/predicates/isEqualTo.ts.html",
     "src/predicates/isEqualTo.ts",
+    "file"
+  ],
+  [
+    "src/predicates/isfunction.ts",
+    "file/src/predicates/isFunction.ts.html",
+    "src/predicates/isFunction.ts",
     "file"
   ],
   [

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">spec/predicates/and.spec.ts | tiny-types</title>
+  <title data-ice="title">src/predicates/isFunction.ts | tiny-types</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -69,67 +69,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/and.spec.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
-import { given } from &apos;mocha-testdata&apos;;
-import sinon = require(&apos;sinon&apos;);
+<div class="content" data-ice="content"><h1 data-ice="title">src/predicates/isFunction.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Predicate } from &apos;./Predicate&apos;;
 
-import { and, ensure, isDefined, isGreaterThan, isInteger, isLessThan, Predicate, TinyType } from &apos;../../src&apos;;
-import { expect } from &apos;../expect&apos;;
-
-describe(&apos;predicates&apos;, () =&gt; {
-
-    /** @test {and} */
-    describe(&apos;::and&apos;, () =&gt; {
-
-        class InvestmentLengthInYears extends TinyType {
-            constructor(public readonly value: number) {
-                super();
-                ensure(&apos;InvestmentLengthInYears&apos;, value, and(
-                    isDefined(),
-                    isInteger(),
-                    isGreaterThan(0),
-                    isLessThan(50),
-                ));
-            }
-        }
-
-        it(&apos;ensures that all the predicates are met&apos;, () =&gt; {
-            expect(() =&gt; new InvestmentLengthInYears(10)).to.not.throw();
-        });
-
-        given(
-            [ null, &apos;InvestmentLengthInYears should be defined&apos; ],
-            [ 0.2,  &apos;InvestmentLengthInYears should be an integer&apos; ],
-            [ -2,   &apos;InvestmentLengthInYears should be greater than 0&apos; ],
-            [ 52,   &apos;InvestmentLengthInYears should be less than 50&apos; ],
-        ).
-        it(&apos;complains upon the first unmet predicate&apos;, (value: any, errorMessage: string) =&gt; {
-            expect(() =&gt; new InvestmentLengthInYears(value))
-                .to.throw(errorMessage);
-        });
-
-        it(&apos;complains if there are no predicates specified&apos;, () =&gt; {
-            expect(() =&gt; and()).to.throw(`Looks like you haven&apos;t specified any predicates to check the value against?`);
-        });
-
-        it(&apos;stops evaluating the predicates upon the first failure&apos;, () =&gt; {
-            const predicateEvaluated = sinon.spy();
-            const predicateReturning = (result: boolean) =&gt; Predicate.to(result ? &apos;pass&apos; : &apos;fail&apos;, (value: any) =&gt; {
-                predicateEvaluated();
-                return result;
-            });
-
-            expect(() =&gt; ensure(&apos;value&apos;, null, and(
-                predicateReturning(true),
-                predicateReturning(false),
-                predicateReturning(true),
-            ))).to.throw(&apos;value should fail&apos;);
-
-            expect(predicateEvaluated.callCount).to.equal(2);
-        });
-    });
-});
+/**
+ * @desc Ensures that the `value` is a {@link Function}.
+ *
+ * @example
+ * import { ensure, isFunction, TinyType } from &apos;tiny-types&apos;;
+ *
+ * function myFunction(callback: (error?: Error) =&gt; void): void {
+ *     ensure(&apos;callback&apos;, callback, isFunction());
+ * }
+ *
+ * @returns {Predicate&lt;Function&gt;}
+ */
+export function isFunction(): Predicate&lt;(...args: any[]) =&gt; any&gt; {
+    return Predicate.to(`be a function`, (value: (...args: any[]) =&gt; any) =&gt;
+        typeof value === &apos;function&apos;
+    );
+}
 </code></pre>
 
 </div>
