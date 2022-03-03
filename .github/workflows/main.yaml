@@ -35,7 +35,7 @@ jobs:
         env:
           CI: true
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: matrix.node-version == '16.x'
         with:
           retention-days: 1
@@ -62,7 +62,7 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run compile
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           retention-days: 1
           name: lib
