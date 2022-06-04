@@ -17,7 +17,7 @@ import { Predicate } from './Predicate';
 export function isInteger(): Predicate<number> {
     return Predicate.to(`be an integer`, (value: number) =>
         typeof value === 'number' &&
-        isFinite(value) &&
+        Number.isFinite(value) &&
         Math.floor(value) === value,
     );
 }

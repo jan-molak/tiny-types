@@ -1,7 +1,6 @@
 import 'mocha';
-import { given } from 'mocha-testdata';
 
-import { ensure, hasLengthOf, isArray, isDefined, isGreaterThan, isInteger, TinyType } from '../src';
+import { ensure } from '../src';
 import { expect } from './expect';
 
 /** @test {ensure} */

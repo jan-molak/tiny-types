@@ -34,10 +34,14 @@ export function isEqualTo<T>(expectedValue: T): Predicate<T>;
  * @param {string | number | symbol | TinyType | object} expectedValue
  * @returns {Predicate<any>}
  */
-export function isEqualTo(expectedValue: any): Predicate<any> {
-    return Predicate.to(`be equal to ${ expectedValue }`, (value: any) =>
-        (!! value && value.equals && expectedValue && expectedValue.equals)
+export function isEqualTo<T>(expectedValue: T): Predicate<T> {
+    return Predicate.to(`be equal to ${ String(expectedValue) }`, (value: any) =>
+        (hasEquals(value) && hasEquals(expectedValue))
             ? value.equals(expectedValue)
             : value === expectedValue,
     );
+}
+
+function hasEquals(value: unknown): value is { equals: (another: any) => boolean } {
+    return !! value && (value instanceof TinyType || (value as any).equals);
 }

@@ -1,4 +1,5 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
 import { TinyType } from '../../src';
@@ -73,8 +74,8 @@ describe('pattern-matching', () => {
 
             class AccountConfirmed extends DomainEvent {
                 constructor(public readonly account_name: string,
-                            public readonly email: string,
-                            timestamp: Date,) {
+                    public readonly email: string,
+                    timestamp: Date,) {
                     super(timestamp);
                 }
             }

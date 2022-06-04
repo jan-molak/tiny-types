@@ -1,8 +1,8 @@
 export * from './check';
 export * from './ensure';
-export * from './objects/deprecated';
-export * from './predicates';
 export * from './match';
+export * from './objects/deprecated';
 export * from './pattern-matching/PatternMatcher';
+export * from './predicates';
 export * from './TinyType';
-export { JSONArray, JSONObject, JSONPrimitive, JSONValue, Serialised, Serialisable } from './types';
+export { JSONArray, JSONObject, JSONPrimitive, JSONValue, Serialisable } from './types';

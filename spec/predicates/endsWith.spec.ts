@@ -1,4 +1,5 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
 import { endsWith, ensure, TinyType } from '../../src';

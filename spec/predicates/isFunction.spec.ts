@@ -1,4 +1,5 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
 import { ensure, isFunction } from '../../src';
@@ -9,10 +10,12 @@ describe('predicates', () => {
     /** @test {isFunction} */
     describe('::isFunction', () => {
 
+        // eslint-disable-next-line unicorn/consistent-function-scoping
         function run(callback: () => void) {
             ensure('callback', callback, isFunction())
         }
 
+        // eslint-disable-next-line unicorn/consistent-function-scoping
         function validCallback() {
             // do nothing
         }
@@ -22,9 +25,9 @@ describe('predicates', () => {
         });
 
         given([
-            function () {},
-            () => {},
-            async function asyncFunction() {},
+            function () {},                     // eslint-disable-line @typescript-eslint/no-empty-function
+            () => {},                           // eslint-disable-line @typescript-eslint/no-empty-function
+            async function asyncFunction() {},  // eslint-disable-line @typescript-eslint/no-empty-function
             Array,
             Date,
             Object,

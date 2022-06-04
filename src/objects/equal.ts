@@ -3,7 +3,7 @@ import { significantFieldsOf } from './significantFields';
 /**
  * @access private
  */
-export function equal(v1: any, v2: any): boolean {
+export function equal(v1: any, v2: any): boolean {  // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
     switch (true) {
         case ! sameType(v1, v2):
             return false;

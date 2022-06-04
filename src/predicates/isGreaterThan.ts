@@ -18,7 +18,7 @@ import { Predicate } from './Predicate';
 export function isGreaterThan(lowerBound: number): Predicate<number> {
     return Predicate.to(`be greater than ${ lowerBound }`, (value: number) =>
         typeof value === 'number' &&
-        isFinite(value) &&
+        Number.isFinite(value) &&
         lowerBound < value,
     );
 }

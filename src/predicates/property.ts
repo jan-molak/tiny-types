@@ -1,5 +1,4 @@
 import { and } from './and';
-import { isDefined } from './isDefined';
 import { Failure, Predicate, Result, Success } from './Predicate';
 
 /**
@@ -17,23 +16,23 @@ import { Failure, Predicate, Result, Success } from './Predicate';
  *
  * @returns {Predicate<T>}
  */
-export function property<T, K extends keyof T>(prop: K, ...predicates: Array<Predicate<T[K]>>): Predicate<T> {
-    return new HaveProperty<T, K>(prop, and(...predicates));
+export function property<T, K extends keyof T>(propertyName: K, ...predicates: Array<Predicate<T[K]>>): Predicate<T> {
+    return new HaveProperty<T, K>(propertyName, and(...predicates));
 }
 
 /** @access private */
 class HaveProperty<T, K extends keyof T> extends Predicate<T> {
 
-    constructor(private readonly prop: K, private readonly predicate: Predicate<T[K]>) {
+    constructor(private readonly propertyName: K, private readonly predicate: Predicate<T[K]>) {
         super();
     }
 
     /** @override */
     check(value: T): Result<T> {
-        const result = this.predicate.check(value[this.prop]);
+        const result = this.predicate.check(value[this.propertyName]);
 
         return result instanceof Failure
-            ? new Failure(value, `have a property "${ String(this.prop) }" that ${ result.description }`
+            ? new Failure(value, `have a property "${ String(this.propertyName) }" that ${ result.description }`
                 .replace(/\bbe\b/gi, 'is')
                 .replace(/\beither is\b/gi, 'is either'),
             )

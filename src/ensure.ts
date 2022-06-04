@@ -1,4 +1,4 @@
-import { and, Failure, isArray, isDefined, isGreaterThan, Predicate } from './predicates';
+import { and, Failure, Predicate } from './predicates';
 
 /**
  * @desc The `ensure` function verifies if the value meets the specified {Predicate}s.
@@ -28,7 +28,7 @@ export function ensure<T>(name: string, value: T, ...predicates: Array<Predicate
     const result = and(...predicates).check(value);
 
     if (result instanceof Failure) {
-        throw new Error(`${ name } should ${ result.description }`);
+        throw new Error(`${ name } should ${ result.description }`);    // eslint-disable-line unicorn/prefer-type-error
     }
 
     return result.value;

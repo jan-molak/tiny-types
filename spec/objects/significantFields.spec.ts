@@ -1,21 +1,22 @@
 import 'mocha';
+
 import { significantFieldsOf } from '../../src/objects';
 import { expect } from '../expect';
 
 /** @test {significantFields} */
 describe('significantFields', () => {
     it('returns the names of private and public member fields of an instantiated object', () => {
-       class Person {
-           private age: number = 42;
-           constructor(public readonly firstName: string, private readonly lastName: string) {}
-           toString() {
-               return `${this.firstName} ${this.lastName} ${this.age}`;
-           }
-       }
+        class Person {
+            private age = 42;
+            constructor(public readonly firstName: string, private readonly lastName: string) {}
+            toString() {
+                return `${this.firstName} ${this.lastName} ${this.age}`;
+            }
+        }
 
-       const p = new Person('John', 'Smith');
+        const p = new Person('John', 'Smith');
 
-       expect(significantFieldsOf(p)).contain.members(['firstName', 'lastName', 'age']);
+        expect(significantFieldsOf(p)).contain.members(['firstName', 'lastName', 'age']);
     });
 
     it(`returns the names of object's fields`, () => {

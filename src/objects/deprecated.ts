@@ -11,7 +11,8 @@ export type Logger = (_: string) => void;
  * @param {Logger} log - a function that handles the printing of the message,
  *                  such as {@link console.warn}
  */
-export function deprecated(message: string = '', log: Logger = console.warn): (target: any, propertyKey?: string, descriptor?: any) => any {    // tslint:disable-line:no-console
+export function deprecated(message = '', log: Logger = console.warn): (target: any, propertyKey?: string, descriptor?: any) => any {    // tslint:disable-line:no-console
+    // eslint-disable-next-line unicorn/consistent-function-scoping,no-prototype-builtins
     const hasPrototype = (target: { hasOwnProperty(_: string): boolean }): boolean => target.hasOwnProperty('prototype');
 
     return (target: any, propertyKey?: string, descriptor?: any): any => {         // tslint:disable-line:ban-types

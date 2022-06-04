@@ -13,7 +13,6 @@ reports
 
 # Config
 .esdoc.json
-.travis.yml
-mocha.opts
+.eslintrc.yml
+.mocharc.yml
 tsconfig*.json
-tslint.json

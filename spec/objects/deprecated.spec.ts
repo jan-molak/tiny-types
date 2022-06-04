@@ -1,5 +1,7 @@
 import 'mocha';
+
 import * as sinon from 'sinon';
+
 import { deprecated } from '../../src/objects';
 import { expect } from '../expect';
 
@@ -14,7 +16,7 @@ describe('deprecated', () => {
             class Foo {
             }
 
-            const foo = new Foo();
+            const foo_ = new Foo();
 
             expect(consoleWarn)
                 .to.have.been.calledWith('Foo has been deprecated.');
@@ -27,7 +29,7 @@ describe('deprecated', () => {
             class Foo {
             }
 
-            const foo = new Foo();
+            const foo_ = new Foo();
 
             expect(consoleWarn)
                 .to.have.been.calledWith('Foo has been deprecated. Please use Bar instead.');
@@ -112,6 +114,7 @@ describe('deprecated', () => {
         it('logs a warning when the function is used', () => {
             const consoleWarn = sinon.spy();
 
+            // eslint-disable-next-line unicorn/consistent-function-scoping
             function foo() {
                 return null;
             }
@@ -128,6 +131,7 @@ describe('deprecated', () => {
         it('logs a warning when an arrow function is used', () => {
             const consoleWarn = sinon.spy();
 
+            // eslint-disable-next-line unicorn/consistent-function-scoping
             const foo = () => null;
 
             const deprecatedFoo = deprecated('Please use bar instead.', consoleWarn)(foo);
@@ -142,8 +146,6 @@ describe('deprecated', () => {
     describe('when used incorrectly', () => {
 
         it('complains', () => {
-            const consoleWarn = sinon.spy();
-
             expect(() => deprecated('something that does not make sense')(42))
                 .to.throw(`Only a class, method or function can be marked as deprecated. number given.`);
         });

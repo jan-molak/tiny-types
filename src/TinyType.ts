@@ -1,7 +1,7 @@
 import { ensure } from './ensure';
 import { equal, significantFieldsOf, stringify } from './objects';
 import { isDefined } from './predicates';
-import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable, Serialised } from './types';
+import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable } from './types';
 
 /**
  * @desc The {@link TinyTypeOf} can be used to define simple
@@ -90,7 +90,7 @@ export abstract class TinyType implements Serialisable {
      *
      * @returns {string}
      */
-    toString() {
+    toString(): string {
         return stringify(this);
     }
 
@@ -125,31 +125,6 @@ export abstract class TinyType implements Serialisable {
      * @returns {JSONValue}
      */
     toJSON(): JSONValue {
-        const
-            isObject = (value: any) => Object(value) === value,
-            isSerialisablePrimitive = (value: any) =>
-                !! ~ ['string', 'boolean', 'null', 'undefined'].indexOf(typeof value) ||
-                (typeof value === 'number' && ! isNaN(value) && ! ~ [ Infinity, -Infinity ].indexOf(value));
-
-        function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
-            switch (true) {
-                case value && !! value.toJSON:
-                    return value.toJSON();
-                case value && Array.isArray(value):
-                    return value.map(v => toJSON(v));
-                case value && value instanceof Map:
-                    return toJSON(Object.fromEntries(value));
-                case value && value instanceof Set:
-                    return toJSON(Array.from(value));
-                case value && isObject(value):
-                    return JSON.parse(JSON.stringify(value));
-                case isSerialisablePrimitive(value):
-                    return value;
-                default:
-                    return JSON.stringify(value);
-            }
-        }
-
         const fields = significantFieldsOf(this);
 
         if (fields.length === 1) {
@@ -159,6 +134,41 @@ export abstract class TinyType implements Serialisable {
         return fields.reduce((acc, field) => {
             acc[field] = toJSON(this[field]);
             return acc;
-        }, {}) as Serialised<this>;
+        }, {}) as JSONValue;
     }
+}
+
+function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
+    switch (true) {
+        case value && !! value.toJSON:
+            return value.toJSON();
+        case value && Array.isArray(value):
+            return value.map(v => toJSON(v));
+        case value && value instanceof Map:
+            return toJSON(Object.fromEntries(value));
+        case value && value instanceof Set:
+            return toJSON(Array.from(value));
+        case value && isObject(value):
+            return JSON.parse(JSON.stringify(value));
+        case isSerialisablePrimitive(value):
+            return value;
+        default:
+            return JSON.stringify(value);
+    }
+}
+
+function isSerialisableNumber(value: unknown): value is number {
+    return typeof value === 'number'
+        && ! Number.isNaN(value)
+        && value !== Number.NEGATIVE_INFINITY
+        && value !== Number.POSITIVE_INFINITY;
+}
+
+function isObject(value: unknown): value is object {
+    return Object(value) === value;
+}
+
+function isSerialisablePrimitive(value: unknown): value is string | boolean | number | null | undefined {
+    return ['string', 'boolean', 'null', 'undefined'].includes(typeof value)
+        || isSerialisableNumber(value);
 }

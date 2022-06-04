@@ -1,7 +1,8 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
-import { JSONObject, Serialised, TinyType, TinyTypeOf } from '../src';
+import { JSONObject, TinyType, TinyTypeOf } from '../src';
 import { expect } from './expect';
 
 describe('Serialisation', () => {
@@ -33,7 +34,7 @@ describe('Serialisation', () => {
     describe('of TinyTypes wrapping several primitive values', () => {
 
         class Person extends TinyType {
-            public role: string = 'dev';
+            public role = 'dev';
 
             static fromJSON(o: JSONObject): Person {
                 return new Person(o.firstName as string, o.lastName as string, o.age as number);
@@ -74,7 +75,7 @@ describe('Serialisation', () => {
         }
 
         class AnotherPerson extends TinyType {
-            public role: string = 'dev';
+            public role = 'dev';
 
             static fromJSON(o: JSONObject): AnotherPerson {
                 return new AnotherPerson(
@@ -85,8 +86,8 @@ describe('Serialisation', () => {
             }
 
             constructor(public readonly firstName: FirstName,
-                        public readonly lastName: LastName,
-                        public readonly age: Age,
+                public readonly lastName: LastName,
+                public readonly age: Age,
             ) {
                 super();
             }

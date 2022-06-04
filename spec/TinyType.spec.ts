@@ -1,5 +1,7 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
+
 import { JSONObject, JSONPrimitive, TinyType, TinyTypeOf } from '../src';
 import { expect } from './expect';
 
@@ -46,8 +48,10 @@ describe('TinyType', () => {
                 }
 
                 class FullName extends TinyType {
-                    constructor(public readonly firstName: FirstName,
-                                public readonly lastName: LastName) {
+                    constructor(
+                        public readonly firstName: FirstName,
+                        public readonly lastName: LastName,
+                    ) {
                         super();
                     }
                 }
@@ -74,7 +78,7 @@ describe('TinyType', () => {
 
                 class Timestamp extends TinyTypeOf<Date>() {
                     toString() {
-                        return `Timestamp(value=${this.value.toISOString()})`;
+                        return `Timestamp(value=${ this.value.toISOString() })`;
                     }
                 }
 
@@ -87,9 +91,9 @@ describe('TinyType', () => {
                     }
                 }
 
-                const e = new AccountCreated(new UserName('jan-molak'), new Timestamp(now));
+                const event = new AccountCreated(new UserName('jan-molak'), new Timestamp(now));
 
-                expect(e.toString()).to.equal(
+                expect(event.toString()).to.equal(
                     'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))',
                 );
             });
@@ -97,19 +101,23 @@ describe('TinyType', () => {
 
         /** @test {TinyType#toString} */
         describe('::toString', () => {
-            class Area extends TinyTypeOf<string>() {}
+            class Area extends TinyTypeOf<string>() {
+            }
 
-            class District extends TinyTypeOf<number>() {}
+            class District extends TinyTypeOf<number>() {
+            }
 
-            class Sector extends TinyTypeOf<number>() {}
+            class Sector extends TinyTypeOf<number>() {
+            }
 
-            class Unit extends TinyTypeOf<string>() {}
+            class Unit extends TinyTypeOf<string>() {
+            }
 
             class Postcode extends TinyType {
                 constructor(public readonly area: Area,
-                            public readonly district: District,
-                            public readonly sector: Sector,
-                            public readonly unit: Unit,
+                    public readonly district: District,
+                    public readonly sector: Sector,
+                    public readonly unit: Unit,
                 ) {
                     super();
                 }
@@ -149,17 +157,21 @@ describe('TinyType', () => {
             });
 
             it('prints the array-type properties', () => {
-                class Name extends TinyTypeOf<string>() {}
-                class Names extends TinyTypeOf<Name[]>() {}
+                class Name extends TinyTypeOf<string>() {
+                }
 
-                const names = new Names([ new Name('Alice'), new Name('Bob') ]);
+                class Names extends TinyTypeOf<Name[]>() {
+                }
+
+                const names = new Names([new Name('Alice'), new Name('Bob')]);
 
                 expect(names.toString())
                     .to.equal('Names(value=Array(Name(value=Alice), Name(value=Bob)))');
             });
 
             it('prints the object-type properties', () => {
-                class Dictionary extends TinyTypeOf<{ [key: string ]: string }>() {}
+                class Dictionary extends TinyTypeOf<{ [key: string]: string }>() {
+                }
 
                 const dictionary = new Dictionary({ greeting: 'Hello', subject: 'World' });
 
@@ -171,16 +183,19 @@ describe('TinyType', () => {
         /** @test {TinyType#toJSON} */
         describe('serialisation', () => {
 
-            class FirstName extends TinyTypeOf<string>() {}
+            class FirstName extends TinyTypeOf<string>() {
+            }
 
-            class LastName extends TinyTypeOf<string>() {}
+            class LastName extends TinyTypeOf<string>() {
+            }
 
-            class Age extends TinyTypeOf<number>() {}
+            class Age extends TinyTypeOf<number>() {
+            }
 
             class Person extends TinyType {
                 constructor(public readonly firstName: FirstName,
-                            public readonly lastName: LastName,
-                            public readonly age: Age,
+                    public readonly lastName: LastName,
+                    public readonly age: Age,
                 ) {
                     super();
                 }
@@ -227,19 +242,21 @@ describe('TinyType', () => {
                 });
 
                 it(`should serialise a plain-old JavaScript object`, () => {
-                    class Parameters extends TinyTypeOf<{ [parameter: string]: string}>() {}
+                    class Parameters extends TinyTypeOf<{ [parameter: string]: string }>() {
+                    }
 
                     const parameters = new Parameters({
-                        env: 'prod'
+                        env: 'prod',
                     });
 
                     expect(parameters.toJSON()).to.deep.equal({
-                        env: 'prod'
+                        env: 'prod',
                     });
                 });
 
                 it(`should serialise Map as object`, () => {
-                    class Notes extends TinyTypeOf<Map<string, any>>() {}
+                    class Notes extends TinyTypeOf<Map<string, any>>() {
+                    }
 
                     const parameters = new Notes(new Map(Object.entries({
                         stringEntry: 'prod',
@@ -255,7 +272,8 @@ describe('TinyType', () => {
                 });
 
                 it(`should serialise a Set as Array`, () => {
-                    class Notes extends TinyTypeOf<Set<string>>() {}
+                    class Notes extends TinyTypeOf<Set<string>>() {
+                    }
 
                     const parameters = new Notes(new Set(['apples', 'bananas', 'cucumbers']));
 
@@ -266,7 +284,7 @@ describe('TinyType', () => {
                     class TT extends TinyTypeOf<number>() {
                     }
 
-                    const tt = new TT(NaN);
+                    const tt = new TT(Number.NaN);
 
                     expect(tt.toJSON()).to.equal('null');
                 });
@@ -317,11 +335,11 @@ describe('TinyType', () => {
                     FirstName.fromJSON(v.firstName),
                     LastName.fromJSON(v.lastName),
                     Age.fromJSON(v.age),
-                )
+                );
 
                 constructor(public readonly firstName: FirstName,
-                            public readonly lastName: LastName,
-                            public readonly age: Age,
+                    public readonly lastName: LastName,
+                    public readonly age: Age,
                 ) {
                     super();
                 }

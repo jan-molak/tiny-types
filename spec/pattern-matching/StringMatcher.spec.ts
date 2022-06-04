@@ -1,5 +1,7 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
+
 import { StringMatcher } from '../../src/pattern-matching';
 import { expect } from '../expect';
 

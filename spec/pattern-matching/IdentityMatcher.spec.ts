@@ -1,5 +1,7 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
+
 import { IdentityMatcher } from '../../src/pattern-matching';
 import { expect } from '../expect';
 
@@ -23,13 +25,13 @@ describe('pattern-matching', () => {
             [0.1, 'received "0.1"'],
             [5, 'else, received "5"'],
             // [NaN, 'received "NaN"'],
-            [Infinity, 'to infinity and beyond!'],
+            [Number.POSITIVE_INFINITY, 'to infinity and beyond!'],
         ).it('matches a number', (input: number, expected_result: string) => {
 
             const result = new IdentityMatcher(input)
                 .when(-1, _ => `received "-1"`)
                 .when(0.1, _ => `received "0.1"`)
-                .when(Infinity, _ => `to infinity and beyond!`)
+                .when(Number.POSITIVE_INFINITY, _ => `to infinity and beyond!`)
                 .else(_ => `else, received "${_}"`);
 
             expect(result).to.equal(expected_result);

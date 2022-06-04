@@ -1,4 +1,5 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
 import { TinyType, TinyTypeOf } from '../../src';
@@ -21,8 +22,8 @@ describe('equal', () => {
             { v1: 'string', v2: String('string')  },
             { v1: 42,       v2: 42                },
             { v1: 42,       v2: Number(42)        },
-            { v1: 42,       v2: 42.0              },
-            { v1: 42,       v2: Number(42.0)      },
+            { v1: 42,       v2: 42              },
+            { v1: 42,       v2: Number(42)      },
         ).
         it('is symmetric', ({ v1, v2 }) => {
             expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression
@@ -158,7 +159,7 @@ describe('equal', () => {
         });
     });
 
-        /** @test {TinyType#equals} */
+    /** @test {TinyType#equals} */
     describe('when used with Dates', () => {
         const
             dateInstance1 = new Date('2018-05-01T12:00:00.000Z'),

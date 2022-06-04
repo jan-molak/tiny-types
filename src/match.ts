@@ -51,7 +51,7 @@ export function match<Input_Type, Output_Type>(_: Input_Type): {
  * @param value
  * @returns {PatternMatcher<any, any, any, any>}
  */
-export function match(value: any): PatternMatcher<any, any, any, any> {
+export function match(value: any): PatternMatcher<any, any, any, any> { // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
     switch (true) {
         case typeof value === 'string':
             return new StringMatcher(value as string);

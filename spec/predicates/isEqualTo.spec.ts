@@ -1,4 +1,5 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
 import { ensure, isEqualTo, TinyTypeOf } from '../../src';
@@ -51,7 +52,7 @@ describe('predicates', () => {
             given([
                 null,
                 undefined,
-                Infinity,
+                Number.POSITIVE_INFINITY,
                 1,
                 false,
                 'string',

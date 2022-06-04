@@ -28,13 +28,14 @@ class Or<T> extends Predicate<T> {
     constructor(private readonly predicates: Array<Predicate<T>>) {
         super();
 
-        if ([
-                _ => isDefined().check(_),
-                _ => isArray().check(_),
-                _ => isGreaterThan(0).check(_.length),
-            ].some(check => check(this.predicates) instanceof Failure)
-        ) {
-            throw new Error(`Looks like you haven\'t specified any predicates to check the value against?`);
+        const results = [
+            _ => isDefined().check(_),
+            _ => isArray().check(_),
+            _ => isGreaterThan(0).check(_.length),
+        ];
+
+        if (results.some(check => check(this.predicates) instanceof Failure)) {
+            throw new Error(`Looks like you haven't specified any predicates to check the value against?`);
         }
     }
 
@@ -46,10 +47,12 @@ class Or<T> extends Predicate<T> {
         const failures = results.filter(_ => _ instanceof Failure)
             .map((_: Result<T>) => (_ as Failure<T>).description);
 
-        const describe = (issues: string[]) => `either ${issues.join(', ').replace(/,([^,]*)$/, ' or$1')}`;
-
         return anySuccess
             ? new Success(value)
             : new Failure(value, describe(failures));
     }
+}
+
+function describe(issues: string[]): string {
+    return `either ${issues.join(', ').replace(/,([^,]*)$/, ' or$1')}`;
 }

@@ -1,4 +1,5 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
 import { ensure, isPlainObject, isString, property } from '../../src';
@@ -33,7 +34,7 @@ describe('predicates', () => {
             5,
             'name',
             new Person('Jan'),
-            () => {},
+            () => {},               // eslint-disable-line @typescript-eslint/no-empty-function
         ]).
         it('complains if the value is not a plain object', (value: any) => {
             expect(() => ensure('value', value, isPlainObject())).to.throw(`value should be a plain object`);

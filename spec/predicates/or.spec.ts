@@ -1,4 +1,5 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
 import { ensure, isDefined, isEqualTo, isGreaterThan, isInteger, isLessThan, or, TinyType } from '../../src';
@@ -40,11 +41,11 @@ describe('predicates', () => {
         });
 
         it('concatenates the error messages in a human-friendly way', () => {
-           expect(() => ensure('Project name', 'node.js',
-               or(isEqualTo('Serenity/JS'), isEqualTo('TinyTypes'), isEqualTo('Build Monitor')),
-           )).to.throw(
-               'Project name should either be equal to Serenity/JS, be equal to TinyTypes or be equal to Build Monitor',
-           );
+            expect(() => ensure('Project name', 'node.js',
+                or(isEqualTo('Serenity/JS'), isEqualTo('TinyTypes'), isEqualTo('Build Monitor')),
+            )).to.throw(
+                'Project name should either be equal to Serenity/JS, be equal to TinyTypes or be equal to Build Monitor',
+            );
         });
     });
 });

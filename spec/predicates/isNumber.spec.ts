@@ -1,4 +1,5 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
 import { ensure, isNumber, TinyType } from '../../src';
@@ -25,9 +26,9 @@ describe('predicates', () => {
             0.42,
             0o3,
             0xB4D455,
-            NaN,
-            Infinity,
-            -Infinity,
+            Number.NaN,
+            Number.POSITIVE_INFINITY,
+            Number.NEGATIVE_INFINITY,
         ]).
         it('works for any type of number', (value: any) => {
             expect(() => new Percentage(value)).to.not.throw();

@@ -1,5 +1,7 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
+
 import { match, TinyType, TinyTypeOf } from '../src';
 import { IdentityMatcher, ObjectMatcher, StringMatcher } from '../src/pattern-matching';
 import { expect } from './expect';

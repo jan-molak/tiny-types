@@ -1,4 +1,5 @@
 import 'mocha';
+
 import { given } from 'mocha-testdata';
 
 import { ensure, isInteger, TinyType } from '../../src';
@@ -25,8 +26,8 @@ describe('predicates', () => {
             0.42,
             undefined,
             null,
-            NaN,
-            Infinity,
+            Number.NaN,
+            Number.POSITIVE_INFINITY,
             {},
             'string',
         ]).
