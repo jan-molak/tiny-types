@@ -238,6 +238,30 @@ describe('TinyType', () => {
                     });
                 });
 
+                it(`should serialise Map as object`, () => {
+                    class Notes extends TinyTypeOf<Map<string, any>>() {}
+
+                    const parameters = new Notes(new Map(Object.entries({
+                        stringEntry: 'prod',
+                        numberEntry: 42,
+                        objectEntry: { key: 'value' },
+                    })));
+
+                    expect(parameters.toJSON()).to.deep.equal({
+                        stringEntry: 'prod',
+                        numberEntry: 42,
+                        objectEntry: { key: 'value' },
+                    });
+                });
+
+                it(`should serialise a Set as Array`, () => {
+                    class Notes extends TinyTypeOf<Set<string>>() {}
+
+                    const parameters = new Notes(new Set(['apples', 'bananas', 'cucumbers']));
+
+                    expect(parameters.toJSON()).to.deep.equal(['apples', 'bananas', 'cucumbers']);
+                });
+
                 it(`should JSON.stringify any object that can't be represented in a more sensible way`, () => {
                     class TT extends TinyTypeOf<number>() {
                     }

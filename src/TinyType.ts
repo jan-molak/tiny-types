@@ -49,8 +49,6 @@ export function TinyTypeOf<T>(): new(_: T) => { value: T } & TinyType {
  */
 export abstract class TinyType implements Serialisable {
 
-    // todo: can I make all fields `readonly` without making it a dictionary?
-
     /**
      * @desc Compares two tiny types by value
      *
@@ -134,6 +132,10 @@ export abstract class TinyType implements Serialisable {
                     return value.toJSON();
                 case value && Array.isArray(value):
                     return value.map(v => toJSON(v));
+                case value && value instanceof Map:
+                    return toJSON(Object.fromEntries(value));
+                case value && value instanceof Set:
+                    return toJSON(Array.from(value));
                 case value && isObject(value):
                     return JSON.parse(JSON.stringify(value));
                 case isSerialisablePrimitive(value):
