@@ -81,10 +81,15 @@ export abstract class TinyType implements Serialisable {
      * @param {TinyType} another
      * @returns {boolean}
      */
-    equals(another: TinyType) {
+    equals(another: TinyType): boolean {
         return equal(this, another);
     }
 
+    /**
+     * @desc Serialises the object to its string representation
+     *
+     * @returns {string}
+     */
     toString() {
         return stringify(this);
     }
