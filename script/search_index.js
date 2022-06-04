@@ -385,19 +385,19 @@ window.esdocSearchIndex = [
   ],
   [
     "tinytype src/tinytype.ts~tinytype,tinytype",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber360",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber392",
     "TinyType wrapping a single value de-serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber471",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber503",
     "TinyType wrapping a single value de-serialisation custom fromJSON can de-serialise a serialised single-value TinyType",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber476",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber508",
     "TinyType wrapping a single value de-serialisation custom fromJSON can recursively de-serialise a serialised complex TinyType",
     "test"
   ],
@@ -458,6 +458,18 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/TinyType.spec.ts.html#lineNumber345",
+    "TinyType wrapping a single value serialisation ::toJSON ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber365",
+    "TinyType wrapping a single value serialisation ::toJSON ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber377",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
