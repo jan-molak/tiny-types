@@ -71,6 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/objects/equal.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import { given } from &apos;mocha-testdata&apos;;
 
 import { TinyType, TinyTypeOf } from &apos;../../src&apos;;
@@ -93,8 +94,8 @@ describe(&apos;equal&apos;, () =&gt; {
             { v1: &apos;string&apos;, v2: String(&apos;string&apos;)  },
             { v1: 42,       v2: 42                },
             { v1: 42,       v2: Number(42)        },
-            { v1: 42,       v2: 42.0              },
-            { v1: 42,       v2: Number(42.0)      },
+            { v1: 42,       v2: 42              },
+            { v1: 42,       v2: Number(42)      },
         ).
         it(&apos;is symmetric&apos;, ({ v1, v2 }) =&gt; {
             expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression
@@ -230,7 +231,7 @@ describe(&apos;equal&apos;, () =&gt; {
         });
     });
 
-        /** @test {TinyType#equals} */
+    /** @test {TinyType#equals} */
     describe(&apos;when used with Dates&apos;, () =&gt; {
         const
             dateInstance1 = new Date(&apos;2018-05-01T12:00:00.000Z&apos;),

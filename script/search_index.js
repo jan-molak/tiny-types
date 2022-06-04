@@ -307,19 +307,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/serialisation.spec.ts.html#lineNumber101",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber99",
     "Serialisation of TinyTypes wrapping several primitive values uses only the significant fields and retains their type",
     "test"
   ],
   [
     "",
-    "test-file/spec/serialisation.spec.ts.html#lineNumber112",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber110",
     "Serialisation of nested Tiny Types",
     "test"
   ],
   [
     "",
-    "test-file/spec/serialisation.spec.ts.html#lineNumber203",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber199",
     "Serialisation of nested Tiny Types uses only the significant fields and retains the type of their respective values",
     "test"
   ],
@@ -331,7 +331,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/serialisation.spec.ts.html#lineNumber214",
+    "test-file/spec/serialisation.spec.ts.html#lineNumber210",
     "Serialisation works both ways",
     "test"
   ],
@@ -487,13 +487,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber194",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber196",
     "deprecated when used incorrectly",
     "test"
   ],
   [
     "",
-    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber195",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber197",
     "deprecated when used incorrectly complains",
     "test"
   ],
@@ -553,7 +553,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber185",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber186",
     "deprecated when used to deprecate a function logs a warning when an arrow function is used",
     "test"
   ],
@@ -1015,7 +1015,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isFunction.spec.ts.html#lineNumber28",
+    "test-file/spec/predicates/isFunction.spec.ts.html#lineNumber30",
     "predicates ::isFunction ensures that the argument in a function",
     "test"
   ],
@@ -1255,13 +1255,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber40",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber38",
     "significantFields ",
     "test"
   ],
   [
     "",
-    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber49",
+    "test-file/spec/objects/significantFields.spec.ts.html#lineNumber47",
     "significantFields ",
     "test"
   ],

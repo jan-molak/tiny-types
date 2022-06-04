@@ -76,7 +76,7 @@ export type JSONPrimitive = NonNullJSONPrimitive | Null;
 export interface JSONObject {
     [_: string]: JSONPrimitive | JSONObject | JSONArray;
 }
-export interface JSONArray extends Array&lt;JSONValue&gt; {}                         // tslint:disable-line:no-empty-interface
+export interface JSONArray extends Array&lt;JSONValue&gt; {}          // eslint-disable-line @typescript-eslint/no-empty-interface
 export type JSONValue = JSONPrimitive | JSONObject | JSONArray;
 </code></pre>
 

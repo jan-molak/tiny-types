@@ -71,23 +71,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/objects/significantFields.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import { significantFieldsOf } from &apos;../../src/objects&apos;;
 import { expect } from &apos;../expect&apos;;
 
 /** @test {significantFields} */
 describe(&apos;significantFields&apos;, () =&gt; {
     it(&apos;returns the names of private and public member fields of an instantiated object&apos;, () =&gt; {
-       class Person {
-           private age: number = 42;
-           constructor(public readonly firstName: string, private readonly lastName: string) {}
-           toString() {
-               return `${this.firstName} ${this.lastName} ${this.age}`;
-           }
-       }
+        class Person {
+            private age = 42;
+            constructor(public readonly firstName: string, private readonly lastName: string) {}
+            toString() {
+                return `${this.firstName} ${this.lastName} ${this.age}`;
+            }
+        }
 
-       const p = new Person(&apos;John&apos;, &apos;Smith&apos;);
+        const p = new Person(&apos;John&apos;, &apos;Smith&apos;);
 
-       expect(significantFieldsOf(p)).contain.members([&apos;firstName&apos;, &apos;lastName&apos;, &apos;age&apos;]);
+        expect(significantFieldsOf(p)).contain.members([&apos;firstName&apos;, &apos;lastName&apos;, &apos;age&apos;]);
     });
 
     it(`returns the names of object&apos;s fields`, () =&gt; {

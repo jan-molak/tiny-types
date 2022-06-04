@@ -71,7 +71,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/objects/deprecated.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import * as sinon from &apos;sinon&apos;;
+
 import { deprecated } from &apos;../../src/objects&apos;;
 import { expect } from &apos;../expect&apos;;
 
@@ -86,7 +88,7 @@ describe(&apos;deprecated&apos;, () =&gt; {
             class Foo {
             }
 
-            const foo = new Foo();
+            const foo_ = new Foo();
 
             expect(consoleWarn)
                 .to.have.been.calledWith(&apos;Foo has been deprecated.&apos;);
@@ -99,7 +101,7 @@ describe(&apos;deprecated&apos;, () =&gt; {
             class Foo {
             }
 
-            const foo = new Foo();
+            const foo_ = new Foo();
 
             expect(consoleWarn)
                 .to.have.been.calledWith(&apos;Foo has been deprecated. Please use Bar instead.&apos;);
@@ -184,6 +186,7 @@ describe(&apos;deprecated&apos;, () =&gt; {
         it(&apos;logs a warning when the function is used&apos;, () =&gt; {
             const consoleWarn = sinon.spy();
 
+            // eslint-disable-next-line unicorn/consistent-function-scoping
             function foo() {
                 return null;
             }
@@ -200,6 +203,7 @@ describe(&apos;deprecated&apos;, () =&gt; {
         it(&apos;logs a warning when an arrow function is used&apos;, () =&gt; {
             const consoleWarn = sinon.spy();
 
+            // eslint-disable-next-line unicorn/consistent-function-scoping
             const foo = () =&gt; null;
 
             const deprecatedFoo = deprecated(&apos;Please use bar instead.&apos;, consoleWarn)(foo);
@@ -214,8 +218,6 @@ describe(&apos;deprecated&apos;, () =&gt; {
     describe(&apos;when used incorrectly&apos;, () =&gt; {
 
         it(&apos;complains&apos;, () =&gt; {
-            const consoleWarn = sinon.spy();
-
             expect(() =&gt; deprecated(&apos;something that does not make sense&apos;)(42))
                 .to.throw(`Only a class, method or function can be marked as deprecated. number given.`);
         });

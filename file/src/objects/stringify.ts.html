@@ -72,36 +72,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="content" data-ice="content"><h1 data-ice="title">src/objects/stringify.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { significantFieldsOf } from &apos;./significantFields&apos;;
 
-const isObject     = (_: any) =&gt; new Object(_) === _;
-const isDate       = (_: any) =&gt; _ instanceof Date;
-const isArray      = (_: any) =&gt; Array.isArray(_);
-const isPrimitive  = (_: any) =&gt; ! isObject(_);
-
 /**
  * @access private
  */
-export function stringify(v: any): string {
-    switch (true) {
-        case isArray(v):
-            return `${v.constructor.name}(${ v.map(i =&gt; stringify(i)).join(&apos;, &apos;) })`;
-
-        case isDate(v):
-            return v.toISOString();
-
-        case isObject(v):
-
-            const fields = significantFieldsOf(v)
-                .map(field =&gt; ({ field, value: stringify(v[field]) }))
-                .reduce((acc: string[], current: { field: string, value: string }) =&gt; {
-                    return acc.concat(`${current.field}=${current.value}`);
-                }, []);
-
-            return `${v.constructor.name}(${fields.join(&apos;, &apos;)})`;
-
-        case isPrimitive(v):
-        default:
-            return `${ v }`;
+export function stringify(v: unknown): string {
+    if (Array.isArray(v)) {
+        return `${v.constructor.name}(${ v.map(i =&gt; stringify(i)).join(&apos;, &apos;) })`;
     }
+
+    if (v instanceof Date) {
+        return v.toISOString();
+    }
+
+    if (isObject(v)) {
+        const fields = significantFieldsOf(v)
+            .map(field =&gt; ({ field, value: stringify(v[field]) }))
+            .reduce((acc: string[], current: { field: string, value: string }) =&gt; {
+                return acc.concat(`${ current.field }=${ current.value }`);
+            }, []);
+
+        return `${ v.constructor.name }(${ fields.join(&apos;, &apos;) })`;
+    }
+
+    return String(v);
+}
+
+function isObject(value: any): value is object {
+    return new Object(value) === value;
 }
 </code></pre>
 

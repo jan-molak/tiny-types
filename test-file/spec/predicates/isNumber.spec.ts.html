@@ -71,6 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/isNumber.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import { given } from &apos;mocha-testdata&apos;;
 
 import { ensure, isNumber, TinyType } from &apos;../../src&apos;;
@@ -97,9 +98,9 @@ describe(&apos;predicates&apos;, () =&gt; {
             0.42,
             0o3,
             0xB4D455,
-            NaN,
-            Infinity,
-            -Infinity,
+            Number.NaN,
+            Number.POSITIVE_INFINITY,
+            Number.NEGATIVE_INFINITY,
         ]).
         it(&apos;works for any type of number&apos;, (value: any) =&gt; {
             expect(() =&gt; new Percentage(value)).to.not.throw();

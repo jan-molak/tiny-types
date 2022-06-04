@@ -71,6 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/pattern-matching/ObjectMatcher.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import { given } from &apos;mocha-testdata&apos;;
 
 import { TinyType } from &apos;../../src&apos;;
@@ -145,8 +146,8 @@ describe(&apos;pattern-matching&apos;, () =&gt; {
 
             class AccountConfirmed extends DomainEvent {
                 constructor(public readonly account_name: string,
-                            public readonly email: string,
-                            timestamp: Date,) {
+                    public readonly email: string,
+                    timestamp: Date,) {
                     super(timestamp);
                 }
             }

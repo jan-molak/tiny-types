@@ -71,28 +71,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/json.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import { JSONArray, JSONObject, JSONPrimitive, JSONValue } from &apos;../src/types&apos;;
 
 describe(&apos;JSON&apos;, () =&gt; {
 
     const
-        Some_String: string = &apos;string&apos;,
-        Some_Number: number = 1,
-        Some_Boolean: boolean = false,
+        Some_String = &apos;string&apos;,
+        Some_Number = 1,
+        Some_Boolean = false,
         Some_Object = {k1: Some_String, k2: Some_Number},
         Some_Array = [Some_String, Some_Number, Some_Boolean, Some_Object];
 
     /** @test {JSONArray} */
     describe(&apos;JSONArray&apos;, () =&gt; {
         it(`describes an array that&apos;s a valid JSON`, () =&gt; {
-            const array: JSONArray = Some_Array;
+            const array_: JSONArray = Some_Array;
         });
     });
 
     /** @test {JSONObject} */
     describe(&apos;JSONObject&apos;, () =&gt; {
         it(`describes a JavaScript object serialised to JSON`, () =&gt; {
-            const object: JSONObject = {
+            const object_: JSONObject = {
                 string: Some_String,
                 number: Some_Number,
                 boolean: Some_Boolean,
@@ -105,10 +106,10 @@ describe(&apos;JSON&apos;, () =&gt; {
     /** @test {JSONPrimitive} */
     describe(&apos;JSONPrimitive&apos;, () =&gt; {
         it(`describes any primitive that can be part of JSON`, () =&gt; {
-            const s: JSONPrimitive = &apos;string&apos;,
-                n: JSONPrimitive = 42,
-                b: JSONPrimitive = false,
-                e: JSONPrimitive = null;
+            const string_: JSONPrimitive = &apos;string&apos;,
+                number_: JSONPrimitive = 42,
+                boolean_: JSONPrimitive = false,
+                null_: JSONPrimitive = null;
         });
     });
 
@@ -116,11 +117,11 @@ describe(&apos;JSON&apos;, () =&gt; {
     describe(&apos;JSONValue&apos;, () =&gt; {
         it(&apos;describes any value that can be represented as JSON&apos;, () =&gt; {
             const
-                ss: JSONValue = Some_String,
-                sn: JSONValue = Some_Number,
-                sb: JSONValue = Some_Boolean,
-                so: JSONValue = Some_Object,
-                sa: JSONValue = Some_Array;
+                string_: JSONValue = Some_String,
+                number_: JSONValue = Some_Number,
+                boolean_: JSONValue = Some_Boolean,
+                object_: JSONValue = Some_Object,
+                array_: JSONValue = Some_Array;
         });
     });
 });

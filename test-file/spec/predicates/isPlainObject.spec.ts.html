@@ -71,6 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/isPlainObject.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import { given } from &apos;mocha-testdata&apos;;
 
 import { ensure, isPlainObject, isString, property } from &apos;../../src&apos;;
@@ -105,7 +106,7 @@ describe(&apos;predicates&apos;, () =&gt; {
             5,
             &apos;name&apos;,
             new Person(&apos;Jan&apos;),
-            () =&gt; {},
+            () =&gt; {},               // eslint-disable-line @typescript-eslint/no-empty-function
         ]).
         it(&apos;complains if the value is not a plain object&apos;, (value: any) =&gt; {
             expect(() =&gt; ensure(&apos;value&apos;, value, isPlainObject())).to.throw(`value should be a plain object`);

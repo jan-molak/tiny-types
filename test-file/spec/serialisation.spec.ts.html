@@ -71,9 +71,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/serialisation.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import { given } from &apos;mocha-testdata&apos;;
 
-import { JSONObject, Serialised, TinyType, TinyTypeOf } from &apos;../src&apos;;
+import { JSONObject, TinyType, TinyTypeOf } from &apos;../src&apos;;
 import { expect } from &apos;./expect&apos;;
 
 describe(&apos;Serialisation&apos;, () =&gt; {
@@ -105,7 +106,7 @@ describe(&apos;Serialisation&apos;, () =&gt; {
     describe(&apos;of TinyTypes wrapping several primitive values&apos;, () =&gt; {
 
         class Person extends TinyType {
-            public role: string = &apos;dev&apos;;
+            public role = &apos;dev&apos;;
 
             static fromJSON(o: JSONObject): Person {
                 return new Person(o.firstName as string, o.lastName as string, o.age as number);
@@ -146,7 +147,7 @@ describe(&apos;Serialisation&apos;, () =&gt; {
         }
 
         class AnotherPerson extends TinyType {
-            public role: string = &apos;dev&apos;;
+            public role = &apos;dev&apos;;
 
             static fromJSON(o: JSONObject): AnotherPerson {
                 return new AnotherPerson(
@@ -157,8 +158,8 @@ describe(&apos;Serialisation&apos;, () =&gt; {
             }
 
             constructor(public readonly firstName: FirstName,
-                        public readonly lastName: LastName,
-                        public readonly age: Age,
+                public readonly lastName: LastName,
+                public readonly age: Age,
             ) {
                 super();
             }

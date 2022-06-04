@@ -71,7 +71,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/predicates/property.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { and } from &apos;./and&apos;;
-import { isDefined } from &apos;./isDefined&apos;;
 import { Failure, Predicate, Result, Success } from &apos;./Predicate&apos;;
 
 /**
@@ -89,23 +88,23 @@ import { Failure, Predicate, Result, Success } from &apos;./Predicate&apos;;
  *
  * @returns {Predicate&lt;T&gt;}
  */
-export function property&lt;T, K extends keyof T&gt;(prop: K, ...predicates: Array&lt;Predicate&lt;T[K]&gt;&gt;): Predicate&lt;T&gt; {
-    return new HaveProperty&lt;T, K&gt;(prop, and(...predicates));
+export function property&lt;T, K extends keyof T&gt;(propertyName: K, ...predicates: Array&lt;Predicate&lt;T[K]&gt;&gt;): Predicate&lt;T&gt; {
+    return new HaveProperty&lt;T, K&gt;(propertyName, and(...predicates));
 }
 
 /** @access private */
 class HaveProperty&lt;T, K extends keyof T&gt; extends Predicate&lt;T&gt; {
 
-    constructor(private readonly prop: K, private readonly predicate: Predicate&lt;T[K]&gt;) {
+    constructor(private readonly propertyName: K, private readonly predicate: Predicate&lt;T[K]&gt;) {
         super();
     }
 
     /** @override */
     check(value: T): Result&lt;T&gt; {
-        const result = this.predicate.check(value[this.prop]);
+        const result = this.predicate.check(value[this.propertyName]);
 
         return result instanceof Failure
-            ? new Failure(value, `have a property &quot;${ String(this.prop) }&quot; that ${ result.description }`
+            ? new Failure(value, `have a property &quot;${ String(this.propertyName) }&quot; that ${ result.description }`
                 .replace(/\bbe\b/gi, &apos;is&apos;)
                 .replace(/\beither is\b/gi, &apos;is either&apos;),
             )

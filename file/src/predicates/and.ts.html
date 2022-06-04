@@ -100,13 +100,14 @@ class And&lt;T&gt; extends Predicate&lt;T&gt; {
     constructor(private readonly predicates: Array&lt;Predicate&lt;T&gt;&gt;) {
         super();
 
-        if ([
-                _ =&gt; isDefined().check(_),
-                _ =&gt; isArray().check(_),
-                _ =&gt; isGreaterThan(0).check(_.length),
-            ].some(check =&gt; check(this.predicates) instanceof Failure)
-        ) {
-            throw new Error(`Looks like you haven\&apos;t specified any predicates to check the value against?`);
+        const results = [
+            _ =&gt; isDefined().check(_),
+            _ =&gt; isArray().check(_),
+            _ =&gt; isGreaterThan(0).check(_.length),
+        ];
+
+        if (results.some(check =&gt; check(this.predicates) instanceof Failure)) {
+            throw new Error(`Looks like you haven&apos;t specified any predicates to check the value against?`);
         }
     }
 

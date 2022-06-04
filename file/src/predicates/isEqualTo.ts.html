@@ -106,12 +106,16 @@ export function isEqualTo&lt;T&gt;(expectedValue: T): Predicate&lt;T&gt;;
  * @param {string | number | symbol | TinyType | object} expectedValue
  * @returns {Predicate&lt;any&gt;}
  */
-export function isEqualTo(expectedValue: any): Predicate&lt;any&gt; {
-    return Predicate.to(`be equal to ${ expectedValue }`, (value: any) =&gt;
-        (!! value &amp;&amp; value.equals &amp;&amp; expectedValue &amp;&amp; expectedValue.equals)
+export function isEqualTo&lt;T&gt;(expectedValue: T): Predicate&lt;T&gt; {
+    return Predicate.to(`be equal to ${ String(expectedValue) }`, (value: any) =&gt;
+        (hasEquals(value) &amp;&amp; hasEquals(expectedValue))
             ? value.equals(expectedValue)
             : value === expectedValue,
     );
+}
+
+function hasEquals(value: unknown): value is { equals: (another: any) =&gt; boolean } {
+    return !! value &amp;&amp; (value instanceof TinyType || (value as any).equals);
 }
 </code></pre>
 

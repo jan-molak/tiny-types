@@ -71,7 +71,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/TinyType.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import { given } from &apos;mocha-testdata&apos;;
+
 import { JSONObject, JSONPrimitive, TinyType, TinyTypeOf } from &apos;../src&apos;;
 import { expect } from &apos;./expect&apos;;
 
@@ -118,8 +120,10 @@ describe(&apos;TinyType&apos;, () =&gt; {
                 }
 
                 class FullName extends TinyType {
-                    constructor(public readonly firstName: FirstName,
-                                public readonly lastName: LastName) {
+                    constructor(
+                        public readonly firstName: FirstName,
+                        public readonly lastName: LastName,
+                    ) {
                         super();
                     }
                 }
@@ -146,7 +150,7 @@ describe(&apos;TinyType&apos;, () =&gt; {
 
                 class Timestamp extends TinyTypeOf&lt;Date&gt;() {
                     toString() {
-                        return `Timestamp(value=${this.value.toISOString()})`;
+                        return `Timestamp(value=${ this.value.toISOString() })`;
                     }
                 }
 
@@ -159,9 +163,9 @@ describe(&apos;TinyType&apos;, () =&gt; {
                     }
                 }
 
-                const e = new AccountCreated(new UserName(&apos;jan-molak&apos;), new Timestamp(now));
+                const event = new AccountCreated(new UserName(&apos;jan-molak&apos;), new Timestamp(now));
 
-                expect(e.toString()).to.equal(
+                expect(event.toString()).to.equal(
                     &apos;AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))&apos;,
                 );
             });
@@ -169,19 +173,23 @@ describe(&apos;TinyType&apos;, () =&gt; {
 
         /** @test {TinyType#toString} */
         describe(&apos;::toString&apos;, () =&gt; {
-            class Area extends TinyTypeOf&lt;string&gt;() {}
+            class Area extends TinyTypeOf&lt;string&gt;() {
+            }
 
-            class District extends TinyTypeOf&lt;number&gt;() {}
+            class District extends TinyTypeOf&lt;number&gt;() {
+            }
 
-            class Sector extends TinyTypeOf&lt;number&gt;() {}
+            class Sector extends TinyTypeOf&lt;number&gt;() {
+            }
 
-            class Unit extends TinyTypeOf&lt;string&gt;() {}
+            class Unit extends TinyTypeOf&lt;string&gt;() {
+            }
 
             class Postcode extends TinyType {
                 constructor(public readonly area: Area,
-                            public readonly district: District,
-                            public readonly sector: Sector,
-                            public readonly unit: Unit,
+                    public readonly district: District,
+                    public readonly sector: Sector,
+                    public readonly unit: Unit,
                 ) {
                     super();
                 }
@@ -221,17 +229,21 @@ describe(&apos;TinyType&apos;, () =&gt; {
             });
 
             it(&apos;prints the array-type properties&apos;, () =&gt; {
-                class Name extends TinyTypeOf&lt;string&gt;() {}
-                class Names extends TinyTypeOf&lt;Name[]&gt;() {}
+                class Name extends TinyTypeOf&lt;string&gt;() {
+                }
 
-                const names = new Names([ new Name(&apos;Alice&apos;), new Name(&apos;Bob&apos;) ]);
+                class Names extends TinyTypeOf&lt;Name[]&gt;() {
+                }
+
+                const names = new Names([new Name(&apos;Alice&apos;), new Name(&apos;Bob&apos;)]);
 
                 expect(names.toString())
                     .to.equal(&apos;Names(value=Array(Name(value=Alice), Name(value=Bob)))&apos;);
             });
 
             it(&apos;prints the object-type properties&apos;, () =&gt; {
-                class Dictionary extends TinyTypeOf&lt;{ [key: string ]: string }&gt;() {}
+                class Dictionary extends TinyTypeOf&lt;{ [key: string]: string }&gt;() {
+                }
 
                 const dictionary = new Dictionary({ greeting: &apos;Hello&apos;, subject: &apos;World&apos; });
 
@@ -243,16 +255,19 @@ describe(&apos;TinyType&apos;, () =&gt; {
         /** @test {TinyType#toJSON} */
         describe(&apos;serialisation&apos;, () =&gt; {
 
-            class FirstName extends TinyTypeOf&lt;string&gt;() {}
+            class FirstName extends TinyTypeOf&lt;string&gt;() {
+            }
 
-            class LastName extends TinyTypeOf&lt;string&gt;() {}
+            class LastName extends TinyTypeOf&lt;string&gt;() {
+            }
 
-            class Age extends TinyTypeOf&lt;number&gt;() {}
+            class Age extends TinyTypeOf&lt;number&gt;() {
+            }
 
             class Person extends TinyType {
                 constructor(public readonly firstName: FirstName,
-                            public readonly lastName: LastName,
-                            public readonly age: Age,
+                    public readonly lastName: LastName,
+                    public readonly age: Age,
                 ) {
                     super();
                 }
@@ -299,19 +314,21 @@ describe(&apos;TinyType&apos;, () =&gt; {
                 });
 
                 it(`should serialise a plain-old JavaScript object`, () =&gt; {
-                    class Parameters extends TinyTypeOf&lt;{ [parameter: string]: string}&gt;() {}
+                    class Parameters extends TinyTypeOf&lt;{ [parameter: string]: string }&gt;() {
+                    }
 
                     const parameters = new Parameters({
-                        env: &apos;prod&apos;
+                        env: &apos;prod&apos;,
                     });
 
                     expect(parameters.toJSON()).to.deep.equal({
-                        env: &apos;prod&apos;
+                        env: &apos;prod&apos;,
                     });
                 });
 
                 it(`should serialise Map as object`, () =&gt; {
-                    class Notes extends TinyTypeOf&lt;Map&lt;string, any&gt;&gt;() {}
+                    class Notes extends TinyTypeOf&lt;Map&lt;string, any&gt;&gt;() {
+                    }
 
                     const parameters = new Notes(new Map(Object.entries({
                         stringEntry: &apos;prod&apos;,
@@ -327,7 +344,8 @@ describe(&apos;TinyType&apos;, () =&gt; {
                 });
 
                 it(`should serialise a Set as Array`, () =&gt; {
-                    class Notes extends TinyTypeOf&lt;Set&lt;string&gt;&gt;() {}
+                    class Notes extends TinyTypeOf&lt;Set&lt;string&gt;&gt;() {
+                    }
 
                     const parameters = new Notes(new Set([&apos;apples&apos;, &apos;bananas&apos;, &apos;cucumbers&apos;]));
 
@@ -338,7 +356,7 @@ describe(&apos;TinyType&apos;, () =&gt; {
                     class TT extends TinyTypeOf&lt;number&gt;() {
                     }
 
-                    const tt = new TT(NaN);
+                    const tt = new TT(Number.NaN);
 
                     expect(tt.toJSON()).to.equal(&apos;null&apos;);
                 });
@@ -389,11 +407,11 @@ describe(&apos;TinyType&apos;, () =&gt; {
                     FirstName.fromJSON(v.firstName),
                     LastName.fromJSON(v.lastName),
                     Age.fromJSON(v.age),
-                )
+                );
 
                 constructor(public readonly firstName: FirstName,
-                            public readonly lastName: LastName,
-                            public readonly age: Age,
+                    public readonly lastName: LastName,
+                    public readonly age: Age,
                 ) {
                     super();
                 }

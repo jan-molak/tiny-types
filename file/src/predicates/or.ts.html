@@ -100,13 +100,14 @@ class Or&lt;T&gt; extends Predicate&lt;T&gt; {
     constructor(private readonly predicates: Array&lt;Predicate&lt;T&gt;&gt;) {
         super();
 
-        if ([
-                _ =&gt; isDefined().check(_),
-                _ =&gt; isArray().check(_),
-                _ =&gt; isGreaterThan(0).check(_.length),
-            ].some(check =&gt; check(this.predicates) instanceof Failure)
-        ) {
-            throw new Error(`Looks like you haven\&apos;t specified any predicates to check the value against?`);
+        const results = [
+            _ =&gt; isDefined().check(_),
+            _ =&gt; isArray().check(_),
+            _ =&gt; isGreaterThan(0).check(_.length),
+        ];
+
+        if (results.some(check =&gt; check(this.predicates) instanceof Failure)) {
+            throw new Error(`Looks like you haven&apos;t specified any predicates to check the value against?`);
         }
     }
 
@@ -118,12 +119,14 @@ class Or&lt;T&gt; extends Predicate&lt;T&gt; {
         const failures = results.filter(_ =&gt; _ instanceof Failure)
             .map((_: Result&lt;T&gt;) =&gt; (_ as Failure&lt;T&gt;).description);
 
-        const describe = (issues: string[]) =&gt; `either ${issues.join(&apos;, &apos;).replace(/,([^,]*)$/, &apos; or$1&apos;)}`;
-
         return anySuccess
             ? new Success(value)
             : new Failure(value, describe(failures));
     }
+}
+
+function describe(issues: string[]): string {
+    return `either ${issues.join(&apos;, &apos;).replace(/,([^,]*)$/, &apos; or$1&apos;)}`;
 }
 </code></pre>
 

@@ -83,7 +83,7 @@ export class ObjectMatcher&lt;Input_Type, Output_Type&gt; extends PatternMatcher
     when&lt;MT extends Input_Type&gt;(pattern: ConstructorAbstractOrInstance&lt;MT&gt;, transformation: (v: MT) =&gt; Output_Type): ObjectMatcher&lt;Input_Type, Output_Type&gt;;
     when(pattern: TinyType, transformation: (v: TinyType) =&gt; Output_Type): ObjectMatcher&lt;Input_Type, Output_Type&gt;;
     when(pattern: Input_Type, transformation: (v: Input_Type) =&gt; Output_Type): ObjectMatcher&lt;Input_Type, Output_Type&gt;;
-    when(pattern: any, transformation: (v: any) =&gt; Output_Type) {
+    when(pattern: any, transformation: (v: any) =&gt; Output_Type) {   // eslint-disable-line @typescript-eslint/explicit-module-boundary-types
         return new ObjectMatcher(
             this.value,
             this.rules.concat(this.rule(pattern, transformation)),

@@ -90,7 +90,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 export function isLessThan(upperBound: number): Predicate&lt;number&gt; {
     return Predicate.to(`be less than ${ upperBound }`, (value: number) =&gt;
         typeof value === &apos;number&apos; &amp;&amp;
-        isFinite(value) &amp;&amp;
+        Number.isFinite(value) &amp;&amp;
         value &lt; upperBound,
     );
 }

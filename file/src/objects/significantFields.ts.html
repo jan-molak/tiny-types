@@ -76,7 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  * @param {object|Array} o
  * @returns {string[]}
  */
-export function significantFieldsOf(o: { [_: string]: any }) {
+export function significantFieldsOf(o: { [_: string]: any }): string[] {
     return Object.getOwnPropertyNames(o)
         .filter(field =&gt; typeof o[field] !== &apos;function&apos;)
         .sort();

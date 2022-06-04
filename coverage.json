@@ -1,11 +1,11 @@
 {
-  "coverage": "67.52%",
-  "expectCount": 117,
-  "actualCount": 79,
+  "coverage": "71.66%",
+  "expectCount": 120,
+  "actualCount": 86,
   "files": {
     "src/TinyType.ts": {
-      "expectCount": 5,
-      "actualCount": 5,
+      "expectCount": 9,
+      "actualCount": 9,
       "undocumentLines": []
     },
     "src/check.ts": {
@@ -46,14 +46,9 @@
       "undocumentLines": []
     },
     "src/objects/stringify.ts": {
-      "expectCount": 5,
-      "actualCount": 1,
-      "undocumentLines": [
-        2,
-        3,
-        4,
-        5
-      ]
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/pattern-matching/IdentityMatcher.ts": {
       "expectCount": 2,
@@ -173,8 +168,8 @@
       "undocumentLines": []
     },
     "src/predicates/isEqualTo.ts": {
-      "expectCount": 1,
-      "actualCount": 1,
+      "expectCount": 2,
+      "actualCount": 2,
       "undocumentLines": []
     },
     "src/predicates/isFunction.ts": {
@@ -248,8 +243,8 @@
       "undocumentLines": []
     },
     "src/predicates/or.ts": {
-      "expectCount": 5,
-      "actualCount": 3,
+      "expectCount": 6,
+      "actualCount": 4,
       "undocumentLines": [
         41,
         43

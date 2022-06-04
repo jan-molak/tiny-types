@@ -71,6 +71,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">spec/predicates/isFunction.spec.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import &apos;mocha&apos;;
+
 import { given } from &apos;mocha-testdata&apos;;
 
 import { ensure, isFunction } from &apos;../../src&apos;;
@@ -81,10 +82,12 @@ describe(&apos;predicates&apos;, () =&gt; {
     /** @test {isFunction} */
     describe(&apos;::isFunction&apos;, () =&gt; {
 
+        // eslint-disable-next-line unicorn/consistent-function-scoping
         function run(callback: () =&gt; void) {
             ensure(&apos;callback&apos;, callback, isFunction())
         }
 
+        // eslint-disable-next-line unicorn/consistent-function-scoping
         function validCallback() {
             // do nothing
         }
@@ -94,9 +97,9 @@ describe(&apos;predicates&apos;, () =&gt; {
         });
 
         given([
-            function () {},
-            () =&gt; {},
-            async function asyncFunction() {},
+            function () {},                     // eslint-disable-line @typescript-eslint/no-empty-function
+            () =&gt; {},                           // eslint-disable-line @typescript-eslint/no-empty-function
+            async function asyncFunction() {},  // eslint-disable-line @typescript-eslint/no-empty-function
             Array,
             Date,
             Object,

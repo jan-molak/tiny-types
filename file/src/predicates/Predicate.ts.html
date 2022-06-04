@@ -163,8 +163,9 @@ export abstract class Predicate&lt;T&gt; {
  * @access private
  */
 class SingleConditionPredicate&lt;T&gt; extends Predicate&lt;T&gt; {
-    constructor(private readonly description: string,
-                private readonly isMetBy: Condition&lt;T&gt;,
+    constructor(
+        private readonly description: string,
+        private readonly isMetBy: Condition&lt;T&gt;,
     ) {
         super();
     }

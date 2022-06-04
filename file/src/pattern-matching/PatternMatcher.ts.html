@@ -77,8 +77,9 @@ import { MatcherRule, MatchesAnything } from &apos;./rules&apos;;
  * @access private
  */
 export abstract class PatternMatcher&lt;Input_Type, Pattern_Type, Matching_Type, Output_Type&gt; {
-    constructor(protected readonly value: Input_Type,
-                protected readonly rules: List&lt;MatcherRule&lt;Input_Type, Output_Type&gt;&gt; = []) {
+    constructor(
+        protected readonly value: Input_Type,
+        protected readonly rules: List&lt;MatcherRule&lt;Input_Type, Output_Type&gt;&gt; = []) {
     }
 
     abstract when(pattern: Pattern_Type, transformation: (v: Matching_Type) =&gt; Output_Type): PatternMatcher&lt;Input_Type, Pattern_Type, Matching_Type, Output_Type&gt;;
