@@ -12,10 +12,8 @@
     "verify": "npm run clean && npm run lint && npm test && npm run compile",
     "doc": "esdoc",
     "publish:reports": "nyc report --reporter=text-lcov | coveralls",
-    "publish:site": "gh-pages --repo https://$GH_TOKEN@github.com/jan-molak/tiny-types.git -d docs",
     "commit": "git-cz",
-    "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -43,6 +41,7 @@
     "npm": "^6 || ^7 || ^8"
   },
   "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/chai": "^4.3.1",
     "@types/mocha": "^9.1.1",
     "@types/node": "^16.11.38",
@@ -63,6 +62,7 @@
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
     "semantic-release": "^19.0.2",
+    "source-map-support": "^0.5.21",
     "sinon": "^14.0.0",
     "sinon-chai": "^3.7.0",
     "ts-node": "^10.8.1",
@@ -74,30 +74,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "nyc": {
-    "include": [
-      "src/*.ts",
-      "src/**/*.ts"
-    ],
-    "exclude": [
-      "lib",
-      "node_modules",
-      "spec",
-      "src/types"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "json",
-      "text-summary",
-      "html"
-    ],
-    "cache": true,
-    "all": true
   }
 }
