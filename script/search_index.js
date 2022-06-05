@@ -391,19 +391,19 @@ window.esdocSearchIndex = [
   ],
   [
     "tinytype src/tinytype.ts~tinytype,tinytype",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber428",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber446",
     "TinyType wrapping a single value de-serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber539",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber557",
     "TinyType wrapping a single value de-serialisation custom fromJSON can de-serialise a serialised single-value TinyType",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber544",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber562",
     "TinyType wrapping a single value de-serialisation custom fromJSON can recursively de-serialise a serialised complex TinyType",
     "test"
   ],
@@ -475,7 +475,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber413",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber431",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
@@ -489,6 +489,12 @@ window.esdocSearchIndex = [
     "",
     "test-file/spec/TinyType.spec.ts.html#lineNumber377",
     "TinyType wrapping a single value serialisation ::toJSON should serialise a plain-old JavaScript object with nested complex types recursively",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber413",
+    "TinyType wrapping a single value serialisation ::toJSON should serialise null and undefined",
     "test"
   ],
   [

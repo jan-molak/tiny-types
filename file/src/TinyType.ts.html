@@ -251,8 +251,15 @@ function isSerialisableNumber(value: unknown): value is number {
 }
 
 function isSerialisablePrimitive(value: unknown): value is string | boolean | number | null | undefined {
-    return [&apos;string&apos;, &apos;boolean&apos;, &apos;null&apos;, &apos;undefined&apos;].includes(typeof value)
-        || isSerialisableNumber(value);
+    if ([&apos;string&apos;, &apos;boolean&apos;].includes(typeof value)) {
+        return true;
+    }
+
+    if (value === null || value === undefined) {
+        return true;
+    }
+
+    return isSerialisableNumber(value);
 }
 </code></pre>
 
