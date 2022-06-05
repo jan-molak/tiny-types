@@ -327,6 +327,26 @@ describe('TinyType', () => {
                     });
                 });
 
+                it('should serialise null and undefined', () => {
+                    interface NotesType {
+                        nullValue: any;
+                        undefinedValue: any;
+                    }
+
+                    class Notes extends TinyTypeOf<NotesType>() {
+                    }
+
+                    const notes = new Notes({
+                        nullValue: null,
+                        undefinedValue: undefined,
+                    });
+
+                    expect(notes.toJSON()).to.deep.equal({
+                        nullValue: null,
+                        undefinedValue: undefined,
+                    });
+                });
+
                 it(`should JSON.stringify any object that can't be represented in a more sensible way`, () => {
                     class TT extends TinyTypeOf<number>() {
                     }

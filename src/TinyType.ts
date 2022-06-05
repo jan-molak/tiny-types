@@ -178,6 +178,13 @@ function isSerialisableNumber(value: unknown): value is number {
 }
 
 function isSerialisablePrimitive(value: unknown): value is string | boolean | number | null | undefined {
-    return ['string', 'boolean', 'null', 'undefined'].includes(typeof value)
-        || isSerialisableNumber(value);
+    if (['string', 'boolean'].includes(typeof value)) {
+        return true;
+    }
+
+    if (value === null || value === undefined) {
+        return true;
+    }
+
+    return isSerialisableNumber(value);
 }
