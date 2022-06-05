@@ -37,6 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-check">check</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#objects">objects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deprecated">deprecated</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isRecord">isRecord</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
@@ -350,6 +351,53 @@ describe(&apos;TinyType&apos;, () =&gt; {
                     const parameters = new Notes(new Set([&apos;apples&apos;, &apos;bananas&apos;, &apos;cucumbers&apos;]));
 
                     expect(parameters.toJSON()).to.deep.equal([&apos;apples&apos;, &apos;bananas&apos;, &apos;cucumbers&apos;]);
+                });
+
+                it(&apos;should serialise a plain-old JavaScript object with nested complex types recursively&apos;, () =&gt; {
+                    interface NotesType {
+                        authCredentials: {
+                            username: string;
+                            password: string;
+                        },
+                        names:  Set&lt;FirstName&gt;;
+                        age:    Map&lt;FirstName, Age&gt;;
+                    }
+
+                    class Notes extends TinyTypeOf&lt;NotesType&gt;() {
+                    }
+
+                    const
+                        alice = new FirstName(&apos;Alice&apos;),
+                        bob = new FirstName(&apos;Bob&apos;),
+                        cindy = new FirstName(&apos;Cindy&apos;);
+
+                    const names = new Set&lt;FirstName&gt;([ alice, bob, cindy ]);
+                    const age = new Map&lt;FirstName, Age&gt;()
+                        .set(alice, new Age(23))
+                        .set(bob, new Age(42))
+                        .set(cindy, new Age(67));
+
+                    const notes = new Notes({
+                        authCredentials: {
+                            username: &apos;Alice&apos;,
+                            password: &apos;P@ssw0rd!&apos;,
+                        },
+                        names,
+                        age
+                    });
+
+                    expect(notes.toJSON()).to.deep.equal({
+                        authCredentials: {
+                            username: &apos;Alice&apos;,
+                            password: &apos;P@ssw0rd!&apos;,
+                        },
+                        names: [ &apos;Alice&apos;, &apos;Bob&apos;, &apos;Cindy&apos; ],
+                        age: {
+                            Alice: 23,
+                            Bob: 42,
+                            Cindy: 67,
+                        }
+                    });
                 });
 
                 it(`should JSON.stringify any object that can&apos;t be represented in a more sensible way`, () =&gt; {

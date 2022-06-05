@@ -204,6 +204,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/objects/isrecord~isrecord",
+    "function/index.html#static-function-isRecord",
+    "<span>isRecord</span> <span class=\"search-result-import-path\">tiny-types/lib/objects/isRecord</span>",
+    "function"
+  ],
+  [
     "tiny-types/lib/predicates/isstring~isstring",
     "function/index.html#static-function-isString",
     "<span>isString</span> <span class=\"search-result-import-path\">tiny-types/lib/predicates/isString</span>",
@@ -385,19 +391,19 @@ window.esdocSearchIndex = [
   ],
   [
     "tinytype src/tinytype.ts~tinytype,tinytype",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber392",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber428",
     "TinyType wrapping a single value de-serialisation",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber503",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber539",
     "TinyType wrapping a single value de-serialisation custom fromJSON can de-serialise a serialised single-value TinyType",
     "test"
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber508",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber544",
     "TinyType wrapping a single value de-serialisation custom fromJSON can recursively de-serialise a serialised complex TinyType",
     "test"
   ],
@@ -469,7 +475,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/TinyType.spec.ts.html#lineNumber377",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber413",
     "TinyType wrapping a single value serialisation ::toJSON ",
     "test"
   ],
@@ -477,6 +483,12 @@ window.esdocSearchIndex = [
     "",
     "test-file/spec/TinyType.spec.ts.html#lineNumber306",
     "TinyType wrapping a single value serialisation ::toJSON should serialise a complex TinyType recursively",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/TinyType.spec.ts.html#lineNumber377",
+    "TinyType wrapping a single value serialisation ::toJSON should serialise a plain-old JavaScript object with nested complex types recursively",
     "test"
   ],
   [
@@ -733,6 +745,12 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
     "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber5",
     "predicates",
     "test"
@@ -866,12 +884,6 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -1827,6 +1839,18 @@ window.esdocSearchIndex = [
     "src/objects/index.ts",
     "file/src/objects/index.ts.html",
     "src/objects/index.ts",
+    "file"
+  ],
+  [
+    "src/objects/isobject.ts",
+    "file/src/objects/isObject.ts.html",
+    "src/objects/isObject.ts",
+    "file"
+  ],
+  [
+    "src/objects/isrecord.ts",
+    "file/src/objects/isRecord.ts.html",
+    "src/objects/isRecord.ts",
     "file"
   ],
   [

@@ -37,6 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-match">match</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-check">check</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#objects">objects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deprecated">deprecated</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isRecord">isRecord</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
@@ -71,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/TinyType.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { ensure } from &apos;./ensure&apos;;
-import { equal, significantFieldsOf, stringify } from &apos;./objects&apos;;
+import { equal, isRecord, significantFieldsOf, stringify } from &apos;./objects&apos;;
 import { isDefined } from &apos;./predicates&apos;;
 import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable } from &apos;./types&apos;;
 
@@ -217,11 +218,11 @@ function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
         case value &amp;&amp; Array.isArray(value):
             return value.map(v =&gt; toJSON(v));
         case value &amp;&amp; value instanceof Map:
-            return toJSON(Object.fromEntries(value));
+            return mapToJSON(value);
         case value &amp;&amp; value instanceof Set:
             return toJSON(Array.from(value));
-        case value &amp;&amp; isObject(value):
-            return JSON.parse(JSON.stringify(value));
+        case value &amp;&amp; isRecord(value):
+            return recordToJSON(value);
         case isSerialisablePrimitive(value):
             return value;
         default:
@@ -229,15 +230,24 @@ function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
     }
 }
 
+function mapToJSON(map: Map&lt;any, any&gt;): JSONObject {
+    const serialised = Array.from(map, ([key, value]) =&gt; [ toJSON(key), toJSON(value) ]);
+
+    return Object.fromEntries(serialised);
+}
+
+function recordToJSON(value: Record&lt;any, any&gt;): JSONObject {
+    const serialised = Object.entries(value)
+        .map(([ k, v ]) =&gt; [ toJSON(k), toJSON(v) ]);
+
+    return Object.fromEntries(serialised);
+}
+
 function isSerialisableNumber(value: unknown): value is number {
     return typeof value === &apos;number&apos;
         &amp;&amp; ! Number.isNaN(value)
         &amp;&amp; value !== Number.NEGATIVE_INFINITY
         &amp;&amp; value !== Number.POSITIVE_INFINITY;
-}
-
-function isObject(value: unknown): value is object {
-    return Object(value) === value;
 }
 
 function isSerialisablePrimitive(value: unknown): value is string | boolean | number | null | undefined {

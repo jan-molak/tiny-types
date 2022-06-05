@@ -4,8 +4,8 @@
   "actualCount": 86,
   "files": {
     "src/TinyType.ts": {
-      "expectCount": 9,
-      "actualCount": 9,
+      "expectCount": 10,
+      "actualCount": 10,
       "undocumentLines": []
     },
     "src/check.ts": {
@@ -39,6 +39,16 @@
         52,
         53
       ]
+    },
+    "src/objects/isObject.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/objects/isRecord.ts": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/objects/significantFields.ts": {
       "expectCount": 1,
@@ -228,8 +238,8 @@
       "undocumentLines": []
     },
     "src/predicates/isPlainObject.ts": {
-      "expectCount": 4,
-      "actualCount": 4,
+      "expectCount": 1,
+      "actualCount": 1,
       "undocumentLines": []
     },
     "src/predicates/isString.ts": {
