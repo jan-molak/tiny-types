@@ -280,6 +280,53 @@ describe('TinyType', () => {
                     expect(parameters.toJSON()).to.deep.equal(['apples', 'bananas', 'cucumbers']);
                 });
 
+                it('should serialise a plain-old JavaScript object with nested complex types recursively', () => {
+                    interface NotesType {
+                        authCredentials: {
+                            username: string;
+                            password: string;
+                        },
+                        names:  Set<FirstName>;
+                        age:    Map<FirstName, Age>;
+                    }
+
+                    class Notes extends TinyTypeOf<NotesType>() {
+                    }
+
+                    const
+                        alice = new FirstName('Alice'),
+                        bob = new FirstName('Bob'),
+                        cindy = new FirstName('Cindy');
+
+                    const names = new Set<FirstName>([ alice, bob, cindy ]);
+                    const age = new Map<FirstName, Age>()
+                        .set(alice, new Age(23))
+                        .set(bob, new Age(42))
+                        .set(cindy, new Age(67));
+
+                    const notes = new Notes({
+                        authCredentials: {
+                            username: 'Alice',
+                            password: 'P@ssw0rd!',
+                        },
+                        names,
+                        age
+                    });
+
+                    expect(notes.toJSON()).to.deep.equal({
+                        authCredentials: {
+                            username: 'Alice',
+                            password: 'P@ssw0rd!',
+                        },
+                        names: [ 'Alice', 'Bob', 'Cindy' ],
+                        age: {
+                            Alice: 23,
+                            Bob: 42,
+                            Cindy: 67,
+                        }
+                    });
+                });
+
                 it(`should JSON.stringify any object that can't be represented in a more sensible way`, () => {
                     class TT extends TinyTypeOf<number>() {
                     }

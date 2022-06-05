@@ -1,5 +1,5 @@
 import { ensure } from './ensure';
-import { equal, significantFieldsOf, stringify } from './objects';
+import { equal, isRecord, significantFieldsOf, stringify } from './objects';
 import { isDefined } from './predicates';
 import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable } from './types';
 
@@ -145,11 +145,11 @@ function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
         case value && Array.isArray(value):
             return value.map(v => toJSON(v));
         case value && value instanceof Map:
-            return toJSON(Object.fromEntries(value));
+            return mapToJSON(value);
         case value && value instanceof Set:
             return toJSON(Array.from(value));
-        case value && isObject(value):
-            return JSON.parse(JSON.stringify(value));
+        case value && isRecord(value):
+            return recordToJSON(value);
         case isSerialisablePrimitive(value):
             return value;
         default:
@@ -157,15 +157,24 @@ function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
     }
 }
 
+function mapToJSON(map: Map<any, any>): JSONObject {
+    const serialised = Array.from(map, ([key, value]) => [ toJSON(key), toJSON(value) ]);
+
+    return Object.fromEntries(serialised);
+}
+
+function recordToJSON(value: Record<any, any>): JSONObject {
+    const serialised = Object.entries(value)
+        .map(([ k, v ]) => [ toJSON(k), toJSON(v) ]);
+
+    return Object.fromEntries(serialised);
+}
+
 function isSerialisableNumber(value: unknown): value is number {
     return typeof value === 'number'
         && ! Number.isNaN(value)
         && value !== Number.NEGATIVE_INFINITY
         && value !== Number.POSITIVE_INFINITY;
-}
-
-function isObject(value: unknown): value is object {
-    return Object(value) === value;
 }
 
 function isSerialisablePrimitive(value: unknown): value is string | boolean | number | null | undefined {
