@@ -1,11 +1,11 @@
 {
-  "coverage": "71.66%",
-  "expectCount": 120,
-  "actualCount": 86,
+  "coverage": "71.9%",
+  "expectCount": 121,
+  "actualCount": 87,
   "files": {
     "src/TinyType.ts": {
-      "expectCount": 10,
-      "actualCount": 10,
+      "expectCount": 11,
+      "actualCount": 11,
       "undocumentLines": []
     },
     "src/check.ts": {
