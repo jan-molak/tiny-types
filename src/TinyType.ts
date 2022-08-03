@@ -150,6 +150,8 @@ function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
             return toJSON(Array.from(value));
         case value && isRecord(value):
             return recordToJSON(value);
+        case value && value instanceof Error:
+            return errorToJSON(value);
         case isSerialisablePrimitive(value):
             return value;
         default:
@@ -168,6 +170,14 @@ function recordToJSON(value: Record<any, any>): JSONObject {
         .map(([ k, v ]) => [ toJSON(k), toJSON(v) ]);
 
     return Object.fromEntries(serialised);
+}
+
+function errorToJSON(value: Error): JSONObject {
+    return Object.getOwnPropertyNames(value)
+        .reduce((serialised, key) => {
+            serialised[key] = toJSON(value[key])
+            return serialised;
+        }, { }) as JSONObject;
 }
 
 function isSerialisableNumber(value: unknown): value is number {

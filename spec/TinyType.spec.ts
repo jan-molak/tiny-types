@@ -280,6 +280,20 @@ describe('TinyType', () => {
                     expect(parameters.toJSON()).to.deep.equal(['apples', 'bananas', 'cucumbers']);
                 });
 
+                it(`should serialise an Error as its stack trace`, () => {
+                    class CustomError extends TinyTypeOf<Error>() {
+                    }
+
+                    const error = thrown(new Error('example error'))
+
+                    const customError = new CustomError(error);
+
+                    expect(customError.toJSON()).to.deep.equal({
+                        message:    'example error',
+                        stack:      error.stack,
+                    });
+                });
+
                 it('should serialise a plain-old JavaScript object with nested complex types recursively', () => {
                     interface NotesType {
                         authCredentials: {
@@ -432,3 +446,11 @@ describe('TinyType', () => {
         });
     });
 });
+
+function thrown<T>(throwable: T): T {
+    try {
+        throw throwable;
+    } catch (error) {
+        return error as T;
+    }
+}
