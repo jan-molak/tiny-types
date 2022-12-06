@@ -51,7 +51,7 @@
     "@typescript-eslint/parser": "^5.45.1",
     "chai": "^4.3.7",
     "cheerio": "^1.0.0-rc.12",
-    "commitizen": "^4.2.5",
+    "commitizen": "^4.2.6",
     "coveralls": "^3.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "esdoc": "^1.1.0",
