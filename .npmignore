@@ -12,6 +12,7 @@ spec
 reports
 
 # Config
+.github
 .esdoc.json
 .eslintrc.yml
 .mocharc.yml
