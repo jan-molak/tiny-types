@@ -81,3 +81,4 @@ rules:
         acc: true
         args: true
         i: true
+  unicorn/switch-case-braces: 'off'
