@@ -70,7 +70,7 @@
     "nyc": "^15.1.0",
     "rimraf": "^5.0.0",
     "semantic-release": "^21.0.1",
-    "sinon": "^15.0.3",
+    "sinon": "^15.0.4",
     "sinon-chai": "^3.7.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
