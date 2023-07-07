@@ -106,8 +106,8 @@ class HaveProperty&lt;T, K extends keyof T&gt; extends Predicate&lt;T&gt; {
 
         return result instanceof Failure
             ? new Failure(value, `have a property &quot;${ String(this.propertyName) }&quot; that ${ result.description }`
-                .replace(/\bbe\b/gi, &apos;is&apos;)
-                .replace(/\beither is\b/gi, &apos;is either&apos;),
+                .replaceAll(/\bbe\b/gi, &apos;is&apos;)
+                .replaceAll(/\beither is\b/gi, &apos;is either&apos;),
             )
             : new Success(value);
     }

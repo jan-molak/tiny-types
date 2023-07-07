@@ -183,39 +183,6 @@ describe(&apos;deprecated&apos;, () =&gt; {
         });
     });
 
-    describe(&apos;when used to deprecate a function&apos;, () =&gt; {
-        it(&apos;logs a warning when the function is used&apos;, () =&gt; {
-            const consoleWarn = sinon.spy();
-
-            // eslint-disable-next-line unicorn/consistent-function-scoping
-            function foo() {
-                return null;
-            }
-
-            const deprecatedFoo = deprecated(&apos;Please use bar instead.&apos;, consoleWarn)(foo);
-
-            deprecatedFoo();
-
-            expect(consoleWarn)
-                .to.have.been.calledWith(&apos;foo has been deprecated. Please use bar instead.&apos;);
-
-        });
-
-        it(&apos;logs a warning when an arrow function is used&apos;, () =&gt; {
-            const consoleWarn = sinon.spy();
-
-            // eslint-disable-next-line unicorn/consistent-function-scoping
-            const foo = () =&gt; null;
-
-            const deprecatedFoo = deprecated(&apos;Please use bar instead.&apos;, consoleWarn)(foo);
-
-            deprecatedFoo();
-
-            expect(consoleWarn)
-                .to.have.been.calledWith(&apos;foo has been deprecated. Please use bar instead.&apos;);
-        });
-    });
-
     describe(&apos;when used incorrectly&apos;, () =&gt; {
 
         it(&apos;complains&apos;, () =&gt; {

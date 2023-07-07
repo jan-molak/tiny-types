@@ -511,13 +511,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber196",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber168",
     "deprecated when used incorrectly",
     "test"
   ],
   [
     "",
-    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber197",
+    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber169",
     "deprecated when used incorrectly complains",
     "test"
   ],
@@ -567,24 +567,6 @@ window.esdocSearchIndex = [
     "",
     "test-file/spec/objects/deprecated.spec.ts.html#lineNumber135",
     "deprecated when used to annotate a method maintains the behaviour of the annotated method",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber168",
-    "deprecated when used to deprecate a function",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber186",
-    "deprecated when used to deprecate a function logs a warning when an arrow function is used",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/objects/deprecated.spec.ts.html#lineNumber169",
-    "deprecated when used to deprecate a function logs a warning when the function is used",
     "test"
   ],
   [
@@ -757,12 +739,6 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
-    "predicates",
-    "test"
-  ],
-  [
-    "",
     "test-file/spec/predicates/isBoolean.spec.ts.html#lineNumber5",
     "predicates",
     "test"
@@ -896,6 +872,12 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/predicates/hasLengthOf.spec.ts.html#lineNumber5",
+    "predicates",
+    "test"
+  ],
+  [
+    "",
+    "test-file/spec/predicates/isArray.spec.ts.html#lineNumber5",
     "predicates",
     "test"
   ],
@@ -1190,12 +1172,6 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/spec/predicates/isPlainObject.spec.ts.html#lineNumber42",
-    "predicates ::isPlainObject complains if the value is not a plain object because of a modified constructor prototype",
-    "test"
-  ],
-  [
-    "",
-    "test-file/spec/predicates/isPlainObject.spec.ts.html#lineNumber47",
     "predicates ::isPlainObject is generic",
     "test"
   ],
