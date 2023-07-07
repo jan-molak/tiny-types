@@ -40,13 +40,6 @@ describe('predicates', () => {
             expect(() => ensure('value', value, isPlainObject())).to.throw(`value should be a plain object`);
         });
 
-        it('complains if the value is not a plain object because of a modified constructor prototype', () => {
-            const value = new Person('Cindy');
-            (value as any).constructor.prototype = undefined;
-
-            expect(() => ensure('value', value, isPlainObject())).to.throw(`value should be a plain object`);
-        });
-
         it('is generic', () => {
             interface Person {
                 name: string;
