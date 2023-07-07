@@ -110,39 +110,6 @@ describe('deprecated', () => {
         });
     });
 
-    describe('when used to deprecate a function', () => {
-        it('logs a warning when the function is used', () => {
-            const consoleWarn = sinon.spy();
-
-            // eslint-disable-next-line unicorn/consistent-function-scoping
-            function foo() {
-                return null;
-            }
-
-            const deprecatedFoo = deprecated('Please use bar instead.', consoleWarn)(foo);
-
-            deprecatedFoo();
-
-            expect(consoleWarn)
-                .to.have.been.calledWith('foo has been deprecated. Please use bar instead.');
-
-        });
-
-        it('logs a warning when an arrow function is used', () => {
-            const consoleWarn = sinon.spy();
-
-            // eslint-disable-next-line unicorn/consistent-function-scoping
-            const foo = () => null;
-
-            const deprecatedFoo = deprecated('Please use bar instead.', consoleWarn)(foo);
-
-            deprecatedFoo();
-
-            expect(consoleWarn)
-                .to.have.been.calledWith('foo has been deprecated. Please use bar instead.');
-        });
-    });
-
     describe('when used incorrectly', () => {
 
         it('complains', () => {

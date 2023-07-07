@@ -33,8 +33,8 @@ class HaveProperty<T, K extends keyof T> extends Predicate<T> {
 
         return result instanceof Failure
             ? new Failure(value, `have a property "${ String(this.propertyName) }" that ${ result.description }`
-                .replace(/\bbe\b/gi, 'is')
-                .replace(/\beither is\b/gi, 'is either'),
+                .replaceAll(/\bbe\b/gi, 'is')
+                .replaceAll(/\beither is\b/gi, 'is either'),
             )
             : new Success(value);
     }
