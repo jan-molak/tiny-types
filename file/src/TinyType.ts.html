@@ -74,7 +74,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { ensure } from &apos;./ensure&apos;;
 import { equal, isRecord, significantFieldsOf, stringify } from &apos;./objects&apos;;
 import { isDefined } from &apos;./predicates&apos;;
-import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable } from &apos;./types&apos;;
+import { JSONObject, JSONValue, Serialisable } from &apos;./types&apos;;
 
 /**
  * @desc The {@link TinyTypeOf} can be used to define simple
@@ -197,7 +197,7 @@ export abstract class TinyType implements Serialisable {
      *
      * @returns {JSONValue}
      */
-    toJSON(): JSONValue {
+    toJSON(): JSONValue | undefined {
         const fields = significantFieldsOf(this);
 
         if (fields.length === 1) {
@@ -211,12 +211,16 @@ export abstract class TinyType implements Serialisable {
     }
 }
 
-function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
+function toJSON(value: any): JSONValue | undefined {
     switch (true) {
         case value &amp;&amp; !! value.toJSON:
             return value.toJSON();
         case value &amp;&amp; Array.isArray(value):
-            return value.map(v =&gt; toJSON(v));
+            return value.map(v =&gt; {
+                return v === undefined
+                    ? null
+                    : toJSON(v) as JSONValue;
+            });
         case value &amp;&amp; value instanceof Map:
             return mapToJSON(value);
         case value &amp;&amp; value instanceof Set:

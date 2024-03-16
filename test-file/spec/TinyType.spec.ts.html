@@ -277,6 +277,9 @@ describe(&apos;TinyType&apos;, () =&gt; {
             class People extends TinyTypeOf&lt;Person[]&gt;() {
             }
 
+            class FirstNames extends TinyTypeOf&lt;Array&lt;FirstName | undefined&gt;&gt;() {
+            }
+
             describe(&apos;::toJSON&apos;, () =&gt; {
 
                 given&lt;TinyType &amp; { value: any }&gt;(
@@ -312,6 +315,20 @@ describe(&apos;TinyType&apos;, () =&gt; {
                         lastName: &apos;Smith&apos;,
                         age: 55,
                     }]);
+                });
+
+                it(`should serialise undefined array values as null`, () =&gt; {
+                    const firstNames = new FirstNames([
+                        new FirstName(&apos;Alice&apos;),
+                        undefined,
+                        new FirstName(&apos;Cecil&apos;),
+                    ]);
+
+                    expect(firstNames.toJSON()).to.deep.equal([
+                        &apos;Alice&apos;,
+                        null,
+                        &apos;Cecil&apos;,
+                    ]);
                 });
 
                 it(`should serialise a plain-old JavaScript object`, () =&gt; {

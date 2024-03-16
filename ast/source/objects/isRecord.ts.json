@@ -356,7 +356,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentLine",
-                    "value": " If has modified constructor",
+                    "value": " It has modified constructor",
                     "start": 202,
                     "end": 232,
                     "loc": {
@@ -526,7 +526,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentLine",
-                    "value": " If has modified constructor",
+                    "value": " It has modified constructor",
                     "start": 202,
                     "end": 232,
                     "loc": {
@@ -544,7 +544,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentLine",
-                    "value": " If has modified prototype",
+                    "value": " It has modified prototype",
                     "start": 307,
                     "end": 335,
                     "loc": {
@@ -768,7 +768,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentLine",
-                    "value": " If has modified prototype",
+                    "value": " It has modified prototype",
                     "start": 307,
                     "end": 335,
                     "loc": {
@@ -1280,7 +1280,7 @@
     },
     {
       "type": "CommentLine",
-      "value": " If has modified constructor",
+      "value": " It has modified constructor",
       "start": 202,
       "end": 232,
       "loc": {
@@ -1296,7 +1296,7 @@
     },
     {
       "type": "CommentLine",
-      "value": " If has modified prototype",
+      "value": " It has modified prototype",
       "start": 307,
       "end": 335,
       "loc": {
@@ -2066,7 +2066,7 @@
     },
     {
       "type": "CommentLine",
-      "value": " If has modified constructor",
+      "value": " It has modified constructor",
       "start": 202,
       "end": 232,
       "loc": {
@@ -2423,7 +2423,7 @@
     },
     {
       "type": "CommentLine",
-      "value": " If has modified prototype",
+      "value": " It has modified prototype",
       "start": 307,
       "end": 335,
       "loc": {
