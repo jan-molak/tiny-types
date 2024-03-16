@@ -144,9 +144,9 @@ function toJSON(value: any): JSONValue | undefined {
             return value.toJSON();
         case value && Array.isArray(value):
             return value.map(v => {
-                return v !== undefined
-                    ? toJSON(v) as JSONValue
-                    : null
+                return v === undefined
+                    ? null
+                    : toJSON(v) as JSONValue;
             });
         case value && value instanceof Map:
             return mapToJSON(value);
