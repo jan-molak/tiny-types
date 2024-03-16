@@ -1,7 +1,7 @@
 import { ensure } from './ensure';
 import { equal, isRecord, significantFieldsOf, stringify } from './objects';
 import { isDefined } from './predicates';
-import { JSONObject, JSONValue, NonNullJSONPrimitive, Serialisable } from './types';
+import { JSONObject, JSONValue, Serialisable } from './types';
 
 /**
  * @desc The {@link TinyTypeOf} can be used to define simple
@@ -124,7 +124,7 @@ export abstract class TinyType implements Serialisable {
      *
      * @returns {JSONValue}
      */
-    toJSON(): JSONValue {
+    toJSON(): JSONValue | undefined {
         const fields = significantFieldsOf(this);
 
         if (fields.length === 1) {
@@ -138,12 +138,16 @@ export abstract class TinyType implements Serialisable {
     }
 }
 
-function toJSON(value: any): JSONObject | NonNullJSONPrimitive {
+function toJSON(value: any): JSONValue | undefined {
     switch (true) {
         case value && !! value.toJSON:
             return value.toJSON();
         case value && Array.isArray(value):
-            return value.map(v => toJSON(v));
+            return value.map(v => {
+                return v !== undefined
+                    ? toJSON(v) as JSONValue
+                    : null
+            });
         case value && value instanceof Map:
             return mapToJSON(value);
         case value && value instanceof Set:
