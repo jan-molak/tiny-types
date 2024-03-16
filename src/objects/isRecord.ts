@@ -5,12 +5,12 @@ export function isRecord(value: unknown): value is Record<any, any> {
         return false;
     }
 
-    // If has modified constructor
+    // It has modified constructor
     if (value.constructor === undefined) {
         return true;
     }
 
-    // If has modified prototype
+    // It has modified prototype
     if (! isObject(value.constructor.prototype)) {
         return false;
     }
