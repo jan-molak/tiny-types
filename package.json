@@ -64,7 +64,7 @@
     "eslint-plugin-mocha": "10.4.3",
     "eslint-plugin-simple-import-sort": "12.1.0",
     "eslint-plugin-unicorn": "52.0.0",
-    "eslint-plugin-unused-imports": "3.1.0",
+    "eslint-plugin-unused-imports": "3.2.0",
     "mocha": "10.4.0",
     "mocha-testdata": "1.2.0",
     "nyc": "15.1.0",
