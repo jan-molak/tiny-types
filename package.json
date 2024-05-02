@@ -42,7 +42,7 @@
     "npm": "^8 || ^9 || ^10"
   },
   "devDependencies": {
-    "@types/chai": "4.3.14",
+    "@types/chai": "4.3.15",
     "@types/mocha": "10.0.6",
     "@types/node": "20.12.8",
     "@types/sinon": "17.0.3",
