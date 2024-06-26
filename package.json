@@ -65,7 +65,7 @@
     "eslint-plugin-simple-import-sort": "12.1.0",
     "eslint-plugin-unicorn": "54.0.0",
     "eslint-plugin-unused-imports": "3.2.0",
-    "mocha": "10.5.1",
+    "mocha": "10.5.2",
     "mocha-testdata": "1.2.0",
     "nyc": "17.0.0",
     "rimraf": "5.0.7",
