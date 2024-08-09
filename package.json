@@ -50,7 +50,7 @@
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "chai": "4.5.0",
-    "cheerio": "1.0.0-rc.12",
+    "cheerio": "1.0.0",
     "commitizen": "4.3.0",
     "coveralls": "3.1.1",
     "cz-conventional-changelog": "3.3.0",
