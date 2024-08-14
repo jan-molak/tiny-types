@@ -1,7 +1,7 @@
 import { ensure } from './ensure';
-import { equal, isRecord, significantFieldsOf, stringify } from './objects';
+import { equal, significantFieldsOf, stringify, toJSON } from './objects';
 import { isDefined } from './predicates';
-import { JSONObject, JSONValue, Serialisable } from './types';
+import { JSONValue, Serialisable } from './types';
 
 /**
  * @desc The {@link TinyTypeOf} can be used to define simple
@@ -136,69 +136,4 @@ export abstract class TinyType implements Serialisable {
             return acc;
         }, {}) as JSONValue;
     }
-}
-
-function toJSON(value: any): JSONValue | undefined {
-    switch (true) {
-        case value && !! value.toJSON:
-            return value.toJSON();
-        case value && Array.isArray(value):
-            return value.map(v => {
-                return v === undefined
-                    ? null
-                    : toJSON(v) as JSONValue;
-            });
-        case value && value instanceof Map:
-            return mapToJSON(value);
-        case value && value instanceof Set:
-            return toJSON(Array.from(value));
-        case value && isRecord(value):
-            return recordToJSON(value);
-        case value && value instanceof Error:
-            return errorToJSON(value);
-        case isSerialisablePrimitive(value):
-            return value;
-        default:
-            return JSON.stringify(value);
-    }
-}
-
-function mapToJSON(map: Map<any, any>): JSONObject {
-    const serialised = Array.from(map, ([key, value]) => [ toJSON(key), toJSON(value) ]);
-
-    return Object.fromEntries(serialised);
-}
-
-function recordToJSON(value: Record<any, any>): JSONObject {
-    const serialised = Object.entries(value)
-        .map(([ k, v ]) => [ toJSON(k), toJSON(v) ]);
-
-    return Object.fromEntries(serialised);
-}
-
-function errorToJSON(value: Error): JSONObject {
-    return Object.getOwnPropertyNames(value)
-        .reduce((serialised, key) => {
-            serialised[key] = toJSON(value[key])
-            return serialised;
-        }, { }) as JSONObject;
-}
-
-function isSerialisableNumber(value: unknown): value is number {
-    return typeof value === 'number'
-        && ! Number.isNaN(value)
-        && value !== Number.NEGATIVE_INFINITY
-        && value !== Number.POSITIVE_INFINITY;
-}
-
-function isSerialisablePrimitive(value: unknown): value is string | boolean | number | null | undefined {
-    if (['string', 'boolean'].includes(typeof value)) {
-        return true;
-    }
-
-    if (value === null || value === undefined) {
-        return true;
-    }
-
-    return isSerialisableNumber(value);
 }
