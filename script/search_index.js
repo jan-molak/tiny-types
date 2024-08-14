@@ -246,6 +246,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "tiny-types/lib/objects/tojson~tojson",
+    "function/index.html#static-function-toJSON",
+    "<span>toJSON</span> <span class=\"search-result-import-path\">tiny-types/lib/objects/toJSON</span>",
+    "function"
+  ],
+  [
     "",
     "test-file/spec/json.spec.ts.html#lineNumber2",
     "JSON",
@@ -1857,6 +1863,12 @@ window.esdocSearchIndex = [
     "src/objects/stringify.ts",
     "file/src/objects/stringify.ts.html",
     "src/objects/stringify.ts",
+    "file"
+  ],
+  [
+    "src/objects/tojson.ts",
+    "file/src/objects/toJSON.ts.html",
+    "src/objects/toJSON.ts",
     "file"
   ],
   [

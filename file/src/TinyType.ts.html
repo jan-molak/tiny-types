@@ -38,6 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-check">check</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#objects">objects</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deprecated">deprecated</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isRecord">isRecord</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJSON">toJSON</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#predicates">predicates</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Failure.html">Failure</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Predicate.html">Predicate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/predicates/Predicate.ts~Result.html">Result</a></span></span></li>
@@ -72,9 +73,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/TinyType.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { ensure } from &apos;./ensure&apos;;
-import { equal, isRecord, significantFieldsOf, stringify } from &apos;./objects&apos;;
+import { equal, significantFieldsOf, stringify, toJSON } from &apos;./objects&apos;;
 import { isDefined } from &apos;./predicates&apos;;
-import { JSONObject, JSONValue, Serialisable } from &apos;./types&apos;;
+import { JSONValue, Serialisable } from &apos;./types&apos;;
 
 /**
  * @desc The {@link TinyTypeOf} can be used to define simple
@@ -209,71 +210,6 @@ export abstract class TinyType implements Serialisable {
             return acc;
         }, {}) as JSONValue;
     }
-}
-
-function toJSON(value: any): JSONValue | undefined {
-    switch (true) {
-        case value &amp;&amp; !! value.toJSON:
-            return value.toJSON();
-        case value &amp;&amp; Array.isArray(value):
-            return value.map(v =&gt; {
-                return v === undefined
-                    ? null
-                    : toJSON(v) as JSONValue;
-            });
-        case value &amp;&amp; value instanceof Map:
-            return mapToJSON(value);
-        case value &amp;&amp; value instanceof Set:
-            return toJSON(Array.from(value));
-        case value &amp;&amp; isRecord(value):
-            return recordToJSON(value);
-        case value &amp;&amp; value instanceof Error:
-            return errorToJSON(value);
-        case isSerialisablePrimitive(value):
-            return value;
-        default:
-            return JSON.stringify(value);
-    }
-}
-
-function mapToJSON(map: Map&lt;any, any&gt;): JSONObject {
-    const serialised = Array.from(map, ([key, value]) =&gt; [ toJSON(key), toJSON(value) ]);
-
-    return Object.fromEntries(serialised);
-}
-
-function recordToJSON(value: Record&lt;any, any&gt;): JSONObject {
-    const serialised = Object.entries(value)
-        .map(([ k, v ]) =&gt; [ toJSON(k), toJSON(v) ]);
-
-    return Object.fromEntries(serialised);
-}
-
-function errorToJSON(value: Error): JSONObject {
-    return Object.getOwnPropertyNames(value)
-        .reduce((serialised, key) =&gt; {
-            serialised[key] = toJSON(value[key])
-            return serialised;
-        }, { }) as JSONObject;
-}
-
-function isSerialisableNumber(value: unknown): value is number {
-    return typeof value === &apos;number&apos;
-        &amp;&amp; ! Number.isNaN(value)
-        &amp;&amp; value !== Number.NEGATIVE_INFINITY
-        &amp;&amp; value !== Number.POSITIVE_INFINITY;
-}
-
-function isSerialisablePrimitive(value: unknown): value is string | boolean | number | null | undefined {
-    if ([&apos;string&apos;, &apos;boolean&apos;].includes(typeof value)) {
-        return true;
-    }
-
-    if (value === null || value === undefined) {
-        return true;
-    }
-
-    return isSerialisableNumber(value);
 }
 </code></pre>
 

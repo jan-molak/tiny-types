@@ -4,8 +4,8 @@
   "actualCount": 87,
   "files": {
     "src/TinyType.ts": {
-      "expectCount": 11,
-      "actualCount": 11,
+      "expectCount": 5,
+      "actualCount": 5,
       "undocumentLines": []
     },
     "src/check.ts": {
@@ -58,6 +58,11 @@
     "src/objects/stringify.ts": {
       "expectCount": 2,
       "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/objects/toJSON.ts": {
+      "expectCount": 6,
+      "actualCount": 6,
       "undocumentLines": []
     },
     "src/pattern-matching/IdentityMatcher.ts": {
