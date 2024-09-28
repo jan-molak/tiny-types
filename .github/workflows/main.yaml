@@ -111,7 +111,7 @@ jobs:
       - run: npm ci
       - run: npm run doc
       - name: publish
-        uses: JamesIves/github-pages-deploy-action@v4.6.6
+        uses: JamesIves/github-pages-deploy-action@v4.6.7
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
