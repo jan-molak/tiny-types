@@ -38,7 +38,7 @@
   },
   "homepage": "https://jan-molak.github.io/tiny-types/",
   "engines": {
-    "node": "^16 || ^18 || ^20 || ^22"
+    "node": "^16 || ^18 || ^20 || ^22 || >=24.0.0"
   },
   "devDependencies": {
     "@types/chai": "4.3.20",
