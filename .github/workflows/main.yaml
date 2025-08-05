@@ -7,10 +7,17 @@ on:
     branches: [ master ]
     types: [ opened, synchronize ]
 
+permissions:
+  contents: read
+
 jobs:
   verify:
-    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: read
+      id-token: write
 
     strategy:
       matrix:
@@ -45,6 +52,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -70,6 +79,9 @@ jobs:
     needs: [ verify, build ]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -97,6 +109,9 @@ jobs:
     needs: [ site ]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
