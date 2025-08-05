@@ -17,7 +17,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jan-molak/tiny-types.git"
+    "url": "git+https://github.com/jan-molak/tiny-types.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   },
   "keywords": [
     "design",
