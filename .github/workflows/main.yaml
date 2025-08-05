@@ -35,14 +35,12 @@ jobs:
         env:
           CI: true
 
-      - uses: actions/upload-artifact@v4
+      - name: Qlty
+        uses: qltysh/qlty-action/coverage@b9133a486505563742d768da29f7951271678c87 # v1.1.1
         if: matrix.node-version == '20.x'
         with:
-          retention-days: 1
-          name: test-reports
-          path: |
-            .nyc_output
-            reports
+          oidc: true
+          files: reports/coverage/lcov.info
 
   build:
     runs-on: ubuntu-latest
@@ -68,30 +66,6 @@ jobs:
           name: lib
           path: lib
 
-  report:
-    needs: [ verify, build ]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.18.0
-      - uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: npm ci
-      - uses: actions/download-artifact@v4
-        with:
-          name: test-reports
-      - run: npm run publish:reports
-        env:
-          COVERALLS_REPO_TOKEN: ${{secrets.COVERALLS_REPO_TOKEN}}
-
   site:
     needs: [ verify, build ]
     runs-on: ubuntu-latest
@@ -110,16 +84,17 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run doc
-      - name: publish
-        uses: JamesIves/github-pages-deploy-action@v4.7.3
+
+      - name: Publish website
+        uses: JamesIves/github-pages-deploy-action@6c2d9db40f9296374acc17b90404b6e8864128c8 # v4.7.3
+        if: github.ref == 'refs/heads/main'
         with:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: docs
-          CLEAN: true
+          branch: gh-pages
+          folder: docs
+          clean: true
 
   release:
-    needs: [ site, report ]
+    needs: [ site ]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:

@@ -12,7 +12,6 @@
     "compile": "tsc --project tsconfig.json",
     "verify": "npm run clean && npm run lint && npm test && npm run compile",
     "doc": "esdoc",
-    "publish:reports": "nyc report --reporter=text-lcov | coveralls",
     "commit": "git-cz",
     "semantic-release": "semantic-release"
   },
@@ -51,7 +50,6 @@
     "chai": "4.5.0",
     "cheerio": "1.1.2",
     "commitizen": "4.3.1",
-    "coveralls": "3.1.1",
     "cz-conventional-changelog": "3.3.0",
     "esdoc": "1.1.0",
     "esdoc-importpath-plugin": "1.0.2",
@@ -97,10 +95,7 @@
       "ts-node/register"
     ],
     "reporter": [
-      "json",
-      "text",
-      "text-summary",
-      "html"
+      "lcov"
     ],
     "cache": true,
     "all": true
