@@ -126,7 +126,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: lib
           path: lib
