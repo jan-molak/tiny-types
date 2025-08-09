@@ -44,14 +44,14 @@
     "node": "^20 || ^22 || >=24.0.0"
   },
   "devDependencies": {
-    "@types/chai": "4.3.20",
+    "@types/chai": "5.2.2",
     "@types/mocha": "10.0.10",
     "@types/node": "20.19.9",
     "@types/sinon": "17.0.4",
     "@types/sinon-chai": "3.2.12",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
-    "chai": "4.5.0",
+    "chai": "5.2.1",
     "cheerio": "1.1.2",
     "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
