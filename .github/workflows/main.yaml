@@ -43,7 +43,7 @@ jobs:
           CI: true
 
       - name: Qlty
-        uses: qltysh/qlty-action/coverage@782ebe01413b63470fe8c3d481de77cef79e1486 # v2.1.0
+        uses: qltysh/qlty-action/coverage@a19242102d17e497f437d7466aa01b528537e899 # v2.2.0
         if: matrix.node-version == '20.x'
         with:
           oidc: true
