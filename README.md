@@ -1,15 +1,17 @@
 # Tiny Types
 
 [![npm version](https://badge.fury.io/js/tiny-types.svg)](https://badge.fury.io/js/tiny-types)
-[![Build Status](https://github.com/jan-molak/tiny-types/workflows/build/badge.svg)](https://github.com/jan-molak/tiny-types/actions)
+[![Downloads](https://img.shields.io/npm/dm/tiny-types.svg)](https://npm-stat.com/charts.html?package=tiny-types)
+[![License](https://img.shields.io/github/license/jan-molak/tiny-types.svg)](https://github.com/serenity-js/serenity-js/blob/main/LICENSE.md)
+[![Known Vulnerabilities](https://snyk.io/test/github/jan-molak/tiny-types/badge.svg)](https://snyk.io/test/github/jan-molak/tiny-types)
+
+[![Build Status](https://github.com/jan-molak/tiny-types/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/jan-molak/tiny-types/actions)
 [![Maintainability](https://qlty.sh/gh/jan-molak/projects/tiny-types/maintainability.svg)](https://qlty.sh/gh/jan-molak/projects/tiny-types)
 [![Code Coverage](https://qlty.sh/gh/jan-molak/projects/tiny-types/coverage.svg)](https://qlty.sh/gh/jan-molak/projects/tiny-types)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![npm](https://img.shields.io/npm/dm/tiny-types.svg)](https://npm-stat.com/charts.html?package=tiny-types)
-[![Known Vulnerabilities](https://snyk.io/test/github/jan-molak/tiny-types/badge.svg)](https://snyk.io/test/github/jan-molak/tiny-types)
-[![GitHub stars](https://img.shields.io/github/stars/jan-molak/tiny-types)](https://github.com/jan-molak/tiny-types)
+[![GitHub stars](https://img.shields.io/github/stars/jan-molak/tiny-types?style=flat)](https://github.com/jan-molak/tiny-types)
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/JanMolak?style=social)](https://twitter.com/@JanMolak)
+[![Support Jan Molak on GitHub](https://img.shields.io/badge/Support-@jan--molak-703EC8?logo=github)](https://github.com/sponsors/jan-molak)
 
 TinyTypes is an [npm module](https://www.npmjs.com/package/tiny-types) that makes it easy for TypeScript and JavaScript
 projects to give domain meaning to primitive types. It also helps to avoid all sorts of bugs 
@@ -26,12 +28,6 @@ npm install --save tiny-types
 ## API Docs
 
 API documentation is available at [jan-molak.github.io/tiny-types/](https://jan-molak.github.io/tiny-types/).
-
-## For Enterprise
-
-<a href="https://tidelift.com/subscription/pkg/npm-tiny-types?utm_source=npm-tiny-types&utm_medium=referral&utm_campaign=enterprise&utm_term=repo" target="_blank"><img width="163" height="24" src="https://cdn2.hubspot.net/hubfs/4008838/website/logos/logos_for_download/Tidelift_primary-logo.png" class="tidelift-logo" /></a>
-
-TinyTypes are available as part of the [Tidelift Subscription](https://tidelift.com/subscription/pkg/npm-tiny-types?utm_source=npm-tiny-types&utm_medium=referral&utm_campaign=enterprise&utm_term=repo). The maintainers of TinyTypes and thousands of other packages are working with Tidelift to deliver one enterprise subscription that covers all of the open source you use. If you want the flexibility of open source and the confidence of commercial-grade software, this is for you. [Learn more.](https://tidelift.com/subscription/pkg/npm-tiny-types?utm_source=npm-tiny-types&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
 
 ## Defining Tiny Types
 
@@ -305,6 +301,12 @@ If this library has helped you build better, more maintainable code, please cons
 adding new features, and keeping it up-to-date with the latest TypeScript versions.
 
 Even a small monthly contribution makes a real difference. Thank you! 🙏
+
+## For Enterprise
+
+<a href="https://tidelift.com/subscription/pkg/npm-tiny-types?utm_source=npm-tiny-types&utm_medium=referral&utm_campaign=enterprise&utm_term=repo" target="_blank"><img width="163" height="24" src="https://cdn2.hubspot.net/hubfs/4008838/website/logos/logos_for_download/Tidelift_primary-logo.png" class="tidelift-logo" /></a>
+
+TinyTypes are available as part of the [Tidelift Subscription](https://tidelift.com/subscription/pkg/npm-tiny-types?utm_source=npm-tiny-types&utm_medium=referral&utm_campaign=enterprise&utm_term=repo). The maintainers of TinyTypes and thousands of other packages are working with Tidelift to deliver one enterprise subscription that covers all of the open source you use. If you want the flexibility of open source and the confidence of commercial-grade software, this is for you. [Learn more.](https://tidelift.com/subscription/pkg/npm-tiny-types?utm_source=npm-tiny-types&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
 
 ## License
 
