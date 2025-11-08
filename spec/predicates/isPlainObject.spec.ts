@@ -1,24 +1,20 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isPlainObject, isString, property } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
     /** @test {isPlainObject} */
     describe('::isPlainObject', () => {
 
-        given([
+        it.each([
             {},
             { 'name': 'Alice' },
             Object.create({}),
             Object.create(Object.prototype),
             Object.create(null),
-        ]).
-        it('ensures that the argument is a plain object', (value: any) => {
-            expect(() => ensure('value', value, isPlainObject())).to.not.throw();
+        ])('ensures that the argument is a plain object', (value: any) => {
+            expect(() => ensure('value', value, isPlainObject())).not.toThrow();
         });
 
         class Person {
@@ -26,7 +22,7 @@ describe('predicates', () => {
             }
         }
 
-        given([
+        it.each([
             undefined,
             null,
             [],
@@ -34,10 +30,9 @@ describe('predicates', () => {
             5,
             'name',
             new Person('Jan'),
-            () => {},               // eslint-disable-line @typescript-eslint/no-empty-function
-        ]).
-        it('complains if the value is not a plain object', (value: any) => {
-            expect(() => ensure('value', value, isPlainObject())).to.throw(`value should be a plain object`);
+            () => {},
+        ])('complains if the value is not a plain object', (value: any) => {
+            expect(() => ensure('value', value, isPlainObject())).toThrow(`value should be a plain object`);
         });
 
         it('is generic', () => {
@@ -49,7 +44,7 @@ describe('predicates', () => {
 
             expect(() => {
                 ensure('person', person, isPlainObject<Person>(), property('name', isString()))
-            }).to.not.throw();
+            }).not.toThrow();
         });
     });
 });

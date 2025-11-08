@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isString, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -18,18 +15,17 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument is a string', () => {
-            expect(() => new FirstName('Jan')).to.not.throw();
+            expect(() => new FirstName('Jan')).not.toThrow();
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             [],
             42,
-        ]).
-        it('complains if the value is not a string', (value: any) => {
-            expect(() => new FirstName(value)).to.throw(`FirstName should be a string`);
+        ])('complains if the value is not a string', (value: any) => {
+            expect(() => new FirstName(value)).toThrow(`FirstName should be a string`);
         });
     });
 });

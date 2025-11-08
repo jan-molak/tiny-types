@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isInstanceOf, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -18,18 +15,17 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument is an instance of Date', () => {
-            expect(() => new Birthday(new Date())).to.not.throw();
+            expect(() => new Birthday(new Date())).not.toThrow();
         });
 
-        given([
+        it.each([
             '2018-10-10',
             undefined,
             null,
             {},
             'string',
-        ]).
-        it('complains if the value does not meet the predicate', (value: any) => {
-            expect(() => new Birthday(value)).to.throw(`Birthday should be instance of Date`);
+        ])('complains if the value does not meet the predicate', (value: any) => {
+            expect(() => new Birthday(value)).toThrow(`Birthday should be instance of Date`);
         });
     });
 });

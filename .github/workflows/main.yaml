@@ -38,7 +38,7 @@ jobs:
       - run: npm ci
       - run: npm run clean
       - run: npm run lint
-      - run: npm test
+      - run: npm run test:coverage
         env:
           CI: true
 

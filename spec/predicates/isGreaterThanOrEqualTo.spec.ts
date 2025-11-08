@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isGreaterThanOrEqualTo, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -17,26 +14,27 @@ describe('predicates', () => {
             }
         }
 
-        given(0, 1).
-        it('ensures that the argument is greater than or equal to a specified number', (value: number) => {
-            expect(() => new InvestmentLength(value)).to.not.throw();
+        it.each([
+            0,
+            1
+        ])('ensures that the argument is greater than or equal to a specified number', (value: number) => {
+            expect(() => new InvestmentLength(value)).not.toThrow();
         });
 
         it('complains if the argument is less than the lower bound', () => {
             expect(() => new InvestmentLength(-1))
-                .to.throw(`InvestmentLength should either be equal to 0 or be greater than 0`);
+                .toThrow(`InvestmentLength should either be equal to 0 or be greater than 0`);
         });
 
-        given([
+        it.each([
             -1,
             undefined,
             null,
             {},
             'string',
-        ]).
-        it('complains if the value does not meet the predicate', (value: any) => {
+        ])('complains if the value does not meet the predicate', (value: any) => {
             expect(() => new InvestmentLength(value))
-                .to.throw(`InvestmentLength should either be equal to 0 or be greater than 0`);
+                .toThrow(`InvestmentLength should either be equal to 0 or be greater than 0`);
         });
     });
 });

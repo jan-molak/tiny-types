@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, matches, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -19,19 +16,18 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument matches a regular expression', () => {
-            expect(() => new CompanyEmailAddress('jan.molak@example.org')).to.not.throw();
+            expect(() => new CompanyEmailAddress('jan.molak@example.org')).not.toThrow();
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             'string',
             5,
-        ]).
-        it('complains if the value does not match the regular expression', (value: any) => {
+        ])('complains if the value does not match the regular expression', (value: any) => {
             expect(() => new CompanyEmailAddress(value))
-                .to.throw(`CompanyEmailAddress should match pattern /[a-z]+\\.[a-z]+@example\\.org/`);
+                .toThrow(`CompanyEmailAddress should match pattern /[a-z]+\\.[a-z]+@example\\.org/`);
         });
     });
 });

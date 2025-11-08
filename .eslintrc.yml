@@ -10,15 +10,14 @@ parserOptions:
     - "./tsconfig.eslint.json"
 plugins:
   - "@typescript-eslint"
+  - "@vitest"
   - import
-  - mocha
   - simple-import-sort
   - unused-imports
 extends:
   - eslint:recommended
   - plugin:@typescript-eslint/eslint-recommended
   - plugin:@typescript-eslint/recommended
-  - plugin:mocha/recommended
   - plugin:unicorn/recommended
 rules:
   simple-import-sort/imports: error
@@ -50,9 +49,6 @@ rules:
     - args: none
       vars: all
       varsIgnorePattern: "^.*_$"
-  mocha/no-exclusive-tests: 'error'
-  mocha/no-mocha-arrows: 'off'
-  mocha/no-setup-in-describe: 'off'
   unicorn/empty-brace-spaces: 'off'
   unicorn/filename-case:
     - error

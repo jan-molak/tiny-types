@@ -1,4 +1,4 @@
-import 'mocha';
+import { describe, it } from 'vitest';
 
 import { JSONArray, JSONObject, JSONPrimitive, JSONValue } from '../src/types';
 
@@ -8,8 +8,8 @@ describe('JSON', () => {
         Some_String = 'string',
         Some_Number = 1,
         Some_Boolean = false,
-        Some_Object = {k1: Some_String, k2: Some_Number},
-        Some_Array = [Some_String, Some_Number, Some_Boolean, Some_Object];
+        Some_Object = { k1: Some_String, k2: Some_Number },
+        Some_Array = [ Some_String, Some_Number, Some_Boolean, Some_Object ];
 
     /** @test {JSONArray} */
     describe('JSONArray', () => {
@@ -34,22 +34,21 @@ describe('JSON', () => {
     /** @test {JSONPrimitive} */
     describe('JSONPrimitive', () => {
         it(`describes any primitive that can be part of JSON`, () => {
-            const string_: JSONPrimitive = 'string',
-                number_: JSONPrimitive = 42,
-                boolean_: JSONPrimitive = false,
-                null_: JSONPrimitive = null;
+            const string_: JSONPrimitive = 'string';
+            const number_: JSONPrimitive = 42;
+            const boolean_: JSONPrimitive = false;
+            const null_: JSONPrimitive = null;
         });
     });
 
     /** @test {JSONValue} */
     describe('JSONValue', () => {
         it('describes any value that can be represented as JSON', () => {
-            const
-                string_: JSONValue = Some_String,
-                number_: JSONValue = Some_Number,
-                boolean_: JSONValue = Some_Boolean,
-                object_: JSONValue = Some_Object,
-                array_: JSONValue = Some_Array;
+            const string_: JSONValue = Some_String;
+            const number_: JSONValue = Some_Number;
+            const boolean_: JSONValue = Some_Boolean;
+            const object_: JSONValue = Some_Object;
+            const array_: JSONValue = Some_Array;
         });
     });
 });

@@ -294,14 +294,17 @@ Do you find TinyTypes useful? [Give it a star!](https://github.com/jan-molak/tin
 Found a bug? Need a feature? Raise [an issue](https://github.com/jan-molak/tiny-types/issues?state=open)
 or submit a pull request.
 
-Have feedback? Let me know on twitter: [@JanMolak](https://twitter.com/JanMolak)
+Have feedback? Let me know on [LinkedIn](https://www.linkedin.com/in/janmolak/).
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/JanMolak?style=social)](https://twitter.com/@JanMolak)
+## Support This Project
 
-## Before you go
+TinyTypes is and always will be free and open source. 
+If this library has helped you build better, more maintainable code, please consider supporting its continued development:
 
-☕ If TinyTypes have made your life a little bit easier and saved at least $5 worth of your time,
-please consider repaying the favour and [buying me a coffee](https://github.com/sponsors/jan-molak) via [Github Sponsors](https://github.com/sponsors/jan-molak). Thanks! 🙏
+☕ **[Become a GitHub Sponsor](https://github.com/sponsors/jan-molak)** – Your support helps me dedicate time to maintaining this library, 
+adding new features, and keeping it up-to-date with the latest TypeScript versions.
+
+Even a small monthly contribution makes a real difference. Thank you! 🙏
 
 ## License
 

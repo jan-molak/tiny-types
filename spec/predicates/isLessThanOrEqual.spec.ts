@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isLessThanOrEqualTo, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -17,25 +14,23 @@ describe('predicates', () => {
             }
         }
 
-        given(49, 50).
-        it('ensures that the argument is less than or equal to the upper bound', (value: number) => {
-            expect(() => new InvestmentLength(value)).to.not.throw();
+        it.each([ 49, 50 ])('ensures that the argument is less than or equal to the upper bound', (value: number) => {
+            expect(() => new InvestmentLength(value)).not.toThrow();
         });
 
         it('complains if the argument is greater than the upper bound', () => {
             expect(() => new InvestmentLength(55))
-                .to.throw(`InvestmentLength should either be less than 50 or be equal to 50`);
+                .toThrow(`InvestmentLength should either be less than 50 or be equal to 50`);
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             'string',
-        ]).
-        it('complains if the value is not an integer', (value: any) => {
+        ])('complains if the value is not an integer', (value: any) => {
             expect(() => new InvestmentLength(value))
-                .to.throw(`InvestmentLength should either be less than 50 or be equal to 50`);
+                .toThrow(`InvestmentLength should either be less than 50 or be equal to 50`);
         });
     });
 });

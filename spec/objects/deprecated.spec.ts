@@ -1,16 +1,13 @@
-import 'mocha';
-
-import * as sinon from 'sinon';
+import { describe, expect, it, vi } from 'vitest';
 
 import { deprecated } from '../../src/objects';
-import { expect } from '../expect';
 
 /** @test {deprecated} */
 describe('deprecated', () => {
 
     describe('when used to annotate a class', () => {
         it('logs a warning when the class is constructed', () => {
-            const consoleWarn = sinon.spy();
+            const consoleWarn = vi.fn();
 
             @deprecated(undefined, consoleWarn)
             class Foo {
@@ -19,11 +16,11 @@ describe('deprecated', () => {
             const foo_ = new Foo();
 
             expect(consoleWarn)
-                .to.have.been.calledWith('Foo has been deprecated.');
+                .toHaveBeenCalledWith('Foo has been deprecated.');
         });
 
         it('can provide additional suggestion on what other class should be used instead', () => {
-            const consoleWarn = sinon.spy();
+            const consoleWarn = vi.fn();
 
             @deprecated('Please use Bar instead.', consoleWarn)
             class Foo {
@@ -32,11 +29,11 @@ describe('deprecated', () => {
             const foo_ = new Foo();
 
             expect(consoleWarn)
-                .to.have.been.calledWith('Foo has been deprecated. Please use Bar instead.');
+                .toHaveBeenCalledWith('Foo has been deprecated. Please use Bar instead.');
         });
 
         it('maintains the type and behaviour of the annotated class', () => {
-            const consoleWarn = sinon.spy();
+            const consoleWarn = vi.fn();
 
             @deprecated('Please use Client instead.', consoleWarn)
             class Person {
@@ -47,16 +44,16 @@ describe('deprecated', () => {
             const p = new Person('Alice');
 
             expect(consoleWarn)
-                .to.have.been.calledWith('Person has been deprecated. Please use Client instead.');
+                .toHaveBeenCalledWith('Person has been deprecated. Please use Client instead.');
 
-            expect(p).to.be.instanceOf(Person);
+            expect(p).toBeInstanceOf(Person);
         });
     });
 
     describe('when used to annotate a method', () => {
 
         it('logs a warning when the method is used', () => {
-            const consoleWarn = sinon.spy();
+            const consoleWarn = vi.fn();
 
             class Person {
                 @deprecated('', consoleWarn)
@@ -68,11 +65,11 @@ describe('deprecated', () => {
             p.greet();
 
             expect(consoleWarn)
-                .to.have.been.calledWith('Person#greet has been deprecated.');
+                .toHaveBeenCalledWith('Person#greet has been deprecated.');
         });
 
         it('can provide additional suggestion on what other method should be used instead', () => {
-            const consoleWarn = sinon.spy();
+            const consoleWarn = vi.fn();
 
             class Person {
 
@@ -85,11 +82,11 @@ describe('deprecated', () => {
             p.greet();
 
             expect(consoleWarn)
-                .to.have.been.calledWith('Person#greet has been deprecated. Please use Person#welcome instead.');
+                .toHaveBeenCalledWith('Person#greet has been deprecated. Please use Person#welcome instead.');
         });
 
         it('maintains the behaviour of the annotated method', () => {
-            const consoleWarn = sinon.spy();
+            const consoleWarn = vi.fn();
 
             class Person {
                 constructor(public readonly name: string) {
@@ -103,10 +100,10 @@ describe('deprecated', () => {
 
             const p = new Person('Alice');
 
-            expect(p.greet('Hi')).to.equal('Hi, my name is Alice');
+            expect(p.greet('Hi')).toEqual('Hi, my name is Alice');
 
             expect(consoleWarn)
-                .to.have.been.calledWith('Person#greet has been deprecated. Please use Person#welcome instead.');
+                .toHaveBeenCalledWith('Person#greet has been deprecated. Please use Person#welcome instead.');
         });
     });
 
@@ -114,7 +111,7 @@ describe('deprecated', () => {
 
         it('complains', () => {
             expect(() => deprecated('something that does not make sense')(42))
-                .to.throw(`Only a class, method or function can be marked as deprecated. number given.`);
+                .toThrow(`Only a class, method or function can be marked as deprecated. number given.`);
         });
     })
 });

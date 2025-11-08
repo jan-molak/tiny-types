@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, startsWith, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -19,19 +16,18 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument starts with a given prefix', () => {
-            expect(() => new Username('usr123')).to.not.throw();
+            expect(() => new Username('usr123')).not.toThrow();
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             'string',
             5,
-        ]).
-        it('complains if the value does not start with the given prefix', (value: any) => {
+        ])('complains if the value does not start with the given prefix', (value: any) => {
             expect(() => new Username(value))
-                .to.throw(`Username should start with 'usr'`);
+                .toThrow(`Username should start with 'usr'`);
         });
     });
 });

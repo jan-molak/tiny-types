@@ -1,33 +1,35 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { JSONObject, TinyType, TinyTypeOf } from '../src';
-import { expect } from './expect';
 
 describe('Serialisation', () => {
 
     describe('of single-value TinyTypes', () => {
 
-        class Amount extends TinyTypeOf<number>() {}
-        class Name extends TinyTypeOf<string>() {}
-        class Vote extends TinyTypeOf<boolean>() {}
+        class Amount extends TinyTypeOf<number>() {
+        }
+
+        class Name extends TinyTypeOf<string>() {
+        }
+
+        class Vote extends TinyTypeOf<boolean>() {
+        }
+
         class Maybe extends TinyType {
             constructor(public readonly value: any) {
                 super();
             }
         }
 
-        given([
-            { obj: new Amount(0),        expectedType: 'number'    },
-            { obj: new Amount(10/3),     expectedType: 'number'    },
-            { obj: new Name('Jan'),      expectedType: 'string'    },
-            { obj: new Vote(true),       expectedType: 'boolean'   },
-            { obj: new Vote(false),      expectedType: 'boolean'   },
+        it.each([
+            { obj: new Amount(0), expectedType: 'number' },
+            { obj: new Amount(10 / 3), expectedType: 'number' },
+            { obj: new Name('Jan'), expectedType: 'string' },
+            { obj: new Vote(true), expectedType: 'boolean' },
+            { obj: new Vote(false), expectedType: 'boolean' },
             { obj: new Maybe(undefined), expectedType: 'undefined' },
-        ]).
-        it('preserves the type of the wrapped value', ({ obj, expectedType: expectedType }) => {
-            expect(obj.toJSON()).to.be.an(expectedType);
+        ])('preserves the type of the wrapped value', ({ obj, expectedType }) => {
+            expect(obj.toJSON()).toBeTypeOf(expectedType as any);
         });
     });
 
@@ -45,7 +47,7 @@ describe('Serialisation', () => {
             }
 
             speak() {
-                return `Hi, I'm ${this.firstName} ${this.lastName}`;
+                return `Hi, I'm ${ this.firstName } ${ this.lastName }`;
             }
         }
 
@@ -53,13 +55,12 @@ describe('Serialisation', () => {
             const p = new Person('John', 'Smith', 42);
             const serialised = p.toJSON() as JSONObject;
 
-            expect(Object.keys(serialised)).to.include.ordered.members(['age', 'firstName', 'lastName', 'role']);
-            expect(Object.keys(serialised)).to.not.include.members(['speak', 'toJSON', 'toString']);
+            expect(Object.keys(serialised)).toEqual([ 'age', 'firstName', 'lastName', 'role' ]);
 
-            expect(serialised.age).to.be.a('number');
-            expect(serialised.firstName).to.be.a('string');
-            expect(serialised.lastName).to.be.a('string');
-            expect(serialised.role).to.be.a('string');
+            expect(serialised.age).toBeTypeOf('number');
+            expect(serialised.firstName).toBeTypeOf('string');
+            expect(serialised.lastName).toBeTypeOf('string');
+            expect(serialised.role).toBeTypeOf('string');
         });
     });
 
@@ -67,9 +68,11 @@ describe('Serialisation', () => {
         class FirstName extends TinyTypeOf<string>() {
             static fromJSON = (v: string) => new FirstName(v);
         }
-        class LastName  extends TinyTypeOf<string>() {
+
+        class LastName extends TinyTypeOf<string>() {
             static fromJSON = (v: string) => new LastName(v);
         }
+
         class Age extends TinyTypeOf<number>() {
             static fromJSON = (v: number) => new Age(v);
         }
@@ -85,7 +88,8 @@ describe('Serialisation', () => {
                 );
             }
 
-            constructor(public readonly firstName: FirstName,
+            constructor(
+                public readonly firstName: FirstName,
                 public readonly lastName: LastName,
                 public readonly age: Age,
             ) {
@@ -93,7 +97,7 @@ describe('Serialisation', () => {
             }
 
             speak() {
-                return `Hi, I'm ${this.firstName} ${this.lastName}`;
+                return `Hi, I'm ${ this.firstName } ${ this.lastName }`;
             }
         }
 
@@ -101,13 +105,12 @@ describe('Serialisation', () => {
             const p = new AnotherPerson(new FirstName('John'), new LastName('Smith'), new Age(42));
             const serialised = p.toJSON() as JSONObject;
 
-            expect(Object.keys(serialised)).to.include.ordered.members(['age', 'firstName', 'lastName', 'role']);
-            expect(Object.keys(serialised)).to.not.include.members(['speak', 'toJSON', 'toString']);
+            expect(Object.keys(serialised)).toEqual([ 'age', 'firstName', 'lastName', 'role' ]);
 
-            expect(serialised.age).to.be.a('number');
-            expect(serialised.firstName).to.be.a('string');
-            expect(serialised.lastName).to.be.a('string');
-            expect(serialised.role).to.be.a('string');
+            expect(serialised.age).toBeTypeOf('number');
+            expect(serialised.firstName).toBeTypeOf('string');
+            expect(serialised.lastName).toBeTypeOf('string');
+            expect(serialised.role).toBeTypeOf('string');
         });
     });
 
@@ -135,6 +138,6 @@ describe('Serialisation', () => {
 
         const deserialised = Allocation.fromJSON({ departmentId: 'engineering', employeeId: 1 });
 
-        expect(deserialised.equals(allocation)).to.be.true;                 // tslint:disable-line:no-unused-expression
+        expect(deserialised.equals(allocation)).toEqual(true);
     });
 });

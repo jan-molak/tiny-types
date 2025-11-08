@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isDefined, isEqualTo, isGreaterThan, isInteger, isLessThan, or, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -22,28 +19,31 @@ describe('predicates', () => {
             }
         }
 
-        given(0, 1, 99, 100).
-        it('ensures that at least one of the `or` predicates is met', (value: number) => {
-            expect(() => new Percentage(value)).to.not.throw();
+        it.each([
+            0,
+            1,
+            99,
+            100
+        ])('ensures that at least one of the `or` predicates is met', (value: number) => {
+            expect(() => new Percentage(value)).not.toThrow();
         });
 
-        given(
-            [-1,  'Percentage should either be equal to 0 or be greater than 0'],
-            [101, 'Percentage should either be less than 100 or be equal to 100'],
-        ).
-        it('complains if at least one of the `or` predicates is not met', (value: number, errorMessage: string) => {
+        it.each([
+            [ -1, 'Percentage should either be equal to 0 or be greater than 0' ],
+            [ 101, 'Percentage should either be less than 100 or be equal to 100' ],
+        ])('complains if at least one of the `or` predicates is not met', (value: number, errorMessage: string) => {
             expect(() => new Percentage(value))
-                .to.throw(errorMessage);
+                .toThrow(errorMessage);
         });
 
         it('complains if there are no predicates specified', () => {
-            expect(() => or()).to.throw(`Looks like you haven't specified any predicates to check the value against?`);
+            expect(() => or()).toThrow(`Looks like you haven't specified any predicates to check the value against?`);
         });
 
         it('concatenates the error messages in a human-friendly way', () => {
             expect(() => ensure('Project name', 'node.js',
                 or(isEqualTo('Serenity/JS'), isEqualTo('TinyTypes'), isEqualTo('Build Monitor')),
-            )).to.throw(
+            )).toThrow(
                 'Project name should either be equal to Serenity/JS, be equal to TinyTypes or be equal to Build Monitor',
             );
         });

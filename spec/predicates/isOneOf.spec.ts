@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isOneOf, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -18,25 +15,27 @@ describe('predicates', () => {
             }
         }
 
-        given('red', 'yellow', 'green').
-        it('ensures that the value is equal to one of the allowed values', (value: string) => {
-            expect(() => new StreetLight(value)).to.not.throw();
+        it.each([
+            'red',
+            'yellow',
+            'green'
+        ])('ensures that the value is equal to one of the allowed values', (value: string) => {
+            expect(() => new StreetLight(value)).not.toThrow();
         });
 
         it('complains if the value not one the allowed ones', () => {
             expect(() => new StreetLight('green-ish'))
-                .to.throw(`StreetLight should either be equal to red, be equal to yellow or be equal to green`);
+                .toThrow(`StreetLight should either be equal to red, be equal to yellow or be equal to green`);
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             false,
-        ]).
-        it('complains if the value is of a wrong type', (value: any) => {
+        ])('complains if the value is of a wrong type', (value: any) => {
             expect(() => new StreetLight(value))
-                .to.throw(`StreetLight should either be equal to red, be equal to yellow or be equal to green`);
+                .toThrow(`StreetLight should either be equal to red, be equal to yellow or be equal to green`);
         });
     });
 });

@@ -1,32 +1,29 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { IdentityMatcher } from '../../src/pattern-matching';
-import { expect } from '../expect';
 
 describe('pattern-matching', () => {
     describe('IdentityMatcher', () => {
 
-        given(
+        it.each([
             [true, 'received "true"'],
             [false, 'received "false"'],
-        ).it('matches a boolean', (input: boolean, expected_result: string) => {
+        ])('matches a boolean', (input: boolean, expected_result: string) => {
 
             const result = new IdentityMatcher(input)
                 .when(true, _ => `received "true"`)
                 .else(_ => `received "false"`);
 
-            expect(result).to.equal(expected_result);
+            expect(result).toEqual(expected_result);
         });
 
-        given(
+        it.each([
             [-1, 'received "-1"'],
             [0.1, 'received "0.1"'],
             [5, 'else, received "5"'],
             // [NaN, 'received "NaN"'],
             [Number.POSITIVE_INFINITY, 'to infinity and beyond!'],
-        ).it('matches a number', (input: number, expected_result: string) => {
+        ])('matches a number', (input: number, expected_result: string) => {
 
             const result = new IdentityMatcher(input)
                 .when(-1, _ => `received "-1"`)
@@ -34,7 +31,7 @@ describe('pattern-matching', () => {
                 .when(Number.POSITIVE_INFINITY, _ => `to infinity and beyond!`)
                 .else(_ => `else, received "${_}"`);
 
-            expect(result).to.equal(expected_result);
+            expect(result).toEqual(expected_result);
         });
 
         it('matches a symbol', () => {
@@ -44,7 +41,7 @@ describe('pattern-matching', () => {
                 .when(s, _ => `received "some symbol"`)
                 .else(_ => `else, received "${_.toString()}"`);
 
-            expect(result).to.equal('received "some symbol"');
+            expect(result).toEqual('received "some symbol"');
         });
     });
 });

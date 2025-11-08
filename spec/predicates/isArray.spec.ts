@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isArray, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -19,18 +16,17 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument is an array', () => {
-            expect(() => new Strings(['lorem', 'ipsum'])).to.not.throw();
+            expect(() => new Strings([ 'lorem', 'ipsum' ])).not.toThrow();
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             false,
             5,
-        ]).
-        it('complains if the value is not an array', (value: any) => {
-            expect(() => new Strings(value)).to.throw(`Collection should be an array`);
+        ])('complains if the value is not an array', (value: any) => {
+            expect(() => new Strings(value)).toThrow(`Collection should be an array`);
         });
     });
 });

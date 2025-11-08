@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { endsWith, ensure, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -19,19 +16,18 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument ends with a given suffix', () => {
-            expect(() => new TextFileName('notes.txt')).to.not.throw();
+            expect(() => new TextFileName('notes.txt')).not.toThrow();
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             'string',
             5,
-        ]).
-        it('complains if the value does not end with a given suffix', (value: any) => {
+        ])('complains if the value does not end with a given suffix', (value: any) => {
             expect(() => new TextFileName(value))
-                .to.throw(`TextFileName should end with '.txt'`);
+                .toThrow(`TextFileName should end with '.txt'`);
         });
     });
 });
