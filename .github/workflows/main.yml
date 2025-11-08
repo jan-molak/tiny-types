@@ -134,5 +134,4 @@ jobs:
           path: lib
       - run: npx semantic-release
         env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
