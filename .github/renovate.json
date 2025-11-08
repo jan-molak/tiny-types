@@ -14,5 +14,15 @@
     "**/node_modules/**"
   ],
   "rangeStrategy": "bump",
-  "automerge": true
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    }
+  ]
 }
