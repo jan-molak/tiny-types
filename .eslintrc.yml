@@ -10,7 +10,6 @@ parserOptions:
     - "./tsconfig.eslint.json"
 plugins:
   - "@typescript-eslint"
-  - "@vitest"
   - import
   - simple-import-sort
   - unused-imports
