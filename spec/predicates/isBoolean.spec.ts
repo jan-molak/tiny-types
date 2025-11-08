@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isBoolean, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -19,18 +16,17 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument is a boolean value', () => {
-            expect(() => new MarketingOptIn(false)).to.not.throw();
+            expect(() => new MarketingOptIn(false)).not.toThrow();
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             'string',
             5,
-        ]).
-        it('complains if the value is not a boolean', (value: any) => {
-            expect(() => new MarketingOptIn(value)).to.throw(`MarketingOptIn should be a boolean value`);
+        ])('complains if the value is not a boolean', (value: any) => {
+            expect(() => new MarketingOptIn(value)).toThrow(`MarketingOptIn should be a boolean value`);
         });
     });
 });

@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, hasLengthOf, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -21,15 +18,14 @@ describe('predicates', () => {
             }
 
             it('ensures that the value has a correct length', () => {
-                expect(() => new Password('P@ssw0rd')).to.not.throw();
+                expect(() => new Password('P@ssw0rd')).not.toThrow();
             });
 
-            given(
+            it.each([
                 '7_chars',
                 '9___chars',
-            ).
-            it('complains if the value is of incorrect length', (value: string) => {
-                expect(() => new Password(value)).to.throw(`Password should have a property "length" that is equal to 8`);
+            ])('complains if the value is of incorrect length', (value: string) => {
+                expect(() => new Password(value)).toThrow(`Password should have a property "length" that is equal to 8`);
             });
         });
 
@@ -44,15 +40,16 @@ describe('predicates', () => {
             }
 
             it('ensures that the value has a correct length', () => {
-                expect(() => new Collection(['a', 'b'])).to.not.throw();
+                expect(() => new Collection([ 'a', 'b' ])).not.toThrow();
             });
 
-            given(
-                ['a'],
-                ['a', 'b', 'c'],
-            ).
-            it('complains if the value is of incorrect length', (values: string[]) => {
-                expect(() => new Collection(values)).to.throw(`Collection should have a property "length" that is equal to 2`);
+            it.each([
+                [ 'a' ],
+                [ 'a', 'b', 'c' ],
+            ])('complains if the value is of incorrect length', (...values: string[]) => {
+                expect(() => new Collection(values)).toThrow(
+                    `Collection should have a property "length" that is equal to 2`
+                );
             });
         });
     });

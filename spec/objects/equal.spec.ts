@@ -1,21 +1,23 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { TinyType, TinyTypeOf } from '../../src';
 import { equal } from '../../src/objects';
-import { expect } from '../expect';
 
 /** @test {equal} */
 describe('equal', () => {
     describe('when used with primitives', () => {
 
-        given<any>(undefined, null, false, 'string', 42).
-        it('is reflexive', (primitive: any) => {
-            expect(equal(primitive, primitive)).to.be.true;                  // tslint:disable-line:no-unused-expression
+        it.each<any>([
+            undefined,
+            null,
+            false,
+            'string',
+            42
+        ])('is reflexive', (primitive: any) => {
+            expect(equal(primitive, primitive)).toEqual(true);
         });
 
-        given<{ v1: any, v2: any }>(
+        it.each<{ v1: any, v2: any }>([
             { v1: false,    v2: false             },
             { v1: false,    v2: Boolean(false)    },
             { v1: 'string', v2: 'string'          },
@@ -24,32 +26,29 @@ describe('equal', () => {
             { v1: 42,       v2: Number(42)        },
             { v1: 42,       v2: 42              },
             { v1: 42,       v2: Number(42)      },
-        ).
-        it('is symmetric', ({ v1, v2 }) => {
-            expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression
-            expect(equal(v1, v2)).to.equal(equal(v2, v1));
+        ])('is symmetric', ({ v1, v2 }) => {
+            expect(equal(v1, v2)).toEqual(true);
+            expect(equal(v1, v2)).toEqual(equal(v2, v1));
         });
 
-        given<{ v1: any, v2: any, v3: any }>(
+        it.each<{ v1: any, v2: any, v3: any }>([
             { v1: false,    v2: false,    v3: false     },
             { v1: 'string', v2: 'string', v3: 'string'  },
             { v1: 42,       v2: 42,       v3: 42        },
-        ).
-        it('is transitive', ({ v1, v2, v3 }) => {
-            expect(equal(v1, v2)).to.be.true;                               // tslint:disable-line:no-unused-expression
-            expect(equal(v2, v3)).to.be.true;                               // tslint:disable-line:no-unused-expression
-            expect(equal(v3, v1)).to.be.true;                               // tslint:disable-line:no-unused-expression
+        ])('is transitive', ({ v1, v2, v3 }) => {
+            expect(equal(v1, v2)).toEqual(true);
+            expect(equal(v2, v3)).toEqual(true);
+            expect(equal(v3, v1)).toEqual(true);
         });
 
-        given<{ v1: any, v2: any }>(
+        it.each<{ v1: any, v2: any }>([
             { v1: false,    v2: true       },
             { v1: 'apple',  v2: 'orange'   },
             { v1: 42,       v2: 24         },
             { v1: false,    v2: 'elephant' },
             { v1: null,     v2: undefined  },
-        ).
-        it('returns false when subjects are not equal', ({ v1, v2 }) => {
-            expect(equal(v1, v2)).to.be.false;                               // tslint:disable-line:no-unused-expression
+        ])('returns false when subjects are not equal', ({ v1, v2 }) => {
+            expect(equal(v1, v2)).toEqual(false);
         });
     });
 
@@ -79,34 +78,35 @@ describe('equal', () => {
             Team    = new People([MsAlice, MrBob]),
             Team2   = new People([MsAlice]);
 
-        given<TinyType>(Alice, MsAlice, Team).
-        it('is reflexive', (value: TinyType) => {
-            expect(equal(value, value)).to.be.true;                          // tslint:disable-line:no-unused-expression
+        it.each<TinyType>([
+            Alice,
+            MsAlice,
+            Team
+        ])('is reflexive', (value: TinyType) => {
+            expect(equal(value, value)).toEqual(true);
         });
 
-        given<{ v1: TinyType, v2: TinyType }>(
+        it.each<{ v1: TinyType, v2: TinyType }>([
             { v1: new Name('Alice'),    v2: new Name('Alice')   },
             { v1: new Age(28),          v2: new Age(28)         },
             { v1: Team,                 v2: Team                },
             { v1: new Person(Alice, new Age(28)), v2: new Person(Alice, new Age(28))  },
-        ).
-        it('is symmetric', ({ v1, v2 }) => {
-            expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression
-            expect(equal(v1, v2)).to.equal(equal(v2, v1));
+        ])('is symmetric', ({ v1, v2 }) => {
+            expect(equal(v1, v2)).toEqual(true);
+            expect(equal(v1, v2)).toEqual(equal(v2, v1));
         });
 
-        given<{ v1: TinyType, v2: TinyType, v3: TinyType }>(
+        it.each<{ v1: TinyType, v2: TinyType, v3: TinyType }>([
             { v1: new Name('Alice'),    v2: new Name('Alice'),  v3: new Name('Alice') },
             { v1: new Age(28),          v2: new Age(28),        v3: new Age(28)       },
             { v1: new Person(Alice, new Age(28)), v2: new Person(Alice, new Age(28)), v3: new Person(Alice, new Age(28)) },
-        ).
-        it('is transitive', ({ v1, v2, v3 }) => {
-            expect(equal(v1, v2)).to.be.true;                                // tslint:disable-line:no-unused-expression
-            expect(equal(v2, v3)).to.be.true;                                // tslint:disable-line:no-unused-expression
-            expect(equal(v3, v1)).to.be.true;                                // tslint:disable-line:no-unused-expression
+        ])('is transitive', ({ v1, v2, v3 }) => {
+            expect(equal(v1, v2)).toEqual(true);
+            expect(equal(v2, v3)).toEqual(true);
+            expect(equal(v3, v1)).toEqual(true);
         });
 
-        given<{ v1: any, v2: any }>(
+        it.each<{ v1: any, v2: any }>([
             { v1: Alice,    v2: null    },
             { v1: Alice,    v2: Bob     },
             { v1: Bob,      v2: 'cat'   },
@@ -114,9 +114,8 @@ describe('equal', () => {
             { v1: MsAlice,  v2: MrBob   },
             { v1: MrBob,    v2: Team    },
             { v1: Team,     v2: Team2   },
-        ).
-        it('returns false when subjects are not equal', ({ v1, v2 }) => {
-            expect(equal(v1, v2)).to.be.false;                               // tslint:disable-line:no-unused-expression
+        ])('returns false when subjects are not equal', ({ v1, v2 }) => {
+            expect(equal(v1, v2)).toEqual(false);
         });
 
         it('compares public and private member fields', () => {
@@ -130,8 +129,8 @@ describe('equal', () => {
                 PrivateAlice = new PrivatePerson(new Name('Alice'), new Age(28)),
                 PrivateRyan  = new PrivatePerson(new Name('Ryan'), new Age(28));
 
-            expect(PrivateAlice.equals(PrivateAlice)).to.be.true;            // tslint:disable-line:no-unused-expression
-            expect(PrivateAlice.equals(PrivateRyan)).to.be.false;            // tslint:disable-line:no-unused-expression
+            expect(PrivateAlice.equals(PrivateAlice)).toEqual(true);
+            expect(PrivateAlice.equals(PrivateRyan)).toEqual(false);
         });
     });
 
@@ -155,7 +154,7 @@ describe('equal', () => {
                 t1 = new Magician(new FirstName('Teller')),
                 t2 = new Magician(new FirstName('Teller'));
 
-            expect(equal(t1, t2)).to.equal(true);
+            expect(equal(t1, t2)).toEqual(true);
         });
     });
 
@@ -168,22 +167,22 @@ describe('equal', () => {
             differentDate = new Date('2042-05-01T12:15:30.000Z');
 
         it('is reflexive', () => {
-            expect(equal(dateInstance1, dateInstance1)).to.be.true;          // tslint:disable-line:no-unused-expression
+            expect(equal(dateInstance1, dateInstance1)).toEqual(true);
         });
 
         it('is symmetric', () => {
-            expect(equal(dateInstance1, dateInstance2)).to.be.true;          // tslint:disable-line:no-unused-expression
-            expect(equal(dateInstance2, dateInstance1)).to.equal(equal(dateInstance1, dateInstance2));
+            expect(equal(dateInstance1, dateInstance2)).toEqual(true);
+            expect(equal(dateInstance2, dateInstance1)).toEqual(equal(dateInstance1, dateInstance2));
         });
 
         it('is transitive', () => {
-            expect(equal(dateInstance1, dateInstance2)).to.be.true;          // tslint:disable-line:no-unused-expression
-            expect(equal(dateInstance2, dateInstance3)).to.be.true;          // tslint:disable-line:no-unused-expression
-            expect(equal(dateInstance3, dateInstance1)).to.be.true;          // tslint:disable-line:no-unused-expression
+            expect(equal(dateInstance1, dateInstance2)).toEqual(true);
+            expect(equal(dateInstance2, dateInstance3)).toEqual(true);
+            expect(equal(dateInstance3, dateInstance1)).toEqual(true);
         });
 
         it('returns false when subjects are not equal', () => {
-            expect(equal(dateInstance1, differentDate)).to.be.false;         // tslint:disable-line:no-unused-expression
+            expect(equal(dateInstance1, differentDate)).toEqual(false);
         });
     });
 
@@ -195,21 +194,21 @@ describe('equal', () => {
             expect(equal(
                 [ new Name('Alice'), new Name('Bob') ],
                 [ new Name('Alice'), new Name('Bob'), new Name('Cyril') ],
-            )).to.equal(false);
+            )).toEqual(false);
         });
 
         it('returns false when arrays contain different items', () => {
             expect(equal(
                 [ new Name('Alice'), new Name('Bob'), new Name('Cyril')],
                 [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],
-            )).to.equal(false);
+            )).toEqual(false);
         });
 
         it('returns true when both arrays contain equal items', () => {
             expect(equal(
                 [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],
                 [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],
-            )).to.equal(true);
+            )).toEqual(true);
         });
     });
 });

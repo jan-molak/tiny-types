@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isFunction } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -21,10 +18,10 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument in a function', () => {
-            expect(() => run(validCallback)).to.not.throw();
+            expect(() => run(validCallback)).not.toThrow();
         });
 
-        given([
+        it.each([
             function () {},                     // eslint-disable-line @typescript-eslint/no-empty-function
             () => {},                           // eslint-disable-line @typescript-eslint/no-empty-function
             async function asyncFunction() {},  // eslint-disable-line @typescript-eslint/no-empty-function
@@ -34,21 +31,19 @@ describe('predicates', () => {
             Number,
             String,
             Symbol,
-        ]).
-        it('works for any type of function', (callback: any) => {
-            expect(() => run(callback)).to.not.throw();
+        ])('works for any type of function', (callback: any) => {
+            expect(() => run(callback)).not.toThrow();
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             [],
             true,
             'string',
-        ]).
-        it('complains if the value is not a function', (callback: any) => {
-            expect(() => run(callback)).to.throw(`callback should be a function`);
+        ])('complains if the value is not a function', (callback: any) => {
+            expect(() => run(callback)).toThrow(`callback should be a function`);
         });
     });
 });

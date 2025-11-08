@@ -1,10 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
-import sinon = require('sinon');
+import { describe, expect, it, vi } from 'vitest';
 
 import { and, ensure, isDefined, isGreaterThan, isInteger, isLessThan, Predicate, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -24,26 +20,25 @@ describe('predicates', () => {
         }
 
         it('ensures that all the predicates are met', () => {
-            expect(() => new InvestmentLengthInYears(10)).to.not.throw();
+            expect(() => new InvestmentLengthInYears(10)).not.toThrow();
         });
 
-        given(
+        it.each([
             [ null, 'InvestmentLengthInYears should be defined' ],
-            [ 0.2,  'InvestmentLengthInYears should be an integer' ],
-            [ -2,   'InvestmentLengthInYears should be greater than 0' ],
-            [ 52,   'InvestmentLengthInYears should be less than 50' ],
-        ).
-        it('complains upon the first unmet predicate', (value: any, errorMessage: string) => {
+            [ 0.2, 'InvestmentLengthInYears should be an integer' ],
+            [ -2, 'InvestmentLengthInYears should be greater than 0' ],
+            [ 52, 'InvestmentLengthInYears should be less than 50' ],
+        ])('complains upon the first unmet predicate', (value: any, errorMessage: string) => {
             expect(() => new InvestmentLengthInYears(value))
-                .to.throw(errorMessage);
+                .toThrow(errorMessage);
         });
 
         it('complains if there are no predicates specified', () => {
-            expect(() => and()).to.throw(`Looks like you haven't specified any predicates to check the value against?`);
+            expect(() => and()).toThrow(`Looks like you haven't specified any predicates to check the value against?`);
         });
 
         it('stops evaluating the predicates upon the first failure', () => {
-            const predicateEvaluated = sinon.spy();
+            const predicateEvaluated = vi.fn();
             const predicateReturning = (result: boolean) => Predicate.to(result ? 'pass' : 'fail', (value: any) => {
                 predicateEvaluated();
                 return result;
@@ -53,9 +48,9 @@ describe('predicates', () => {
                 predicateReturning(true),
                 predicateReturning(false),
                 predicateReturning(true),
-            ))).to.throw('value should fail');
+            ))).toThrow('value should fail');
 
-            expect(predicateEvaluated.callCount).to.equal(2);
+            expect(predicateEvaluated.mock.calls.length).toEqual(2);
         });
     });
 });

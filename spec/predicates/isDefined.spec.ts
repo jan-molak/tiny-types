@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isDefined, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -18,17 +15,16 @@ describe('predicates', () => {
         }
 
         it('ensures that the value is defined', () => {
-            expect(() => new UserName('Jan')).to.not.throw();
+            expect(() => new UserName('Jan')).not.toThrow();
         });
 
-        given<any>([
+        it.each<any>([
             'Jan',
             '',
             true,
             false,
-        ]).
-        it('works for any defined value, even the "falsy" ones', (value: any) => {
-            expect(() => new UserName(value)).to.not.throw();
+        ])('works for any defined value, even the "falsy" ones', (value: any) => {
+            expect(() => new UserName(value)).not.toThrow();
         });
     });
 });

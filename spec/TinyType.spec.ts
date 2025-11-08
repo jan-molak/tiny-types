@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { JSONObject, JSONPrimitive, TinyType, TinyTypeOf } from '../src';
-import { expect } from './expect';
 
 /** @test {TinyType} */
 describe('TinyType', () => {
@@ -20,11 +17,11 @@ describe('TinyType', () => {
 
                 const firstName = new FirstName('Jan');
 
-                expect(firstName.value).to.equal('Jan');
-                expect(firstName).to.be.instanceOf(FirstName);
-                expect(firstName).to.be.instanceOf(TinyType);
-                expect(firstName.constructor.name).to.equal('FirstName');
-                expect(firstName.toString()).to.equal('FirstName(value=Jan)');
+                expect(firstName.value).toEqual('Jan');
+                expect(firstName).toBeInstanceOf(FirstName);
+                expect(firstName).toBeInstanceOf(TinyType);
+                expect(firstName.constructor.name).toEqual('FirstName');
+                expect(firstName.toString()).toEqual('FirstName(value=Jan)');
             });
 
             /** @test {TinyTypeOf} */
@@ -32,8 +29,8 @@ describe('TinyType', () => {
                 class FirstName extends TinyTypeOf<string>() {
                 }
 
-                expect(() => new FirstName(null as any)).to.throw('FirstName should be defined');
-                expect(() => new FirstName(undefined as any)).to.throw('FirstName should be defined');
+                expect(() => new FirstName(null as any)).toThrow('FirstName should be defined');
+                expect(() => new FirstName(undefined as any)).toThrow('FirstName should be defined');
             });
 
             /**
@@ -58,12 +55,12 @@ describe('TinyType', () => {
 
                 const fullName = new FullName(new FirstName('Jan'), new LastName('Molak'));
 
-                expect(fullName.firstName.value).to.equal('Jan');
-                expect(fullName.lastName.value).to.equal('Molak');
-                expect(fullName).to.be.instanceOf(FullName);
-                expect(fullName).to.be.instanceOf(FullName);
-                expect(fullName.constructor.name).to.equal('FullName');
-                expect(fullName.toString()).to.equal('FullName(firstName=FirstName(value=Jan), lastName=LastName(value=Molak))');
+                expect(fullName.firstName.value).toEqual('Jan');
+                expect(fullName.lastName.value).toEqual('Molak');
+                expect(fullName).toBeInstanceOf(FullName);
+                expect(fullName).toBeInstanceOf(FullName);
+                expect(fullName.constructor.name).toEqual('FullName');
+                expect(fullName.toString()).toEqual('FullName(firstName=FirstName(value=Jan), lastName=LastName(value=Molak))');
             });
 
             /**
@@ -93,7 +90,7 @@ describe('TinyType', () => {
 
                 const event = new AccountCreated(new UserName('jan-molak'), new Timestamp(now));
 
-                expect(event.toString()).to.equal(
+                expect(event.toString()).toEqual(
                     'AccountCreated(username=UserName(value=jan-molak), value=Timestamp(value=2018-03-12T00:30:00.000Z))',
                 );
             });
@@ -114,7 +111,8 @@ describe('TinyType', () => {
             }
 
             class Postcode extends TinyType {
-                constructor(public readonly area: Area,
+                constructor(
+                    public readonly area: Area,
                     public readonly district: District,
                     public readonly sector: Sector,
                     public readonly unit: Unit,
@@ -126,7 +124,7 @@ describe('TinyType', () => {
             it('mentions the class and its properties', () => {
                 const area = new Area('GU');
 
-                expect(area.toString()).to.equal('Area(value=GU)');
+                expect(area.toString()).toEqual('Area(value=GU)');
             });
 
             it('mentions the class and its fields, but not the methods', () => {
@@ -141,7 +139,7 @@ describe('TinyType', () => {
                 const p = new Person('James');
 
                 expect(p.toString())
-                    .to.equal('Person(name=James)');
+                    .toEqual('Person(name=James)');
             });
 
             it('only cares about the fields, not the methods', () => {
@@ -153,7 +151,7 @@ describe('TinyType', () => {
                 );
 
                 expect(postcode.toString())
-                    .to.equal('Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))');
+                    .toEqual('Postcode(area=Area(value=GU), district=District(value=15), sector=Sector(value=9), unit=Unit(value=NZ))');
             });
 
             it('prints the array-type properties', () => {
@@ -163,10 +161,10 @@ describe('TinyType', () => {
                 class Names extends TinyTypeOf<Name[]>() {
                 }
 
-                const names = new Names([new Name('Alice'), new Name('Bob')]);
+                const names = new Names([ new Name('Alice'), new Name('Bob') ]);
 
                 expect(names.toString())
-                    .to.equal('Names(value=Array(Name(value=Alice), Name(value=Bob)))');
+                    .toEqual('Names(value=Array(Name(value=Alice), Name(value=Bob)))');
             });
 
             it('prints the object-type properties', () => {
@@ -176,7 +174,7 @@ describe('TinyType', () => {
                 const dictionary = new Dictionary({ greeting: 'Hello', subject: 'World' });
 
                 expect(dictionary.toString())
-                    .to.equal('Dictionary(value=Object(greeting=Hello, subject=World))');
+                    .toEqual('Dictionary(value=Object(greeting=Hello, subject=World))');
             });
         });
 
@@ -193,7 +191,8 @@ describe('TinyType', () => {
             }
 
             class Person extends TinyType {
-                constructor(public readonly firstName: FirstName,
+                constructor(
+                    public readonly firstName: FirstName,
                     public readonly lastName: LastName,
                     public readonly age: Age,
                 ) {
@@ -209,18 +208,18 @@ describe('TinyType', () => {
 
             describe('::toJSON', () => {
 
-                given<TinyType & { value: any }>(
+                it.each<TinyType & { value: any }>([
                     new FirstName('Bruce'),
                     new Age(55),
-                ).it('should serialise a single-value TinyType to just its value', input => {
-                    expect(input.toJSON()).to.equal(input.value);
+                ])('should serialise a single-value TinyType to just its value', input => {
+                    expect(input.toJSON()).toEqual(input.value);
                 });
 
                 it('should serialise a complex TinyType recursively', () => {
 
                     const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));
 
-                    expect(person.toJSON()).to.deep.equal({
+                    expect(person.toJSON()).toEqual({
                         firstName: 'Bruce',
                         lastName: 'Smith',
                         age: 55,
@@ -233,7 +232,7 @@ describe('TinyType', () => {
                         new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55)),
                     ]);
 
-                    expect(people.toJSON()).to.deep.equal([{
+                    expect(people.toJSON()).toEqual([ {
                         firstName: 'Alice',
                         lastName: 'Jones',
                         age: 62,
@@ -241,7 +240,7 @@ describe('TinyType', () => {
                         firstName: 'Bruce',
                         lastName: 'Smith',
                         age: 55,
-                    }]);
+                    } ]);
                 });
 
                 it(`should serialise undefined array values as null`, () => {
@@ -251,7 +250,7 @@ describe('TinyType', () => {
                         new FirstName('Cecil'),
                     ]);
 
-                    expect(firstNames.toJSON()).to.deep.equal([
+                    expect(firstNames.toJSON()).toEqual([
                         'Alice',
                         null,
                         'Cecil',
@@ -266,7 +265,7 @@ describe('TinyType', () => {
                         env: 'prod',
                     });
 
-                    expect(parameters.toJSON()).to.deep.equal({
+                    expect(parameters.toJSON()).toEqual({
                         env: 'prod',
                     });
                 });
@@ -281,7 +280,7 @@ describe('TinyType', () => {
                         objectEntry: { key: 'value' },
                     })));
 
-                    expect(parameters.toJSON()).to.deep.equal({
+                    expect(parameters.toJSON()).toEqual({
                         stringEntry: 'prod',
                         numberEntry: 42,
                         objectEntry: { key: 'value' },
@@ -292,9 +291,9 @@ describe('TinyType', () => {
                     class Notes extends TinyTypeOf<Set<string>>() {
                     }
 
-                    const parameters = new Notes(new Set(['apples', 'bananas', 'cucumbers']));
+                    const parameters = new Notes(new Set([ 'apples', 'bananas', 'cucumbers' ]));
 
-                    expect(parameters.toJSON()).to.deep.equal(['apples', 'bananas', 'cucumbers']);
+                    expect(parameters.toJSON()).toEqual([ 'apples', 'bananas', 'cucumbers' ]);
                 });
 
                 it(`should serialise an Error as its stack trace`, () => {
@@ -305,9 +304,9 @@ describe('TinyType', () => {
 
                     const customError = new CustomError(error);
 
-                    expect(customError.toJSON()).to.deep.equal({
-                        message:    'example error',
-                        stack:      error.stack,
+                    expect(customError.toJSON()).toEqual({
+                        message: 'example error',
+                        stack: error.stack,
                     });
                 });
 
@@ -317,8 +316,8 @@ describe('TinyType', () => {
                             username: string;
                             password: string;
                         },
-                        names:  Set<FirstName>;
-                        age:    Map<FirstName, Age>;
+                        names: Set<FirstName>;
+                        age: Map<FirstName, Age>;
                     }
 
                     class Notes extends TinyTypeOf<NotesType>() {
@@ -344,7 +343,7 @@ describe('TinyType', () => {
                         age
                     });
 
-                    expect(notes.toJSON()).to.deep.equal({
+                    expect(notes.toJSON()).toEqual({
                         authCredentials: {
                             username: 'Alice',
                             password: 'P@ssw0rd!',
@@ -372,7 +371,7 @@ describe('TinyType', () => {
                         undefinedValue: undefined,
                     });
 
-                    expect(notes.toJSON()).to.deep.equal({
+                    expect(notes.toJSON()).toEqual({
                         nullValue: null,
                         undefinedValue: undefined,
                     });
@@ -384,7 +383,7 @@ describe('TinyType', () => {
 
                     const tt = new TT(Number.NaN);
 
-                    expect(tt.toJSON()).to.equal('null');
+                    expect(tt.toJSON()).toEqual('null');
                 });
             });
         });
@@ -435,7 +434,8 @@ describe('TinyType', () => {
                     Age.fromJSON(v.age),
                 );
 
-                constructor(public readonly firstName: FirstName,
+                constructor(
+                    public readonly firstName: FirstName,
                     public readonly lastName: LastName,
                     public readonly age: Age,
                 ) {
@@ -450,15 +450,13 @@ describe('TinyType', () => {
             it('custom fromJSON can de-serialise a serialised single-value TinyType', () => {
                 const firstName = new FirstName('Jan');
 
-                // tslint:disable-next-line:no-unused-expression
-                expect(FirstName.fromJSON(firstName.toJSON()).equals(firstName)).to.be.true;
+                expect(FirstName.fromJSON(firstName.toJSON()).equals(firstName)).toEqual(true);
             });
 
             it('custom fromJSON can recursively de-serialise a serialised complex TinyType', () => {
                 const person = new Person(new FirstName('Bruce'), new LastName('Smith'), new Age(55));
 
-                // tslint:disable-next-line:no-unused-expression
-                expect(Person.fromJSON(person.toJSON()).equals(person)).to.be.true;
+                expect(Person.fromJSON(person.toJSON()).equals(person)).toEqual(true);
             });
         });
     });

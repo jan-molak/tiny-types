@@ -1,10 +1,7 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { TinyType } from '../../src';
 import { ObjectMatcher } from '../../src/pattern-matching';
-import { expect } from '../expect';
 
 describe('pattern-matching', () => {
     describe('ObjectMatcher', () => {
@@ -23,40 +20,40 @@ describe('pattern-matching', () => {
                 }
             }
 
-            given(
-                [new Name('Jan'), `matched "Jan"`],
-                [new Name('John'), `matched "John"`],
-                [new Name('Sara'), `else, received "Name(value=Sara)"`],
-            ).it('matches equal objects', (input: Name, expectedMessage: string) => {
+            it.each([
+                [ new Name('Jan'), `matched "Jan"` ],
+                [ new Name('John'), `matched "John"` ],
+                [ new Name('Sara'), `else, received "Name(value=Sara)"` ],
+            ])('matches equal objects', (input: Name, expectedMessage: string) => {
                 const result = new ObjectMatcher<TinyType, string>(input)
                     .when(new Name('Jan'), _ => `matched "Jan"`)
                     .when(new Name('John'), _ => `matched "John"`)
-                    .else(_ => `else, received "${_}"`);
+                    .else(_ => `else, received "${ _ }"`);
 
-                expect(result).to.equal(expectedMessage);
+                expect(result).toEqual(expectedMessage);
             });
 
             it('matches identical objects', () => {
-                const input = {field: 'value'};
+                const input = { field: 'value' };
 
                 const result = new ObjectMatcher(input)
                     .when(input, _ => `matched by identity`)
-                    .else(_ => `else, received "${_}"`);
+                    .else(_ => `else, received "${ _ }"`);
 
-                expect(result).to.equal(`matched by identity`);
+                expect(result).toEqual(`matched by identity`);
             });
 
-            given(
-                [new Name('Jan'), `matched by equality`],
-                [new Name('John'), `matched by type`],
-                [new EmailAddress('jan@example.com'), `else, received "EmailAddress(value=jan@example.com)"`],
-            ).it('can be mixed', (input: Name, expectedMessage: string) => {
+            it.each([
+                [ new Name('Jan'), `matched by equality` ],
+                [ new Name('John'), `matched by type` ],
+                [ new EmailAddress('jan@example.com'), `else, received "EmailAddress(value=jan@example.com)"` ],
+            ])('can be mixed', (input: Name, expectedMessage: string) => {
                 const result = new ObjectMatcher<TinyType, string>(input)
                     .when(new Name('Jan'), _ => `matched by equality`)
                     .when(Name, _ => `matched by type`)
-                    .else(_ => `else, received "${_}"`);
+                    .else(_ => `else, received "${ _ }"`);
 
-                expect(result).to.equal(expectedMessage);
+                expect(result).toEqual(expectedMessage);
             });
         });
 
@@ -73,9 +70,11 @@ describe('pattern-matching', () => {
             }
 
             class AccountConfirmed extends DomainEvent {
-                constructor(public readonly account_name: string,
+                constructor(
+                    public readonly account_name: string,
                     public readonly email: string,
-                    timestamp: Date,) {
+                    timestamp: Date,
+                ) {
                     super(timestamp);
                 }
             }
@@ -83,7 +82,7 @@ describe('pattern-matching', () => {
             class UnclassifiedEvent extends DomainEvent {
             }
 
-            given(
+            it.each([
                 [
                     new AccountCreated('jan-molak', new Date()),
                     `AccountCreated`,
@@ -96,20 +95,20 @@ describe('pattern-matching', () => {
                     new UnclassifiedEvent(new Date()),
                     `UnclassifiedEvent`,
                 ],
-            ).it('matches object by constructor function', (input: DomainEvent, expected_result: string) => {
+            ])('matches object by constructor function', (input: DomainEvent, expected_result: string) => {
 
                 const result = new ObjectMatcher<DomainEvent, string>(input)
                     .when(AccountCreated, _ => `AccountCreated`)
                     .when(AccountConfirmed, _ => `AccountConfirmed`)
                     .when(DomainEvent, _ => `UnclassifiedEvent`)
-                    .else(_ => `else, received "${_}"`);
+                    .else(_ => `else, received "${ _ }"`);
 
-                expect(result).to.equal(expected_result);
+                expect(result).toEqual(expected_result);
             });
 
             // todo: mixed constructor/tiny?
 
-            given(
+            it.each([
                 [
                     new AccountCreated('jan-molak', new Date()),
                     `Account created for jan-molak`,
@@ -122,15 +121,19 @@ describe('pattern-matching', () => {
                     new UnclassifiedEvent(new Date()),
                     `Some DomainEvent received`,
                 ],
-            ).it('matches object by constructor function', (input: DomainEvent, expected_result: string) => {
+            ])('matches object by constructor function', (input: DomainEvent, expected_result: string) => {
 
                 const result = new ObjectMatcher<DomainEvent, string>(input)
-                    .when(AccountCreated, ({account_name}: AccountCreated) => `Account created for ${ account_name }`)
-                    .when(AccountConfirmed, ({account_name, email}: AccountConfirmed) => `Account confirmed for ${ account_name } at ${ email }`)
-                    .when(DomainEvent, ({timestamp}: DomainEvent) => `Some DomainEvent received`)
-                    .else(_ => `else, received "${_}"`);
+                    .when(AccountCreated, ({ account_name }: AccountCreated) => {
+                        return `Account created for ${ account_name }`;
+                    })
+                    .when(AccountConfirmed, ({ account_name, email }: AccountConfirmed) => {
+                        return `Account confirmed for ${ account_name } at ${ email }`;
+                    })
+                    .when(DomainEvent, ({ timestamp }: DomainEvent) => `Some DomainEvent received`)
+                    .else(_ => `else, received "${ _ }"`);
 
-                expect(result).to.equal(expected_result);
+                expect(result).toEqual(expected_result);
             });
         });
     });

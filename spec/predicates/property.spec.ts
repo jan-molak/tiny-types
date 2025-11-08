@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isDefined, isGreaterThanOrEqualTo, isString, property, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -26,27 +23,24 @@ describe('predicates', () => {
 
             /** @test {property} */
             it('ensures that the property meets the predicates', () => {
-                expect(() => new Name('Jan')).to.not.throw();
+                expect(() => new Name('Jan')).not.toThrow();
             });
 
-            given(
+            it.each([
                 undefined,
                 null,
-            ).
-            it('complains when the value is undefined', (value: any) => {
-                expect(() => new Name({ length: value } as any)).
-                    to.throw(`Name should have a property "length" that is defined`);
+            ])('complains when the value is undefined', (value: any) => {
+                expect(() => new Name({ length: value } as any))
+                    .toThrow(`Name should have a property "length" that is defined`);
             });
 
-            given<any, string>(
-                [undefined,             'Name should be defined'],
-                [{ length: undefined }, 'Name should have a property "length" that is defined'],
-                ['JM',                  'Name should have a property "length" that is either equal to 3 or is greater than 3'],
-                [['J', 'a', 'n'],       'Name should be a string'],
-            ).
-            it('can be composed with other predicates', (value: any, expectedError: string) => {
-                expect(() => new Name(value)).
-                    to.throw(expectedError);
+            it.each<[ any, string ]>([
+                [ undefined, 'Name should be defined' ],
+                [ { length: undefined }, 'Name should have a property "length" that is defined' ],
+                [ 'JM', 'Name should have a property "length" that is either equal to 3 or is greater than 3' ],
+                [ [ 'J', 'a', 'n' ], 'Name should be a string' ],
+            ])('can be composed with other predicates', (value: any, expectedError: string) => {
+                expect(() => new Name(value)).toThrow(expectedError);
             });
         });
     });

@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isNumber, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -18,10 +15,10 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument in a number', () => {
-            expect(() => new Percentage(42)).to.not.throw();
+            expect(() => new Percentage(42)).not.toThrow();
         });
 
-        given([
+        it.each([
             1 / 3,
             0.42,
             0o3,
@@ -29,19 +26,17 @@ describe('predicates', () => {
             Number.NaN,
             Number.POSITIVE_INFINITY,
             Number.NEGATIVE_INFINITY,
-        ]).
-        it('works for any type of number', (value: any) => {
-            expect(() => new Percentage(value)).to.not.throw();
+        ])('works for any type of number', (value: any) => {
+            expect(() => new Percentage(value)).not.toThrow();
         });
 
-        given([
+        it.each([
             undefined,
             null,
             {},
             'string',
-        ]).
-        it('complains if the value is not a number', (value: any) => {
-            expect(() => new Percentage(value)).to.throw(`Percentage should be a number`);
+        ])('complains if the value is not a number', (value: any) => {
+            expect(() => new Percentage(value)).toThrow(`Percentage should be a number`);
         });
     });
 });

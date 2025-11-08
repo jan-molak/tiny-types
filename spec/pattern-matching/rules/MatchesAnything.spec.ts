@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { MatchesAnything } from '../../../src/pattern-matching/rules';
-import { expect } from '../../expect';
 
 describe('pattern-matching', () => {
 
@@ -11,14 +8,14 @@ describe('pattern-matching', () => {
 
         describe('MatchesAnything', () => {
 
-            given([
+            it.each([
                 1,
                 false,
                 {},
-            ]).it('is always executed', (input: any) => {
+            ])('is always executed', (input: any) => {
                 const rule = new MatchesAnything(_ => _);
 
-                expect(rule.matches(input)).to.be.true;                              // tslint:disable-line:no-unused-expression
+                expect(rule.matches(input)).toEqual(true);
             });
         });
     });

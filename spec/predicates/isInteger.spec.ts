@@ -1,9 +1,6 @@
-import 'mocha';
-
-import { given } from 'mocha-testdata';
+import { describe, expect, it } from 'vitest';
 
 import { ensure, isInteger, TinyType } from '../../src';
-import { expect } from '../expect';
 
 describe('predicates', () => {
 
@@ -18,10 +15,10 @@ describe('predicates', () => {
         }
 
         it('ensures that the argument in an integer', () => {
-            expect(() => new AgeInYears(42)).to.not.throw();
+            expect(() => new AgeInYears(42)).not.toThrow();
         });
 
-        given([
+        it.each([
             1 / 3,
             0.42,
             undefined,
@@ -30,9 +27,8 @@ describe('predicates', () => {
             Number.POSITIVE_INFINITY,
             {},
             'string',
-        ]).
-        it('complains if the value is not an integer', (value: any) => {
-            expect(() => new AgeInYears(value)).to.throw(`AgeInYears should be an integer`);
+        ])('complains if the value is not an integer', (value: any) => {
+            expect(() => new AgeInYears(value)).toThrow(`AgeInYears should be an integer`);
         });
     });
 });
