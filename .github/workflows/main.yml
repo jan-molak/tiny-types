@@ -111,6 +111,8 @@ jobs:
     if: github.ref == 'refs/heads/master'
     permissions:
       contents: write
+      issues: write
+      pull-requests: write
       id-token: write
 
     steps:
