@@ -1,6 +1,17 @@
 {
   "extends": [
-    "config:base"
+    ":dependencyDashboard",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":prHourlyLimit2",
+    ":prConcurrentLimit20",
+    "group:monorepos",
+    "group:recommended",
+    "workarounds:typesNodeVersioning",
+    "helpers:disableTypesNodeMajor",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "ignorePaths": [
+    "**/node_modules/**"
   ],
   "rangeStrategy": "bump",
   "automerge": true
