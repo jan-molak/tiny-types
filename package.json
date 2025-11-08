@@ -48,7 +48,7 @@
     "@types/node": "20.19.9",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
-    "@vitest/coverage-v8": "^4.0.8",
+    "@vitest/coverage-v8": "4.0.8",
     "cheerio": "1.1.2",
     "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
@@ -72,28 +72,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "nyc": {
-    "include": [
-      "src/*.ts",
-      "src/**/*.ts"
-    ],
-    "exclude": [
-      "lib",
-      "node_modules",
-      "spec",
-      "src/types"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "lcov"
-    ],
-    "cache": true,
-    "all": true
   }
 }

@@ -13,7 +13,6 @@
   "ignorePaths": [
     "**/node_modules/**"
   ],
-  "rangeStrategy": "pin",
   "packageRules": [
     {
       "matchUpdateTypes": [
