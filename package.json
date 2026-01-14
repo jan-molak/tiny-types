@@ -62,7 +62,7 @@
     "eslint-plugin-simple-import-sort": "12.1.1",
     "eslint-plugin-unicorn": "56.0.1",
     "eslint-plugin-unused-imports": "4.3.0",
-    "rimraf": "6.0.1",
+    "rimraf": "6.1.2",
     "semantic-release": "25.0.2",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
