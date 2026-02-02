@@ -60,7 +60,7 @@
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-simple-import-sort": "12.1.1",
-    "eslint-plugin-unicorn": "56.0.1",
+    "eslint-plugin-unicorn": "62.0.0",
     "eslint-plugin-unused-imports": "4.3.0",
     "rimraf": "6.1.2",
     "semantic-release": "25.0.3",
