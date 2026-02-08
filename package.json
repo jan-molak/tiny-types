@@ -45,7 +45,7 @@
     "node": "^20 || ^22 || ^24"
   },
   "devDependencies": {
-    "@types/node": "20.19.32",
+    "@types/node": "20.19.33",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "@vitest/coverage-v8": "4.0.18",
