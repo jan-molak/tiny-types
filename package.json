@@ -46,8 +46,8 @@
   },
   "devDependencies": {
     "@types/node": "20.19.37",
-    "@typescript-eslint/eslint-plugin": "7.18.0",
-    "@typescript-eslint/parser": "7.18.0",
+    "@typescript-eslint/eslint-plugin": "8.56.1",
+    "@typescript-eslint/parser": "8.56.1",
     "@vitest/coverage-v8": "4.0.18",
     "cheerio": "1.2.0",
     "commitizen": "4.3.1",
