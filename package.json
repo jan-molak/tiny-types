@@ -15,6 +15,14 @@
       },
       "./lib/index.js"
     ],
+    "./objects": [
+      {
+        "types": "./lib/objects/index.d.ts",
+        "import": "./esm/objects/index.js",
+        "require": "./lib/objects/index.js"
+      },
+      "./lib/objects/index.js"
+    ],
     "./lib/*": "./lib/*",
     "./esm/*": "./esm/*",
     "./package.json": "./package.json"
