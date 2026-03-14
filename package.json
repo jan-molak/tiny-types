@@ -6,6 +6,11 @@
   "main": "lib/index.js",
   "module": "./esm/index.js",
   "typings": "lib/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "objects": ["lib/objects/index.d.ts"]
+    }
+  },
   "exports": {
     ".": [
       {
