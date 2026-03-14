@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { TinyType, TinyTypeOf } from '../../src';
+import { isTinyType, TinyType, TinyTypeOf } from '../../src';
 import { equal } from '../../src/objects';
+
+// Symbol used to brand TinyType instances - must match the one in TinyType.ts
+const TINY_TYPE_BRAND = Symbol.for('tiny-types/TinyType');
 
 /** @test {equal} */
 describe('equal', () => {
@@ -209,6 +212,92 @@ describe('equal', () => {
                 [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],
                 [ new Name('Alice'), new Name('Bob'), new Name('Cynthia') ],
             )).toEqual(true);
+        });
+    });
+
+    /**
+     * @test {equal}
+     * @desc Tests for cross-module equality (ESM/CJS dual-package hazard mitigation)
+     *
+     * When the same TinyType class is loaded from both ESM and CJS contexts,
+     * the constructors are different objects, causing native instanceof to fail.
+     * The equal() function should handle this by comparing constructor names
+     * for TinyType instances.
+     */
+    describe('when comparing TinyTypes across module boundaries (dual-package hazard)', () => {
+
+        /**
+         * Creates a mock TinyType-like object that simulates an instance
+         * created from a different module format (ESM vs CJS).
+         * The object has the TinyType brand but a different constructor reference.
+         */
+        function createCrossModuleInstance<T>(className: string, value: T): object {
+            // Create a class with the specified name to simulate a cross-module class
+            const CrossModuleClass = { [className]: class {
+                value = value;
+            } }[className];
+
+            const instance = new CrossModuleClass();
+            // Brand it as a TinyType
+            (instance as any)[TINY_TYPE_BRAND] = true;
+            return instance;
+        }
+
+        class Name extends TinyTypeOf<string>() {}
+        class Age extends TinyTypeOf<number>() {}
+
+        it('returns true when comparing TinyType instances with same class name and value from different module contexts', () => {
+            const esmName = new Name('Alice');
+            const cjsName = createCrossModuleInstance('Name', 'Alice');
+
+            // Both should be recognized as TinyType instances
+            expect(isTinyType(esmName)).toBe(true);
+            expect(isTinyType(cjsName)).toBe(true);
+
+            // They should be considered equal despite different constructor references
+            expect(equal(esmName, cjsName)).toBe(true);
+        });
+
+        it('returns false when comparing TinyType instances with same class name but different values', () => {
+            const esmName = new Name('Alice');
+            const cjsName = createCrossModuleInstance('Name', 'Bob');
+
+            expect(equal(esmName, cjsName)).toBe(false);
+        });
+
+        it('returns false when comparing TinyType instances with different class names', () => {
+            const esmName = new Name('Alice');
+            const cjsAge = createCrossModuleInstance('Age', 'Alice');
+
+            expect(equal(esmName, cjsAge)).toBe(false);
+        });
+
+        it('still uses instanceof for non-TinyType objects', () => {
+            class RegularClass {
+                constructor(public readonly value: string) {}
+            }
+
+            const obj1 = new RegularClass('test');
+            const obj2 = new RegularClass('test');
+
+            // Regular objects should still work with instanceof-based comparison
+            expect(equal(obj1, obj2)).toBe(true);
+        });
+
+        it('returns false when comparing TinyType with non-TinyType object of same shape', () => {
+            const tinyTypeName = new Name('Alice');
+
+            // Create a plain object with same structure but no TinyType brand
+            class FakeName {
+                constructor(public readonly value: string) {}
+            }
+            const plainObject = new FakeName('Alice');
+
+            // sameClass should return false because plainObject is not a TinyType
+            // and instanceof check will fail
+            expect(isTinyType(tinyTypeName)).toBe(true);
+            expect(isTinyType(plainObject)).toBe(false);
+            expect(equal(tinyTypeName, plainObject)).toBe(false);
         });
     });
 });
