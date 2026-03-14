@@ -1,4 +1,3 @@
-import { TinyType } from '../TinyType';
 import { isTinyType, isTinyTypeOf } from '../TinyType';
 import { Predicate } from './Predicate';
 
