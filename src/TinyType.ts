@@ -10,6 +10,13 @@ import { JSONValue, Serialisable } from './types';
 const TINY_TYPE_BRAND = Symbol.for('tiny-types/TinyType');
 
 /**
+ * @desc Type representing a constructor function that may have a protected constructor.
+ * This is needed because TinyType has a protected constructor, but we still need
+ * to be able to use it with instanceof checks.
+ */
+type TinyTypeConstructor<T extends TinyType = TinyType> = Function & { prototype: T };
+
+/**
  * @desc Checks if a value is a TinyType instance, working across ESM/CJS module boundaries.
  * This handles the dual-package hazard where the same class loaded from different module
  * formats creates distinct constructor functions that fail native instanceof checks.
@@ -31,9 +38,10 @@ export function isTinyType(value: unknown): value is TinyType {
  * @param {Function} type - The TinyType subclass constructor to check against
  * @returns {boolean} true if the value is an instance of the specified type
  */
-export function isTinyTypeOf<T extends TinyType>(value: unknown, type: abstract new (...args: any[]) => T): value is T {
-    // First try native instanceof (works when same module format)
-    if (value instanceof type) {
+export function isTinyTypeOf<T extends TinyType>(value: unknown, type: TinyTypeConstructor<T>): value is T {
+    // First try native prototype check (avoids triggering Symbol.hasInstance)
+    // This works when the same module format is used
+    if (value !== null && typeof value === 'object' && type.prototype.isPrototypeOf(value)) {
         return true;
     }
 
@@ -101,6 +109,31 @@ export function TinyTypeOf<T>(): new(_: T) => { value: T } & TinyType {
  * }
  */
 export abstract class TinyType implements Serialisable {
+
+    /**
+     * @desc Custom instanceof check that works across ESM/CJS module boundaries.
+     * When checking `x instanceof SomeClass`, JavaScript calls `SomeClass[Symbol.hasInstance](x)`.
+     * Since subclasses inherit this method, `this` refers to the actual class being checked against.
+     *
+     * This enables native instanceof syntax to work correctly even when the same class
+     * is loaded from both ESM and CJS module formats (dual-package hazard).
+     *
+     * @example
+     * class MyEvent extends TinyType {
+     *     constructor(public readonly name: string) {
+     *         super();
+     *     }
+     * }
+     *
+     * const event = new MyEvent('test');
+     * event instanceof MyEvent;  // true, even across module boundaries
+     *
+     * @param {unknown} instance - The value to check
+     * @returns {boolean} true if the instance is of this type
+     */
+    static [Symbol.hasInstance](instance: unknown): boolean {
+        return isTinyTypeOf(instance, this);
+    }
 
     /**
      * @desc Brands this instance as a TinyType for cross-module identification.
