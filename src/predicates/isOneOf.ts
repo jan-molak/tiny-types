@@ -1,6 +1,6 @@
-import { isEqualTo } from './isEqualTo';
-import { or } from './or';
-import { Predicate } from './Predicate';
+import { isEqualTo } from './isEqualTo.js';
+import { or } from './or.js';
+import { Predicate } from './Predicate.js';
 
 /**
  * @desc Ensures that the `value` is equal to one of the `allowedValues`

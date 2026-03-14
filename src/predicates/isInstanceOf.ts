@@ -1,5 +1,5 @@
-import { isTinyType, isTinyTypeOf } from '../TinyType';
-import { Predicate } from './Predicate';
+import { isTinyType, isTinyTypeOf } from '../TinyType.js';
+import { Predicate } from './Predicate.js';
 
 /**
  * @desc Symbol used to brand instances for cross-module identification.

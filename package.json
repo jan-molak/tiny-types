@@ -2,15 +2,34 @@
   "name": "tiny-types",
   "version": "0.0.0-development",
   "description": "A tiny library that brings Tiny Types to JavaScript and TypeScript",
+  "type": "module",
   "main": "lib/index.js",
+  "module": "./esm/index.js",
   "typings": "lib/index.d.ts",
+  "exports": {
+    ".": [
+      {
+        "types": "./lib/index.d.ts",
+        "import": "./esm/index.js",
+        "require": "./lib/index.js"
+      },
+      "./lib/index.js"
+    ],
+    "./lib/*": "./lib/*",
+    "./esm/*": "./esm/*",
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "clean": "rimraf docs lib reports",
+    "clean": "rimraf docs lib esm reports",
     "lint": "eslint --ext ts --config .eslintrc.yml .",
     "lint:fix": "npm run lint -- --fix",
     "test": "node --import tsx node_modules/vitest/vitest.mjs run",
     "test:coverage": "node --import tsx node_modules/vitest/vitest.mjs run --coverage",
-    "compile": "tsc --project tsconfig.json",
+    "compile": "npm run compile:clean && npm run compile:esm && npm run compile:cjs && npm run compile:cjs-package",
+    "compile:clean": "rimraf lib esm",
+    "compile:esm": "tsc --project tsconfig-esm.build.json",
+    "compile:cjs": "tsc --project tsconfig-cjs.build.json",
+    "compile:cjs-package": "node -e \"require('fs').writeFileSync('lib/package.json', '{ \\\"type\\\": \\\"commonjs\\\" }')\"",
     "verify": "npm run clean && npm run lint && npm run test && npm run compile",
     "doc": "esdoc",
     "commit": "git-cz",

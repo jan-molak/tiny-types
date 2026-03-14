@@ -1,7 +1,7 @@
-import { isDefined } from './isDefined';
-import { isEqualTo } from './isEqualTo';
-import { Predicate } from './Predicate';
-import { property } from './property';
+import { isDefined } from './isDefined.js';
+import { isEqualTo } from './isEqualTo.js';
+import { Predicate } from './Predicate.js';
+import { property } from './property.js';
 
 export interface HasLength { length: number; }
 

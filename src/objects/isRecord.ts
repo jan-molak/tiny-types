@@ -1,4 +1,4 @@
-import { isObject } from './isObject';
+import { isObject } from './isObject.js';
 
 export function isRecord(value: unknown): value is Record<any, any> {
     if (! isObject(value)) {

@@ -1,4 +1,4 @@
-import { significantFieldsOf } from './significantFields';
+import { significantFieldsOf } from './significantFields.js';
 
 /**
  * @access private

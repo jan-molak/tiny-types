@@ -1,7 +1,7 @@
-import { ensure } from './ensure';
-import { equal, significantFieldsOf, stringify, toJSON } from './objects';
-import { isDefined } from './predicates';
-import { JSONValue, Serialisable } from './types';
+import { ensure } from './ensure.js';
+import { equal, significantFieldsOf, stringify, toJSON } from './objects/index.js';
+import { isDefined } from './predicates/index.js';
+import { JSONValue, Serialisable } from './types/index.js';
 
 /**
  * @desc Symbol used to brand TinyType instances for cross-module identification.

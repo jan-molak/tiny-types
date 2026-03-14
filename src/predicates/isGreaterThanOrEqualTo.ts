@@ -1,7 +1,7 @@
-import { isEqualTo } from './isEqualTo';
-import { isGreaterThan } from './isGreaterThan';
-import { or } from './or';
-import { Predicate } from './Predicate';
+import { isEqualTo } from './isEqualTo.js';
+import { isGreaterThan } from './isGreaterThan.js';
+import { or } from './or.js';
+import { Predicate } from './Predicate.js';
 
 /**
  * @desc Ensures that the `value` is greater than or equal to the `lowerBound`.

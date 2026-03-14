@@ -1,5 +1,5 @@
-import { isRecord } from '../objects';
-import { Predicate } from './Predicate';
+import { isRecord } from '../objects/index.js';
+import { Predicate } from './Predicate.js';
 
 /**
  * @desc

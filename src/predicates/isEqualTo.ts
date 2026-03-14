@@ -1,5 +1,5 @@
-import { TinyType } from '../TinyType';
-import { Predicate } from './Predicate';
+import { TinyType } from '../TinyType.js';
+import { Predicate } from './Predicate.js';
 
 export function isEqualTo(expectedValue: TinyType): Predicate<TinyType>;
 export function isEqualTo<T>(expectedValue: T): Predicate<T>;

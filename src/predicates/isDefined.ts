@@ -1,4 +1,4 @@
-import { Predicate } from './Predicate';
+import { Predicate } from './Predicate.js';
 
 /**
  * @desc Ensures that the `value` is defined as anything other than {@link null} or {@link undefined}.

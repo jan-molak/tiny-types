@@ -1,5 +1,5 @@
-import { ensure } from './ensure';
-import { deprecated } from './objects';
+import { ensure } from './ensure.js';
+import { deprecated } from './objects/index.js';
 
 /**
  * @desc This function has been deprecated. Please use {@link ensure} instead

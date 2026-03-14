@@ -1,5 +1,5 @@
-import { IdentityMatcher, ObjectMatcher, PatternMatcher, StringMatcher } from './pattern-matching';
-import { ConstructorAbstractOrInstance } from './types';
+import { IdentityMatcher, ObjectMatcher, PatternMatcher, StringMatcher } from './pattern-matching/index.js';
+import { ConstructorAbstractOrInstance } from './types/index.js';
 
 // boolean equality matcher
 export function match<Output_Type>(_: boolean): {

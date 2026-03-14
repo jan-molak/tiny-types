@@ -9,4 +9,5 @@ node_modules
 docs
 reports
 lib
+esm
 *.log
