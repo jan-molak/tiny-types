@@ -4,6 +4,59 @@ import { isDefined } from './predicates';
 import { JSONValue, Serialisable } from './types';
 
 /**
+ * @desc Symbol used to brand TinyType instances for cross-module identification.
+ * Uses Symbol.for() to ensure the same symbol is returned across ESM/CJS boundaries.
+ */
+const TINY_TYPE_BRAND = Symbol.for('tiny-types/TinyType');
+
+/**
+ * @desc Checks if a value is a TinyType instance, working across ESM/CJS module boundaries.
+ * This handles the dual-package hazard where the same class loaded from different module
+ * formats creates distinct constructor functions that fail native instanceof checks.
+ *
+ * @param {unknown} value - The value to check
+ * @returns {boolean} true if the value is a TinyType instance
+ */
+export function isTinyType(value: unknown): value is TinyType {
+    return value !== null &&
+        typeof value === 'object' &&
+        (value as any)[TINY_TYPE_BRAND] === true;
+}
+
+/**
+ * @desc Checks if a value is an instance of a specific TinyType subclass,
+ * working across ESM/CJS module boundaries.
+ *
+ * @param {unknown} value - The value to check
+ * @param {Function} type - The TinyType subclass constructor to check against
+ * @returns {boolean} true if the value is an instance of the specified type
+ */
+export function isTinyTypeOf<T extends TinyType>(value: unknown, type: abstract new (...args: any[]) => T): value is T {
+    // First try native instanceof (works when same module format)
+    if (value instanceof type) {
+        return true;
+    }
+
+    // Fall back to brand check for cross-module scenarios
+    if (!isTinyType(value)) {
+        return false;
+    }
+
+    // Check the prototype chain by class name
+    const targetName = type.name;
+    let proto = Object.getPrototypeOf(value);
+
+    while (proto !== null) {
+        if (proto.constructor?.name === targetName) {
+            return true;
+        }
+        proto = Object.getPrototypeOf(proto);
+    }
+
+    return false;
+}
+
+/**
  * @desc The {@link TinyTypeOf} can be used to define simple
  * single-value {@link TinyType}s on a single line.
  *
@@ -48,6 +101,14 @@ export function TinyTypeOf<T>(): new(_: T) => { value: T } & TinyType {
  * }
  */
 export abstract class TinyType implements Serialisable {
+
+    /**
+     * @desc Brands this instance as a TinyType for cross-module identification.
+     * This enables instanceof checks to work across ESM/CJS module boundaries.
+     */
+    protected constructor() {
+        (this as any)[TINY_TYPE_BRAND] = true;
+    }
 
     /**
      * @desc Compares two tiny types by value
