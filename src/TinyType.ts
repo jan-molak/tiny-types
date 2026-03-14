@@ -14,6 +14,7 @@ const TINY_TYPE_BRAND = Symbol.for('tiny-types/TinyType');
  * This is needed because TinyType has a protected constructor, but we still need
  * to be able to use it with instanceof checks.
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 type TinyTypeConstructor<T extends TinyType = TinyType> = Function & { prototype: T };
 
 /**
@@ -41,7 +42,7 @@ export function isTinyType(value: unknown): value is TinyType {
 export function isTinyTypeOf<T extends TinyType>(value: unknown, type: TinyTypeConstructor<T>): value is T {
     // First try native prototype check (avoids triggering Symbol.hasInstance)
     // This works when the same module format is used
-    if (value !== null && typeof value === 'object' && type.prototype.isPrototypeOf(value)) {
+    if (value !== null && typeof value === 'object' && Object.prototype.isPrototypeOf.call(type.prototype, value)) {
         return true;
     }
 
