@@ -56,7 +56,7 @@ export function isTinyTypeOf<T extends TinyType>(value: unknown, type: TinyTypeC
     let proto = Object.getPrototypeOf(value);
 
     while (proto !== null) {
-        if (proto.constructor?.name === targetName) {
+        if (proto.constructor && proto.constructor.name === targetName) {
             return true;
         }
         proto = Object.getPrototypeOf(proto);

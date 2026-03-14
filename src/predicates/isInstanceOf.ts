@@ -34,7 +34,8 @@ export function isInstanceOf<T>(type: new (...args: any[]) => T): Predicate<T> {
 
         // For TinyType subclasses, use the cross-module check
         if (isTinyTypeSubclass(type) && isTinyType(value)) {
-            return isTinyTypeOf(value, type as unknown as abstract new (...args: any[]) => TinyType);
+            // Cast needed for abstract constructor compatibility
+            return isTinyTypeOf(value, type as any);
         }
 
         // For non-TinyType classes, fall back to brand-based check
@@ -48,7 +49,7 @@ export function isInstanceOf<T>(type: new (...args: any[]) => T): Predicate<T> {
 function isTinyTypeSubclass(type: new (...args: any[]) => unknown): boolean {
     let proto = type.prototype;
     while (proto !== null) {
-        if (proto.constructor?.name === 'TinyType') {
+        if (proto.constructor && proto.constructor.name === 'TinyType') {
             return true;
         }
         proto = Object.getPrototypeOf(proto);
