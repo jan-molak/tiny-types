@@ -1,7 +1,7 @@
-import { TinyType } from '../TinyType';
-import { ConstructorAbstractOrInstance } from '../types';
-import { PatternMatcher } from './PatternMatcher';
-import { MatcherRule, MatchesEqualTinyType, MatchesIdentical, MatchesObjectsWithCommonPrototype } from './rules';
+import { TinyType } from '../TinyType.js';
+import { ConstructorAbstractOrInstance } from '../types/index.js';
+import { PatternMatcher } from './PatternMatcher.js';
+import { MatcherRule, MatchesEqualTinyType, MatchesIdentical, MatchesObjectsWithCommonPrototype } from './rules/index.js';
 
 /**
  * @access private

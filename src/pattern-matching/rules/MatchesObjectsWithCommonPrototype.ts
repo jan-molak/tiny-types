@@ -1,5 +1,5 @@
-import { ConstructorOrAbstract } from '../../types';
-import { MatcherRule } from './MatcherRule';
+import { ConstructorOrAbstract } from '../../types/index.js';
+import { MatcherRule } from './MatcherRule.js';
 
 /**
  * @access private

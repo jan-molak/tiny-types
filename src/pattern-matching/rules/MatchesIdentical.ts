@@ -1,4 +1,4 @@
-import { MatcherRule } from './MatcherRule';
+import { MatcherRule } from './MatcherRule.js';
 
 /**
  * @access private

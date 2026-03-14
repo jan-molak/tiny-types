@@ -1,5 +1,5 @@
-import { PatternMatcher } from './PatternMatcher';
-import { MatchesIdentical, MatchesRegExp } from './rules';
+import { PatternMatcher } from './PatternMatcher.js';
+import { MatchesIdentical, MatchesRegExp } from './rules/index.js';
 
 /**
  * @access private

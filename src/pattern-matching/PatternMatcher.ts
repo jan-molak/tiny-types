@@ -1,5 +1,5 @@
-import { List } from '../types';
-import { MatcherRule, MatchesAnything } from './rules';
+import { List } from '../types/index.js';
+import { MatcherRule, MatchesAnything } from './rules/index.js';
 
 /**
  * @access private

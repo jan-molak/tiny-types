@@ -1,4 +1,4 @@
-import { and, Failure, Predicate } from './predicates';
+import { and, Failure, Predicate } from './predicates/index.js';
 
 /**
  * @desc The `ensure` function verifies if the value meets the specified {Predicate}s.

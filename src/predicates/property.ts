@@ -1,5 +1,5 @@
-import { and } from './and';
-import { Failure, Predicate, Result, Success } from './Predicate';
+import { and } from './and.js';
+import { Failure, Predicate, Result, Success } from './Predicate.js';
 
 /**
  * @desc Ensures that the `property` of the `value` meets the `predicates`

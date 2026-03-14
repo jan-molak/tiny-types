@@ -1,5 +1,5 @@
-import { TinyType } from '../../TinyType';
-import { MatcherRule } from './MatcherRule';
+import { TinyType } from '../../TinyType.js';
+import { MatcherRule } from './MatcherRule.js';
 
 /**
  * @access private

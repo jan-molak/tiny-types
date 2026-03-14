@@ -1,4 +1,4 @@
-import { Predicate } from './Predicate';
+import { Predicate } from './Predicate.js';
 
 /**
  * @desc Ensures that the `value` ends with a given suffix.

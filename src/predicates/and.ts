@@ -1,7 +1,7 @@
-import { isArray } from './isArray';
-import { isDefined } from './isDefined';
-import { isGreaterThan } from './isGreaterThan';
-import { Failure, Predicate, Result, Success } from './Predicate';
+import { isArray } from './isArray.js';
+import { isDefined } from './isDefined.js';
+import { isGreaterThan } from './isGreaterThan.js';
+import { Failure, Predicate, Result, Success } from './Predicate.js';
 
 /**
  * @desc Ensures that the `value` meets all the provided {@link Predicate}s.

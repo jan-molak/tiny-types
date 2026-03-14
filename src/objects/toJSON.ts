@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/filename-case */
-import { JSONObject, JSONValue } from '../types';
-import { isRecord } from './isRecord';
+import { JSONObject, JSONValue } from '../types/index.js';
+import { isRecord } from './isRecord.js';
 
 /**
  * Serialises the object to a JSON representation.
