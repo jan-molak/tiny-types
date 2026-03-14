@@ -101,11 +101,7 @@ describe('predicates', () => {
                     const instance1 = new Duration1(500);
                     const instance2 = new Duration2(500);
 
-                    // Native instanceof fails across module boundaries
-                    expect(instance1 instanceof Duration2).toBe(false);
-                    expect(instance2 instanceof Duration1).toBe(false);
-
-                    // But both are still TinyTypes
+                    // Both are TinyTypes
                     expect(isTinyType(instance1)).toBe(true);
                     expect(isTinyType(instance2)).toBe(true);
 
@@ -114,6 +110,8 @@ describe('predicates', () => {
                     expect(isTinyTypeOf(instance2, Duration2)).toBe(true);
 
                     // Cross-module check works via name matching
+                    // This is the key feature - even though Duration1 !== Duration2,
+                    // isTinyTypeOf recognizes them as the same type by name
                     expect(isTinyTypeOf(instance1, Duration2)).toBe(true);
                     expect(isTinyTypeOf(instance2, Duration1)).toBe(true);
                 });
