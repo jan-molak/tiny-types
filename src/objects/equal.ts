@@ -30,13 +30,38 @@ function both(condition: (_: any) => boolean, v1: any, v2: any): boolean {
 const sameType  = (v1: any, v2: any) => typeof v1 === typeof v2;
 
 /**
- * Checks if two objects are of the same class.
- * For TinyType instances, compares by class name to handle ESM/CJS dual-package hazard.
+ * Gets all class names in the prototype chain of an object.
+ */
+function getClassNamesInChain(instance: any): string[] {
+    const names: string[] = [];
+    let proto = Object.getPrototypeOf(instance);
+    while (proto !== null && proto.constructor) {
+        names.push(proto.constructor.name);
+        proto = Object.getPrototypeOf(proto);
+    }
+    return names;
+}
+
+/**
+ * Checks if two objects are of the same class or related by inheritance.
+ * For TinyType instances, checks the prototype chain by class name to handle ESM/CJS dual-package hazard.
  */
 const sameClass = (v1: any, v2: any) => {
-    // For TinyType instances, compare by class name to handle ESM/CJS dual-package hazard
+    // For TinyType instances, check if they share a class relationship
     if (isTinyType(v1) && isTinyType(v2)) {
-        return v1.constructor.name === v2.constructor.name;
+        const v1Name = v1.constructor.name;
+        const v2Name = v2.constructor.name;
+
+        // Same class
+        if (v1Name === v2Name) {
+            return true;
+        }
+
+        // Check inheritance: v1's class is in v2's chain or vice versa
+        const v1Chain = getClassNamesInChain(v1);
+        const v2Chain = getClassNamesInChain(v2);
+
+        return v2Chain.includes(v1Name) || v1Chain.includes(v2Name);
     }
     // Fall back to instanceof for non-TinyType objects
     return (v1.constructor && v2 instanceof v1.constructor) || (v2.constructor && v1 instanceof v2.constructor);
