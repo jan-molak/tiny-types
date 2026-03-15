@@ -141,7 +141,7 @@ export abstract class TinyType implements Serialisable {
      * This enables instanceof checks to work across ESM/CJS module boundaries.
      */
     protected constructor() {
-        (this as any)[TINY_TYPE_BRAND] = true;
+        Object.defineProperty(this, TINY_TYPE_BRAND, { value: true, enumerable: false });
     }
 
     /**
