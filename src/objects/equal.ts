@@ -1,3 +1,4 @@
+import { isTinyType } from '../TinyType.js';
 import { significantFieldsOf } from './significantFields.js';
 
 /**
@@ -27,7 +28,20 @@ function both(condition: (_: any) => boolean, v1: any, v2: any): boolean {
 }
 
 const sameType  = (v1: any, v2: any) => typeof v1 === typeof v2;
-const sameClass = (v1: any, v2: any) => (v1.constructor && v2 instanceof v1.constructor) || (v2.constructor && v1 instanceof v2.constructor);
+
+/**
+ * Checks if two objects are of the same class.
+ * For TinyType instances, compares by class name to handle ESM/CJS dual-package hazard.
+ */
+const sameClass = (v1: any, v2: any) => {
+    // For TinyType instances, compare by class name to handle ESM/CJS dual-package hazard
+    if (isTinyType(v1) && isTinyType(v2)) {
+        return v1.constructor.name === v2.constructor.name;
+    }
+    // Fall back to instanceof for non-TinyType objects
+    return (v1.constructor && v2 instanceof v1.constructor) || (v2.constructor && v1 instanceof v2.constructor);
+};
+
 const sameLength = (v1: { length: number }, v2: { length: number }) => v1.length === v2.length;
 
 function checkIdentityOf(v1: any, v2: any) {
