@@ -27,7 +27,7 @@ function both(condition: (_: any) => boolean, v1: any, v2: any): boolean {
 }
 
 const sameType  = (v1: any, v2: any) => typeof v1 === typeof v2;
-const sameClass = (v1: any, v2: any) => (v1.constructor && v2 instanceof v1.constructor) || (v2.constructor && v1 instanceof  v2.constructor);
+const sameClass = (v1: any, v2: any) => (v1.constructor && v2 instanceof v1.constructor) || (v2.constructor && v1 instanceof v2.constructor);
 const sameLength = (v1: { length: number }, v2: { length: number }) => v1.length === v2.length;
 
 function checkIdentityOf(v1: any, v2: any) {
