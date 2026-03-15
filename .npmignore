@@ -13,6 +13,7 @@ reports
 
 # Config
 .github
+.qlty
 .esdoc.json
 .eslintrc.yml
 .mocharc.yml
