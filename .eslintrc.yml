@@ -2,6 +2,7 @@
 root: true
 ignorePatterns:
   - "**/lib/**"
+  - "**/esm/**"
 parser: "@typescript-eslint/parser"
 parserOptions:
   ecmaVersion: 6

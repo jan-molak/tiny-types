@@ -6,6 +6,23 @@ import { equal } from '../../src/objects';
 // Symbol used to brand TinyType instances - must match the one in TinyType.ts
 const TINY_TYPE_BRAND = Symbol.for('tiny-types/TinyType');
 
+/**
+ * Creates a mock TinyType-like object that simulates an instance
+ * created from a different module format (ESM vs CJS).
+ * The object has the TinyType brand but a different constructor reference.
+ */
+function createCrossModuleInstance<T>(className: string, value: T): object {
+    // Create a class with the specified name to simulate a cross-module class
+    const CrossModuleClass = { [className]: class {
+        value = value;
+    } }[className];
+
+    const instance = new CrossModuleClass();
+    // Brand it as a TinyType
+    (instance as any)[TINY_TYPE_BRAND] = true;
+    return instance;
+}
+
 /** @test {equal} */
 describe('equal', () => {
     describe('when used with primitives', () => {
@@ -226,25 +243,7 @@ describe('equal', () => {
      */
     describe('when comparing TinyTypes across module boundaries (dual-package hazard)', () => {
 
-        /**
-         * Creates a mock TinyType-like object that simulates an instance
-         * created from a different module format (ESM vs CJS).
-         * The object has the TinyType brand but a different constructor reference.
-         */
-        function createCrossModuleInstance<T>(className: string, value: T): object {
-            // Create a class with the specified name to simulate a cross-module class
-            const CrossModuleClass = { [className]: class {
-                value = value;
-            } }[className];
-
-            const instance = new CrossModuleClass();
-            // Brand it as a TinyType
-            (instance as any)[TINY_TYPE_BRAND] = true;
-            return instance;
-        }
-
         class Name extends TinyTypeOf<string>() {}
-        class Age extends TinyTypeOf<number>() {}
 
         it('returns true when comparing TinyType instances with same class name and value from different module contexts', () => {
             const esmName = new Name('Alice');
@@ -277,11 +276,11 @@ describe('equal', () => {
                 constructor(public readonly value: string) {}
             }
 
-            const obj1 = new RegularClass('test');
-            const obj2 = new RegularClass('test');
+            const object1 = new RegularClass('test');
+            const object2 = new RegularClass('test');
 
             // Regular objects should still work with instanceof-based comparison
-            expect(equal(obj1, obj2)).toBe(true);
+            expect(equal(object1, object2)).toBe(true);
         });
 
         it('returns false when comparing TinyType with non-TinyType object of same shape', () => {
